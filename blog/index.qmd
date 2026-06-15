@@ -1,0 +1,9 @@
+---
+title: "Blog"
+listing:
+  type: default
+  contents: "*"
+  sort: "date desc"
+  categories: true
+  feed: true
+---

@@ -1,0 +1,15 @@
+---
+title: "Learning Tracks"
+---
+
+A **track** is a curated sequence of resource pages that builds up knowledge or skill on a topic in a deliberate order. Unlike the [Resource Library](../resources/index.qmd), which is organized for browsing, tracks are organized for learning — each page in a track builds on the ones before it.
+
+Tracks are written as general learning paths, not course companions. They are useful if you want to develop competence in an area rather than look up a single reference.
+
+---
+
+## Available tracks
+
+*Tracks will appear here as they are added. Check back soon.*
+
+- [Getting Started with R](getting-started-with-r.qmd) *(skeleton — in progress)*

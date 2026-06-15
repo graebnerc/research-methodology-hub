@@ -1,0 +1,38 @@
+---
+title: "Track: Getting Started with R"
+description: "A beginner learning path for students with no prior programming experience who want to use R for data analysis."
+listing:
+  - id: related-r-resources
+    contents: "../resources/*/*.qmd"
+    include:
+      categories: "R"
+    type: table
+    sort: "date asc"
+    fields: [title, description, date]
+---
+
+## Who this track is for
+
+This track is for students who have never programmed before and want to learn R for data analysis. By the end of the track, you will be able to load, clean, and visualize data in R using the tidyverse.
+
+No prior experience with R or any other programming language is assumed. A working computer and a willingness to make mistakes are all you need.
+
+---
+
+## Core sequence
+
+Work through these resources in order. Each page builds on the previous one.
+
+1. **[Getting Started with R](../resources/r-programming/getting-started-with-r.qmd)**
+   Install R and RStudio, understand the interface, and run your first commands. Start here if you have never opened R before.
+
+*Additional pages will be added to this track as the hub grows.*
+
+---
+
+## Related resources
+
+All hub resources tagged with `R`:
+
+::: {#related-r-resources}
+:::

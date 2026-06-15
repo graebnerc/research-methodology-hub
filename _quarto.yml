@@ -1,0 +1,81 @@
+project:
+  type: website
+  output-dir: _site
+
+citation:
+  title: "Methods Hub"
+  type: webpage
+
+execute:
+  freeze: auto
+
+website:
+  title: "Methods Hub"
+  site-url: https://yourdomain.com
+
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: resources/index.qmd
+        text: Resources
+      - href: tracks/index.qmd
+        text: Tracks
+      - href: blog/index.qmd
+        text: Blog
+      - href: teaching.qmd
+        text: Teaching
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/[your-org]/[your-repo]
+        aria-label: GitHub
+
+  sidebar:
+    - id: resources-sidebar
+      title: "Resource Categories"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents:
+        - resources/index.qmd
+        - section: "R Programming"
+          contents:
+            - auto: resources/r-programming/
+        - section: "Literature Review"
+          contents:
+            - auto: resources/literature-review/
+        - section: "Epistemology"
+          contents:
+            - auto: resources/epistemology/
+
+  page-footer:
+    left: "© 2026 Claudius Gräbner-Radkowitsch"
+    right:
+      - icon: rss
+        href: /blog/index.xml
+        aria-label: RSS Feed
+
+author:
+  name: "Claudius Gräbner-Radkowitsch"
+  url: https://claudius-graebner.com 
+  orcid: 0000-0003-4065-4722
+
+editor:
+  name: "Claudius Gräbner-Radkowitsch"
+  url: https://claudius-graebner.com
+  orcid: 0000-0003-4065-4722
+
+google-scholar: true
+
+format:
+  html:
+    theme:
+      - cosmo
+      - assets/styles/custom.scss
+    toc: true
+    code-fold: true
+    code-tools: true
+    code-copy: true
+    highlight-style: github

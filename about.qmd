@@ -1,0 +1,31 @@
+---
+title: "About the Methods Hub"
+---
+
+## Purpose
+
+The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.
+
+The hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus.
+
+## Editorial model
+
+The hub has a single editor: **Claudius Gräbner-Radkowitsch** (European University Flensburg / Johannes Kepler University Linz). The editor is responsible for maintaining consistency, quality, and scope across all pages.
+
+Future contributors who write resource pages appear as the **author** of those pages. The `editor` field on all pages remains Claudius Gräbner-Radkowitsch, reflecting editorial responsibility for the hub as a whole.
+
+## How to cite resources
+
+Every resource page auto-generates a citation block at the bottom of the page. To cite a resource, copy the citation shown there.
+
+The general format is:
+
+> [Author Last, First]. ([Year]). "[Page Title]." In *Methods Hub*, edited by Claudius Gräbner-Radkowitsch. [URL]
+
+You can also export citations in BibTeX or other formats from the citation block on each page.
+
+## Independence from courses
+
+The Methods Hub is independent of any single course. Courses taught by Claudius Gräbner-Radkowitsch and others may link into the hub for specific resources, but the hub itself is not a course companion. Its resources are written as general-purpose references that remain useful regardless of where a student encounters them.
+
+See [Teaching](teaching.qmd) for an index of courses that use the hub.

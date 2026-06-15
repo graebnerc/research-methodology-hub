@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/blog/index.html",
+    "items": []
+  },
+  {
+    "listing": "/resources/index.html",
+    "items": [
+      "/resources/epistemology/epistemology-ba.html",
+      "/resources/literature-review/intro-to-systematic-literature-review.html",
+      "/resources/r-programming/getting-started-with-r.html"
+    ]
+  },
+  {
+    "listing": "/tracks/getting-started-with-r.html",
+    "items": [
+      "/resources/r-programming/getting-started-with-r.html"
+    ]
+  }
+]

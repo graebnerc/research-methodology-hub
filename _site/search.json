@@ -1,0 +1,403 @@
+[
+  {
+    "objectID": "CONTRIBUTING.html",
+    "href": "CONTRIBUTING.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
+    "href": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
+    "title": "",
+    "section": "What the hub is and isn’t",
+    "text": "What the hub is and isn’t\nThe hub is a general-purpose resource library — not a course companion. Resource pages should be useful to any student encountering the topic, regardless of course context. If you are writing a resource that only makes sense in the context of a specific assignment or syllabus, it does not belong here.\nCourse sites link into the hub. The hub does not link into course sites (except from teaching.qmd, which lists courses with external links)."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#page-granularity",
+    "href": "CONTRIBUTING.html#page-granularity",
+    "title": "",
+    "section": "Page granularity",
+    "text": "Page granularity\nThe default unit is workflow-level: one page per meaningful task or concept a student sits down to do or understand (20–40 minutes). Titles are action- or understanding-oriented:\n\n✓ “Reshaping Data from Wide to Long”\n✓ “Understanding Statistical Power”\n✗ “Data” (too broad)\n✗ “Introduction to R, Chapter 3” (course-specific framing)\n\nShort concept pages are allowed where no workflow framing makes sense — e.g., “What is Tidy Data?” or “What is Epistemology?”. Test: can a student finish this page and have accomplished or understood one specific thing?"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#front-matter-schema",
+    "href": "CONTRIBUTING.html#front-matter-schema",
+    "title": "",
+    "section": "Front matter schema",
+    "text": "Front matter schema\nEvery resource page must include this exact front matter:\n---\ntitle: \"\"\ndescription: \"\"\nauthor: \"Claudius Gräbner-Radkowitsch\"\ndate: YYYY-MM-DD\ndate-modified: YYYY-MM-DD\nimage: ../../assets/images/placeholder.png\n\nlearning-objectives:\n  - \"Understand what tidy data is and why it matters\"\n  - \"Use pivot_longer() to reshape a wide dataset\"\n\ncategories:\n  - [at least one thematic tag]\n\nlevel:\n  - BA          # BA | MA | PhD — list all that apply\n\ncontent-type:   # exactly one of: tutorial | video | slides | reading | exercise | concept\n\ncitation:\n  type: entry\n  container-title: \"Methods Hub\"\n  editor:\n    - name: \"Claudius Gräbner-Radkowitsch\"\n  url: https://yourdomain.com/resources/[category]/[slug]\n---\nlearning-objectives rules: - 2–4 objectives; more than 4 signals the page scope is too broad - Each objective is a concrete skill or understanding, not a description of page content - Write from the student’s perspective: “Explain X”, “Apply X to Y”, “Distinguish X from Y” - ✓ “Use pivot_longer() to reshape a wide dataset” - ✗ “This page covers data reshaping in R”\nauthor vs editor: - If you are a contributor writing a new page, put your name in author - The editor field lives inside the citation: block and is always Claudius Gräbner-Radkowitsch — it reflects editorial responsibility for the hub, not who wrote the page - Do not add a top-level editor: key — Quarto 1.9+ reserves that key for visual editor configuration and will reject a name string"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#tag-taxonomy",
+    "href": "CONTRIBUTING.html#tag-taxonomy",
+    "title": "",
+    "section": "Tag taxonomy",
+    "text": "Tag taxonomy\nUse existing tags. Adding a new thematic tag requires also adding it to the taxonomy in CLAUDE.md.\nThematic: data-cleaning, R, visualization, experiments, statistics, regression, causal-inference, literature-review, research-design, qualitative-methods, reproducibility, quarto, survey-methods, epistemology, tidyverse\nContent type (pick exactly one): tutorial, video, slides, reading, exercise, concept\nLevel (list all that apply): BA, MA, PhD"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#level-differentiation",
+    "href": "CONTRIBUTING.html#level-differentiation",
+    "title": "",
+    "section": "Level differentiation",
+    "text": "Level differentiation\nPages are written at BA level by default. Two patterns are allowed for adding MA/PhD content.\n\nPattern 1 — inline callout (default)\nUse when the page is fundamentally the same workflow for all levels, with added depth for MA/PhD. Wrap MA/PhD-specific content in:\n::: {.callout-note .level-advanced}\n## 🎓 MA / PhD\nContent here.\n:::\nThis renders with a muted teal left border and lighter background, visually distinct from a standard note.\n\n\nPattern 2 — separate pages per level\nUse when the conceptual treatment genuinely differs across levels — not just in depth but in framing, assumed knowledge, or purpose. Examples: - An epistemology page introducing the concept from scratch (BA) vs. engaging with the literature (PhD) - A statistics page using intuition and visuals (BA) vs. formal notation (PhD)\nWhen using Pattern 2: - Each page is a standalone .qmd with its own front matter - The level field contains only the single applicable level - Add a sibling-link callout at the top of each page:\n::: {.callout-tip}\n## 📖 Level: BA\nThis page is written for BA students. There is also a version for\n[MA/PhD students](../epistemology-phd.qmd).\n:::\n\nFile naming: [topic]-ba.qmd, [topic]-ma.qmd, [topic]-phd.qmd\nAll sibling pages share the same thematic tags so they appear together in the listing\n\nDeciding: Default to Pattern 1. Switch to Pattern 2 only when the callout block would be so large and structurally different that it dominates the page."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#file-and-folder-naming",
+    "href": "CONTRIBUTING.html#file-and-folder-naming",
+    "title": "",
+    "section": "File and folder naming",
+    "text": "File and folder naming\n\nResource pages: kebab-case.qmd matching the page title closely\nCategory folders: kebab-case/ (e.g., r-programming/, literature-review/)\nTrack pages: kebab-case.qmd in tracks/\nData files: kebab-case.csv / .rds etc.\nImages: kebab-case.png in assets/images/"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#data-files",
+    "href": "CONTRIBUTING.html#data-files",
+    "title": "",
+    "section": "Data files",
+    "text": "Data files\n\nIn the repo: synthetic/self-generated data, small modified external datasets, small freely redistributable datasets\nOn OSF (linked, not hosted): large datasets, verbatim third-party data, datasets where acquisition is part of the learning\nData files live co-located with the resource page in a data/ subfolder within the category folder — never in a global /data folder\nR scripts go in .qmd code blocks by default; standalone .R files only when genuinely needed\n\nExample structure:\nresources/\n  data-cleaning/\n    reshaping-data-wide-to-long.qmd\n    data/\n      survey-responses.csv"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#relative-paths",
+    "href": "CONTRIBUTING.html#relative-paths",
+    "title": "",
+    "section": "Relative paths",
+    "text": "Relative paths\nNever hardcode the domain URL in .qmd files. Use relative paths for all internal links. This keeps the site portable when the domain changes."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#build-and-deploy-workflow",
+    "href": "CONTRIBUTING.html#build-and-deploy-workflow",
+    "title": "",
+    "section": "Build and deploy workflow",
+    "text": "Build and deploy workflow\nWhile writing a single page:\nquarto preview resources/[category]/[page].qmd\nAfter finishing a page:\nquarto render resources/[category]/[page].qmd\nquarto render resources/index.qmd\nCommit and push — always include _site/ and _freeze/:\ngit add .\ngit commit -m \"add: [short description]\"\ngit push\nNetlify serves _site/ directly and runs no build. Never configure Netlify to run quarto render."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "No matching items\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://yourdomain.com/blog/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://yourdomain.com/blog/."
+  },
+  {
+    "objectID": "tracks/index.html",
+    "href": "tracks/index.html",
+    "title": "Learning Tracks",
+    "section": "",
+    "text": "A track is a curated sequence of resource pages that builds up knowledge or skill on a topic in a deliberate order. Unlike the Resource Library, which is organized for browsing, tracks are organized for learning — each page in a track builds on the ones before it.\nTracks are written as general learning paths, not course companions. They are useful if you want to develop competence in an area rather than look up a single reference."
+  },
+  {
+    "objectID": "tracks/index.html#available-tracks",
+    "href": "tracks/index.html#available-tracks",
+    "title": "Learning Tracks",
+    "section": "Available tracks",
+    "text": "Available tracks\nTracks will appear here as they are added. Check back soon.\n\nGetting Started with R (skeleton — in progress)"
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html",
+    "href": "resources/epistemology/epistemology-ba.html",
+    "title": "What is Epistemology? (BA)",
+    "section": "",
+    "text": "TipLevel: BA\n\n\n\nThis page is written for BA students encountering epistemology for the first time. There is also a version for MA/PhD students that engages more directly with the philosophical literature.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
+    "href": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
+    "title": "What is Epistemology? (BA)",
+    "section": "What is Epistemology?",
+    "text": "What is Epistemology?\nPlaceholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nEpistemology is the branch of philosophy concerned with the nature, sources, and limits of knowledge. In everyday terms: how do we know what we know, and how confident should we be in that knowledge?\nFor social scientists, epistemological questions are not merely abstract. The assumptions you make about what counts as valid knowledge directly shape the research designs you consider appropriate, the methods you use, and how you interpret your findings.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
+    "href": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
+    "title": "What is Epistemology? (BA)",
+    "section": "Two Foundational Positions",
+    "text": "Two Foundational Positions\nContent to be added — will cover positivism and interpretivism as accessible entry points.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
+    "href": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
+    "title": "What is Epistemology? (BA)",
+    "section": "Why Does This Matter for Research Design?",
+    "text": "Why Does This Matter for Research Design?\nContent to be added — connecting epistemological positions to method choice.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#what-to-read-next",
+    "href": "resources/epistemology/epistemology-ba.html#what-to-read-next",
+    "title": "What is Epistemology? (BA)",
+    "section": "What to Read Next",
+    "text": "What to Read Next\nContent to be added — suggestions for moving from this concept page to more applied research design resources.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/index.html",
+    "href": "resources/index.html",
+    "title": "Resource Library",
+    "section": "",
+    "text": "The Methods Hub resource library is a searchable collection of individual pages covering research methods in the social sciences. Each page addresses one task or concept — working through a page takes roughly 20–40 minutes. Resources are written at BA level by default, with MA/PhD extensions where relevant.\nUse the filters below to browse by topic, level, or content type.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nWhat is Epistemology? (BA)\n\n\n\nepistemology\n\nBA\n\nconcept\n\n\n\nA first introduction to epistemology — the branch of philosophy concerned with how we know what we know — and why it matters for social science research.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Systematic Literature Reviews\n\n\n\nliterature-review\n\nBA\n\nMA\n\nreading\n\n\n\nAn overview of what a systematic literature review is, how it differs from a narrative review, and how to plan and execute one.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\n\nR\n\nBA\n\ntutorial\n\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://yourdomain.com/resources/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://yourdomain.com/resources/.",
+    "crumbs": [
+      "Resources",
+      "Resource Library"
+    ]
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "I am mainly teaching at the European University Flensburg (EUF). Most of my courses have their own separate site — syllabus, assignments, and course-specific materials live there. For the future, I want to keep all generic and general material here, and then link to this hub from my course pages. But you might still find it interesting to browse through the courses. As always, I value any kind of feedback! —"
+  },
+  {
+    "objectID": "teaching.html#current-courses-with-open-material-available",
+    "href": "teaching.html#current-courses-with-open-material-available",
+    "title": "Teaching",
+    "section": "Current courses with open material available",
+    "text": "Current courses with open material available\n*An overview over my current teaching portfolio can be found here.\nResearch Methodology (Fall 2025, EUF) — course site\nApplied Data Science (Spring 2025, EUF) — course site\nDevelopment Economics (Fall 2025, JKU) — course site\n\nLinks above lead to separate course sites. The Methods Hub provides the resource pages that these courses reference; it does not host course-specific materials such as syllabi, assignments, or grading criteria."
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html",
+    "href": "resources/r-programming/getting-started-with-r.html",
+    "title": "Getting Started with R",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#introduction",
+    "href": "resources/r-programming/getting-started-with-r.html#introduction",
+    "title": "Getting Started with R",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
+    "href": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
+    "title": "Getting Started with R",
+    "section": "Installing R and RStudio",
+    "text": "Installing R and RStudio\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
+    "href": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
+    "title": "Getting Started with R",
+    "section": "The RStudio Interface",
+    "text": "The RStudio Interface\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
+    "href": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
+    "title": "Getting Started with R",
+    "section": "Your First R Commands",
+    "text": "Your First R Commands\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#next-steps",
+    "href": "resources/r-programming/getting-started-with-r.html#next-steps",
+    "title": "Getting Started with R",
+    "section": "Next Steps",
+    "text": "Next Steps\nOnce you are comfortable with the basics, explore the R Programming track for a suggested learning path.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/literature-review/intro-to-systematic-literature-review.html",
+    "href": "resources/literature-review/intro-to-systematic-literature-review.html",
+    "title": "Introduction to Systematic Literature Reviews",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nA systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.",
+    "crumbs": [
+      "Resources",
+      "Literature Review",
+      "Literature Review",
+      "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#what-is-a-systematic-literature-review",
+    "href": "resources/literature-review/intro-to-systematic-literature-review.html#what-is-a-systematic-literature-review",
+    "title": "Introduction to Systematic Literature Reviews",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nA systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.",
+    "crumbs": [
+      "Resources",
+      "Literature Review",
+      "Literature Review",
+      "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#key-stages",
+    "href": "resources/literature-review/intro-to-systematic-literature-review.html#key-stages",
+    "title": "Introduction to Systematic Literature Reviews",
+    "section": "Key Stages",
+    "text": "Key Stages\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "Literature Review",
+      "Literature Review",
+      "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#formulating-a-research-question",
+    "href": "resources/literature-review/intro-to-systematic-literature-review.html#formulating-a-research-question",
+    "title": "Introduction to Systematic Literature Reviews",
+    "section": "Formulating a Research Question",
+    "text": "Formulating a Research Question\nContent to be added.\n\n\n\n\n\n\nNoteMA / PhD\n\n\n\nAt the MA and PhD level, a systematic review typically also requires pre-registration of the review protocol (e.g., on PROSPERO or OSF), a formal PRISMA flow diagram, and a risk-of-bias assessment for included studies. These requirements signal that the review is intended to be a primary contribution to the literature, not merely a summary for a thesis background chapter.\nPlaceholder — MA/PhD extension content to be added.",
+    "crumbs": [
+      "Resources",
+      "Literature Review",
+      "Literature Review",
+      "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#practical-tools",
+    "href": "resources/literature-review/intro-to-systematic-literature-review.html#practical-tools",
+    "title": "Introduction to Systematic Literature Reviews",
+    "section": "Practical Tools",
+    "text": "Practical Tools\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "Literature Review",
+      "Literature Review",
+      "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "tracks/getting-started-with-r.html",
+    "href": "tracks/getting-started-with-r.html",
+    "title": "Track: Getting Started with R",
+    "section": "",
+    "text": "This track is for students who have never programmed before and want to learn R for data analysis. By the end of the track, you will be able to load, clean, and visualize data in R using the tidyverse.\nNo prior experience with R or any other programming language is assumed. A working computer and a willingness to make mistakes are all you need."
+  },
+  {
+    "objectID": "tracks/getting-started-with-r.html#who-this-track-is-for",
+    "href": "tracks/getting-started-with-r.html#who-this-track-is-for",
+    "title": "Track: Getting Started with R",
+    "section": "",
+    "text": "This track is for students who have never programmed before and want to learn R for data analysis. By the end of the track, you will be able to load, clean, and visualize data in R using the tidyverse.\nNo prior experience with R or any other programming language is assumed. A working computer and a willingness to make mistakes are all you need."
+  },
+  {
+    "objectID": "tracks/getting-started-with-r.html#core-sequence",
+    "href": "tracks/getting-started-with-r.html#core-sequence",
+    "title": "Track: Getting Started with R",
+    "section": "Core sequence",
+    "text": "Core sequence\nWork through these resources in order. Each page builds on the previous one.\n\nGetting Started with R Install R and RStudio, understand the interface, and run your first commands. Start here if you have never opened R before.\n\nAdditional pages will be added to this track as the hub grows."
+  },
+  {
+    "objectID": "tracks/getting-started-with-r.html#related-resources",
+    "href": "tracks/getting-started-with-r.html#related-resources",
+    "title": "Track: Getting Started with R",
+    "section": "Related resources",
+    "text": "Related resources\nAll hub resources tagged with R:\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Methods Hub",
+    "section": "",
+    "text": "Methods Hub is a public, citable educational resource library covering research methods in the social sciences. It serves students and researchers at all levels — BA, MA, and PhD — across both methodological topics (research design, literature review, epistemology, experiments) and implementation topics (R programming, data cleaning, visualization, regression).\nResources are written to stand on their own. Each page covers one task or concept, takes 20–40 minutes to work through, and generates its own citation so you can reference it in a course outline or research paper."
+  },
+  {
+    "objectID": "index.html#where-do-you-want-to-go",
+    "href": "index.html#where-do-you-want-to-go",
+    "title": "Methods Hub",
+    "section": "Where do you want to go?",
+    "text": "Where do you want to go?\n\n\nResource Library\nBrowse or search individual resource pages by topic, level, and content type. Filter by category or use the search box to find what you need.\n\n\nTracks\nCurated learning paths that sequence resources into a coherent progression — useful if you want to build up knowledge on a topic rather than find a single reference.\n\n\nBlog\nEditorial commentary, updates, and notes on new resources and how they fit together.\n\n\nTeaching\nAn index of courses that use this hub as a supporting resource, with links to their separate course sites.\n\n\n\nThe hub is edited by Claudius Gräbner-Radkowitsch. All resource pages are citable — each page shows a full citation block at the bottom that you can copy directly."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Methods Hub",
+    "section": "",
+    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+  },
+  {
+    "objectID": "about.html#purpose",
+    "href": "about.html#purpose",
+    "title": "About the Methods Hub",
+    "section": "",
+    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+  },
+  {
+    "objectID": "about.html#editorial-model",
+    "href": "about.html#editorial-model",
+    "title": "About the Methods Hub",
+    "section": "Editorial model",
+    "text": "Editorial model\nThe hub has a single editor: Claudius Gräbner-Radkowitsch (European University Flensburg / Johannes Kepler University Linz). The editor is responsible for maintaining consistency, quality, and scope across all pages.\nFuture contributors who write resource pages appear as the author of those pages. The editor field on all pages remains Claudius Gräbner-Radkowitsch, reflecting editorial responsibility for the hub as a whole."
+  },
+  {
+    "objectID": "about.html#how-to-cite-resources",
+    "href": "about.html#how-to-cite-resources",
+    "title": "About the Methods Hub",
+    "section": "How to cite resources",
+    "text": "How to cite resources\nEvery resource page auto-generates a citation block at the bottom of the page. To cite a resource, copy the citation shown there.\nThe general format is:\n\n[Author Last, First]. ([Year]). “[Page Title].” In Methods Hub, edited by Claudius Gräbner-Radkowitsch. [URL]\n\nYou can also export citations in BibTeX or other formats from the citation block on each page."
+  },
+  {
+    "objectID": "about.html#independence-from-courses",
+    "href": "about.html#independence-from-courses",
+    "title": "About the Methods Hub",
+    "section": "Independence from courses",
+    "text": "Independence from courses\nThe Methods Hub is independent of any single course. Courses taught by Claudius Gräbner-Radkowitsch and others may link into the hub for specific resources, but the hub itself is not a course companion. Its resources are written as general-purpose references that remain useful regardless of where a student encounters them.\nSee Teaching for an index of courses that use the hub."
+  }
+]

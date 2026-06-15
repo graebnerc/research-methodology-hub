@@ -1,0 +1,22 @@
+---
+title: "Teaching"
+---
+
+I am mainly teaching at the **European University Flensburg (EUF)**. 
+Most of [my courses](https://www.uni-flensburg.de/en/pluralist-economics/teaching/courses-overview) 
+have their own separate site — syllabus, assignments, and course-specific materials live there. For the future, I want to keep all generic and general material here, and then link to this hub from my course pages. But you might still find it interesting to browse through the courses. As always, I value any kind of feedback!
+---
+
+## Current courses with open material available
+
+*An overview over my current teaching portfolio can be found [here](https://www.uni-flensburg.de/en/pluralist-economics/teaching/courses-overview).
+
+**Research Methodology** (Fall 2025, EUF) — [course site](#)
+
+**Applied Data Science** (Spring 2025, EUF) — [course site](#)
+
+**Development Economics** (Fall 2025, JKU) — [course site](#)
+
+---
+
+*Links above lead to separate course sites. The Methods Hub provides the resource pages that these courses reference; it does not host course-specific materials such as syllabi, assignments, or grading criteria.*

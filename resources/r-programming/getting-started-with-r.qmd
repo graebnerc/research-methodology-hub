@@ -1,0 +1,52 @@
+---
+title: "Getting Started with R"
+description: "A first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-15
+date-modified: 2026-06-15
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Install R and RStudio and understand the difference between them"
+  - "Navigate the RStudio interface and identify its main panels"
+  - "Run basic arithmetic and assignment operations in the R console"
+
+categories:
+  - R
+  - BA
+  - tutorial
+
+level:
+  - BA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://yourdomain.com/resources/r-programming/getting-started-with-r
+---
+
+## Introduction
+
+*Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.*
+
+R is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.
+
+## Installing R and RStudio
+
+*Content to be added.*
+
+## The RStudio Interface
+
+*Content to be added.*
+
+## Your First R Commands
+
+*Content to be added.*
+
+## Next Steps
+
+Once you are comfortable with the basics, explore the [R Programming track](../../tracks/getting-started-with-r.qmd) for a suggested learning path.

@@ -1,0 +1,41 @@
+---
+title: "Methods Hub"
+description: "A citable resource library for research methods — for BA, MA, and PhD students."
+date: 2026-06-15
+---
+
+**Methods Hub** is a public, citable educational resource library covering research methods in the social sciences. It serves students and researchers at all levels — BA, MA, and PhD — across both methodological topics (research design, literature review, epistemology, experiments) and implementation topics (R programming, data cleaning, visualization, regression).
+
+Resources are written to stand on their own. Each page covers one task or concept, takes 20–40 minutes to work through, and generates its own citation so you can reference it in a course outline or research paper.
+
+---
+
+## Where do you want to go?
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+### [Resource Library](resources/index.qmd)
+Browse or search individual resource pages by topic, level, and content type. Filter by category or use the search box to find what you need.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### [Tracks](tracks/index.qmd)
+Curated learning paths that sequence resources into a coherent progression — useful if you want to build up knowledge on a topic rather than find a single reference.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### [Blog](blog/index.qmd)
+Editorial commentary, updates, and notes on new resources and how they fit together.
+:::
+
+::: {.g-col-12 .g-col-md-6}
+### [Teaching](teaching.qmd)
+An index of courses that use this hub as a supporting resource, with links to their separate course sites.
+:::
+
+:::
+
+---
+
+The hub is edited by [Claudius Gräbner-Radkowitsch](about.qmd). All resource pages are citable — each page shows a full citation block at the bottom that you can copy directly.

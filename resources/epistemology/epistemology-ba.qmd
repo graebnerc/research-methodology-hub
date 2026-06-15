@@ -1,0 +1,56 @@
+---
+title: "What is Epistemology? (BA)"
+description: "A first introduction to epistemology — the branch of philosophy concerned with how we know what we know — and why it matters for social science research."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-15
+date-modified: 2026-06-15
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Explain what epistemology is and why it is relevant to empirical research"
+  - "Distinguish between positivist and interpretivist epistemological positions"
+  - "Identify how epistemological assumptions shape research design choices"
+
+categories:
+  - epistemology
+  - BA
+  - concept
+
+level:
+  - BA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://yourdomain.com/resources/epistemology/epistemology-ba
+---
+
+::: {.callout-tip}
+## Level: BA
+
+This page is written for BA students encountering epistemology for the first time. There is also a version for [MA/PhD students](epistemology-phd.qmd) that engages more directly with the philosophical literature.
+:::
+
+## What is Epistemology?
+
+*Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.*
+
+Epistemology is the branch of philosophy concerned with the nature, sources, and limits of knowledge. In everyday terms: how do we know what we know, and how confident should we be in that knowledge?
+
+For social scientists, epistemological questions are not merely abstract. The assumptions you make about what counts as valid knowledge directly shape the research designs you consider appropriate, the methods you use, and how you interpret your findings.
+
+## Two Foundational Positions
+
+*Content to be added — will cover positivism and interpretivism as accessible entry points.*
+
+## Why Does This Matter for Research Design?
+
+*Content to be added — connecting epistemological positions to method choice.*
+
+## What to Read Next
+
+*Content to be added — suggestions for moving from this concept page to more applied research design resources.*

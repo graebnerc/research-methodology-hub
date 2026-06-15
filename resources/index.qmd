@@ -1,0 +1,20 @@
+---
+title: "Resource Library"
+listing:
+  id: resource-listing
+  type: grid
+  contents: "*/*.qmd"
+  filter-ui: true
+  sort-ui: true
+  categories: true
+  sort: "date desc"
+  fields: [image, title, description, categories, date]
+  page-size: 24
+---
+
+The Methods Hub resource library is a searchable collection of individual pages covering research methods in the social sciences. Each page addresses one task or concept — working through a page takes roughly 20–40 minutes. Resources are written at BA level by default, with MA/PhD extensions where relevant.
+
+Use the filters below to browse by topic, level, or content type.
+
+::: {#resource-listing}
+:::
