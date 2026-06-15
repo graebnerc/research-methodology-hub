@@ -24,9 +24,10 @@ content-type: concept
 citation:
   type: entry
   container-title: "Methods Hub"
+  title: "What is Epistemology? (BA)"
   editor:
     - name: "Claudius Gräbner-Radkowitsch"
-  url: https://yourdomain.com/resources/epistemology/epistemology-ba
+  url: https://euf-methodology-hub.netlify.app/resources/epistemology/epistemology-ba
 ---
 
 ::: {.callout-tip}

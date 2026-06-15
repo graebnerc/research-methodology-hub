@@ -12,4 +12,5 @@ Tracks are written as general learning paths, not course companions. They are us
 
 *Tracks will appear here as they are added. Check back soon.*
 
+- [A Recap of Undergraduate Statistics](statistics-recap.qmd) — conceptual foundations, data types, descriptive statistics, and probability theory
 - [Getting Started with R](getting-started-with-r.qmd) *(skeleton — in progress)*

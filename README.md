@@ -2,7 +2,7 @@
 
 A public, citable educational resource hub for research methods — for BA, MA, and PhD students. Covers both methodological/theoretical topics (literature review, research design, experiments) and implementation topics (R, data cleaning, visualization, regression).
 
-→ **Live site:** [yourdomain.com](https://yourdomain.com) *(update when domain is set)*
+→ **Live site:** [euf-methodology-hub.netlify.app](https://euf-methodology-hub.netlify.app) *(update when custom domain is set)*
 
 ---
 

@@ -1,0 +1,230 @@
+---
+title: "Data Fundamentals: Types, Scales, and Notation"
+description: "An introduction to the building blocks of data: types of variables (categorical vs. numerical), scales of measurement (nominal, ordinal, interval, ratio), and the statistical notation used to describe them."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-15
+date-modified: 2026-06-15
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Distinguish between categorical and numerical variables and identify examples of each in a dataset"
+  - "Apply the four scales of measurement (nominal, ordinal, interval, ratio) to classify variables and explain what analytical operations each permits"
+  - "Read and write standard statistical notation including summation, subscripts, and common Greek symbols"
+
+categories:
+  - statistics
+  - BA
+  - MA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Data Fundamentals: Types, Scales, and Notation"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/statistics/data-fundamentals
+---
+
+# Data Types and Scales of Measurement
+
+Before diving into the details, it is important to understand that **data types** and **scales of measurement** are two different but related ways of classifying variables. Think of them as two lenses through which we examine the same data.
+
+Data types (categorical vs. numerical) tell us about the fundamental nature of our variables — whether we are dealing with labels or numbers. Scales of measurement (nominal, ordinal, interval, ratio) tell us about the mathematical properties and operations we can perform on those variables.
+
+The key insight is that **categorical variables operate at nominal or ordinal scales**, while **numerical variables operate at interval or ratio scales**. A categorical variable can never achieve interval or ratio properties, but the scale tells us how sophisticated our analysis can be within each data type.
+
+# The Social Context of Measurement: Statistics is Never Value-Neutral
+
+It is crucial to recognize that the way we measure and categorize data reflects the social, cultural, and scientific understanding of our time. Statistical categories are not neutral — they embody assumptions about what matters and how the world should be organized.
+
+> Consider the evolution of gender as a variable. Traditionally, many studies recorded gender as a binary choice: "male" or "female." Today, researchers increasingly recognize that gender exists on a spectrum and offer options like "male," "female," "non-binary," "prefer not to say," or allow write-in responses. This change reflects evolving social understanding and respect for human diversity.
+
+This evolution in measurement practices reminds us that:
+
+- Statistical categories can reinforce or challenge social norms
+- What we choose to measure (and how) shapes our understanding
+- Regular review of our measurement approaches ensures they remain relevant and inclusive
+
+As researchers, we must be thoughtful about how our choices in data collection and categorization might affect our findings and their implications for different groups.
+
+# Types of Variables: The Building Blocks of Data
+
+Think of variables as containers that hold different kinds of information about the things we study. Just as different containers are suited for different contents, different types of variables require different analytical approaches.
+
+## Categorical Variables: Labels and Categories
+
+Categorical variables represent qualities or characteristics that can be divided into distinct groups. These variables answer questions like "what type?" or "which category?"
+
+> Consider a survey of student transportation methods: "car," "bicycle," "public transport," "walking." Each student falls into exactly one category, and we cannot perform mathematical operations on these labels — it makes no sense to add "car" plus "bicycle."
+
+Categorical variables come in two main flavors:
+
+**Nominal variables** have categories with no inherent order. The categories are simply different, not better or worse than each other.
+
+> Examples include: gender, academic majors (business, engineering, psychology), or country of origin (Germany, France, Italy, Spain).
+
+**Ordinal variables** have categories that follow a meaningful order, though the distances between categories may not be equal.
+
+> Consider satisfaction ratings: "very dissatisfied," "dissatisfied," "neutral," "satisfied," "very satisfied." While we know "satisfied" is better than "dissatisfied," we cannot assume the difference between "satisfied" and "very satisfied" is the same as between "neutral" and "satisfied."
+
+## Numerical Variables: Quantities and Measurements
+
+Numerical variables represent quantities that can be measured or counted. These variables answer questions like "how much?" or "how many?"
+
+**Discrete variables** can only take specific, distinct values — usually whole numbers you can count.
+
+> Number of employees in a company (5, 10, 15, but not 10.5), number of products sold (100, 101, 102), or number of customer complaints (0, 1, 2, 3...).
+
+**Continuous variables** can take any value within a range, including decimal values.
+
+> Temperature (23.7°C), height (175.3 cm), time spent on a website (2.45 minutes), or quarterly revenue (€2,847,293.67).
+
+Understanding whether your variable is discrete or continuous affects which statistical methods you can use. For instance, when we calculate averages for discrete variables like "number of children," we might get 2.3 children per family — a meaningful statistic even though no family actually has 2.3 children.
+
+# Scales of Measurement: The Ladder of Information
+
+The scales of measurement represent different levels of mathematical sophistication in how we can work with our data. Think of them as a ladder — each higher rung gives you more analytical power and flexibility.
+
+## Nominal Scale: The Foundation
+
+At the nominal level, variables are merely labels or names. You can count how many observations fall into each category, but you cannot rank them or perform arithmetic operations.
+
+> Company departments: "Marketing," "Finance," "HR," "Operations." You can count how many employees work in each department, but it makes no sense to say Marketing > Finance or to calculate an average department.
+
+## Ordinal Scale: Adding Order
+
+Ordinal scales introduce ranking and order. You can determine which category is "higher" or "better," but the intervals between ranks may not be equal.
+
+> Educational levels: "High School," "Bachelor's," "Master's," "PhD." We know a Master's degree is higher than a Bachelor's, but the "distance" from Bachelor's to Master's might not equal the distance from Master's to PhD in terms of time, effort, or knowledge gained.
+
+## Interval Scale: Equal Differences
+
+Interval scales have equal intervals between values, allowing us to compare differences meaningfully. However, they lack a true zero point.
+
+> Temperature in Celsius: The difference between 20°C and 30°C is the same as between 30°C and 40°C (10 degrees). However, 40°C is not "twice as hot" as 20°C because 0°C doesn't represent the absence of heat — it is an arbitrary reference point.
+
+## Ratio Scale: The Gold Standard
+
+Ratio scales have all the properties of interval scales plus a meaningful zero point. This allows for all mathematical operations, including ratios and percentages.
+
+> Income in euros: €0 means no income, €60,000 is twice as much as €30,000, and the difference between €30,000 and €40,000 is the same as between €50,000 and €60,000.
+
+Understanding these scales helps you choose appropriate statistical techniques. You can calculate a meaningful average (mean) for ratio and interval data, but for ordinal data, the median is often more appropriate.
+
+# Statistical Notation and Terminology: The Language of Data
+
+Statistical notation is a specialized language that allows researchers to communicate precisely about data and analytical procedures. Mastering basic notation will make working with statistical formulas and research papers much easier.
+
+## Sample vs. Population: A Quick Note
+
+Before diving into notation, it is important to know that statistics distinguishes between:
+
+- **Population**: The entire group we are interested in studying
+- **Sample**: A subset of the population that we actually observe and collect data from
+
+Different symbols often indicate whether we are talking about sample or population values. This distinction is explored in depth in the page on [sampling and inference](sampling-and-inference.qmd).
+
+## Mathematical Objects: Numbers, Vectors, and Matrices
+
+In statistics, we work with different types of mathematical objects:
+
+**Numbers (scalars)** are single values — the simplest form of data.
+
+> A student's age (22), a company's profit (€50,000), or a satisfaction score (7.5).
+
+**Vectors** are ordered lists of numbers, like a column or row in a spreadsheet. We use vectors to store multiple observations of the same variable.
+
+> A vector of test scores: **x** = [85, 90, 78, 92, 88]. This represents five students' scores on the same exam.
+
+**Matrices** are rectangular arrangements of numbers in rows and columns, like a complete spreadsheet. Each row typically represents one observation, and each column represents one variable.
+
+> A matrix storing data for 3 students across 2 variables (test score, age):
+>
+> $$\mathbf{X} = \begin{bmatrix} 85 & 22 \\ 90 & 23 \\ 78 & 21 \end{bmatrix}$$
+
+## Variables and Observations
+
+In statistics, we typically use letters to represent variables following specific conventions:
+
+- **Uppercase letters** (X, Y): variables in general, or random variables in probability contexts
+- **Lowercase letters** (x, y): specific observed values of a variable
+- **Bold letters** (**x**, **X**): vectors or matrices
+
+> If we study student ages, **X** represents the age variable in general, while $x_1, x_2, x_3$... represent the actual ages we observe: 22, 25, 23...
+
+- **$n$** represents the number of observations in a sample
+- **$N$** represents the number of observations in a population
+
+## Subscripts: Identifying Individual Observations
+
+Subscripts help us refer to specific observations within a dataset:
+
+- $X_1$ refers to the first observation of variable $X$
+- $X_i$ refers to the $i$-th observation (where $i$ can be any number from 1 to $n$)
+
+## Summation Notation
+
+The Greek letter sigma $\Sigma$ represents summation:
+
+$$\sum_{i=1}^n X_i \text{ means "sum all values of } X \text{ from } i = 1 \text{ to } n\text{"}$$
+
+> If we have test scores: 85, 90, 78, 92, 88, then:
+>
+> $$\sum_{i=1}^n X_i = 85 + 90 + 78 + 92 + 88 = 433$$
+
+## Common Statistical Symbols
+
+| Symbol | Meaning |
+|--------|---------|
+| $\mu$ (mu) | Population mean |
+| $\bar{x}$ (x-bar) | Sample mean |
+| $\sigma$ (sigma) | Population standard deviation |
+| $sd$ | Sample standard deviation |
+| $p$ | Probability or proportion |
+
+When you see $\bar{x} = 75$, you immediately know this refers to a sample mean of 75, without needing a lengthy explanation. This precision is the entire point of statistical notation.
+
+# Putting It All Together: A Practical Perspective
+
+Understanding data fundamentals allows you to approach any dataset with confidence. Before diving into complex analyses, always ask yourself:
+
+1. What type of variables am I working with?
+2. What scale of measurement applies to each variable?
+3. What does this tell me about which analytical methods are appropriate?
+
+> Consider a customer satisfaction survey with three questions:
+>
+> 1. "Which product did you purchase?" → Nominal categorical
+> 2. "How satisfied are you with your purchase?" → Ordinal categorical
+> 3. "How much did you spend?" → Ratio numerical
+>
+> Each variable type suggests different analytical approaches and visualizations.
+
+These fundamentals serve as the foundation for everything else in statistics. The concepts introduced here reappear in [Descriptive Statistics](descriptive-statistics.qmd), where we start computing actual measures, and throughout the other pages in the [statistics recap track](../../tracks/statistics-recap.qmd).
+
+---
+
+# Comments and questions
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

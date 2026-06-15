@@ -24,9 +24,10 @@ content-type: tutorial
 citation:
   type: entry
   container-title: "Methods Hub"
+  title: "Getting Started with R"
   editor:
     - name: "Claudius Gräbner-Radkowitsch"
-  url: https://yourdomain.com/resources/r-programming/getting-started-with-r
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-r
 ---
 
 ## Introduction

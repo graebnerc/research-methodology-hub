@@ -53,7 +53,7 @@ citation:
   container-title: "Methods Hub"
   editor:
     - name: "Claudius Gräbner-Radkowitsch"
-  url: https://yourdomain.com/resources/[category]/[slug]
+  url: https://euf-methodology-hub.netlify.app/resources/[category]/[slug]
 ---
 ```
 

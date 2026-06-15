@@ -1,1 +1,1 @@
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://euf-methodology-hub.netlify.app/sitemap.xml

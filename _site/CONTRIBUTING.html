@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta name="citation_title" content="Methods Hub">
 <meta name="citation_author" content="Claudius Gräbner-Radkowitsch">
-<meta name="citation_fulltext_html_url" content="https://yourdomain.com/CONTRIBUTING.html">
+<meta name="citation_fulltext_html_url" content="https://euf-methodology-hub.netlify.app/CONTRIBUTING.html">
 <meta name="citation_language" content="en">
 </head>
 
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/[your-org]/[your-repo]"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/graebnerc/research-methodology-hub"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -178,21 +178,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributing-to-the-methods-hub" id="toc-contributing-to-the-methods-hub" class="nav-link active" data-scroll-target="#contributing-to-the-methods-hub">Contributing to the Methods Hub</a>
+  <li><a href="#contributing-to-the-methods-hub" id="toc-contributing-to-the-methods-hub" class="nav-link active" data-scroll-target="#contributing-to-the-methods-hub"><span class="header-section-number">1</span> Contributing to the Methods Hub</a>
   <ul class="collapse">
-  <li><a href="#what-the-hub-is-and-isnt" id="toc-what-the-hub-is-and-isnt" class="nav-link" data-scroll-target="#what-the-hub-is-and-isnt">What the hub is and isn’t</a></li>
-  <li><a href="#page-granularity" id="toc-page-granularity" class="nav-link" data-scroll-target="#page-granularity">Page granularity</a></li>
-  <li><a href="#front-matter-schema" id="toc-front-matter-schema" class="nav-link" data-scroll-target="#front-matter-schema">Front matter schema</a></li>
-  <li><a href="#tag-taxonomy" id="toc-tag-taxonomy" class="nav-link" data-scroll-target="#tag-taxonomy">Tag taxonomy</a></li>
-  <li><a href="#level-differentiation" id="toc-level-differentiation" class="nav-link" data-scroll-target="#level-differentiation">Level differentiation</a>
+  <li><a href="#what-the-hub-is-and-isnt" id="toc-what-the-hub-is-and-isnt" class="nav-link" data-scroll-target="#what-the-hub-is-and-isnt"><span class="header-section-number">1.1</span> What the hub is and isn’t</a></li>
+  <li><a href="#page-granularity" id="toc-page-granularity" class="nav-link" data-scroll-target="#page-granularity"><span class="header-section-number">1.2</span> Page granularity</a></li>
+  <li><a href="#front-matter-schema" id="toc-front-matter-schema" class="nav-link" data-scroll-target="#front-matter-schema"><span class="header-section-number">1.3</span> Front matter schema</a></li>
+  <li><a href="#tag-taxonomy" id="toc-tag-taxonomy" class="nav-link" data-scroll-target="#tag-taxonomy"><span class="header-section-number">1.4</span> Tag taxonomy</a></li>
+  <li><a href="#level-differentiation" id="toc-level-differentiation" class="nav-link" data-scroll-target="#level-differentiation"><span class="header-section-number">1.5</span> Level differentiation</a>
   <ul class="collapse">
   <li><a href="#pattern-1-inline-callout-default" id="toc-pattern-1-inline-callout-default" class="nav-link" data-scroll-target="#pattern-1-inline-callout-default">Pattern 1 — inline callout (default)</a></li>
   <li><a href="#pattern-2-separate-pages-per-level" id="toc-pattern-2-separate-pages-per-level" class="nav-link" data-scroll-target="#pattern-2-separate-pages-per-level">Pattern 2 — separate pages per level</a></li>
   </ul></li>
-  <li><a href="#file-and-folder-naming" id="toc-file-and-folder-naming" class="nav-link" data-scroll-target="#file-and-folder-naming">File and folder naming</a></li>
-  <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files">Data files</a></li>
-  <li><a href="#relative-paths" id="toc-relative-paths" class="nav-link" data-scroll-target="#relative-paths">Relative paths</a></li>
-  <li><a href="#build-and-deploy-workflow" id="toc-build-and-deploy-workflow" class="nav-link" data-scroll-target="#build-and-deploy-workflow">Build and deploy workflow</a></li>
+  <li><a href="#file-and-folder-naming" id="toc-file-and-folder-naming" class="nav-link" data-scroll-target="#file-and-folder-naming"><span class="header-section-number">1.6</span> File and folder naming</a></li>
+  <li><a href="#data-files" id="toc-data-files" class="nav-link" data-scroll-target="#data-files"><span class="header-section-number">1.7</span> Data files</a></li>
+  <li><a href="#relative-paths" id="toc-relative-paths" class="nav-link" data-scroll-target="#relative-paths"><span class="header-section-number">1.8</span> Relative paths</a></li>
+  <li><a href="#build-and-deploy-workflow" id="toc-build-and-deploy-workflow" class="nav-link" data-scroll-target="#build-and-deploy-workflow"><span class="header-section-number">1.9</span> Build and deploy workflow</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,18 +224,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="contributing-to-the-methods-hub" class="level1">
-<h1>Contributing to the Methods Hub</h1>
+<section id="contributing-to-the-methods-hub" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Contributing to the Methods Hub</h1>
 <p>This guide is written for future contributors who want to add or update resource pages. Read it alongside <code>CLAUDE.md</code> if you are working with Claude Code; <code>CLAUDE.md</code> contains the same conventions plus instructions specific to AI-assisted editing.</p>
 <hr>
-<section id="what-the-hub-is-and-isnt" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-hub-is-and-isnt">What the hub is and isn’t</h2>
+<section id="what-the-hub-is-and-isnt" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-the-hub-is-and-isnt"><span class="header-section-number">1.1</span> What the hub is and isn’t</h2>
 <p>The hub is a <strong>general-purpose resource library</strong> — not a course companion. Resource pages should be useful to any student encountering the topic, regardless of course context. If you are writing a resource that only makes sense in the context of a specific assignment or syllabus, it does not belong here.</p>
 <p>Course sites link <em>into</em> the hub. The hub does not link <em>into</em> course sites (except from <code>teaching.qmd</code>, which lists courses with external links).</p>
 <hr>
 </section>
-<section id="page-granularity" class="level2">
-<h2 class="anchored" data-anchor-id="page-granularity">Page granularity</h2>
+<section id="page-granularity" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="page-granularity"><span class="header-section-number">1.2</span> Page granularity</h2>
 <p>The default unit is <strong>workflow-level</strong>: one page per meaningful task or concept a student sits down to do or understand (20–40 minutes). Titles are action- or understanding-oriented:</p>
 <ul>
 <li>✓ “Reshaping Data from Wide to Long”</li>
@@ -246,8 +246,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Short concept pages</strong> are allowed where no workflow framing makes sense — e.g., “What is Tidy Data?” or “What is Epistemology?”. Test: <em>can a student finish this page and have accomplished or understood one specific thing?</em></p>
 <hr>
 </section>
-<section id="front-matter-schema" class="level2">
-<h2 class="anchored" data-anchor-id="front-matter-schema">Front matter schema</h2>
+<section id="front-matter-schema" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="front-matter-schema"><span class="header-section-number">1.3</span> Front matter schema</h2>
 <p>Every resource page must include this exact front matter:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">""</span></span>
@@ -274,22 +274,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">container-title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Methods Hub"</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">editor</span><span class="kw">:</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Claudius Gräbner-Radkowitsch"</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://yourdomain.com/resources/[category]/[slug]</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://euf-methodology-hub.netlify.app/resources/[category]/[slug]</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong><code>learning-objectives</code> rules:</strong> - 2–4 objectives; more than 4 signals the page scope is too broad - Each objective is a concrete skill or understanding, not a description of page content - Write from the student’s perspective: “Explain X”, “Apply X to Y”, “Distinguish X from Y” - ✓ “Use <code>pivot_longer()</code> to reshape a wide dataset” - ✗ “This page covers data reshaping in R”</p>
 <p><strong><code>author</code> vs <code>editor</code>:</strong> - If you are a contributor writing a new page, put your name in <code>author</code> - The <code>editor</code> field lives inside the <code>citation:</code> block and is always <code>Claudius Gräbner-Radkowitsch</code> — it reflects editorial responsibility for the hub, not who wrote the page - Do not add a top-level <code>editor:</code> key — Quarto 1.9+ reserves that key for visual editor configuration and will reject a name string</p>
 <hr>
 </section>
-<section id="tag-taxonomy" class="level2">
-<h2 class="anchored" data-anchor-id="tag-taxonomy">Tag taxonomy</h2>
+<section id="tag-taxonomy" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="tag-taxonomy"><span class="header-section-number">1.4</span> Tag taxonomy</h2>
 <p>Use existing tags. Adding a new thematic tag requires also adding it to the taxonomy in <code>CLAUDE.md</code>.</p>
 <p><strong>Thematic:</strong> <code>data-cleaning</code>, <code>R</code>, <code>visualization</code>, <code>experiments</code>, <code>statistics</code>, <code>regression</code>, <code>causal-inference</code>, <code>literature-review</code>, <code>research-design</code>, <code>qualitative-methods</code>, <code>reproducibility</code>, <code>quarto</code>, <code>survey-methods</code>, <code>epistemology</code>, <code>tidyverse</code></p>
 <p><strong>Content type</strong> (pick exactly one): <code>tutorial</code>, <code>video</code>, <code>slides</code>, <code>reading</code>, <code>exercise</code>, <code>concept</code></p>
 <p><strong>Level</strong> (list all that apply): <code>BA</code>, <code>MA</code>, <code>PhD</code></p>
 <hr>
 </section>
-<section id="level-differentiation" class="level2">
-<h2 class="anchored" data-anchor-id="level-differentiation">Level differentiation</h2>
+<section id="level-differentiation" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="level-differentiation"><span class="header-section-number">1.5</span> Level differentiation</h2>
 <p>Pages are written at <strong>BA level by default</strong>. Two patterns are allowed for adding MA/PhD content.</p>
 <section id="pattern-1-inline-callout-default" class="level3">
 <h3 class="anchored" data-anchor-id="pattern-1-inline-callout-default">Pattern 1 — inline callout (default)</h3>
@@ -317,8 +317,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="file-and-folder-naming" class="level2">
-<h2 class="anchored" data-anchor-id="file-and-folder-naming">File and folder naming</h2>
+<section id="file-and-folder-naming" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="file-and-folder-naming"><span class="header-section-number">1.6</span> File and folder naming</h2>
 <ul>
 <li>Resource pages: <code>kebab-case.qmd</code> matching the page title closely</li>
 <li>Category folders: <code>kebab-case/</code> (e.g., <code>r-programming/</code>, <code>literature-review/</code>)</li>
@@ -328,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-<section id="data-files" class="level2">
-<h2 class="anchored" data-anchor-id="data-files">Data files</h2>
+<section id="data-files" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="data-files"><span class="header-section-number">1.7</span> Data files</h2>
 <ul>
 <li><strong>In the repo:</strong> synthetic/self-generated data, small modified external datasets, small freely redistributable datasets</li>
 <li><strong>On OSF (linked, not hosted):</strong> large datasets, verbatim third-party data, datasets where acquisition is part of the learning</li>
@@ -344,13 +344,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       survey-responses.csv</code></pre>
 <hr>
 </section>
-<section id="relative-paths" class="level2">
-<h2 class="anchored" data-anchor-id="relative-paths">Relative paths</h2>
+<section id="relative-paths" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="relative-paths"><span class="header-section-number">1.8</span> Relative paths</h2>
 <p>Never hardcode the domain URL in <code>.qmd</code> files. Use relative paths for all internal links. This keeps the site portable when the domain changes.</p>
 <hr>
 </section>
-<section id="build-and-deploy-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="build-and-deploy-workflow">Build and deploy workflow</h2>
+<section id="build-and-deploy-workflow" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="build-and-deploy-workflow"><span class="header-section-number">1.9</span> Build and deploy workflow</h2>
 <p><strong>While writing a single page:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview resources/<span class="pp">[</span><span class="ss">category</span><span class="pp">]</span>/<span class="pp">[</span><span class="ss">page</span><span class="pp">]</span>.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>After finishing a page:</strong></p>
@@ -371,11 +371,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gräbner-radkowitsch,
   author = {Gräbner-Radkowitsch, Claudius},
   title = {Methods {Hub}},
-  url = {https://yourdomain.com/CONTRIBUTING.html},
+  url = {https://euf-methodology-hub.netlify.app/CONTRIBUTING.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gräbner-radkowitsch" class="csl-entry quarto-appendix-citeas" role="listitem">
-Gräbner-Radkowitsch, Claudius. n.d. <span>“Methods Hub.”</span> <a href="https://yourdomain.com/CONTRIBUTING.html">https://yourdomain.com/CONTRIBUTING.html</a>.
+Gräbner-Radkowitsch, Claudius. n.d. <span>“Methods Hub.”</span> <a href="https://euf-methodology-hub.netlify.app/CONTRIBUTING.html">https://euf-methodology-hub.netlify.app/CONTRIBUTING.html</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -501,7 +501,7 @@ Gräbner-Radkowitsch, Claudius. n.d. <span>“Methods Hub.”</span> <a href="ht
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/yourdomain\.com");
+        var filterRegex = new RegExp("https:\/\/euf-methodology-hub\.netlify\.app");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -885,7 +885,7 @@ Gräbner-Radkowitsch, Claudius. n.d. <span>“Methods Hub.”</span> <a href="ht
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">container-title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Methods Hub"</span></span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">editor</span><span class="kw">:</span></span>
 <span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Claudius Gräbner-Radkowitsch"</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://yourdomain.com/resources/[category]/[slug]</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://euf-methodology-hub.netlify.app/resources/[category]/[slug]</span></span>
 <span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>

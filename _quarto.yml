@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "index.qmd"
+    - "about.qmd"
+    - "teaching.qmd"
+    - "CONTRIBUTING.md"
+    - "resources/**/*.qmd"
+    - "tracks/**/*.qmd"
+    - "blog/**/*.qmd"
 
 citation:
   title: "Methods Hub"
@@ -8,10 +16,12 @@ citation:
 
 execute:
   freeze: auto
+  warning: false
+  message: false
 
 website:
   title: "Methods Hub"
-  site-url: https://yourdomain.com
+  site-url: https://euf-methodology-hub.netlify.app
 
   navbar:
     left:
@@ -29,7 +39,7 @@ website:
         text: About
     right:
       - icon: github
-        href: https://github.com/[your-org]/[your-repo]
+        href: https://github.com/graebnerc/research-methodology-hub
         aria-label: GitHub
 
   sidebar:
@@ -49,6 +59,9 @@ website:
         - section: "Epistemology"
           contents:
             - auto: resources/epistemology/
+        - section: "Statistics"
+          contents:
+            - auto: resources/statistics/
 
   page-footer:
     left: "© 2026 Claudius Gräbner-Radkowitsch"
@@ -79,3 +92,5 @@ format:
     code-tools: true
     code-copy: true
     highlight-style: github
+    number-sections: true
+    number-depth: 2

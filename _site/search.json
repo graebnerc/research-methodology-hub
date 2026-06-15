@@ -1,80 +1,10 @@
 [
   {
-    "objectID": "CONTRIBUTING.html",
-    "href": "CONTRIBUTING.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
-    "href": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
-    "title": "",
-    "section": "What the hub is and isn’t",
-    "text": "What the hub is and isn’t\nThe hub is a general-purpose resource library — not a course companion. Resource pages should be useful to any student encountering the topic, regardless of course context. If you are writing a resource that only makes sense in the context of a specific assignment or syllabus, it does not belong here.\nCourse sites link into the hub. The hub does not link into course sites (except from teaching.qmd, which lists courses with external links)."
-  },
-  {
-    "objectID": "CONTRIBUTING.html#page-granularity",
-    "href": "CONTRIBUTING.html#page-granularity",
-    "title": "",
-    "section": "Page granularity",
-    "text": "Page granularity\nThe default unit is workflow-level: one page per meaningful task or concept a student sits down to do or understand (20–40 minutes). Titles are action- or understanding-oriented:\n\n✓ “Reshaping Data from Wide to Long”\n✓ “Understanding Statistical Power”\n✗ “Data” (too broad)\n✗ “Introduction to R, Chapter 3” (course-specific framing)\n\nShort concept pages are allowed where no workflow framing makes sense — e.g., “What is Tidy Data?” or “What is Epistemology?”. Test: can a student finish this page and have accomplished or understood one specific thing?"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#front-matter-schema",
-    "href": "CONTRIBUTING.html#front-matter-schema",
-    "title": "",
-    "section": "Front matter schema",
-    "text": "Front matter schema\nEvery resource page must include this exact front matter:\n---\ntitle: \"\"\ndescription: \"\"\nauthor: \"Claudius Gräbner-Radkowitsch\"\ndate: YYYY-MM-DD\ndate-modified: YYYY-MM-DD\nimage: ../../assets/images/placeholder.png\n\nlearning-objectives:\n  - \"Understand what tidy data is and why it matters\"\n  - \"Use pivot_longer() to reshape a wide dataset\"\n\ncategories:\n  - [at least one thematic tag]\n\nlevel:\n  - BA          # BA | MA | PhD — list all that apply\n\ncontent-type:   # exactly one of: tutorial | video | slides | reading | exercise | concept\n\ncitation:\n  type: entry\n  container-title: \"Methods Hub\"\n  editor:\n    - name: \"Claudius Gräbner-Radkowitsch\"\n  url: https://yourdomain.com/resources/[category]/[slug]\n---\nlearning-objectives rules: - 2–4 objectives; more than 4 signals the page scope is too broad - Each objective is a concrete skill or understanding, not a description of page content - Write from the student’s perspective: “Explain X”, “Apply X to Y”, “Distinguish X from Y” - ✓ “Use pivot_longer() to reshape a wide dataset” - ✗ “This page covers data reshaping in R”\nauthor vs editor: - If you are a contributor writing a new page, put your name in author - The editor field lives inside the citation: block and is always Claudius Gräbner-Radkowitsch — it reflects editorial responsibility for the hub, not who wrote the page - Do not add a top-level editor: key — Quarto 1.9+ reserves that key for visual editor configuration and will reject a name string"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#tag-taxonomy",
-    "href": "CONTRIBUTING.html#tag-taxonomy",
-    "title": "",
-    "section": "Tag taxonomy",
-    "text": "Tag taxonomy\nUse existing tags. Adding a new thematic tag requires also adding it to the taxonomy in CLAUDE.md.\nThematic: data-cleaning, R, visualization, experiments, statistics, regression, causal-inference, literature-review, research-design, qualitative-methods, reproducibility, quarto, survey-methods, epistemology, tidyverse\nContent type (pick exactly one): tutorial, video, slides, reading, exercise, concept\nLevel (list all that apply): BA, MA, PhD"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#level-differentiation",
-    "href": "CONTRIBUTING.html#level-differentiation",
-    "title": "",
-    "section": "Level differentiation",
-    "text": "Level differentiation\nPages are written at BA level by default. Two patterns are allowed for adding MA/PhD content.\n\nPattern 1 — inline callout (default)\nUse when the page is fundamentally the same workflow for all levels, with added depth for MA/PhD. Wrap MA/PhD-specific content in:\n::: {.callout-note .level-advanced}\n## 🎓 MA / PhD\nContent here.\n:::\nThis renders with a muted teal left border and lighter background, visually distinct from a standard note.\n\n\nPattern 2 — separate pages per level\nUse when the conceptual treatment genuinely differs across levels — not just in depth but in framing, assumed knowledge, or purpose. Examples: - An epistemology page introducing the concept from scratch (BA) vs. engaging with the literature (PhD) - A statistics page using intuition and visuals (BA) vs. formal notation (PhD)\nWhen using Pattern 2: - Each page is a standalone .qmd with its own front matter - The level field contains only the single applicable level - Add a sibling-link callout at the top of each page:\n::: {.callout-tip}\n## 📖 Level: BA\nThis page is written for BA students. There is also a version for\n[MA/PhD students](../epistemology-phd.qmd).\n:::\n\nFile naming: [topic]-ba.qmd, [topic]-ma.qmd, [topic]-phd.qmd\nAll sibling pages share the same thematic tags so they appear together in the listing\n\nDeciding: Default to Pattern 1. Switch to Pattern 2 only when the callout block would be so large and structurally different that it dominates the page."
-  },
-  {
-    "objectID": "CONTRIBUTING.html#file-and-folder-naming",
-    "href": "CONTRIBUTING.html#file-and-folder-naming",
-    "title": "",
-    "section": "File and folder naming",
-    "text": "File and folder naming\n\nResource pages: kebab-case.qmd matching the page title closely\nCategory folders: kebab-case/ (e.g., r-programming/, literature-review/)\nTrack pages: kebab-case.qmd in tracks/\nData files: kebab-case.csv / .rds etc.\nImages: kebab-case.png in assets/images/"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#data-files",
-    "href": "CONTRIBUTING.html#data-files",
-    "title": "",
-    "section": "Data files",
-    "text": "Data files\n\nIn the repo: synthetic/self-generated data, small modified external datasets, small freely redistributable datasets\nOn OSF (linked, not hosted): large datasets, verbatim third-party data, datasets where acquisition is part of the learning\nData files live co-located with the resource page in a data/ subfolder within the category folder — never in a global /data folder\nR scripts go in .qmd code blocks by default; standalone .R files only when genuinely needed\n\nExample structure:\nresources/\n  data-cleaning/\n    reshaping-data-wide-to-long.qmd\n    data/\n      survey-responses.csv"
-  },
-  {
-    "objectID": "CONTRIBUTING.html#relative-paths",
-    "href": "CONTRIBUTING.html#relative-paths",
-    "title": "",
-    "section": "Relative paths",
-    "text": "Relative paths\nNever hardcode the domain URL in .qmd files. Use relative paths for all internal links. This keeps the site portable when the domain changes."
-  },
-  {
-    "objectID": "CONTRIBUTING.html#build-and-deploy-workflow",
-    "href": "CONTRIBUTING.html#build-and-deploy-workflow",
-    "title": "",
-    "section": "Build and deploy workflow",
-    "text": "Build and deploy workflow\nWhile writing a single page:\nquarto preview resources/[category]/[page].qmd\nAfter finishing a page:\nquarto render resources/[category]/[page].qmd\nquarto render resources/index.qmd\nCommit and push — always include _site/ and _freeze/:\ngit add .\ngit commit -m \"add: [short description]\"\ngit push\nNetlify serves _site/ directly and runs no build. Never configure Netlify to run quarto render."
-  },
-  {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "No matching items\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://yourdomain.com/blog/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://yourdomain.com/blog/."
+    "text": "No matching items\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://euf-methodology-hub.netlify.app/blog/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://euf-methodology-hub.netlify.app/blog/."
   },
   {
     "objectID": "tracks/index.html",
@@ -87,175 +17,488 @@
     "objectID": "tracks/index.html#available-tracks",
     "href": "tracks/index.html#available-tracks",
     "title": "Learning Tracks",
-    "section": "Available tracks",
-    "text": "Available tracks\nTracks will appear here as they are added. Check back soon.\n\nGetting Started with R (skeleton — in progress)"
+    "section": "1 Available tracks",
+    "text": "1 Available tracks\nTracks will appear here as they are added. Check back soon.\n\nA Recap of Undergraduate Statistics — conceptual foundations, data types, descriptive statistics, and probability theory\nGetting Started with R (skeleton — in progress)"
   },
   {
-    "objectID": "resources/epistemology/epistemology-ba.html",
-    "href": "resources/epistemology/epistemology-ba.html",
-    "title": "What is Epistemology? (BA)",
+    "objectID": "resources/statistics/sampling-and-inference.html",
+    "href": "resources/statistics/sampling-and-inference.html",
+    "title": "Sampling and Statistical Inference",
     "section": "",
-    "text": "TipLevel: BA\n\n\n\nThis page is written for BA students encountering epistemology for the first time. There is also a version for MA/PhD students that engages more directly with the philosophical literature.",
+    "text": "Packages used for R examples\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(ggpubr)",
     "crumbs": [
       "Resources",
-      "Epistemology",
-      "Epistemology",
-      "What is Epistemology? (BA)"
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
     ]
   },
   {
-    "objectID": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
-    "href": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
-    "title": "What is Epistemology? (BA)",
-    "section": "What is Epistemology?",
-    "text": "What is Epistemology?\nPlaceholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nEpistemology is the branch of philosophy concerned with the nature, sources, and limits of knowledge. In everyday terms: how do we know what we know, and how confident should we be in that knowledge?\nFor social scientists, epistemological questions are not merely abstract. The assumptions you make about what counts as valid knowledge directly shape the research designs you consider appropriate, the methods you use, and how you interpret your findings.",
+    "objectID": "resources/statistics/sampling-and-inference.html#essential-terminology",
+    "href": "resources/statistics/sampling-and-inference.html#essential-terminology",
+    "title": "Sampling and Statistical Inference",
+    "section": "1.1 Essential Terminology",
+    "text": "1.1 Essential Terminology\nA population is the complete collection of all individuals, objects, or measurements that are of interest to us in a particular study. The population size is denoted by \\(N\\). A population parameter is any statistical property of the population we want to know — the true mean, proportion, or standard deviation.\nA census is the process of collecting data from every single member of the population to determine the population parameter exactly. In practice, a census is usually impossible.\nA sample is a subset of the population that we actually study. When elements of the sample are selected randomly, we call it a random sample. The sample size is denoted by \\(n &lt; N\\).\nA point estimate or sample statistic is a value computed from our sample that we use to estimate the corresponding population parameter. We write it with a hat: \\(\\hat{p}\\) for an estimated proportion, \\(\\hat{\\mu}\\) for an estimated mean.\nA sampling distribution is the distribution of a point estimate across many repeated samples. It formalises the effect of sample variation — the fact that different samples give different estimates.\nA standard error is the standard deviation of a sampling distribution. It measures how precise our estimator is.\nThe act of using sample statistics to draw conclusions about population parameters is called statistical inference.",
     "crumbs": [
       "Resources",
-      "Epistemology",
-      "Epistemology",
-      "What is Epistemology? (BA)"
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
     ]
   },
   {
-    "objectID": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
-    "href": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
-    "title": "What is Epistemology? (BA)",
-    "section": "Two Foundational Positions",
-    "text": "Two Foundational Positions\nContent to be added — will cover positivism and interpretivism as accessible entry points.",
+    "objectID": "resources/statistics/sampling-and-inference.html#setting-up-the-problem",
+    "href": "resources/statistics/sampling-and-inference.html#setting-up-the-problem",
+    "title": "Sampling and Statistical Inference",
+    "section": "2.1 Setting Up the Problem",
+    "text": "2.1 Setting Up the Problem\nImagine you have bought a ball pit for a children’s party. The seller tells you it contains 5,000 balls — a mix of grey and white. You want to know: what proportion of the balls are white?\nIn principle, you could count every ball — but with 5,000 balls, that is tedious and time-consuming. A much better strategy: take a sample of 50 balls, count the white ones, and use this as an estimate.\nHere are the most important terms we will use in the upcoming discussion:\n\nPopulation: all 5,000 balls in the ball pit (\\(N = 5000\\))\nPopulation parameter: the true proportion of white balls \\(p\\) (unknown)\nSample: 50 balls drawn at random (\\(n = 50\\))\nPoint estimate: the proportion of white balls in our sample \\(\\hat{p}\\)",
     "crumbs": [
       "Resources",
-      "Epistemology",
-      "Epistemology",
-      "What is Epistemology? (BA)"
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
     ]
   },
   {
-    "objectID": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
-    "href": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
-    "title": "What is Epistemology? (BA)",
-    "section": "Why Does This Matter for Research Design?",
-    "text": "Why Does This Matter for Research Design?\nContent to be added — connecting epistemological positions to method choice.",
+    "objectID": "resources/statistics/sampling-and-inference.html#many-samples-many-estimates",
+    "href": "resources/statistics/sampling-and-inference.html#many-samples-many-estimates",
+    "title": "Sampling and Statistical Inference",
+    "section": "2.2 Many Samples — Many Estimates",
+    "text": "2.2 Many Samples — Many Estimates\nNow suppose we draw 50 balls and find that 32 are white. Our estimate is \\(\\hat{p} = 32/50 = 0.64\\), or 64%. Does this mean exactly 64% of all 5,000 balls are white? Almost certainly not. This is a useful guess, but it is subject to sampling variation — if we put the balls back and drew another 50, we would almost certainly get a different number.\nFigure 1 shows draws of three independent samples of 50 balls from the same ball pit and records the proportion of white balls in each.\n\n\nSetting up the ball pit population and drawing three samples\nset.seed(42)\nN &lt;- 5000\ntrue_p  &lt;- 0.65\nbiased_p &lt;- 0.80   # proportion in the convenience-sampled corner of the pit\n\npopulation &lt;- sample(\n  c(\"White\", \"Grey\"), N, replace = TRUE,\n  prob = c(true_p, 1 - true_p)\n)\n\ndraw_sample &lt;- function(pop, n, id) {\n  s &lt;- sample(pop, n, replace = FALSE)\n  tibble(\n    sample_id = paste0(\"Sample \", id, \"\\n(p̂ = \", round(mean(s == \"White\"), 2), \")\"),\n    color = c(\"White\", \"Grey\"),\n    proportion = c(mean(s == \"White\"), mean(s == \"Grey\"))\n  )\n}\n\nthree_samples &lt;- bind_rows(\n  draw_sample(population, 50, 1),\n  draw_sample(population, 50, 2),\n  draw_sample(population, 50, 3)\n)\n\nggplot(three_samples, aes(x = color, y = proportion, fill = color)) +\n  geom_col(width = 0.6, alpha = 0.85) +\n  geom_hline(\n    data = filter(three_samples, color == \"White\"),\n    aes(yintercept = true_p),\n    linetype = \"dashed\", color = \"black\", linewidth = 0.8\n  ) +\n  facet_wrap(~sample_id, ncol = 3) +\n  scale_fill_manual(values = c(\"White\" = \"#f0f0f0\", \"Grey\" = \"#888888\"),\n    guide = \"none\") +\n  scale_y_continuous(labels = scales::percent_format(), limits = c(0, 1)) +\n  labs(\n    title = \"Three Samples from the Same Ball Pit\",\n    subtitle = \"Dashed line = true proportion of white balls (65%)\",\n    x = NULL, y = \"Proportion\"\n  ) +\n  theme_minimal() +\n  theme(strip.text = element_text(face = \"bold\"),\n    panel.grid.major.x = element_blank())\n\n\n\n\n\n\n\n\nFigure 1: Three independent samples of 50 balls from the same population — each gives a different estimate of the proportion of white balls. The true proportion is shown as a dashed line.\n\n\n\n\n\nEach sample gives a different estimate. This is not a problem with our sampling — it is an inevitable consequence of random sampling. It is called sample variation, and the central goal of inferential statistics is to quantify and account for it.",
     "crumbs": [
       "Resources",
-      "Epistemology",
-      "Epistemology",
-      "What is Epistemology? (BA)"
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
     ]
   },
   {
-    "objectID": "resources/epistemology/epistemology-ba.html#what-to-read-next",
-    "href": "resources/epistemology/epistemology-ba.html#what-to-read-next",
-    "title": "What is Epistemology? (BA)",
-    "section": "What to Read Next",
-    "text": "What to Read Next\nContent to be added — suggestions for moving from this concept page to more applied research design resources.",
+    "objectID": "resources/statistics/sampling-and-inference.html#why-sampling",
+    "href": "resources/statistics/sampling-and-inference.html#why-sampling",
+    "title": "Sampling and Statistical Inference",
+    "section": "2.3 Why Sampling?",
+    "text": "2.3 Why Sampling?\nIn our ball pit example, random sampling was a convenient option. In reality, there is often no other option to study certain phenomena differently. Among the many reasons for this, the following stand out:\n\nTime and cost: studying entire populations often requires prohibitive resources. Surveying every customer of a multinational company would take years and cost millions.\nAccessibility: many populations are impossible to reach completely. You cannot survey every person who might potentially buy your product in the future.\nDestructive testing: measuring some properties destroys the object being measured (battery life, material strength, food quality). A census would leave nothing to sell.\nDynamic populations: most populations change constantly. By the time you finish studying everyone, the composition may have shifted.",
     "crumbs": [
       "Resources",
-      "Epistemology",
-      "Epistemology",
-      "What is Epistemology? (BA)"
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
     ]
   },
   {
-    "objectID": "resources/index.html",
-    "href": "resources/index.html",
-    "title": "Resource Library",
+    "objectID": "resources/statistics/sampling-and-inference.html#sampling-methods",
+    "href": "resources/statistics/sampling-and-inference.html#sampling-methods",
+    "title": "Sampling and Statistical Inference",
+    "section": "2.4 Sampling Methods",
+    "text": "2.4 Sampling Methods\nThe way we select our sample affects how well we can generalize to the population. The most important distinction is between methods that are random and those that are not.\n\nSimple random sampling gives every member of the population an equal chance of being selected. This minimizes bias and is the gold standard for producing generalizable results. In the ball pit setting: draw balls blindly one by one.\nStratified sampling divides the population into meaningful groups (strata) and samples randomly from each. Useful when you want to ensure subgroups are represented — for example, sampling balls from different regions of the pit if balls tend to cluster by color.\nSystematic sampling selects every \\(k\\)-th item from a list. Efficient in practice but can introduce bias if the list has a hidden periodic pattern.\nConvenience sampling selects whoever is easy to reach. Common in practice but often introduces severe bias. A famous cautionary example: the 1936 Literary Digest poll predicted Alf Landon would defeat Franklin Roosevelt based on responses from telephone directories and car registrations — systematically missing poorer voters who couldn’t afford phones or cars.\n\nIn many cases, random sampling is the best option. But there are also argument for stratified or systematic sampling in some well defined context. But no matter what: these alternatives must be very well justified, because there is an important key principle to be kept in mind: no statistical technique can fully correct for a biased sampling method. The foundation of good inference is a representative sample.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/sampling-and-inference.html#footnotes",
+    "href": "resources/statistics/sampling-and-inference.html#footnotes",
+    "title": "Sampling and Statistical Inference",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWell, this is not fully correct. There are tools such as re-sampling that are useful in this context, but they go beyond the scope of this tutorial.↩︎\nNote that in reality, we draw only one sample. We never directly observe the sampling distribution. Its properties are theoretical — but the CLT (below) tells us what it looks like.↩︎",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Sampling and Statistical Inference"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+    "title": "Hypothesis Testing and Confidence Intervals",
     "section": "",
-    "text": "The Methods Hub resource library is a searchable collection of individual pages covering research methods in the social sciences. Each page addresses one task or concept — working through a page takes roughly 20–40 minutes. Resources are written at BA level by default, with MA/PhD extensions where relevant.\nUse the filters below to browse by topic, level, or content type.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nWhat is Epistemology? (BA)\n\n\n\nepistemology\n\nBA\n\nconcept\n\n\n\nA first introduction to epistemology — the branch of philosophy concerned with how we know what we know — and why it matters for social science research.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Systematic Literature Reviews\n\n\n\nliterature-review\n\nBA\n\nMA\n\nreading\n\n\n\nAn overview of what a systematic literature review is, how it differs from a narrative review, and how to plan and execute one.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\n\nR\n\nBA\n\ntutorial\n\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://yourdomain.com/resources/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://yourdomain.com/resources/.",
+    "text": "Packages used for R examples\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(ggpubr)",
     "crumbs": [
       "Resources",
-      "Resource Library"
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
     ]
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-logic",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-logic",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "2.1 The Logic",
+    "text": "2.1 The Logic\nHypothesis testing is a formal procedure for deciding whether observed data are consistent with a specific claim about the population.\nIn this context, the claim we want to evaluate is called the null hypothesis \\(H_0\\). It often states “nothing interesting is happening” or asserts a specific value for the population parameter. The alternative hypothesis \\(H_1\\) states what we would conclude if the null was wrong.\nThe key question is: if \\(H_0\\) were true, how likely would we be to observe a result at least as extreme as what we actually observed?. This probability is the p-value. A small p-value means our observed data would be very unusual under \\(H_0\\) — which we can take as evidence against \\(H_0\\). If, on the other hand, we have a high p-value that means that the data we observe was very likely when the \\(H_0\\) would be true - so it is treated as evidence against rejecting \\(H_0\\).",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#a-worked-example-customer-satisfaction",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#a-worked-example-customer-satisfaction",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "2.2 A Worked Example: Customer Satisfaction",
+    "text": "2.2 A Worked Example: Customer Satisfaction\nA company claims its product achieves an average customer satisfaction of 8.0 out of 10. To test whether this claim is plausible, you survey 100 randomly selected customers and find:\n\nSample mean satisfaction: \\(\\bar{x} = 7.5\\)\nSample standard deviation: \\(s = 1.2\\)\n\nShould you treat this result as evidence for or against the company’s claim?\nStep 1: State the hypotheses.\nIn a first step we need to state our hypotheses explicitly. Often this naturally follows from our research question. In the present case, \\(H_0\\) corresponds to the claim of the company:\n\\[H_0: \\mu = 8.0 \\quad \\text{(company's claim)}\\] The alternative would be that the claim of the company was wrong:\n\\[H_1: \\mu \\neq 8.0 \\quad \\text{(two-sided: could be higher or lower)}\\]\nHere we speak of a two-sided alternative as the claim could be wrong in two ways: the true satisfaction could be smaller or larger. You do not need to formulate your hypothesis using equalities only. You could, for instance, also check \\(H_0: \\mu &gt; 8.0\\). Then \\(H_1\\) would naturally follow as \\(H_1: \\mu \\leq 8.0\\).\nStep 2: Compute the standard error and test statistic.\nBy the CLT, the sample mean \\(\\bar{x}\\) follows a normal distribution centred at the true \\(\\mu\\) with standard error \\(SE = s/\\sqrt{n}\\):\n\\[SE = \\frac{1.2}{\\sqrt{100}} = 0.12\\]\nThe test statistic measures how many standard errors our observed mean is from the null hypothesis value:\n\\[t = \\frac{\\bar{x} - \\mu_0}{SE} = \\frac{7.5 - 8.0}{0.12} = \\frac{-0.5}{0.12} \\approx -4.17\\]\nStep 3: Compute the p-value.\nThe p-value is the probability of observing a test statistic at least as extreme as \\(-4.17\\) (in either direction) if \\(H_0\\) was true.\n\n\nManual hypothesis test and R’s t.test()\n# Sample data (summarised)\nn      &lt;- 100\nx_bar  &lt;- 7.5\ns      &lt;- 1.2\nmu_0   &lt;- 8.0\n\n# Standard error and test statistic\nse     &lt;- s / sqrt(n)\nt_stat &lt;- (x_bar - mu_0) / se\n\n# p-value (two-tailed, using t-distribution with df = n - 1)\np_val  &lt;- 2 * pt(abs(t_stat), df = n - 1, lower.tail = FALSE)\n\ncat(\"Test statistic t =\", round(t_stat, 3), \"\\n\")\n\n\nTest statistic t = -4.167 \n\n\nManual hypothesis test and R’s t.test()\ncat(\"p-value =\", round(p_val, 6), \"\\n\")\n\n\np-value = 6.6e-05 \n\n\nManual hypothesis test and R’s t.test()\n# R's built-in t.test() gives the same result\n# (requires the raw data; here we use a simulation to illustrate)\nset.seed(42)\nscores &lt;- rnorm(n, mean = x_bar, sd = s)   # simulated sample matching our summary stats\nt_test &lt;- t.test(scores, mu = mu_0, alternative = \"two.sided\")\nt_test\n\n\n\n    One Sample t-test\n\ndata:  scores\nt = -3.689, df = 99, p-value = 0.0003681\nalternative hypothesis: true mean is not equal to 8\n95 percent confidence interval:\n 7.291064 7.786971\nsample estimates:\nmean of x \n 7.539018 \n\n\nThis p-value is tiny: it says that if \\(H_0\\) was true, the probability to get the sample we got is essentially zero per cent. Since we got this sample, this is considered strong evidence against \\(H_0\\) and, therefore, the company’s claim. For a visualization of this test see Figure 1.\n\n\nVisualizing the hypothesis test\nx_range &lt;- seq(7.2, 8.8, length.out = 500)\ndf_curve &lt;- tibble(x = x_range, y = dnorm(x_range, mean = mu_0, sd = se))\n\ncrit_val &lt;- qnorm(0.025, mean = mu_0, sd = se)  # lower critical value\n\nggplot(df_curve, aes(x = x, y = y)) +\n  geom_line(linewidth = 1.2, color = \"#3498db\") +\n  geom_area(data = filter(df_curve, x &lt;= mu_0 - abs(x_bar - mu_0)),\n    fill = \"#e74c3c\", alpha = 0.4) +\n  geom_area(data = filter(df_curve, x &gt;= mu_0 + abs(x_bar - mu_0)),\n    fill = \"#e74c3c\", alpha = 0.4) +\n  geom_vline(xintercept = mu_0, linetype = \"dashed\", color = \"gray50\") +\n  geom_vline(xintercept = x_bar, linetype = \"solid\", color = \"#e74c3c\", linewidth = 1.2) +\n  annotate(\"text\", x = mu_0 + 0.02, y = max(df_curve$y) * 0.95,\n    label = paste0(\"H₀: μ = \", mu_0), hjust = 0, color = \"gray40\", size = 3.5) +\n  annotate(\"text\", x = x_bar - 0.02, y = max(df_curve$y) * 0.5,\n    label = paste0(\"Observed\\nx̄ = \", x_bar), hjust = 1, color = \"#e74c3c\", size = 3.5) +\n  annotate(\"text\", x = 7.35, y = max(df_curve$y) * 0.15,\n    label = paste0(\"p-value ≈ \", round(p_val, 5)), color = \"#e74c3c\", size = 3.5) +\n  labs(\n    title = \"Hypothesis Test: Is Average Satisfaction 8.0?\",\n    subtitle = \"Sampling distribution of x̄ under H₀: μ = 8.0 | Red line = observed x̄ = 7.5\",\n    x = \"Sample Mean\", y = \"Probability Density\"\n  ) +\n  theme_minimal() +\n  theme(panel.grid.minor = element_blank())\n\n\n\n\n\n\n\n\nFigure 1: The hypothesis test. The normal curve shows the sampling distribution of the sample mean if the null hypothesis were true (μ₀ = 8.0). Our observed mean of 7.5 falls 4.17 standard errors from the null — in the extreme left tail. The red shaded areas show the p-value: the probability of observing a result this extreme or more extreme under H₀.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-decision-rule",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-decision-rule",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "2.3 The Decision Rule",
+    "text": "2.3 The Decision Rule\nBefore seeing the data, researchers choose a significance level \\(\\alpha\\) — typically 0.05 — as the threshold for rejecting \\(H_0\\). If \\(p\\text{-value} \\leq \\alpha\\), we reject \\(H_0\\). If \\(p\\text{-value} &gt; \\alpha\\), we fail to reject \\(H_0\\) (we do not “accept” it — absence of evidence is not evidence of absence).\nThis decision rule leads to two types of errors:\n\n\n\n\n\n\n\n\n\n\\(H_0\\) is actually true\n\\(H_0\\) is actually false\n\n\n\n\nWe reject \\(H_0\\)\nType I error (false positive, rate = \\(\\alpha\\))\nCorrect\n\n\nWe fail to reject \\(H_0\\)\nCorrect\nType II error (false negative)\n\n\n\nBy setting \\(\\alpha = 0.05\\), we accept a 5% probability of incorrectly rejecting a true null hypothesis. Note that this value is a convention. There is no mathematical law that prescribes it and you could, in principle, also choose different values for \\(\\alpha\\). Just keep in mind the associated trade-off between power and the Type I error rate.\nThe power of a test is the probability of correctly rejecting a false null hypothesis — detecting a real effect when it actually exists. It equals \\(1 - P(\\text{Type II error}) = 1 - \\beta\\). When we lower \\(\\alpha\\) (say, from 0.05 to 0.01) to reduce the risk of a false positive, the critical threshold shifts, making it harder to reject \\(H_0\\) even when \\(H_1\\) is true — and power falls. Conversely, raising \\(\\alpha\\) increases power but at the cost of more false positives. The only way to reduce both error types simultaneously is to increase the sample size, which narrows the sampling distributions of both \\(H_0\\) and \\(H_1\\).\nFigure 2 illustrates this trade-off for the customer satisfaction example, assuming a realistic alternative of \\(\\mu_1 = 7.8\\) (a real but modest shortfall from the claimed 8.0). Table 1 shows the corresponding numbers for three choices of \\(\\alpha\\).\n\n\nPower vs. Type I error trade-off\nmu_0  &lt;- 8.0\nmu_1  &lt;- 7.8   # assumed true alternative\nse_ht &lt;- 0.12  # SE from the example (s=1.2, n=100)\n\nalpha_show &lt;- 0.05\ncv &lt;- qnorm(alpha_show, mean = mu_0, sd = se_ht)  # one-sided lower critical value\n\nx_seq  &lt;- seq(7.3, 8.6, length.out = 600)\ndf_two &lt;- tibble(\n  x  = x_seq,\n  h0 = dnorm(x_seq, mu_0, se_ht),\n  h1 = dnorm(x_seq, mu_1, se_ht)\n)\n\nggplot(df_two, aes(x = x)) +\n  # α region: left tail of H₀ past CV\n  geom_area(data = filter(df_two, x &lt;= cv),\n    aes(y = h0), fill = \"#e74c3c\", alpha = 0.4) +\n  # β region: right tail of H₁ past CV (missed detections)\n  geom_area(data = filter(df_two, x &gt;= cv),\n    aes(y = h1), fill = \"#e67e22\", alpha = 0.4) +\n  # Power region: left tail of H₁ below CV\n  geom_area(data = filter(df_two, x &lt;= cv),\n    aes(y = h1), fill = \"#27ae60\", alpha = 0.4) +\n  # Distribution curves\n  geom_line(aes(y = h0, color = \"H₀: μ = 8.0\"), linewidth = 1.2) +\n  geom_line(aes(y = h1, color = \"H₁: μ = 7.8\"), linewidth = 1.2) +\n  # Critical value\n  geom_vline(xintercept = cv, linetype = \"dashed\", linewidth = 1, color = \"black\") +\n  # Labels\n  annotate(\"text\", x = cv - 0.06, y = 1.0,\n    label = paste0(\"CV = \", round(cv, 3), \"\\n(α = \", alpha_show, \")\"),\n    hjust = 1, size = 3.2, color = \"black\") +\n  annotate(\"text\", x = 7.55, y = 0.5,\n    label = paste0(\"α = \", alpha_show, \"\\n(Type I error)\"),\n    hjust = 0.5, size = 3, color = \"#e74c3c\", fontface = \"bold\") +\n  annotate(\"text\", x = 8.25, y = 0.5,\n    label = paste0(\"β ≈ \", round(1 - pnorm(cv, mu_1, se_ht), 2), \"\\n(Type II error)\"),\n    hjust = 0.5, size = 3, color = \"#e67e22\", fontface = \"bold\") +\n  annotate(\"text\", x = 7.67, y = 2.2,\n    label = paste0(\"Power ≈ \", round(pnorm(cv, mu_1, se_ht), 2)),\n    hjust = 0.5, size = 3, color = \"#27ae60\", fontface = \"bold\") +\n  scale_color_manual(\n    values = c(\"H₀: μ = 8.0\" = \"#3498db\", \"H₁: μ = 7.8\" = \"#27ae60\"),\n    name = NULL) +\n  labs(\n    title = \"Power vs. Type I Error: The Fundamental Trade-off\",\n    subtitle = paste0(\"One-sided test | SE = \", se_ht,\n      \" | True alternative μ₁ = \", mu_1),\n    x = \"Sample Mean\", y = \"Probability Density\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\", panel.grid.minor = element_blank())\n\n\n\n\n\n\n\n\nFigure 2: The power–α trade-off. The blue curve is the sampling distribution of x̄ under H₀ (μ = 8.0); the green curve shows the distribution under a plausible true alternative (μ₁ = 7.8). The dashed vertical line is the critical value for α = 0.05. The red area is α (rejecting a true H₀); the orange area is β (failing to reject when H₁ is true); the green area is power (correctly rejecting H₀). Moving the critical value left reduces α but shrinks the green area — power falls.\n\n\n\n\n\n\n\nPower table for different α levels\nalphas_tbl &lt;- c(0.10, 0.05, 0.01)\ncvs_tbl    &lt;- qnorm(alphas_tbl, mean = mu_0, sd = se_ht)\npowers_tbl &lt;- pnorm(cvs_tbl,   mean = mu_1, sd = se_ht)\n\npower_table &lt;- tibble(\n  `α (significance level)`   = alphas_tbl,\n  `Critical value`            = round(cvs_tbl, 3),\n  `Power (1 − β)`             = round(powers_tbl, 3),\n  `Type II error rate (β)`    = round(1 - powers_tbl, 3)\n)\n\nknitr::kable(power_table)\n\n\n\n\nTable 1: How the choice of α determines the trade-off between Type I error rate and power, for a one-sided test with SE = 0.12 and a true alternative of μ₁ = 7.8.\n\n\n\n\n\n\n\n\n\n\n\n\nα (significance level)\nCritical value\nPower (1 − β)\nType II error rate (β)\n\n\n\n\n0.10\n7.846\n0.650\n0.350\n\n\n0.05\n7.803\n0.509\n0.491\n\n\n0.01\n7.721\n0.255\n0.745\n\n\n\n\n\n\n\n\nThe table confirms the intuition from Figure 2: a stricter \\(\\alpha\\) (0.01 instead of 0.05) reduces false positives but cuts power nearly in half. The choice of \\(\\alpha\\) is therefore not a mechanical decision — it reflects a deliberate judgement about which type of error is more costly in your specific context. And the common value of \\(\\alpha=0.05\\) is exactly that: a more or less deliberate choice that has become a convention.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-logic-1",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-logic-1",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "4.1 The Logic",
+    "text": "4.1 The Logic\nA confidence interval (CI) is a range of plausible values for the population parameter, constructed from the sample data. Rather than committing to a single point estimate, a CI gives a plausible range for the true value. By doing so, it also communicates the precision of our estimate: larger CI indicate greater uncertainty and vice versa.\nA 95% confidence interval is constructed so that if we repeated the sampling procedure many times, 95% of the resulting intervals would contain the true population parameter.\nThis is subtler than it sounds — and easy to get wrong (see below).",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#constructing-a-confidence-interval",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#constructing-a-confidence-interval",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "4.2 Constructing a Confidence Interval",
+    "text": "4.2 Constructing a Confidence Interval\nFor large samples, the CLT guarantees that our estimator is approximately normally distributed. A 95% CI for a mean is:\n\\[\\bar{x} \\pm z^* \\cdot SE\\]\nwhere \\(z^* = 1.96\\) is the 97.5th percentile of the standard normal (so that 95% of the distribution lies between \\(-1.96\\) and \\(+1.96\\)), and \\(SE = s/\\sqrt{n}\\).1",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#example-ball-pit",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#example-ball-pit",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "4.3 Example: Ball Pit",
+    "text": "4.3 Example: Ball Pit\nReturning to our ball pit: we draw 100 balls and find that 68 are white (\\(\\hat{p} = 0.68\\)). We now want to construct a 95% CI for the true proportion of white balls.\nStep 1: Compute the standard error.\nThe standard error for a proportion is \\(SE = \\sqrt{\\hat{p}(1-\\hat{p})/n}\\). With our numbers:\n\\[SE = \\sqrt{\\frac{0.68 \\times 0.32}{100}} = \\sqrt{0.002176} \\approx 0.0466\\]\nStep 2: Use the CLT to derive the interval.\nBy the CLT, \\(\\hat{p}\\) is approximately normally distributed around the true \\(p\\). This means that in 95% of samples, \\(\\hat{p}\\) will fall within \\(\\pm 1.96 \\cdot SE\\) of the true value:\n\\[P\\!\\left(p - 1.96 \\cdot SE \\;\\leq\\; \\hat{p} \\;\\leq\\; p + 1.96 \\cdot SE\\right) = 0.95\\]\nRearranging this inequality — subtracting \\(\\hat{p}\\) from all parts and multiplying by \\(-1\\) — gives an equivalent statement with \\(p\\) in the centre:\n\\[P\\!\\left(\\hat{p} - 1.96 \\cdot SE \\;\\leq\\; p \\;\\leq\\; \\hat{p} + 1.96 \\cdot SE\\right) = 0.95\\]\nThis is the confidence interval. The rearrangement is the key step: we flip from “the estimate is within 1.96 SEs of the truth” to “the truth is within 1.96 SEs of the estimate.” This works because the ±1.96 SE relationship is symmetric.\nStep 3: Plug in the numbers.\n\\[\\text{Margin of error} = 1.96 \\times 0.0466 \\approx 0.091\\]\n\\[95\\%\\text{ CI} = [0.68 - 0.091,\\; 0.68 + 0.091] = [0.589,\\; 0.771]\\]\n\n\nConstructing a 95% confidence interval for a proportion\nn_balls   &lt;- 100\nn_white   &lt;- 68\np_hat     &lt;- n_white / n_balls\n\nse_prop   &lt;- sqrt(p_hat * (1 - p_hat) / n_balls)\nz_star    &lt;- qnorm(0.975)   # = 1.96\n\nci_lower  &lt;- p_hat - z_star * se_prop\nci_upper  &lt;- p_hat + z_star * se_prop\n\ncat(\"Point estimate: p̂ =\", p_hat, \"\\n\")\n\n\nPoint estimate: p̂ = 0.68 \n\n\nConstructing a 95% confidence interval for a proportion\ncat(\"Standard error: SE =\", round(se_prop, 4), \"\\n\")\n\n\nStandard error: SE = 0.0466 \n\n\nConstructing a 95% confidence interval for a proportion\ncat(\"95% CI: [\", round(ci_lower, 3), \",\", round(ci_upper, 3), \"]\\n\")\n\n\n95% CI: [ 0.589 , 0.771 ]\n\n\nConstructing a 95% confidence interval for a proportion\n# R's built-in function\nprop.test(x = n_white, n = n_balls, conf.level = 0.95)\n\n\n\n    1-sample proportions test with continuity correction\n\ndata:  n_white out of n_balls, null probability 0.5\nX-squared = 12.25, df = 1, p-value = 0.0004653\nalternative hypothesis: true p is not equal to 0.5\n95 percent confidence interval:\n 0.5782080 0.7677615\nsample estimates:\n   p \n0.68 \n\n\nOur 95% CI is [0.589, 0.771]. This is the range of values for the true proportion \\(p\\) that are consistent with what we observed in our sample.\n\n\n\n\n\n\nTipCIs without the normality assumption\n\n\n\nThe interval above rests on the CLT: it works well when \\(n\\) is large enough that \\(\\hat{p}\\) is approximately normal. Two alternatives exist when that assumption is in doubt.\nExact binomial CI. For proportions specifically, R’s binom.test() constructs an interval directly from the binomial distribution, with no normal approximation involved. It is more accurate when \\(n\\) is small or when \\(p\\) is close to 0 or 1 (where the normal approximation distorts the tails).\nbinom.test(x = 68, n = 100, conf.level = 0.95)\nBootstrap CI. The most general approach: resample your data with replacement many times, compute the statistic on each resample, and use the 2.5th and 97.5th percentiles of that distribution directly as the CI boundaries. No distributional assumption required. In R, the boot package provides a standard implementation, or you can build a simple version yourself using replicate() and sample() — the same tools used for Monte Carlo simulations on the previous page.\nBootstrap CIs are particularly valuable when your statistic is not a mean or proportion (e.g., a median, a correlation, or a regression coefficient in a small sample) and the CLT approximation is unreliable.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-correct-interpretation",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-correct-interpretation",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "4.4 The Correct Interpretation",
+    "text": "4.4 The Correct Interpretation\nYou will often here a statement similar to “there is a 95% probability that the true proportion lies in [0.589, 0.771]”. This is wrong! The true proportion is a fixed (though unknown) number — it is either in the interval or it isn’t. Probability does not apply to a fixed value.\nThe correct statement is: we used a procedure that generates correct intervals 95% of the time. In any specific interval, we cannot say with certainty whether the true value is inside or outside — but we trust our procedure. This is illustrated in Figure 4.\n\n\nVisualizing 95% confidence: many CIs from the same population\nset.seed(99)\ntrue_p   &lt;- 0.65\nN        &lt;- 5000\npop      &lt;- sample(c(\"White\", \"Grey\"), N, replace = TRUE,\n                   prob = c(true_p, 1 - true_p))\nn_ci     &lt;- 50\nn_trials &lt;- 100\n\nci_results &lt;- bind_rows(lapply(seq_len(n_trials), function(i) {\n  s     &lt;- sample(pop, n_ci, replace = FALSE)\n  ph    &lt;- mean(s == \"White\")\n  se_i  &lt;- sqrt(ph * (1 - ph) / n_ci)\n  tibble(\n    trial = i,\n    p_hat = ph,\n    lower = ph - 1.96 * se_i,\n    upper = ph + 1.96 * se_i,\n    covers = (ph - 1.96 * se_i &lt;= true_p) & (ph + 1.96 * se_i &gt;= true_p)\n  )\n}))\n\ncoverage_pct &lt;- round(mean(ci_results$covers) * 100, 1)\n\nggplot(ci_results, aes(y = trial, x = p_hat, color = covers)) +\n  geom_point(size = 1.5) +\n  geom_errorbarh(aes(xmin = lower, xmax = upper), height = 0, linewidth = 0.6) +\n  geom_vline(xintercept = true_p, linetype = \"dashed\", color = \"black\", linewidth = 1) +\n  scale_color_manual(values = c(\"TRUE\" = \"grey50\", \"FALSE\" = \"#e74c3c\"),\n    labels = c(\"TRUE\" = \"Contains true p\", \"FALSE\" = \"Does not contain true p\"),\n    name = NULL) +\n  scale_x_continuous(labels = scales::percent_format(), limits = c(0.25, 1.05)) +\n  annotate(\"text\", x = 0.66, y = n_trials * 1.02,\n    label = paste0(\"Coverage: \", coverage_pct, \"% of intervals contain true p\"),\n    hjust = 0, size = 3.5) +\n  labs(\n    title = \"95% Confidence Intervals from 100 Different Samples\",\n    subtitle = paste0(\"Each interval: n = \", n_ci, \" balls | True p = 65% (dashed) | Red = intervals that miss\"),\n    x = \"Estimated Proportion of White Balls\", y = \"Sample Number\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\", panel.grid.minor = element_blank())\n\n\n\n\n\n\n\n\nFigure 4: 100 confidence intervals, each constructed from a different sample of 50 balls from the same ball pit (true p = 0.65, dashed line). About 95 of the 100 intervals contain the true proportion (grey). The red intervals are the roughly 5% that miss — not because we did anything wrong, but because that is the expected behaviour of a 95% procedure.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-effect-of-sample-size-on-ci-width",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#the-effect-of-sample-size-on-ci-width",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "4.5 The Effect of Sample Size on CI Width",
+    "text": "4.5 The Effect of Sample Size on CI Width\nWider CIs reflect more uncertainty. Narrower CIs reflect more precision. Figure 5 shows: as the standard error shrinks with larger \\(n\\), so does the CI width.\n\n\nCI width as a function of sample size\nci_width_df &lt;- bind_rows(lapply(c(20, 50, 100, 200, 500, 1000), function(sn) {\n  ph  &lt;- true_p  # use known true p for illustration\n  se_n &lt;- sqrt(ph * (1 - ph) / sn)\n  tibble(n = sn, width = 2 * 1.96 * se_n)\n}))\n\nggplot(ci_width_df, aes(x = n, y = width)) +\n  geom_line(color = \"#3498db\", linewidth = 1.2) +\n  geom_point(color = \"#3498db\", size = 3) +\n  scale_x_log10(breaks = c(20, 50, 100, 200, 500, 1000)) +\n  scale_y_continuous(labels = scales::percent_format()) +\n  labs(\n    title = \"Width of 95% CI as a Function of Sample Size\",\n    subtitle = \"For proportion p = 0.65 | Note: halving the width requires quadrupling n\",\n    x = \"Sample Size (n)\", y = \"CI Width (percentage points)\"\n  ) +\n  theme_minimal() +\n  theme(panel.grid.minor = element_blank())\n\n\n\n\n\n\n\n\nFigure 5: Confidence interval width decreases with sample size, but with diminishing returns. Quadrupling the sample size halves the CI width.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#footnotes",
+    "href": "resources/statistics/hypothesis-testing-and-confidence-intervals.html#footnotes",
+    "title": "Hypothesis Testing and Confidence Intervals",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThere are also other ways to construct a CI, which do not rely on the assumption of normally distributed estimators. But their treatment is beyond the scope of this resource.↩︎",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Hypothesis Testing and Confidence Intervals"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html",
+    "href": "resources/statistics/data-fundamentals.html",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
     "section": "",
-    "text": "I am mainly teaching at the European University Flensburg (EUF). Most of my courses have their own separate site — syllabus, assignments, and course-specific materials live there. For the future, I want to keep all generic and general material here, and then link to this hub from my course pages. But you might still find it interesting to browse through the courses. As always, I value any kind of feedback! —"
+    "text": "Before diving into the details, it is important to understand that data types and scales of measurement are two different but related ways of classifying variables. Think of them as two lenses through which we examine the same data.\nData types (categorical vs. numerical) tell us about the fundamental nature of our variables — whether we are dealing with labels or numbers. Scales of measurement (nominal, ordinal, interval, ratio) tell us about the mathematical properties and operations we can perform on those variables.\nThe key insight is that categorical variables operate at nominal or ordinal scales, while numerical variables operate at interval or ratio scales. A categorical variable can never achieve interval or ratio properties, but the scale tells us how sophisticated our analysis can be within each data type.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
   },
   {
-    "objectID": "teaching.html#current-courses-with-open-material-available",
-    "href": "teaching.html#current-courses-with-open-material-available",
-    "title": "Teaching",
-    "section": "Current courses with open material available",
-    "text": "Current courses with open material available\n*An overview over my current teaching portfolio can be found here.\nResearch Methodology (Fall 2025, EUF) — course site\nApplied Data Science (Spring 2025, EUF) — course site\nDevelopment Economics (Fall 2025, JKU) — course site\n\nLinks above lead to separate course sites. The Methods Hub provides the resource pages that these courses reference; it does not host course-specific materials such as syllabi, assignments, or grading criteria."
+    "objectID": "resources/statistics/data-fundamentals.html#categorical-variables-labels-and-categories",
+    "href": "resources/statistics/data-fundamentals.html#categorical-variables-labels-and-categories",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "3.1 Categorical Variables: Labels and Categories",
+    "text": "3.1 Categorical Variables: Labels and Categories\nCategorical variables represent qualities or characteristics that can be divided into distinct groups. These variables answer questions like “what type?” or “which category?”\n\nConsider a survey of student transportation methods: “car,” “bicycle,” “public transport,” “walking.” Each student falls into exactly one category, and we cannot perform mathematical operations on these labels — it makes no sense to add “car” plus “bicycle.”\n\nCategorical variables come in two main flavors:\nNominal variables have categories with no inherent order. The categories are simply different, not better or worse than each other.\n\nExamples include: gender, academic majors (business, engineering, psychology), or country of origin (Germany, France, Italy, Spain).\n\nOrdinal variables have categories that follow a meaningful order, though the distances between categories may not be equal.\n\nConsider satisfaction ratings: “very dissatisfied,” “dissatisfied,” “neutral,” “satisfied,” “very satisfied.” While we know “satisfied” is better than “dissatisfied,” we cannot assume the difference between “satisfied” and “very satisfied” is the same as between “neutral” and “satisfied.”",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html",
-    "href": "resources/r-programming/getting-started-with-r.html",
-    "title": "Getting Started with R",
+    "objectID": "resources/statistics/data-fundamentals.html#numerical-variables-quantities-and-measurements",
+    "href": "resources/statistics/data-fundamentals.html#numerical-variables-quantities-and-measurements",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "3.2 Numerical Variables: Quantities and Measurements",
+    "text": "3.2 Numerical Variables: Quantities and Measurements\nNumerical variables represent quantities that can be measured or counted. These variables answer questions like “how much?” or “how many?”\nDiscrete variables can only take specific, distinct values — usually whole numbers you can count.\n\nNumber of employees in a company (5, 10, 15, but not 10.5), number of products sold (100, 101, 102), or number of customer complaints (0, 1, 2, 3…).\n\nContinuous variables can take any value within a range, including decimal values.\n\nTemperature (23.7°C), height (175.3 cm), time spent on a website (2.45 minutes), or quarterly revenue (€2,847,293.67).\n\nUnderstanding whether your variable is discrete or continuous affects which statistical methods you can use. For instance, when we calculate averages for discrete variables like “number of children,” we might get 2.3 children per family — a meaningful statistic even though no family actually has 2.3 children.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#nominal-scale-the-foundation",
+    "href": "resources/statistics/data-fundamentals.html#nominal-scale-the-foundation",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "4.1 Nominal Scale: The Foundation",
+    "text": "4.1 Nominal Scale: The Foundation\nAt the nominal level, variables are merely labels or names. You can count how many observations fall into each category, but you cannot rank them or perform arithmetic operations.\n\nCompany departments: “Marketing,” “Finance,” “HR,” “Operations.” You can count how many employees work in each department, but it makes no sense to say Marketing &gt; Finance or to calculate an average department.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#ordinal-scale-adding-order",
+    "href": "resources/statistics/data-fundamentals.html#ordinal-scale-adding-order",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "4.2 Ordinal Scale: Adding Order",
+    "text": "4.2 Ordinal Scale: Adding Order\nOrdinal scales introduce ranking and order. You can determine which category is “higher” or “better,” but the intervals between ranks may not be equal.\n\nEducational levels: “High School,” “Bachelor’s,” “Master’s,” “PhD.” We know a Master’s degree is higher than a Bachelor’s, but the “distance” from Bachelor’s to Master’s might not equal the distance from Master’s to PhD in terms of time, effort, or knowledge gained.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#interval-scale-equal-differences",
+    "href": "resources/statistics/data-fundamentals.html#interval-scale-equal-differences",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "4.3 Interval Scale: Equal Differences",
+    "text": "4.3 Interval Scale: Equal Differences\nInterval scales have equal intervals between values, allowing us to compare differences meaningfully. However, they lack a true zero point.\n\nTemperature in Celsius: The difference between 20°C and 30°C is the same as between 30°C and 40°C (10 degrees). However, 40°C is not “twice as hot” as 20°C because 0°C doesn’t represent the absence of heat — it is an arbitrary reference point.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#ratio-scale-the-gold-standard",
+    "href": "resources/statistics/data-fundamentals.html#ratio-scale-the-gold-standard",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "4.4 Ratio Scale: The Gold Standard",
+    "text": "4.4 Ratio Scale: The Gold Standard\nRatio scales have all the properties of interval scales plus a meaningful zero point. This allows for all mathematical operations, including ratios and percentages.\n\nIncome in euros: €0 means no income, €60,000 is twice as much as €30,000, and the difference between €30,000 and €40,000 is the same as between €50,000 and €60,000.\n\nUnderstanding these scales helps you choose appropriate statistical techniques. You can calculate a meaningful average (mean) for ratio and interval data, but for ordinal data, the median is often more appropriate.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#sample-vs.-population-a-quick-note",
+    "href": "resources/statistics/data-fundamentals.html#sample-vs.-population-a-quick-note",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.1 Sample vs. Population: A Quick Note",
+    "text": "5.1 Sample vs. Population: A Quick Note\nBefore diving into notation, it is important to know that statistics distinguishes between:\n\nPopulation: The entire group we are interested in studying\nSample: A subset of the population that we actually observe and collect data from\n\nDifferent symbols often indicate whether we are talking about sample or population values. This distinction is explored in depth in the page on sampling and inference.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#mathematical-objects-numbers-vectors-and-matrices",
+    "href": "resources/statistics/data-fundamentals.html#mathematical-objects-numbers-vectors-and-matrices",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.2 Mathematical Objects: Numbers, Vectors, and Matrices",
+    "text": "5.2 Mathematical Objects: Numbers, Vectors, and Matrices\nIn statistics, we work with different types of mathematical objects:\nNumbers (scalars) are single values — the simplest form of data.\n\nA student’s age (22), a company’s profit (€50,000), or a satisfaction score (7.5).\n\nVectors are ordered lists of numbers, like a column or row in a spreadsheet. We use vectors to store multiple observations of the same variable.\n\nA vector of test scores: x = [85, 90, 78, 92, 88]. This represents five students’ scores on the same exam.\n\nMatrices are rectangular arrangements of numbers in rows and columns, like a complete spreadsheet. Each row typically represents one observation, and each column represents one variable.\n\nA matrix storing data for 3 students across 2 variables (test score, age):\n\\[\\mathbf{X} = \\begin{bmatrix} 85 & 22 \\\\ 90 & 23 \\\\ 78 & 21 \\end{bmatrix}\\]",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#variables-and-observations",
+    "href": "resources/statistics/data-fundamentals.html#variables-and-observations",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.3 Variables and Observations",
+    "text": "5.3 Variables and Observations\nIn statistics, we typically use letters to represent variables following specific conventions:\n\nUppercase letters (X, Y): variables in general, or random variables in probability contexts\nLowercase letters (x, y): specific observed values of a variable\nBold letters (x, X): vectors or matrices\n\n\nIf we study student ages, X represents the age variable in general, while \\(x_1, x_2, x_3\\)… represent the actual ages we observe: 22, 25, 23…\n\n\n\\(n\\) represents the number of observations in a sample\n\\(N\\) represents the number of observations in a population",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#subscripts-identifying-individual-observations",
+    "href": "resources/statistics/data-fundamentals.html#subscripts-identifying-individual-observations",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.4 Subscripts: Identifying Individual Observations",
+    "text": "5.4 Subscripts: Identifying Individual Observations\nSubscripts help us refer to specific observations within a dataset:\n\n\\(X_1\\) refers to the first observation of variable \\(X\\)\n\\(X_i\\) refers to the \\(i\\)-th observation (where \\(i\\) can be any number from 1 to \\(n\\))",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#summation-notation",
+    "href": "resources/statistics/data-fundamentals.html#summation-notation",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.5 Summation Notation",
+    "text": "5.5 Summation Notation\nThe Greek letter sigma \\(\\Sigma\\) represents summation:\n\\[\\sum_{i=1}^n X_i \\text{ means \"sum all values of } X \\text{ from } i = 1 \\text{ to } n\\text{\"}\\]\n\nIf we have test scores: 85, 90, 78, 92, 88, then:\n\\[\\sum_{i=1}^n X_i = 85 + 90 + 78 + 92 + 88 = 433\\]",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/data-fundamentals.html#common-statistical-symbols",
+    "href": "resources/statistics/data-fundamentals.html#common-statistical-symbols",
+    "title": "Data Fundamentals: Types, Scales, and Notation",
+    "section": "5.6 Common Statistical Symbols",
+    "text": "5.6 Common Statistical Symbols\n\n\n\nSymbol\nMeaning\n\n\n\n\n\\(\\mu\\) (mu)\nPopulation mean\n\n\n\\(\\bar{x}\\) (x-bar)\nSample mean\n\n\n\\(\\sigma\\) (sigma)\nPopulation standard deviation\n\n\n\\(sd\\)\nSample standard deviation\n\n\n\\(p\\)\nProbability or proportion\n\n\n\nWhen you see \\(\\bar{x} = 75\\), you immediately know this refers to a sample mean of 75, without needing a lengthy explanation. This precision is the entire point of statistical notation.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Data Fundamentals: Types, Scales, and Notation"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/common-probability-distributions.html",
+    "href": "resources/statistics/common-probability-distributions.html",
+    "title": "Common Probability Distributions: A Reference Overview",
     "section": "",
-    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "text": "Packages used for R examples\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(ggpubr)",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html#introduction",
-    "href": "resources/r-programming/getting-started-with-r.html#introduction",
-    "title": "Getting Started with R",
-    "section": "",
-    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "objectID": "resources/statistics/common-probability-distributions.html#binomial-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#binomial-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "2.1 Binomial Distribution",
+    "text": "2.1 Binomial Distribution\nThe binomial distribution models the number of successes in a fixed number of independent trials, each with the same probability of success.\nParameters:\n\n\\(n\\) — number of trials\n\\(p\\) — probability of success per trial\n\nBusiness applications:\n\nQuality control (number of defective items in a batch)\nMarketing (number of customers who respond to an email campaign)\nEmployee behavior (number of employees who attend optional training)\nSurvey research (number of positive responses)\n\n\nExample: If 30% of customers typically purchase after viewing a product demo, and you show demos to 50 customers, the binomial distribution tells you the probability of getting exactly 12, 15, or 20 purchases.",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
-    "href": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
-    "title": "Getting Started with R",
-    "section": "Installing R and RStudio",
-    "text": "Installing R and RStudio\nContent to be added.",
+    "objectID": "resources/statistics/common-probability-distributions.html#poisson-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#poisson-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "2.2 Poisson Distribution",
+    "text": "2.2 Poisson Distribution\nThe Poisson distribution models the number of events occurring in a fixed interval when events happen independently at a constant average rate.\nParameters:\n\n\\(\\lambda\\) (lambda) — the average rate of occurrence\n\nBusiness applications:\n\nCustomer arrivals (number of customers entering a store per hour)\nSystem failures (number of server crashes per month)\nCall center volume (number of support calls per day)\nDefect counting in manufacturing\n\n\nExample: If your website averages 3 crashes per month, the Poisson distribution helps you calculate the probability of experiencing 0, 1, 2, or 5 crashes in a given month.",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
-    "href": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
-    "title": "Getting Started with R",
-    "section": "The RStudio Interface",
-    "text": "The RStudio Interface\nContent to be added.",
+    "objectID": "resources/statistics/common-probability-distributions.html#uniform-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#uniform-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "3.1 Uniform Distribution",
+    "text": "3.1 Uniform Distribution\nThe uniform distribution assigns equal probability to all values within a specified range, representing complete uncertainty within known bounds.\nParameters:\n\n\\(a\\) — minimum value\n\\(b\\) — maximum value\n\nBusiness applications: Monte Carlo simulations, modeling worst-case scenarios where you know only the possible range, random sampling for A/B testing, representing complete uncertainty about timing within a known window.\n\nExample: If project completion time could be anywhere between 30 and 50 days with no particular preference, the uniform distribution represents this complete uncertainty within the known bounds.",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
-    "href": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
-    "title": "Getting Started with R",
-    "section": "Your First R Commands",
-    "text": "Your First R Commands\nContent to be added.",
+    "objectID": "resources/statistics/common-probability-distributions.html#exponential-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#exponential-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "3.2 Exponential Distribution",
+    "text": "3.2 Exponential Distribution\nThe exponential distribution models the time between events in a Poisson process, or the duration until something happens.\nParameters:\n\n\\(\\lambda\\) — rate parameter\n\nBusiness applications:\n\nCustomer service (time until next service request)\nProduct reliability (time until failure)\nQueue management (waiting times)\nModeling time between purchases\n\n\nExample: If customers arrive at your service desk following a Poisson process, the exponential distribution models how long you will wait between consecutive arrivals.",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
-    "objectID": "resources/r-programming/getting-started-with-r.html#next-steps",
-    "href": "resources/r-programming/getting-started-with-r.html#next-steps",
-    "title": "Getting Started with R",
-    "section": "Next Steps",
-    "text": "Next Steps\nOnce you are comfortable with the basics, explore the R Programming track for a suggested learning path.",
+    "objectID": "resources/statistics/common-probability-distributions.html#beta-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#beta-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "3.3 Beta Distribution",
+    "text": "3.3 Beta Distribution\nThe beta distribution is highly flexible and bounded between 0 and 1, making it ideal for modeling proportions and percentages.\nParameters:\n\n\\(\\alpha\\) (alpha)\n\\(\\beta\\) (beta)\n\nBusiness applications:\n\nMarket share analysis\nProject completion percentages\nConversion rates\nBudget allocation proportions\nModeling success probabilities when you have prior information\n\n\nExample: When modeling the proportion of budget different departments might receive, the beta distribution can represent various scenarios from equal allocation to highly skewed distributions.",
     "crumbs": [
       "Resources",
-      "R Programming",
-      "R Programming",
-      "Getting Started with R"
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/common-probability-distributions.html#gamma-distribution",
+    "href": "resources/statistics/common-probability-distributions.html#gamma-distribution",
+    "title": "Common Probability Distributions: A Reference Overview",
+    "section": "3.4 Gamma Distribution",
+    "text": "3.4 Gamma Distribution\nThe gamma distribution models positive continuous values and includes the exponential distribution as a special case. It is particularly useful for modeling sums of exponential random variables.\nParameters:\n\n\\(\\alpha\\) (shape) and \\(\\beta\\) (rate), or equivalently \\(\\alpha\\) (shape) and \\(\\theta\\) (scale)\n\nBusiness applications:\n\nProject duration modeling when projects consist of multiple phases\nIncome distribution analysis\nInsurance claim amounts\nInventory management (modeling demand over lead time)\n\n\nExample: Total project time when the project consists of several independent phases, each following an exponential distribution, results in a gamma distribution.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Common Probability Distributions: A Reference Overview"
     ]
   },
   {
@@ -288,8 +531,8 @@
     "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#key-stages",
     "href": "resources/literature-review/intro-to-systematic-literature-review.html#key-stages",
     "title": "Introduction to Systematic Literature Reviews",
-    "section": "Key Stages",
-    "text": "Key Stages\nContent to be added.",
+    "section": "2 Key Stages",
+    "text": "2 Key Stages\nContent to be added.",
     "crumbs": [
       "Resources",
       "Literature Review",
@@ -301,8 +544,8 @@
     "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#formulating-a-research-question",
     "href": "resources/literature-review/intro-to-systematic-literature-review.html#formulating-a-research-question",
     "title": "Introduction to Systematic Literature Reviews",
-    "section": "Formulating a Research Question",
-    "text": "Formulating a Research Question\nContent to be added.\n\n\n\n\n\n\nNoteMA / PhD\n\n\n\nAt the MA and PhD level, a systematic review typically also requires pre-registration of the review protocol (e.g., on PROSPERO or OSF), a formal PRISMA flow diagram, and a risk-of-bias assessment for included studies. These requirements signal that the review is intended to be a primary contribution to the literature, not merely a summary for a thesis background chapter.\nPlaceholder — MA/PhD extension content to be added.",
+    "section": "3 Formulating a Research Question",
+    "text": "3 Formulating a Research Question\nContent to be added.\n\n\n\n\n\n\nNoteMA / PhD\n\n\n\nAt the MA and PhD level, a systematic review typically also requires pre-registration of the review protocol (e.g., on PROSPERO or OSF), a formal PRISMA flow diagram, and a risk-of-bias assessment for included studies. These requirements signal that the review is intended to be a primary contribution to the literature, not merely a summary for a thesis background chapter.\nPlaceholder — MA/PhD extension content to be added.",
     "crumbs": [
       "Resources",
       "Literature Review",
@@ -314,13 +557,599 @@
     "objectID": "resources/literature-review/intro-to-systematic-literature-review.html#practical-tools",
     "href": "resources/literature-review/intro-to-systematic-literature-review.html#practical-tools",
     "title": "Introduction to Systematic Literature Reviews",
-    "section": "Practical Tools",
-    "text": "Practical Tools\nContent to be added.",
+    "section": "4 Practical Tools",
+    "text": "4 Practical Tools\nContent to be added.",
     "crumbs": [
       "Resources",
       "Literature Review",
       "Literature Review",
       "Introduction to Systematic Literature Reviews"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html",
+    "href": "resources/epistemology/epistemology-ba.html",
+    "title": "What is Epistemology? (BA)",
+    "section": "",
+    "text": "TipLevel: BA\n\n\n\nThis page is written for BA students encountering epistemology for the first time. There is also a version for MA/PhD students that engages more directly with the philosophical literature.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
+    "href": "resources/epistemology/epistemology-ba.html#what-is-epistemology",
+    "title": "What is Epistemology? (BA)",
+    "section": "1 What is Epistemology?",
+    "text": "1 What is Epistemology?\nPlaceholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nEpistemology is the branch of philosophy concerned with the nature, sources, and limits of knowledge. In everyday terms: how do we know what we know, and how confident should we be in that knowledge?\nFor social scientists, epistemological questions are not merely abstract. The assumptions you make about what counts as valid knowledge directly shape the research designs you consider appropriate, the methods you use, and how you interpret your findings.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
+    "href": "resources/epistemology/epistemology-ba.html#two-foundational-positions",
+    "title": "What is Epistemology? (BA)",
+    "section": "2 Two Foundational Positions",
+    "text": "2 Two Foundational Positions\nContent to be added — will cover positivism and interpretivism as accessible entry points.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
+    "href": "resources/epistemology/epistemology-ba.html#why-does-this-matter-for-research-design",
+    "title": "What is Epistemology? (BA)",
+    "section": "3 Why Does This Matter for Research Design?",
+    "text": "3 Why Does This Matter for Research Design?\nContent to be added — connecting epistemological positions to method choice.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "resources/epistemology/epistemology-ba.html#what-to-read-next",
+    "href": "resources/epistemology/epistemology-ba.html#what-to-read-next",
+    "title": "What is Epistemology? (BA)",
+    "section": "4 What to Read Next",
+    "text": "4 What to Read Next\nContent to be added — suggestions for moving from this concept page to more applied research design resources.",
+    "crumbs": [
+      "Resources",
+      "Epistemology",
+      "Epistemology",
+      "What is Epistemology? (BA)"
+    ]
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "I am mainly teaching at the European University Flensburg (EUF). Most of my courses have their own separate site — syllabus, assignments, and course-specific materials live there. For the future, I want to keep all generic and general material here, and then link to this hub from my course pages. But you might still find it interesting to browse through the courses. As always, I value any kind of feedback!"
+  },
+  {
+    "objectID": "teaching.html#current-courses-with-open-material-available",
+    "href": "teaching.html#current-courses-with-open-material-available",
+    "title": "Teaching",
+    "section": "1 Current courses with open material available",
+    "text": "1 Current courses with open material available\nAn overview over my current teaching portfolio can be found here.\nFor all courses I only link the most recent course site. The respective semester is indicated in brackets after the course name.\n\nTheoretical and Empirical Research Methodology - Implementation Lab (Fall 2025, EUF) — most recent course site.\nDevelopment Economics (Fall 2025, EUF) — most recent course site.\nData Science and Econometrics for International Business (Spring 2026, EUF) — most recent course site.\n\n\nI am currently working on making all my teaching ressources openly available. Feedback of any kind is warmly appreciated."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Methods Hub",
+    "section": "",
+    "text": "Methods Hub is a public, citable educational resource library covering research methods in the social sciences. It serves students and researchers at all levels — BA, MA, and PhD — across both methodological topics (research design, literature review, epistemology, experiments) and implementation topics (R programming, data cleaning, visualization, regression).\nResources are written to stand on their own. Each page covers one task or concept, takes 20–40 minutes to work through, and generates its own citation so you can reference it in a course outline or research paper."
+  },
+  {
+    "objectID": "index.html#where-do-you-want-to-go",
+    "href": "index.html#where-do-you-want-to-go",
+    "title": "Methods Hub",
+    "section": "1 Where do you want to go?",
+    "text": "1 Where do you want to go?\n\n\nResource Library\nBrowse or search individual resource pages by topic, level, and content type. Filter by category or use the search box to find what you need.\n\n\nTracks\nCurated learning paths that sequence resources into a coherent progression — useful if you want to build up knowledge on a topic rather than find a single reference.\n\n\nBlog\nEditorial commentary, updates, and notes on new resources and how they fit together. Also contains some analyses of and tutorials on contemporary methodological issues.\n\n\nTeaching\nAn index of courses that use this hub as a supporting resource or cover related topics; with links to their separate course sites.\n\n\n\nThe hub is edited by Claudius Gräbner-Radkowitsch. All resource pages are citable — each page shows a full citation block at the bottom that you can copy directly."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Methods Hub",
+    "section": "",
+    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+  },
+  {
+    "objectID": "about.html#purpose",
+    "href": "about.html#purpose",
+    "title": "About the Methods Hub",
+    "section": "",
+    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+  },
+  {
+    "objectID": "about.html#editorial-model",
+    "href": "about.html#editorial-model",
+    "title": "About the Methods Hub",
+    "section": "2 Editorial model",
+    "text": "2 Editorial model\nThe hub has a single editor: Claudius Gräbner-Radkowitsch (European University Flensburg / Johannes Kepler University Linz). The editor is responsible for maintaining consistency, quality, and scope across all pages.\nFuture contributors who write resource pages appear as the author of those pages. The editor field on all pages remains Claudius Gräbner-Radkowitsch, reflecting editorial responsibility for the hub as a whole."
+  },
+  {
+    "objectID": "about.html#how-to-cite-resources",
+    "href": "about.html#how-to-cite-resources",
+    "title": "About the Methods Hub",
+    "section": "3 How to cite resources",
+    "text": "3 How to cite resources\nEvery resource page auto-generates a citation block at the bottom of the page. To cite a resource, copy the citation shown there.\nThe general format is:\n\n[Author Last, First]. ([Year]). “[Page Title].” In Methods Hub, edited by Claudius Gräbner-Radkowitsch. [URL]\n\nYou can also export citations in BibTeX or other formats from the citation block on each page."
+  },
+  {
+    "objectID": "about.html#independence-from-courses",
+    "href": "about.html#independence-from-courses",
+    "title": "About the Methods Hub",
+    "section": "4 Independence from courses",
+    "text": "4 Independence from courses\nThe Methods Hub is independent of any single course. Courses taught by Claudius Gräbner-Radkowitsch and others may link into the hub for specific resources, but the hub itself is not a course companion. Its resources are written as general-purpose references that remain useful regardless of where a student encounters them.\nSee Teaching for an index of courses that use the hub."
+  },
+  {
+    "objectID": "CONTRIBUTING.html",
+    "href": "CONTRIBUTING.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
+    "href": "CONTRIBUTING.html#what-the-hub-is-and-isnt",
+    "title": "",
+    "section": "1.1 What the hub is and isn’t",
+    "text": "1.1 What the hub is and isn’t\nThe hub is a general-purpose resource library — not a course companion. Resource pages should be useful to any student encountering the topic, regardless of course context. If you are writing a resource that only makes sense in the context of a specific assignment or syllabus, it does not belong here.\nCourse sites link into the hub. The hub does not link into course sites (except from teaching.qmd, which lists courses with external links)."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#page-granularity",
+    "href": "CONTRIBUTING.html#page-granularity",
+    "title": "",
+    "section": "1.2 Page granularity",
+    "text": "1.2 Page granularity\nThe default unit is workflow-level: one page per meaningful task or concept a student sits down to do or understand (20–40 minutes). Titles are action- or understanding-oriented:\n\n✓ “Reshaping Data from Wide to Long”\n✓ “Understanding Statistical Power”\n✗ “Data” (too broad)\n✗ “Introduction to R, Chapter 3” (course-specific framing)\n\nShort concept pages are allowed where no workflow framing makes sense — e.g., “What is Tidy Data?” or “What is Epistemology?”. Test: can a student finish this page and have accomplished or understood one specific thing?"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#front-matter-schema",
+    "href": "CONTRIBUTING.html#front-matter-schema",
+    "title": "",
+    "section": "1.3 Front matter schema",
+    "text": "1.3 Front matter schema\nEvery resource page must include this exact front matter:\n---\ntitle: \"\"\ndescription: \"\"\nauthor: \"Claudius Gräbner-Radkowitsch\"\ndate: YYYY-MM-DD\ndate-modified: YYYY-MM-DD\nimage: ../../assets/images/placeholder.png\n\nlearning-objectives:\n  - \"Understand what tidy data is and why it matters\"\n  - \"Use pivot_longer() to reshape a wide dataset\"\n\ncategories:\n  - [at least one thematic tag]\n\nlevel:\n  - BA          # BA | MA | PhD — list all that apply\n\ncontent-type:   # exactly one of: tutorial | video | slides | reading | exercise | concept\n\ncitation:\n  type: entry\n  container-title: \"Methods Hub\"\n  editor:\n    - name: \"Claudius Gräbner-Radkowitsch\"\n  url: https://euf-methodology-hub.netlify.app/resources/[category]/[slug]\n---\nlearning-objectives rules: - 2–4 objectives; more than 4 signals the page scope is too broad - Each objective is a concrete skill or understanding, not a description of page content - Write from the student’s perspective: “Explain X”, “Apply X to Y”, “Distinguish X from Y” - ✓ “Use pivot_longer() to reshape a wide dataset” - ✗ “This page covers data reshaping in R”\nauthor vs editor: - If you are a contributor writing a new page, put your name in author - The editor field lives inside the citation: block and is always Claudius Gräbner-Radkowitsch — it reflects editorial responsibility for the hub, not who wrote the page - Do not add a top-level editor: key — Quarto 1.9+ reserves that key for visual editor configuration and will reject a name string"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#tag-taxonomy",
+    "href": "CONTRIBUTING.html#tag-taxonomy",
+    "title": "",
+    "section": "1.4 Tag taxonomy",
+    "text": "1.4 Tag taxonomy\nUse existing tags. Adding a new thematic tag requires also adding it to the taxonomy in CLAUDE.md.\nThematic: data-cleaning, R, visualization, experiments, statistics, regression, causal-inference, literature-review, research-design, qualitative-methods, reproducibility, quarto, survey-methods, epistemology, tidyverse\nContent type (pick exactly one): tutorial, video, slides, reading, exercise, concept\nLevel (list all that apply): BA, MA, PhD"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#level-differentiation",
+    "href": "CONTRIBUTING.html#level-differentiation",
+    "title": "",
+    "section": "1.5 Level differentiation",
+    "text": "1.5 Level differentiation\nPages are written at BA level by default. Two patterns are allowed for adding MA/PhD content.\n\nPattern 1 — inline callout (default)\nUse when the page is fundamentally the same workflow for all levels, with added depth for MA/PhD. Wrap MA/PhD-specific content in:\n::: {.callout-note .level-advanced}\n## 🎓 MA / PhD\nContent here.\n:::\nThis renders with a muted teal left border and lighter background, visually distinct from a standard note.\n\n\nPattern 2 — separate pages per level\nUse when the conceptual treatment genuinely differs across levels — not just in depth but in framing, assumed knowledge, or purpose. Examples: - An epistemology page introducing the concept from scratch (BA) vs. engaging with the literature (PhD) - A statistics page using intuition and visuals (BA) vs. formal notation (PhD)\nWhen using Pattern 2: - Each page is a standalone .qmd with its own front matter - The level field contains only the single applicable level - Add a sibling-link callout at the top of each page:\n::: {.callout-tip}\n## 📖 Level: BA\nThis page is written for BA students. There is also a version for\n[MA/PhD students](../epistemology-phd.qmd).\n:::\n\nFile naming: [topic]-ba.qmd, [topic]-ma.qmd, [topic]-phd.qmd\nAll sibling pages share the same thematic tags so they appear together in the listing\n\nDeciding: Default to Pattern 1. Switch to Pattern 2 only when the callout block would be so large and structurally different that it dominates the page."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#file-and-folder-naming",
+    "href": "CONTRIBUTING.html#file-and-folder-naming",
+    "title": "",
+    "section": "1.6 File and folder naming",
+    "text": "1.6 File and folder naming\n\nResource pages: kebab-case.qmd matching the page title closely\nCategory folders: kebab-case/ (e.g., r-programming/, literature-review/)\nTrack pages: kebab-case.qmd in tracks/\nData files: kebab-case.csv / .rds etc.\nImages: kebab-case.png in assets/images/"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#data-files",
+    "href": "CONTRIBUTING.html#data-files",
+    "title": "",
+    "section": "1.7 Data files",
+    "text": "1.7 Data files\n\nIn the repo: synthetic/self-generated data, small modified external datasets, small freely redistributable datasets\nOn OSF (linked, not hosted): large datasets, verbatim third-party data, datasets where acquisition is part of the learning\nData files live co-located with the resource page in a data/ subfolder within the category folder — never in a global /data folder\nR scripts go in .qmd code blocks by default; standalone .R files only when genuinely needed\n\nExample structure:\nresources/\n  data-cleaning/\n    reshaping-data-wide-to-long.qmd\n    data/\n      survey-responses.csv"
+  },
+  {
+    "objectID": "CONTRIBUTING.html#relative-paths",
+    "href": "CONTRIBUTING.html#relative-paths",
+    "title": "",
+    "section": "1.8 Relative paths",
+    "text": "1.8 Relative paths\nNever hardcode the domain URL in .qmd files. Use relative paths for all internal links. This keeps the site portable when the domain changes."
+  },
+  {
+    "objectID": "CONTRIBUTING.html#build-and-deploy-workflow",
+    "href": "CONTRIBUTING.html#build-and-deploy-workflow",
+    "title": "",
+    "section": "1.9 Build and deploy workflow",
+    "text": "1.9 Build and deploy workflow\nWhile writing a single page:\nquarto preview resources/[category]/[page].qmd\nAfter finishing a page:\nquarto render resources/[category]/[page].qmd\nquarto render resources/index.qmd\nCommit and push — always include _site/ and _freeze/:\ngit add .\ngit commit -m \"add: [short description]\"\ngit push\nNetlify serves _site/ directly and runs no build. Never configure Netlify to run quarto render."
+  },
+  {
+    "objectID": "resources/index.html",
+    "href": "resources/index.html",
+    "title": "Resource Library",
+    "section": "",
+    "text": "The Methods Hub resource library is a searchable collection of individual pages covering research methods in the social sciences. Each page addresses one task or concept — working through a page takes roughly 20–40 minutes. Resources are written at BA level by default, with MA/PhD extensions where relevant.\nUse the filters below to browse by topic, level, or content type.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nWhat is Epistemology? (BA)\n\n\n\nepistemology\n\nBA\n\nconcept\n\n\n\nA first introduction to epistemology — the branch of philosophy concerned with how we know what we know — and why it matters for social science research.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntroduction to Systematic Literature Reviews\n\n\n\nliterature-review\n\nBA\n\nMA\n\nreading\n\n\n\nAn overview of what a systematic literature review is, how it differs from a narrative review, and how to plan and execute one.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\n\nR\n\nBA\n\ntutorial\n\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Probability Distributions: A Reference Overview\n\n\n\nstatistics\n\nR\n\nBA\n\nMA\n\nreading\n\n\n\nAn overview of probability distributions beyond the normal: binomial, Poisson, uniform, exponential, beta, and gamma — with guidance on when to use each and how to work with…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nConceptual Foundations of Statistics\n\n\n\nstatistics\n\nBA\n\nMA\n\nconcept\n\n\n\nA first orientation to statistical thinking: what statistics is, why intuition alone is insufficient for interpreting data, and how probability theory provides the reference…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Fundamentals: Types, Scales, and Notation\n\n\n\nstatistics\n\nBA\n\nMA\n\nconcept\n\n\n\nAn introduction to the building blocks of data: types of variables (categorical vs. numerical), scales of measurement (nominal, ordinal, interval, ratio), and the…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nDescriptive Statistics in R\n\n\n\nstatistics\n\nR\n\ntidyverse\n\nBA\n\nMA\n\nreading\n\n\n\nA guided introduction to descriptive statistics in R, covering measures of centrality, dispersion, and association — including correlation matrices, simple linear…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nHypothesis Testing and Confidence Intervals\n\n\n\nstatistics\n\nR\n\nBA\n\nMA\n\nreading\n\n\n\nApplying sampling theory to make inferences: how to evaluate claims using data (hypothesis testing and p-values) and how to construct ranges of plausible values for…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nEssentials of Probability Theory for Statistics\n\n\n\nstatistics\n\nR\n\nBA\n\nMA\n\nreading\n\n\n\nA conceptual and practical introduction to probability theory: random experiments, events, conditional probability, random variables, the normal distribution, expected…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSampling and Statistical Inference\n\n\n\nstatistics\n\nR\n\nBA\n\nMA\n\nreading\n\n\n\nHow we move from sample statistics to conclusions about populations: sampling variability, Monte Carlo simulation, sampling distributions, standard error, the Central Limit…\n\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nCitationBibTeX citation:@online{gräbner-radkowitsch,\n  author = {Gräbner-Radkowitsch, Claudius},\n  title = {Methods {Hub}},\n  url = {https://euf-methodology-hub.netlify.app/resources/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. n.d. “Methods Hub.” https://euf-methodology-hub.netlify.app/resources/.",
+    "crumbs": [
+      "Resources",
+      "Resource Library"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html",
+    "href": "resources/r-programming/getting-started-with-r.html",
+    "title": "Getting Started with R",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#introduction",
+    "href": "resources/r-programming/getting-started-with-r.html#introduction",
+    "title": "Getting Started with R",
+    "section": "",
+    "text": "Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.\nR is a free, open-source programming language and environment for statistical computing and graphics. RStudio is the most widely used interface (IDE) for working with R. They are separate pieces of software: R does the computation, RStudio gives you a comfortable environment to write and run R code.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
+    "href": "resources/r-programming/getting-started-with-r.html#installing-r-and-rstudio",
+    "title": "Getting Started with R",
+    "section": "2 Installing R and RStudio",
+    "text": "2 Installing R and RStudio\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
+    "href": "resources/r-programming/getting-started-with-r.html#the-rstudio-interface",
+    "title": "Getting Started with R",
+    "section": "3 The RStudio Interface",
+    "text": "3 The RStudio Interface\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
+    "href": "resources/r-programming/getting-started-with-r.html#your-first-r-commands",
+    "title": "Getting Started with R",
+    "section": "4 Your First R Commands",
+    "text": "4 Your First R Commands\nContent to be added.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/r-programming/getting-started-with-r.html#next-steps",
+    "href": "resources/r-programming/getting-started-with-r.html#next-steps",
+    "title": "Getting Started with R",
+    "section": "5 Next Steps",
+    "text": "5 Next Steps\nOnce you are comfortable with the basics, explore the R Programming track for a suggested learning path.",
+    "crumbs": [
+      "Resources",
+      "R Programming",
+      "R Programming",
+      "Getting Started with R"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/conceptual-foundations-of-statistics.html",
+    "href": "resources/statistics/conceptual-foundations-of-statistics.html",
+    "title": "Conceptual Foundations of Statistics",
+    "section": "",
+    "text": "Packages used for R examples\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(ggplot2)\nlibrary(ggpubr)\nlibrary(kableExtra)\n\n\n\n1 Why Statistics Might Feel Intimidating (And Why It Shouldn’t)\nIf you are approaching statistics with a sense of dread, you are not alone. Many students in social science and business fields approach statistics with apprehension — often because they have had negative experiences with mathematics in the past, or because statistics feels abstract and removed from the practical questions they actually care about.\nLet us start by addressing this directly: statistics is not about complex mathematical formulas that only mathematicians can understand. It is a powerful toolkit for making sense of uncertainty and making better decisions in an uncertain world.\nThink of statistics as a language — a way of communicating with data and extracting meaningful insights from noise. Just as you would not expect to become fluent in a foreign language overnight, becoming comfortable with statistical thinking takes time and practice. The goal is not to become a mathematician; it is to develop a mindset that helps you navigate uncertainty with confidence.\n\n\n2 What is Statistics and Why Do We Need It?\nAt its core, statistics is the science of learning from data. More specifically, it is a collection of methods and principles that help us collect, organize, analyze, and interpret information to answer questions and solve problems. But why do we need this formal approach? Why can’t we just look at data and draw conclusions intuitively?\n\nConsider a simple business scenario: You’re the marketing manager for a company that recently launched a new advertising campaign. After three months, you notice that sales have increased by over 57% compared to the average sales before the campaign. This sounds like good news, but several questions immediately arise: Is this increase actually due to your campaign, or could it be caused by seasonal trends, competitor actions, or random fluctuations? How confident can you be that this trend will continue? Is this increase significant enough to justify the campaign’s cost? Figure 1 gives a first idea of why the answer to these questions is not as easy as it might appear.\n\n\n\nCreating the dataset used in the example\nset.seed(123)\n\ndates &lt;- seq(as.Date(\"2023-01-01\"), as.Date(\"2024-12-01\"), by = \"month\")\nmonth &lt;- format(dates, \"%m\")\nyear &lt;- format(dates, \"%Y\")\n\nseasonal_factor &lt;- c(0.8, 0.7, 0.8, 0.9, 1.0, 1.0, 0.9, 0.9, 1.1, 1.3, 1.4, 1.6)\nmonthly_effect &lt;- seasonal_factor[as.numeric(month)]\n\nbase_sales &lt;- 100000 * (1 + 0.03 * (as.numeric(year) - 2023)) * monthly_effect\nsales &lt;- base_sales * rnorm(length(dates), mean = 1, sd = 0.04)\n\ncampaign_date &lt;- as.Date(\"2024-09-01\")\ncampaign_effect &lt;- ifelse(dates &gt;= campaign_date, 1.05, 1)\nfinal_sales &lt;- sales * campaign_effect\n\nsales_data &lt;- data.frame(\n  date = dates,\n  month = month,\n  year = year,\n  sales = round(final_sales),\n  campaign = dates &gt;= campaign_date\n)\n\n\n\n\nR code for the visualization\nblue_col &lt;- \"#3498db\"\nred_col &lt;- \"#e74c3c\"\n\nsales_data_2024 &lt;- filter(sales_data, year == \"2024\")\n\nmean2024_before_campaign &lt;- mean(filter(sales_data_2024, !campaign)$sales)\nmean2024_after_campaign &lt;- mean(filter(sales_data_2024, campaign)$sales)\nnaive_increase_2024 &lt;- (mean2024_after_campaign / mean2024_before_campaign - 1) * 100\ncorrected_increase &lt;- sales_data |&gt;\n  filter(month %in% filter(sales_data_2024, campaign)$month) |&gt;\n  summarise(avg_sales = mean(sales), .by = year) |&gt;\n  pivot_wider(names_from = \"year\", values_from = \"avg_sales\") |&gt;\n  mutate(increase = (`2024` / `2023` - 1) * 100) |&gt;\n  pull(\"increase\")\n\nplot_2024 &lt;- ggplot(sales_data_2024, aes(x = date, y = sales)) +\n  geom_line(alpha = 0.6, linewidth = 0.8) +\n  geom_point(aes(color = campaign), alpha = 0.8, size = 2.5) +\n  geom_vline(xintercept = as.Date(\"2024-09-01\"), linetype = \"dashed\", color = \"darkred\") +\n  annotate(\"text\", x = as.Date(\"2024-09-01\") - 15, y = max(sales_data_2024$sales) * 0.95,\n    label = \"Campaign Launch\", hjust = 1, color = \"darkred\") +\n  geom_hline(yintercept = mean2024_before_campaign, linetype = \"dotted\", color = blue_col) +\n  annotate(\"text\", x = as.Date(\"2024-03-15\"), y = mean2024_before_campaign * 1.03,\n    label = paste0(\"Avg Before: \", format(round(mean2024_before_campaign), big.mark = \".\", decimal.mark = \",\")),\n    color = blue_col) +\n  geom_hline(yintercept = mean2024_after_campaign, linetype = \"dotted\", color = red_col) +\n  annotate(\"text\", x = as.Date(\"2024-03-15\"), y = mean2024_after_campaign * 1.03,\n    label = paste0(\"Avg After: \", format(round(mean2024_after_campaign), big.mark = \".\", decimal.mark = \",\")),\n    color = red_col) +\n  labs(\n    title = \"2024 Sales Before and After Marketing Campaign\",\n    subtitle = paste0(\"It appears the campaign increased sales by \", round(naive_increase_2024, 1), \"%!\"),\n    x = \"Month (2024)\", y = \"Sales\", color = \"After Campaign Launch\"\n  ) +\n  scale_color_manual(values = c(\"FALSE\" = blue_col, \"TRUE\" = red_col)) +\n  scale_y_continuous(labels = scales::number_format(scale = 0.001, suffix = \"k €\")) +\n  theme_minimal() +\n  theme(legend.position = \"none\", axis.title.x = element_blank())\n\nplot_full &lt;- ggplot(sales_data, aes(x = date, y = sales)) +\n  geom_line(alpha = 0.5) +\n  geom_point(aes(color = campaign), alpha = 0.7, size = 2) +\n  geom_vline(xintercept = as.Date(\"2024-09-01\"), linetype = \"dashed\", color = \"darkred\") +\n  geom_vline(xintercept = as.Date(\"2024-01-01\"), linetype = \"dotted\", color = \"gray50\") +\n  annotate(\"text\", x = as.Date(\"2024-09-01\") - 15, y = max(sales_data$sales) * 0.9,\n    label = \"Campaign Launch\", hjust = 1, color = \"darkred\") +\n  annotate(\"rect\",\n    xmin = as.Date(\"2023-09-01\"), xmax = as.Date(\"2023-12-31\"),\n    ymin = min(sales_data$sales) * 0.95, ymax = max(sales_data$sales),\n    alpha = 0.1, fill = \"darkblue\") +\n  annotate(\"rect\",\n    xmin = as.Date(\"2024-09-01\"), xmax = as.Date(\"2024-12-31\"),\n    ymin = min(sales_data$sales) * 0.95, ymax = max(sales_data$sales),\n    alpha = 0.1, fill = \"darkred\") +\n  annotate(\"text\", x = as.Date(\"2023-06-01\"), y = max(sales_data$sales) * 0.85,\n    label = paste0(\"True year-over-year increase: \", round(corrected_increase, 1), \"%\"),\n    color = \"black\", size = 4) +\n  annotate(\"text\", x = as.Date(\"2023-06-01\"), y = max(sales_data$sales) * 0.8,\n    label = \"Actual campaign effect: 5%\", color = \"black\", size = 4) +\n  labs(\n    title = \"Full Context: Sales Data for 2023–2024\",\n    subtitle = \"Most of the increase is due to seasonal patterns\",\n    x = \"Month\", y = \"Sales\", color = \"After Campaign Launch\"\n  ) +\n  scale_color_manual(values = c(\"FALSE\" = blue_col, \"TRUE\" = red_col)) +\n  scale_y_continuous(labels = scales::number_format(scale = 0.001, suffix = \"k €\")) +\n  theme_minimal() +\n  theme(legend.position = \"none\", axis.title.x = element_blank())\n\ncombined_plot &lt;- ggarrange(plot_2024, plot_full, labels = c(\"A\", \"B\"), ncol = 1, nrow = 2, legend = \"none\")\nannotate_figure(combined_plot, top = text_grob(\"The Importance of Sound Data Analysis\", face = \"bold\", size = 14))\n\n\n\n\n\n\n\n\nFigure 1: The apparent effect of a marketing campaign depends heavily on the time window you use.\n\n\n\n\n\nThese questions illustrate why we need statistics. Our intuition, while valuable, is often inadequate for making sense of complex data patterns. Humans naturally tend to see patterns where none exist (psychologists call this “apophenia”) and to overinterpret small samples or unusual events. Statistics provides rigorous methods to distinguish between real patterns and random noise, to quantify our uncertainty, and to make informed decisions despite incomplete information.\nStatistics serves several crucial functions. First, it helps us describe and summarize large amounts of data in meaningful ways. Second, it enables us to make inferences about populations based on samples — it is often impractical to survey every customer or test every possible scenario. Third, statistics helps us test hypotheses and evaluate claims. Finally, it enables prediction and forecasting by helping us understand relationships between variables.\n\n\n3 What is Probability Theory and Why Do We Need It?\nProbability theory might sound abstract, but it serves a crucial practical purpose: it provides the reference point we need to make sense of what we observe in data. Without probability theory, we cannot determine whether our observations are surprising, expected, or somewhere in between.\n\nImagine you’re recruiting for a basketball team and a candidate tells you he is 200 cm tall. Is this unusually tall or fairly normal? You can’t answer this question just by looking at a single number. You need a reference point — specifically, you need to know how height is distributed in the general population. Probability theory tells us that the height of men in Germany follows a roughly normal distribution with an average around 178.9 cm. With this reference, we can determine that 200 cm is indeed rare — occurring in perhaps 1 in 520 people or fewer (see Figure 2).\n\n\n\nR code to compute chance of being 200 cm or taller\nmean_height &lt;- 178.9\nsd_height &lt;- 7.3\n\nheight_range &lt;- seq(150, 230, by = 0.1)\nheight_density &lt;- dnorm(height_range, mean = mean_height, sd = sd_height)\nheight_df &lt;- data.frame(height = height_range, density = height_density)\n\nprob_200_plus &lt;- pnorm(q = 200, mean = mean_height, sd = sd_height, lower.tail = FALSE)\napprox_odds &lt;- round(1 / prob_200_plus)\n\n\n\n\nR code for the visualization\nggplot(height_df, aes(x = height, y = density)) +\n  geom_line(linewidth = 1.2, color = \"royalblue\") +\n  geom_area(fill = \"royalblue\", alpha = 0.3) +\n  geom_vline(xintercept = mean_height, linetype = \"dashed\", color = \"darkblue\") +\n  annotate(\"text\", x = mean_height + 4, y = max(height_density) * 0.95,\n    label = paste0(\"Mean = \", mean_height, \" cm\"), hjust = 0, color = \"darkblue\") +\n  geom_vline(xintercept = 200, linetype = \"dashed\", color = \"red\") +\n  geom_area(data = subset(height_df, height &gt;= 200), fill = \"red\", alpha = 0.4) +\n  annotate(\"text\", x = 205, y = max(height_density) * 0.6,\n    label = paste0(\"Probability ≈ 1 in \", format(approx_odds, big.mark = \",\")),\n    color = \"red\", hjust = 0) +\n  geom_segment(aes(x = mean_height + sd_height, xend = mean_height + sd_height,\n    y = 0, yend = dnorm(mean_height + sd_height, mean = mean_height, sd = sd_height)),\n    linetype = \"dotted\", color = \"gray30\") +\n  geom_segment(aes(x = mean_height + 2 * sd_height, xend = mean_height + 2 * sd_height,\n    y = 0, yend = dnorm(mean_height + 2 * sd_height, mean = mean_height, sd = sd_height)),\n    linetype = \"dotted\", color = \"gray30\") +\n  geom_segment(aes(x = mean_height + 3 * sd_height, xend = mean_height + 3 * sd_height,\n    y = 0, yend = dnorm(mean_height + 3 * sd_height, mean = mean_height, sd = sd_height)),\n    linetype = \"dotted\", color = \"gray30\") +\n  labs(\n    title = \"Distribution of Adult Male Height\",\n    subtitle = paste0(\"200 cm is an extreme value (approximately 1 in \", format(approx_odds, big.mark = \",\"), \" people)\"),\n    x = \"Height (cm)\", y = \"Probability Density\",\n    caption = \"Based on average adult male height distribution for Germany.\"\n  ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 16),\n    plot.subtitle = element_text(color = \"darkred\", size = 12),\n    panel.grid.minor = element_blank()\n  ) +\n  coord_cartesian(xlim = c(150, 230), ylim = c(0, max(height_density) * 1.05))\n\n\n\n\n\n\n\n\nFigure 2: The distribution of adult male height in Germany. Being 200 cm or taller is an extreme value.\n\n\n\n\n\nProbability theory provides mathematical models that describe what we should expect to see if only random variation is at play. These models serve as our baseline assumption — “nothing special happening.” When our actual observations differ substantially from what these probability models predict, we have evidence that something interesting might be occurring.\n\nConsider quality control in manufacturing. Suppose your process typically produces 2% defective items. Probability theory can tell you what to expect in a batch of 100 items: most batches will have 1–3 defective items. If you test a batch and find 8 defective items, probability theory helps you recognize this as highly unusual, suggesting something may have gone wrong with your process (see Table 1 and Figure 3).\n\n\n\nR code to compute expected defects\nbatch_size &lt;- 100\ndefect_rate &lt;- 0.02\nobserved_defects &lt;- 8\n\ndefect_probs &lt;- tibble(\n  defects = 0:15,\n  exact_prob = dbinom(defects, size = batch_size, prob = defect_rate),\n  cumulative_prob = pbinom(defects - 1, size = batch_size, prob = defect_rate, lower.tail = FALSE),\n  exact_prob_pct = scales::percent(exact_prob, accuracy = 0.001),\n  cumulative_prob_pct = scales::percent(cumulative_prob, accuracy = 0.001),\n  odds = ifelse(cumulative_prob &gt; 0, round(1 / cumulative_prob), Inf)\n)\n\ndefect_probs |&gt;\n  filter(defects &lt;= 10) |&gt;\n  select(defects, exact_prob_pct, cumulative_prob_pct, odds) |&gt;\n  rename(\n    \"Defects\" = defects,\n    \"Exact Probability\" = exact_prob_pct,\n    \"P(X ≥ Defects)\" = cumulative_prob_pct,\n    \"Odds (1 in X)\" = odds\n  ) |&gt;\n  kable()\n\n\n\n\nTable 1: The likelihoods of seeing different numbers of defective items in a batch of 100.\n\n\n\n\n\n\nDefects\nExact Probability\nP(X ≥ Defects)\nOdds (1 in X)\n\n\n\n\n0\n13.262%\n100.000%\n1\n\n\n1\n27.065%\n86.738%\n1\n\n\n2\n27.341%\n59.673%\n2\n\n\n3\n18.228%\n32.331%\n3\n\n\n4\n9.021%\n14.104%\n7\n\n\n5\n3.535%\n5.083%\n20\n\n\n6\n1.142%\n1.548%\n65\n\n\n7\n0.313%\n0.406%\n246\n\n\n8\n0.074%\n0.093%\n1073\n\n\n9\n0.015%\n0.019%\n5282\n\n\n10\n0.003%\n0.003%\n29056\n\n\n\n\n\n\n\n\n\n\nR code for the visualization\nggplot(defect_probs |&gt; filter(defects &lt;= 15), aes(x = defects, y = cumulative_prob)) +\n  geom_line(color = \"darkblue\", linewidth = 1) +\n  geom_point(color = \"darkblue\", size = 3) +\n  geom_point(data = defect_probs |&gt; filter(defects == 8), color = \"red\", size = 4) +\n  geom_area(data = defect_probs |&gt; filter(defects &gt;= 8), fill = \"red\", alpha = 0.3) +\n  annotate(\"text\", x = 10, y = 0.1,\n    label = paste0(\"P(X ≥ 8) = \", defect_probs$cumulative_prob_pct[defect_probs$defects == 8]),\n    color = \"darkred\") +\n  labs(\n    title = \"Probability of Finding X or More Defects\",\n    subtitle = paste0(\"Finding 8+ defects when defect rate is 2% happens in only 1 in \",\n      defect_probs$odds[defect_probs$defects == 8], \" batches\"),\n    x = \"Number of Defective Items (X)\",\n    y = \"Probability of X or More Defects\",\n    caption = \"Based on binomial distribution B(100, 0.02)\"\n  ) +\n  theme_minimal() +\n  scale_y_continuous(labels = scales::percent_format()) +\n  scale_x_continuous(breaks = 0:15)\n\n\n\n\n\n\n\n\nFigure 3: Cumulative probability of finding X or more defects when the defect rate is 2%.\n\n\n\n\n\n\n\n4 How Do Probability and Statistics Work Together?\nProbability provides the theoretical framework — it tells us what patterns we should expect to see if certain assumptions are true. Statistics then examines real data to see whether these expected patterns actually appear.\n\nThink of a retail company testing whether a new store layout increases customer spending. Probability theory suggests that if the layout truly has no effect, we should expect to see spending vary randomly around the baseline average. Statistics then analyzes actual customer data to determine whether the observed spending pattern looks more like the “no effect” scenario or the “positive effect” scenario. Figure 4 shows the two crucial steps: first use probability theory to construct a reference case, then collect data and compare it against the theoretical prediction.\n\n\n\nR code for the visualization\nset.seed(123)\n\nold_mean &lt;- 65\nold_sd &lt;- 12\nn_customers &lt;- 40\n\nspending_range &lt;- seq(30, 120, by = 0.5)\nse &lt;- old_sd / sqrt(n_customers)\n\ntheory_df &lt;- tibble(\n  spending = spending_range,\n  null_density = dnorm(spending_range, mean = old_mean, sd = old_sd),\n  sampling_density = dnorm(spending_range, mean = old_mean, sd = se)\n)\n\ntheory_plot &lt;- ggplot(theory_df) +\n  geom_line(aes(x = spending, y = null_density), color = \"darkblue\", linewidth = 1.2) +\n  geom_area(aes(x = spending, y = null_density), fill = \"darkblue\", alpha = 0.2) +\n  geom_line(aes(x = spending, y = sampling_density), color = \"purple\", linewidth = 1.2, linetype = \"dashed\") +\n  geom_vline(xintercept = old_mean, linetype = \"solid\", color = \"darkblue\") +\n  labs(\n    title = \"Probability Theory Perspective\",\n    subtitle = \"What we would expect to see if the new layout had no effect\",\n    x = \"Customer Spending (EUR)\", y = \"Probability Density\"\n  ) +\n  annotate(\"text\", x = 40, y = max(theory_df$null_density) * 1.5,\n    label = \"Individual customer\\nspending distribution\\nunder old layout\", color = \"darkblue\", hjust = 0) +\n  annotate(\"text\", x = 75, y = max(theory_df$sampling_density) * 0.7,\n    label = \"Sampling distribution\\nof the mean\\n(if null hypothesis is true)\", color = \"purple\", hjust = 0) +\n  theme_minimal()\n\nactual_effect &lt;- 8\nnew_layout_data &lt;- tibble(\n  spending = rnorm(n_customers, mean = old_mean + actual_effect, sd = old_sd),\n  layout = \"New Layout Test\"\n)\nobserved_mean &lt;- mean(new_layout_data$spending)\nz_score &lt;- (observed_mean - old_mean) / se\np_value &lt;- pnorm(z_score, lower.tail = FALSE)\n\ndata_plot &lt;- ggplot() +\n  geom_line(data = theory_df, aes(x = spending, y = sampling_density), color = \"purple\", linewidth = 1) +\n  geom_area(data = theory_df, aes(x = spending, y = sampling_density), fill = \"purple\", alpha = 0.1) +\n  geom_vline(xintercept = old_mean, linetype = \"solid\", color = \"darkblue\") +\n  annotate(\"text\", x = old_mean - 1, y = max(theory_df$sampling_density) * 0.9,\n    label = \"Old Layout Mean\\n(null hypothesis)\", hjust = 1, color = \"darkblue\") +\n  geom_vline(xintercept = old_mean + qnorm(0.95) * se, linetype = \"dotted\", color = \"red\") +\n  geom_vline(xintercept = observed_mean, linetype = \"dashed\", color = \"forestgreen\", linewidth = 1) +\n  annotate(\"text\", x = observed_mean + 1, y = max(theory_df$sampling_density) * 0.9,\n    label = paste0(\"New Layout\\nObserved Mean: \", round(observed_mean, 1), \"€\"), hjust = 0, color = \"forestgreen\") +\n  geom_jitter(data = new_layout_data, aes(x = spending, y = 0), height = 0.0005, color = \"forestgreen\", alpha = 0.7) +\n  geom_density(data = new_layout_data, aes(x = spending), color = \"forestgreen\", fill = \"forestgreen\", alpha = 0.2, adjust = 1.5) +\n  geom_area(data = filter(theory_df, spending &gt;= observed_mean),\n    aes(x = spending, y = sampling_density), fill = \"red\", alpha = 0.3) +\n  annotate(\"text\", x = 100, y = max(theory_df$sampling_density) * 0.7,\n    label = paste0(\"p-value = \", round(p_value, 4), \"\\nz-score = \", round(z_score, 2)),\n    color = \"red\", hjust = 0.5) +\n  labs(\n    title = \"Statistical Analysis of New Layout Test\",\n    subtitle = \"Evaluating evidence against the null hypothesis\",\n    x = \"Customer Spending (€)\", y = \"Probability Density\"\n  ) +\n  theme_minimal()\n\nggarrange(theory_plot, data_plot, ncol = 1, nrow = 2, labels = c(\"A\", \"B\"), heights = c(1, 1.2))\n\n\n\n\n\n\n\n\nFigure 4: How probability theory and statistics work in conjunction to evaluate evidence.\n\n\n\n\n\nThis partnership creates several important capabilities. It allows us to move beyond simple description to meaningful inference — we don’t just observe that sales increased by 15%, we can assess whether this increase is likely due to our intervention or could reasonably be explained by normal business fluctuations. It also helps us calibrate our confidence in conclusions.\n\nIf probability calculations show that we’d see a 15% sales increase less than 5% of the time purely by chance, we can be fairly confident that our marketing campaign contributed to the improvement. If such an increase would happen 40% of the time by chance alone, we should be much more cautious about claiming success.\n\n\n\n5 The Role of Uncertainty in Business and Research\nUnderstanding uncertainty represents perhaps the most crucial mindset shift for approaching statistics. Rather than eliminating uncertainty, statistics teaches us to acknowledge it as an inherent feature of complex systems and to make rational decisions despite incomplete information.\nIn empirical contexts, uncertainty permeates every observation and decision. Even within organizations, processes contain natural variation, and outcomes depend on countless factors.\n\nConsider a product manager deciding how many units to manufacture for the upcoming holiday season. They might estimate demand at 10,000 units based on historical data and market research. However, actual demand could easily range from 7,000 to 13,000 units depending on economic conditions, competitor actions, weather, and many other factors. Statistics doesn’t eliminate this uncertainty, but it helps the manager understand the range of possibilities and make informed decisions about production levels, inventory management, and risk mitigation.\n\nStatistics teaches us that uncertainty isn’t a flaw in our analysis — it’s a fundamental characteristic of the world we must incorporate into our thinking. This perspective affects how we interpret findings and draw conclusions.\n\nA training program might show an average productivity increase of 12%, but this could mean that most employees see improvements between 8–16%, while a few see dramatic gains and others see little change. Understanding this variability helps set realistic expectations and tailor implementation strategies.\n\nEmbracing uncertainty also cultivates intellectual humility. Statistical thinking encourages us to be appropriately cautious about our conclusions, to acknowledge the limitations of our data and methods, and to update our beliefs when presented with new evidence.\n\n\n6 Building Statistical Intuition\nAs you work through these materials, remember that developing statistical understanding is not just about tools and techniques — it is about cultivating a way of thinking about evidence, uncertainty, and decision-making.\nStatistical thinking involves several key habits of mind: being curious about data and asking probing questions about what patterns might mean; being appropriately skeptical of simple explanations for complex phenomena while remaining open to evidence; and being comfortable making decisions under uncertainty while acknowledging the limits of your knowledge.\nThe concepts introduced here — the need for reference points to interpret data, the partnership between probability and statistics, the reality of uncertainty in empirical work — will become more concrete and intuitive as you work with real data. They reappear throughout the other pages in the statistics recap track, each time in a more applied context.\n\n\n\n7 Comments and questions\n\n\n\n\n\n\n\nCitationBibTeX citation:@misc{gräbner-radkowitsch2026,\n  author = {Gräbner-Radkowitsch, Claudius},\n  editor = {Gräbner-Radkowitsch, Claudius},\n  title = {Conceptual {Foundations} of {Statistics}},\n  date = {2026-06-15},\n  url = {https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGräbner-Radkowitsch, Claudius. 2026. “Conceptual Foundations of\nStatistics.” In Methods Hub, edited by Claudius\nGräbner-Radkowitsch. June 15. https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Conceptual Foundations of Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/descriptive-statistics.html",
+    "href": "resources/statistics/descriptive-statistics.html",
+    "title": "Descriptive Statistics in R",
+    "section": "",
+    "text": "Packages used in R examples\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(ggplot2)\nlibrary(ggpubr)\nlibrary(knitr)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Descriptive Statistics in R"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/descriptive-statistics.html#correlation-matrices",
+    "href": "resources/statistics/descriptive-statistics.html#correlation-matrices",
+    "title": "Descriptive Statistics in R",
+    "section": "4.1 Correlation Matrices",
+    "text": "4.1 Correlation Matrices\nWhen working with multiple variables simultaneously, correlation matrices show the correlation between every pair of variables in your dataset. The diagonal always contains 1s (every variable is perfectly correlated with itself) and the matrix is symmetric.\nWhen interpreting correlation matrices, look for:\n\nStrong positive correlations (close to +1) suggesting complementary metrics\nStrong negative correlations (close to −1) indicating potential trade-offs\nWeak correlations (close to 0) suggesting independent factors\n\n\n\nCreate artificial data ‘business_metrics’\nset.seed(123)\nbusiness_metrics &lt;- data.frame(\n  advertising_spend = rnorm(100, mean = 50, sd = 15),\n  customer_satisfaction = rnorm(100, mean = 3.8, sd = 0.5),\n  employee_satisfaction = rnorm(100, mean = 3.5, sd = 0.6),\n  training_hours = rnorm(100, mean = 25, sd = 8)\n) |&gt;\n  mutate(\n    sales_revenue = 100 + 1.2 * advertising_spend + 30 * customer_satisfaction + rnorm(100, 0, 20),\n    customer_satisfaction = customer_satisfaction + 0.3 * employee_satisfaction + rnorm(100, 0, 0.2),\n    employee_satisfaction = employee_satisfaction + 0.02 * training_hours + rnorm(100, 0, 0.15),\n    profit_margin = 15 + sales_revenue * 0.1 - advertising_spend * 0.5 +\n      customer_satisfaction * 2 + rnorm(100, 0, 5),\n    customer_satisfaction = pmax(1, pmin(5, customer_satisfaction)),\n    employee_satisfaction = pmax(1, pmin(5, employee_satisfaction))\n  )\n\ncorrelation_matrix &lt;- cor(business_metrics)\n\n\n\n\nVisualize correlation matrix\ncorrelation_matrix |&gt;\n  as.data.frame() |&gt;\n  mutate(var1 = rownames(correlation_matrix)) |&gt;\n  pivot_longer(cols = -var1, names_to = \"var2\", values_to = \"correlation\") |&gt;\n  mutate(\n    var1_clean = case_when(\n      var1 == \"advertising_spend\" ~ \"Advertising Spend\",\n      var1 == \"customer_satisfaction\" ~ \"Customer Satisfaction\",\n      var1 == \"employee_satisfaction\" ~ \"Employee Satisfaction\",\n      var1 == \"training_hours\" ~ \"Training Hours\",\n      var1 == \"sales_revenue\" ~ \"Sales Revenue\",\n      var1 == \"profit_margin\" ~ \"Profit Margin\",\n      TRUE ~ var1\n    ),\n    var2_clean = case_when(\n      var2 == \"advertising_spend\" ~ \"Advertising Spend\",\n      var2 == \"customer_satisfaction\" ~ \"Customer Satisfaction\",\n      var2 == \"employee_satisfaction\" ~ \"Employee Satisfaction\",\n      var2 == \"training_hours\" ~ \"Training Hours\",\n      var2 == \"sales_revenue\" ~ \"Sales Revenue\",\n      var2 == \"profit_margin\" ~ \"Profit Margin\",\n      TRUE ~ var2\n    )\n  ) |&gt;\n  ggplot(aes(x = var2_clean, y = var1_clean, fill = correlation)) +\n  geom_tile(color = \"white\", linewidth = 0.3) +\n  geom_text(aes(label = round(correlation, 2)), color = \"black\", size = 3) +\n  scale_fill_gradient2(low = \"darkred\", mid = \"white\", high = \"darkblue\",\n    midpoint = 0, limit = c(-1, 1), name = \"Correlation\\nCoefficient\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1),\n    axis.title = element_blank(), panel.grid = element_blank()) +\n  labs(title = \"Business Metrics Correlation Matrix\")",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Descriptive Statistics in R"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/descriptive-statistics.html#regression",
+    "href": "resources/statistics/descriptive-statistics.html#regression",
+    "title": "Descriptive Statistics in R",
+    "section": "4.2 Regression",
+    "text": "4.2 Regression\nWhile often associated with predictive modeling, regression also serves as a powerful descriptive tool. Think of regression as drawing the “best-fit line” through scattered data points — a mathematical equation that summarizes the relationship between variables.\nThe most common form, linear regression, is written as:\n\\[y = \\beta_0 + \\beta_1 \\boldsymbol{x}_1\\]\nwhere \\(\\beta_0\\) represents the y-intercept and \\(\\beta_1\\) represents the slope coefficient. For multiple regression with several predictors:\n\\[y = \\beta_0 + \\beta_1 \\boldsymbol{x}_1 + \\beta_2 \\boldsymbol{x}_2 + \\ldots + \\beta_k \\boldsymbol{x}_k\\]\nEach \\(\\beta\\) coefficient describes how \\(y\\) changes when the corresponding predictor variable changes by one unit, holding all other variables constant. Unlike correlation, which only indicates strength and direction, regression coefficients provide interpretable measures of how variables actually relate to each other in your data.\n\nExample: Consider a marketing manager analyzing the relationship between monthly advertising spend and sales revenue. Figure 2 shows a regression based on: \\[\\text{sales} = \\beta_0 + \\beta_1 \\cdot \\text{advertising}\\] The coefficient \\(\\hat{\\beta}_1\\) (approximately 2.5) provides a clear descriptive measure: for each additional thousand euros spent on advertising, monthly sales revenue increase on average by about €2,500. The intercept \\(\\hat{\\beta}_0\\) of around 50 represents the theoretical sales revenue when advertising spend is zero — though this value often has less practical interpretation.\nThe dotted lines — representing residuals — show the “misses” between what our regression line predicts and the actual sales values. As a descriptive tool, this regression cannot claim that advertising directly causes sales increases. It simply summarizes the historical relationship in a quantifiable way.\n\n\n\nCreate data and conduct regression\nset.seed(123)\nadvertising_spend &lt;- seq(15, 37, by = 2)\nsales_revenue &lt;- 50 + 2.5 * advertising_spend + rnorm(12, 0, 5)\n\nmarketing_data &lt;- data.frame(\n  month = month.abb[1:12],\n  advertising_spend = advertising_spend,\n  sales_revenue = sales_revenue\n)\n\nmodel &lt;- lm(sales_revenue ~ advertising_spend, data = marketing_data)\nbeta0 &lt;- coef(model)[1]\nbeta1 &lt;- coef(model)[2]\n\nmarketing_data$fitted &lt;- fitted(model)\nmarketing_data$residuals &lt;- residuals(model)\n\n\n\n\nR code for the visualization\nggplot(marketing_data, aes(x = advertising_spend, y = sales_revenue)) +\n  geom_point(size = 3, color = \"steelblue\") +\n  geom_smooth(method = \"lm\", se = FALSE, color = \"darkred\") +\n  geom_segment(aes(xend = advertising_spend, yend = fitted), linetype = \"dotted\", color = \"gray30\") +\n  labs(\n    title = \"Advertising Expenditure and Sales Revenue\",\n    subtitle = paste0(\"y = \", round(beta0, 1), \" + \", round(beta1, 2), \"x\"),\n    x = \"Monthly Advertising Spend (thousands €)\",\n    y = \"Monthly Sales Revenue (thousands €)\",\n    caption = \"Dotted lines represent residuals — the difference between\\nactual sales and what the regression line predicts\"\n  ) +\n  annotate(\"text\", x = 30, y = 110,\n    label = \"Residuals show how much\\nactual sales differ from\\nwhat our line predicts\", size = 3, hjust = 0) +\n  annotate(\"curve\", x = 29, y = 110, xend = 27, yend = 120,\n    arrow = arrow(length = unit(0.2, \"cm\")), curvature = -0.3) +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\"), plot.subtitle = element_text(face = \"italic\"))\n\n\n\n\n\n\n\n\nFigure 2: The regression line summarizing the marketing example. Dotted lines are residuals.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Descriptive Statistics in R"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html",
+    "href": "resources/statistics/probability-theory-essentials.html",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "",
+    "text": "Packages used for R examples\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(stringr)\nlibrary(purrr)\nlibrary(ggpubr)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#random-experiments-the-source-of-uncertainty",
+    "href": "resources/statistics/probability-theory-essentials.html#random-experiments-the-source-of-uncertainty",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "2.1 Random Experiments: The Source of Uncertainty",
+    "text": "2.1 Random Experiments: The Source of Uncertainty\nA random experiment is any process or activity whose outcome cannot be predicted with certainty beforehand, even when we understand the factors involved.\nKey characteristics of random experiments:\n\nThe outcome is uncertain before the experiment occurs\nWe can usually identify all possible outcomes\nUnder similar conditions, different outcomes may occur\n\n\nExample 1: Product Launch. Launching a new product in a regional market is a random experiment. Even with extensive market research, you cannot know with certainty how many units will sell in the first quarter.\n\n\nExample 2: Job Interview Process. Selecting a candidate through interviews is a random experiment. Despite standardized questions, the final hiring decision involves uncertainty about how well the candidate will perform on the job.\n\n\nExample 3: Marketing Campaign. Running an advertising campaign represents a random experiment. Though you can estimate response rates based on historical data, the actual number of conversions remains uncertain until the campaign runs.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#events-what-we-care-about",
+    "href": "resources/statistics/probability-theory-essentials.html#events-what-we-care-about",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "2.2 Events: What We Care About",
+    "text": "2.2 Events: What We Care About\nAn event is a specific outcome or collection of outcomes from a random experiment that we are particularly interested in.\nIn the context of a product launch experiment, possible events include:\n\nEvent A: “Sales exceed €1 million in the first quarter”\nEvent B: “The product breaks even within six months”\nEvent C: “Customer satisfaction scores average above 8.0”\n\nNotice how events allow us to focus on specific business outcomes rather than all possible details of the experiment.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#probability-measuring-likelihood",
+    "href": "resources/statistics/probability-theory-essentials.html#probability-measuring-likelihood",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "2.3 Probability: Measuring Likelihood",
+    "text": "2.3 Probability: Measuring Likelihood\nProbability quantifies how likely an event is to occur. It provides a numerical scale from 0 to 1 (or 0% to 100%) where:\n\nProbability = 0 means the event is impossible\nProbability = 1 means the event is certain\nProbability = 0.5 means the event is equally likely to occur or not occur\n\nIn business contexts, the concept of probability is essential when assessing risks and opportunities, making informed decisions under uncertainty, or communicating about likelihood in precise and transparent terms.\n\nExample: Product Launch Probabilities. Based on market research and historical data, you might conclude that:\n\nThe probability that total sales exceed 1M EUR is 70%: \\(\\mathbb{P}(R &gt; 1M) = 0.7\\)\nThe probability that the project breaks even within 6 months is 85%: \\(\\mathbb{P}(BE) = 0.85\\)\nThe probability that the customer satisfaction score exceeds 8 is 60%: \\(\\mathbb{P}(CSC &gt; 8) = 0.6\\)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#conditional-probability-when-context-matters",
+    "href": "resources/statistics/probability-theory-essentials.html#conditional-probability-when-context-matters",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "2.4 Conditional Probability: When Context Matters",
+    "text": "2.4 Conditional Probability: When Context Matters\nConditional probability answers the question: “What’s the likelihood of Event A happening, given that Event B has already occurred or is known to be true?”\nWe write this as \\(\\mathbb{P}(A|B)\\), read as “the probability of A given B.”\nExample: Marketing Campaign Success\nConsider the probability that a marketing campaign generates high conversion rates. While we can operate with a baseline probability:\n\\[\\mathbb{P}(\\text{High conversions}) = 0.3\\]\nadditional information about the economic environment allows us to make more precise statements:\n\\[\\mathbb{P}(\\text{High conversions}|\\text{Economic boom}) = 0.5\\] \\[\\mathbb{P}(\\text{High conversions}|\\text{Economic recession}) = 0.15\\]\nThe conditional probabilities differ significantly from the baseline, showing how context dramatically affects business outcomes.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#short-recap",
+    "href": "resources/statistics/probability-theory-essentials.html#short-recap",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "2.5 Short Recap",
+    "text": "2.5 Short Recap\nThese building blocks work together in every empirical analysis:\n\nIdentify the random experiment: What uncertain process are you analyzing?\nDefine relevant events: What specific outcomes matter for your decision?\nAssess probabilities: What’s the likelihood of each event?\nConsider conditional probabilities: How does available information change these likelihoods?",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#why-is-a-random-variable-called-a-function",
+    "href": "resources/statistics/probability-theory-essentials.html#why-is-a-random-variable-called-a-function",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "3.1 Why is a Random Variable Called a “Function”?",
+    "text": "3.1 Why is a Random Variable Called a “Function”?\nA random variable is a function with a specific purpose: it maps the possible outcomes of a random experiment to numerical values. It is a systematic rule that converts whatever might happen into numbers we can analyze.\nConsider flipping a coin twice. Four outcomes are possible: HH, HT, TH, or TT. If we define a random variable \\(X\\) that counts the number of heads:\n\n\\(X(HH) = 2\\) (two heads)\n\\(X(HT) = 1\\) (one head)\n\\(X(TH) = 1\\) (one head)\n\\(X(TT) = 0\\) (zero heads)\n\nNotice that \\(X\\) is a fixed rule that always gives the same output for the same input. The randomness comes from not knowing which outcome will actually occur when we flip the coins.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#examples-of-random-variables",
+    "href": "resources/statistics/probability-theory-essentials.html#examples-of-random-variables",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "3.2 Examples of Random Variables",
+    "text": "3.2 Examples of Random Variables\n\nExample 1: Customer satisfaction surveys represent a random process where each customer’s experience leads to a numerical rating — the random variable captures satisfaction levels across the customer base.\n\n\nExample 2: Marketing campaign performance — the ROI percentage is a random variable that quantifies campaign effectiveness.\n\n\nExample 3: Employee attendance — a random variable counting monthly sick days captures workforce availability.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#discrete-vs.-continuous-random-variables",
+    "href": "resources/statistics/probability-theory-essentials.html#discrete-vs.-continuous-random-variables",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "3.3 Discrete vs. Continuous Random Variables",
+    "text": "3.3 Discrete vs. Continuous Random Variables\nDiscrete random variables result from counting processes — they can only take specific, separated values. Customer satisfaction ratings (1, 2, …, 10) and sick day counts (0, 1, 2, …) are discrete.\nContinuous random variables result from measuring processes — they can take any value within a range. Marketing ROI could be 5.23%, 5.234%, or 5.2341%. These values represent points along a continuous spectrum.\nThe distinction matters because discrete and continuous variables require different visualization techniques, different probability calculations, and different statistical tests.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#using-random-variables-in-r",
+    "href": "resources/statistics/probability-theory-essentials.html#using-random-variables-in-r",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "3.4 Using Random Variables in R",
+    "text": "3.4 Using Random Variables in R\nThe sample() function allows you to draw random values from a specified vector of possible outcomes, making it particularly well-suited for discrete random variables.\n\n\nDiscrete RV in R using sample()\ncoin_outcomes_possible &lt;- c(\"Heads\", \"Tails\")\ncoin_outcomes_actual &lt;- sample(x = coin_outcomes_possible, size = 10, replace = TRUE)\n\ndice_outcomes_possible &lt;- 1:6\ndice_outcomes_actual &lt;- sample(x = dice_outcomes_possible, size = 5, replace = TRUE)\n\n# Sampling employees for a focus group (without replacement)\nemployee_ids &lt;- 1:50\nemployee_sample &lt;- sample(x = employee_ids, size = 8, replace = FALSE)\n\n\nYou can also specify different probabilities for each outcome using the prob argument:\n\n\nUsing different probabilities in sample()\npurchase_outcomes &lt;- c(\"No Purchase\", \"Small Purchase\", \"Large Purchase\")\npurchase_probabilities &lt;- c(0.7, 0.2, 0.1)\npurchases &lt;- sample(x = purchase_outcomes, size = 100, replace = TRUE, prob = purchase_probabilities)\n\n\nFor true continuous random variables, R provides specialized functions for different probability distributions — which we explore in the next section.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#the-normal-distribution-natures-favourite-pattern",
+    "href": "resources/statistics/probability-theory-essentials.html#the-normal-distribution-natures-favourite-pattern",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "4.1 The Normal Distribution: Nature’s Favourite Pattern",
+    "text": "4.1 The Normal Distribution: Nature’s Favourite Pattern\nThe normal distribution appears remarkably often when many small, independent factors combine to influence an outcome. It is characterized by:\n\nPerfect symmetry around its center point\nMost values clustering near the center\nProbability decreasing smoothly toward the tails\nA distinctive bell shape\n\nTheoretical vs. empirical distributions. When we refer to a “theoretical” normal distribution, we mean the mathematically perfect, idealized version described by precise equations. When we collect real data, we get an empirical distribution — actual observations from the real world. Real data might have slight asymmetries or irregularities due to measurement limitations, sample size, or the complex nature of business processes. The key insight is that even when real data isn’t perfectly normal, it often resembles the theoretical distribution closely enough that we can use normal distribution methods for analysis.\n\n\nEmpirical vs. theoretical normal: performance ratings and defect rates\nset.seed(123)\nperformance_data &lt;- tibble(\n  performance_rating = rnorm(n = 800, mean = 77, sd = 12) |&gt;\n    pmax(1) |&gt; pmin(100) |&gt; round()\n)\n\nsample_mean &lt;- mean(performance_data$performance_rating)\nsample_sd &lt;- sd(performance_data$performance_rating)\n\np1 &lt;- ggplot(performance_data, aes(x = performance_rating)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 20, fill = \"#3498db\", alpha = 0.7, color = \"white\") +\n  stat_function(fun = dnorm, args = list(mean = sample_mean, sd = sample_sd),\n    color = \"#e74c3c\", linewidth = 1.5) +\n  scale_x_continuous(breaks = seq(40, 120, 10), limits = c(40, 120)) +\n  labs(title = \"Employee Performance Ratings\",\n    subtitle = paste(\"Empirical vs. Theoretical Distribution\\nSample Mean =\", round(sample_mean, 1), \", Sample SD =\", round(sample_sd, 1)),\n    x = \"Performance Rating (1–100 scale)\", y = \"Density\",\n    caption = \"Blue bars: actual data | Red line: fitted normal distribution\") +\n  theme_minimal() +\n  theme(plot.title = element_text(size = 13, face = \"bold\", hjust = 0.5),\n    plot.subtitle = element_text(size = 11, color = \"gray60\", hjust = 0.5),\n    panel.grid.minor = element_blank())\n\nset.seed(456)\ndefect_data &lt;- tibble(\n  defect_rate = exp(rnorm(n = 600, mean = log(2.5), sd = 0.3)) |&gt; pmin(15) |&gt; round(2)\n)\ndefect_mean &lt;- mean(defect_data$defect_rate)\ndefect_sd &lt;- sd(defect_data$defect_rate)\n\np2 &lt;- ggplot(defect_data, aes(x = defect_rate)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 25, fill = \"#27ae60\", alpha = 0.7, color = \"white\") +\n  stat_function(fun = dnorm, args = list(mean = defect_mean, sd = defect_sd),\n    color = \"#c0392b\", linewidth = 1.5) +\n  scale_x_continuous(limits = c(-0.9, 6.5), breaks = seq(0, 6, 2),\n    labels = function(x) paste0(x, \"%\")) +\n  labs(title = \"Manufacturing Defect Rates\",\n    subtitle = paste0(\"Empirical vs. Theoretical Distribution\\nSample Mean = \", round(defect_mean, 2), \"%, Sample SD = \", round(defect_sd, 2), \"%\"),\n    x = \"Defect Rate per Batch\", y = \"Density\",\n    caption = \"Green bars: actual data | Red line: fitted normal distribution\") +\n  theme_minimal() +\n  theme(plot.title = element_text(size = 13, face = \"bold\", hjust = 0.5),\n    plot.subtitle = element_text(size = 11, color = \"gray60\", hjust = 0.5),\n    panel.grid.minor = element_blank())\n\nggarrange(p1, p2, ncol = 2)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#parameters-the-dials-that-control-distribution-shape",
+    "href": "resources/statistics/probability-theory-essentials.html#parameters-the-dials-that-control-distribution-shape",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "4.2 Parameters: The Dials That Control Distribution Shape",
+    "text": "4.2 Parameters: The Dials That Control Distribution Shape\nEvery probability distribution is governed by parameters — specific numbers that determine its exact shape and characteristics.\nThe normal distribution has two key parameters:\nMean \\(\\mu\\): Controls where the distribution is centered. Change the mean and you slide the entire distribution left or right without changing its shape.\nStandard deviation \\(\\sigma\\): Controls how spread out the distribution is. A smaller standard deviation creates a narrow, tall bell curve; a larger one creates a wider, flatter bell curve.\nWe write \\(X \\sim \\mathcal{N}(\\mu, \\sigma)\\) to say that a random variable \\(X\\) follows a normal distribution with a particular mean and standard deviation.\n\n\nHow mean and standard deviation shape normal distributions\nx_values &lt;- seq(-10, 20, length.out = 1000)\n\ndistributions &lt;- tibble(\n  x = rep(x_values),\n  density_1 = dnorm(x_values, mean = 2, sd = 1),\n  density_2 = dnorm(x_values, mean = 2, sd = 3),\n  density_3 = dnorm(x_values, mean = 10, sd = 1),\n  density_4 = dnorm(x_values, mean = 10, sd = 3)\n) |&gt;\n  pivot_longer(cols = starts_with(\"density_\"), names_to = \"distribution\",\n    values_to = \"density\", names_prefix = \"density_\") |&gt;\n  mutate(\n    distribution_label = case_when(\n      distribution == \"1\" ~ \"μ = 2, σ = 1\\n(Small mean, small SD)\",\n      distribution == \"2\" ~ \"μ = 2, σ = 3\\n(Small mean, large SD)\",\n      distribution == \"3\" ~ \"μ = 10, σ = 1\\n(Large mean, small SD)\",\n      distribution == \"4\" ~ \"μ = 10, σ = 3\\n(Large mean, large SD)\"\n    ),\n    distribution_label = factor(distribution_label, levels = c(\n      \"μ = 2, σ = 1\\n(Small mean, small SD)\",\n      \"μ = 2, σ = 3\\n(Small mean, large SD)\",\n      \"μ = 10, σ = 1\\n(Large mean, small SD)\",\n      \"μ = 10, σ = 3\\n(Large mean, large SD)\"\n    ))\n  )\n\nggplot(distributions, aes(x = x, y = density)) +\n  geom_line(aes(color = distribution_label), linewidth = 1.2, alpha = 0.9) +\n  geom_area(aes(fill = distribution_label), alpha = 0.3) +\n  geom_vline(\n    data = tibble(\n      distribution_label = factor(c(\n        \"μ = 2, σ = 1\\n(Small mean, small SD)\",\n        \"μ = 2, σ = 3\\n(Small mean, large SD)\",\n        \"μ = 10, σ = 1\\n(Large mean, small SD)\",\n        \"μ = 10, σ = 3\\n(Large mean, large SD)\"\n      ), levels = c(\n        \"μ = 2, σ = 1\\n(Small mean, small SD)\",\n        \"μ = 2, σ = 3\\n(Small mean, large SD)\",\n        \"μ = 10, σ = 1\\n(Large mean, small SD)\",\n        \"μ = 10, σ = 3\\n(Large mean, large SD)\"\n      )),\n      mean_value = c(2, 2, 10, 10)\n    ),\n    aes(xintercept = mean_value), linetype = \"dashed\", color = \"black\", alpha = 0.7\n  ) +\n  facet_wrap(~distribution_label, scales = \"free_y\", ncol = 2) +\n  scale_color_manual(values = c(\n    \"μ = 2, σ = 1\\n(Small mean, small SD)\" = \"#e74c3c\",\n    \"μ = 2, σ = 3\\n(Small mean, large SD)\" = \"#3498db\",\n    \"μ = 10, σ = 1\\n(Large mean, small SD)\" = \"#27ae60\",\n    \"μ = 10, σ = 3\\n(Large mean, large SD)\" = \"#9b59b6\"\n  )) +\n  scale_fill_manual(values = c(\n    \"μ = 2, σ = 1\\n(Small mean, small SD)\" = \"#e74c3c\",\n    \"μ = 2, σ = 3\\n(Small mean, large SD)\" = \"#3498db\",\n    \"μ = 10, σ = 1\\n(Large mean, small SD)\" = \"#27ae60\",\n    \"μ = 10, σ = 3\\n(Large mean, large SD)\" = \"#9b59b6\"\n  )) +\n  scale_x_continuous(breaks = seq(-5, 15, 5), limits = c(-8, 20)) +\n  labs(title = \"How Mean and Standard Deviation Shape Normal Distributions\",\n    x = \"Value\", y = \"Probability Density\",\n    caption = \"Dashed lines show the mean (μ) of each distribution\") +\n  theme_minimal() +\n  theme(legend.position = \"none\", strip.text = element_text(size = 11, face = \"bold\"),\n    plot.title = element_text(size = 14, face = \"bold\"), panel.grid.minor = element_blank())\n\n\n\n\n\n\n\n\n\nFitting a distribution. “Fitting” a distribution means choosing those parameter values that maximize the similarity between the theoretical probability distribution and the empirical distribution of the data.\n\n\nFitting normal distributions to two business examples\nset.seed(789)\ncustomer_satisfaction &lt;- tibble(\n  satisfaction_score = rnorm(n = 400, mean = 7.5, sd = 1.2) |&gt;\n    pmax(1) |&gt; pmin(10) |&gt; round(1)\n)\n\nmonthly_sales &lt;- tibble(\n  sales_revenue = rnorm(n = 350, mean = 50000, sd = 8000) |&gt; pmax(10000) |&gt; round(-2)\n)\n\np1 &lt;- ggplot(customer_satisfaction, aes(x = satisfaction_score)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 18, fill = \"#3498db\", alpha = 0.7, color = \"white\", boundary = 1) +\n  stat_function(fun = dnorm, args = list(mean = 7.5, sd = 1.2), color = \"#e74c3c\", linewidth = 1.5) +\n  geom_vline(xintercept = 7.5, color = \"#2c3e50\", linetype = \"dashed\", linewidth = 1) +\n  geom_vline(xintercept = c(7.5 - 1.2, 7.5 + 1.2), color = \"#95a5a6\", linetype = \"dotted\", alpha = 0.8) +\n  scale_x_continuous(breaks = 1:10, limits = c(1, 10)) +\n  labs(title = \"Customer Satisfaction Scores\",\n    subtitle = \"Empirical Data vs. Fitted Normal Distribution\",\n    x = \"Customer Satisfaction Score (1–10 scale)\", y = \"Probability Density\",\n    caption = \"Blue bars: actual survey data | Red line: N(7.5, 1.2) | Dashed: mean | Dotted: ±1 SD\") +\n  theme_minimal() +\n  theme(plot.title = element_text(size = 13, face = \"bold\", hjust = 0.5),\n    panel.grid.minor = element_blank())\n\np2 &lt;- ggplot(monthly_sales, aes(x = sales_revenue)) +\n  geom_histogram(aes(y = after_stat(density)), bins = 20, fill = \"#27ae60\", alpha = 0.7, color = \"white\") +\n  stat_function(fun = dnorm, args = list(mean = 50000, sd = 8000), color = \"#c0392b\", linewidth = 1.5) +\n  geom_vline(xintercept = 50000, color = \"#2c3e50\", linetype = \"dashed\", linewidth = 1) +\n  geom_vline(xintercept = c(50000 - 8000, 50000 + 8000), color = \"#95a5a6\", linetype = \"dotted\", alpha = 0.8) +\n  scale_x_continuous(\n    labels = scales::label_number(scale = 1/1000, suffix = \"k\", accuracy = 1),\n    breaks = scales::pretty_breaks(n = 6)) +\n  labs(title = \"Monthly Sales Revenue\",\n    subtitle = \"Empirical Data vs. Fitted Normal Distribution\",\n    x = \"Monthly Sales Revenue (EUR)\", y = \"Probability Density\",\n    caption = \"Green bars: actual sales data | Red line: N(50000, 8000) | Dashed: mean | Dotted: ±1 SD\") +\n  theme_minimal() +\n  theme(plot.title = element_text(size = 13, face = \"bold\", hjust = 0.5),\n    panel.grid.minor = element_blank())\n\nggarrange(p1, p2, ncol = 2)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#why-focus-on-the-normal-distribution",
+    "href": "resources/statistics/probability-theory-essentials.html#why-focus-on-the-normal-distribution",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "4.3 Why Focus on the Normal Distribution?",
+    "text": "4.3 Why Focus on the Normal Distribution?\nThe normal distribution is used so frequently for good reasons:\nUbiquity in empirical data: Many measurements approximate normal distributions, especially when multiple factors influence outcomes.\nMathematical tractability: The normal distribution has elegant mathematical properties that make calculations manageable.\nFoundation for inference: The Central Limit Theorem (covered in Sampling and Inference) shows that sample means tend toward normal distributions regardless of the underlying population shape, making the normal distribution central to statistical inference.\nBenchmark for comparison: Understanding the normal distribution helps you recognize when your data deviates from this pattern, often revealing important insights.\nStill, you should be aware that the normal distribution is sometimes used in situations where it is not the best choice and might even be misleading. For an overview of other distributions and when to use them, see Common Probability Distributions.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#working-with-the-normal-distribution-in-r",
+    "href": "resources/statistics/probability-theory-essentials.html#working-with-the-normal-distribution-in-r",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "4.4 Working with the Normal Distribution in R",
+    "text": "4.4 Working with the Normal Distribution in R\nFour functions give you everything you need for working with the normal distribution. Each takes the same basic arguments: the value(s) of interest, the mean, and sd. By default, they assume the standard normal distribution (mean = 0, sd = 1).\ndnorm() (for density) calculates the height of the normal curve at any given point. Use this when creating smooth curves for visualization or when you want to know how “concentrated” the probability is at a specific value.\n\n\nUsing dnorm()\ndnorm(0)                           # Height at the peak (mean)\ndnorm(8, mean = 7.5, sd = 1.2)    # Density at satisfaction score of 8\n\n# Useful for plotting smooth curves:\nggplot() +\n  stat_function(fun = dnorm, args = list(mean = 7.5, sd = 1.2), xlim = c(4, 11)) +\n  labs(title = \"Customer Satisfaction Distribution\", x = \"Satisfaction Score\", y = \"Density\") +\n  theme_linedraw()\n\n\npnorm() (for probability) calculates cumulative probabilities — “what’s the probability that a randomly selected value is less than or equal to X?” This is your go-to tool for computing areas under the normal curve, which correspond to probabilities of events occurring.\n\n\nUsing pnorm()\n# What's the probability that monthly sales are €45,000 or less?\npnorm(45000, mean = 50000, sd = 8000)\n\n# What's the probability of sales exceeding €60,000?\n1 - pnorm(60000, mean = 50000, sd = 8000)\n\n# Probability of sales falling between €45,000 and €55,000\npnorm(55000, mean = 50000, sd = 8000) - pnorm(45000, mean = 50000, sd = 8000)\n\n# Customer satisfaction: probability of score above 8.5\n1 - pnorm(8.5, mean = 7.5, sd = 1.2)\n\n\nqnorm() (for quantiles) works as the inverse of pnorm() — given a probability, it tells you what value corresponds to that percentile. While pnorm() tells you the probability of scoring below a certain value, qnorm() tells you what score you need to achieve to be in the top 10% of performers.\n\n\nUsing qnorm()\n# Customer satisfaction: what score puts a customer in the top 10%?\nqnorm(0.9, mean = 7.5, sd = 1.2)\n\n# Performance thresholds: bottom 25% vs. top 25%\nqnorm(0.25, mean = 75, sd = 12)\nqnorm(0.75, mean = 75, sd = 12)\n\n# What revenue puts you in the top 5% of months?\nqnorm(0.95, mean = 50000, sd = 8000)\n\n# Middle 95% boundaries\nqnorm(c(0.025, 0.975), mean = 100, sd = 15)\n\n\nrnorm() (for random numbers) generates random samples from a normal distribution. This is important for creating example data or testing statistical methods under known conditions.\n\n\nUsing rnorm()\nset.seed(123)\ncustomer_scores &lt;- rnorm(100, mean = 7.5, sd = 1.2)\nmonthly_sales &lt;- rnorm(12, mean = 50000, sd = 8000)\n\n# Verify simulation matches theoretical parameters\nlarge_sample &lt;- rnorm(1000, mean = 7.5, sd = 1.2)\nmean(large_sample)   # Should be close to 7.5\nsd(large_sample)     # Should be close to 1.2\n\n\n\n\nCombined use of all four functions\nset.seed(789)\nproductivity_scores &lt;- rnorm(250, mean = 75, sd = 12)\n\nscore_range &lt;- seq(40, 110, by = 1)\ntheoretical_density &lt;- dnorm(score_range, mean = 75, sd = 12)\n\nhigh_performers &lt;- 1 - pnorm(85, mean = 75, sd = 12)\npercentile_90 &lt;- qnorm(0.9, mean = 75, sd = 12)",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#expected-value-vs.-typical-value",
+    "href": "resources/statistics/probability-theory-essentials.html#expected-value-vs.-typical-value",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "5.1 Expected Value vs. Typical Value",
+    "text": "5.1 Expected Value vs. Typical Value\nA common misconception is confusing expected value with the most likely outcome.\n\nWhen rolling a standard die, the expected value is 3.5 (calculated as \\(1/6 \\times 1 + 1/6 \\times 2 + \\ldots + 1/6 \\times 6 = 3.5\\)). However, you cannot actually roll 3.5! The expected value represents the average across many rolls, not the outcome of any single roll.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#properties-of-expected-value",
+    "href": "resources/statistics/probability-theory-essentials.html#properties-of-expected-value",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "5.2 Properties of Expected Value",
+    "text": "5.2 Properties of Expected Value\nLinearity: If you multiply all outcomes by a constant or add a constant, the expected value changes in the same predictable way.\n\nIf expected quarterly profit in Germany is €150,000 and the exchange rate is 1.10 USD per euro: \\[\\mathbb{E}[\\text{Profit}_\\text{USD}] = 1.10 \\times 150{,}000 = \\text{USD } 165{,}000\\] If a fixed quarterly tax of USD 20,000 applies: \\[\\mathbb{E}[\\text{Profit}_\\text{AfterTax}] = 165{,}000 + 20{,}000 = \\text{USD } 185{,}000\\]\n\nAdditivity for independent variables: When random variables are independent, the expected value of their sum equals the sum of their expected values.\n\nWhen planning next year’s budget from three independent business units: \\[\\mathbb{E}[\\text{Total Revenue}] = 500{,}000 + 300{,}000 + 150{,}000 = \\text{EUR } 950{,}000\\]\n\nThese properties allow you to break complex uncertain situations into manageable components and combine them systematically.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#understanding-the-connection",
+    "href": "resources/statistics/probability-theory-essentials.html#understanding-the-connection",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "6.1 Understanding the Connection",
+    "text": "6.1 Understanding the Connection\nWhen you calculate the mean of customer satisfaction scores from 100 surveyed customers, you are computing a sample mean using descriptive statistics. But the expected value of customer satisfaction represents the theoretical average you would get if you could survey all customers infinitely many times. Your sample mean serves as an estimate of the expected value.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#descriptive-statistics-as-estimates-of-probability-concepts",
+    "href": "resources/statistics/probability-theory-essentials.html#descriptive-statistics-as-estimates-of-probability-concepts",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "6.2 Descriptive Statistics as Estimates of Probability Concepts",
+    "text": "6.2 Descriptive Statistics as Estimates of Probability Concepts\n\n\n\n\n\n\n\n\nProbability Concept\nDescriptive Statistic\nRelationship\n\n\n\n\nExpected Value (μ)\nSample Mean (x̄)\nThe sample mean estimates the expected value; as sample size increases, it converges to the true expected value\n\n\nPopulation Variance\nSample Variance (σ²)\nSample variance estimates population variance; both measure spread, but the sample version adjusts for estimation uncertainty\n\n\nProbability Distribution\nSample Distribution (Histogram)\nSample histogram approximates the shape of the probability distribution; more data yields better approximation\n\n\nPopulation Median\nSample Median\nSample median estimates the population median\n\n\nProbability P(X = x)\nRelative Frequency\nSample relative frequency estimates probability\n\n\n\nNote that the estimators above are not necessarily the best possible estimators — how to find optimal estimators is a question of inferential statistics.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
+    ]
+  },
+  {
+    "objectID": "resources/statistics/probability-theory-essentials.html#from-description-to-prediction",
+    "href": "resources/statistics/probability-theory-essentials.html#from-description-to-prediction",
+    "title": "Essentials of Probability Theory for Statistics",
+    "section": "6.3 From Description to Prediction",
+    "text": "6.3 From Description to Prediction\nUnderstanding these connections transforms how you think about data analysis. Descriptive statistics tell you what happened in your sample, but probability concepts help you predict what might happen in the future or with different samples.\nWhen you calculate that the average customer spends €347, you are not just describing past behavior — you are estimating a parameter that helps predict future customer behavior. When you observe that spending appears normally distributed in your sample, you are gathering evidence about the probability distribution that generates customer spending patterns.",
+    "crumbs": [
+      "Resources",
+      "Statistics",
+      "Statistics",
+      "Essentials of Probability Theory for Statistics"
     ]
   },
   {
@@ -341,63 +1170,49 @@
     "objectID": "tracks/getting-started-with-r.html#core-sequence",
     "href": "tracks/getting-started-with-r.html#core-sequence",
     "title": "Track: Getting Started with R",
-    "section": "Core sequence",
-    "text": "Core sequence\nWork through these resources in order. Each page builds on the previous one.\n\nGetting Started with R Install R and RStudio, understand the interface, and run your first commands. Start here if you have never opened R before.\n\nAdditional pages will be added to this track as the hub grows."
+    "section": "2 Core sequence",
+    "text": "2 Core sequence\nWork through these resources in order. Each page builds on the previous one.\n\nGetting Started with R Install R and RStudio, understand the interface, and run your first commands. Start here if you have never opened R before.\n\nAdditional pages will be added to this track as the hub grows."
   },
   {
     "objectID": "tracks/getting-started-with-r.html#related-resources",
     "href": "tracks/getting-started-with-r.html#related-resources",
     "title": "Track: Getting Started with R",
-    "section": "Related resources",
-    "text": "Related resources\nAll hub resources tagged with R:\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items"
+    "section": "3 Related resources",
+    "text": "3 Related resources\nAll hub resources tagged with R:\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nGetting Started with R\n\n\nA first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.\n\n\nJun 15, 2026\n\n\n\n\n\n\nCommon Probability Distributions: A Reference Overview\n\n\nAn overview of probability distributions beyond the normal: binomial, Poisson, uniform, exponential, beta, and gamma — with guidance on when to use each and how to work with them in R.\n\n\nJun 15, 2026\n\n\n\n\n\n\nDescriptive Statistics in R\n\n\nA guided introduction to descriptive statistics in R, covering measures of centrality, dispersion, and association — including correlation matrices, simple linear regression, and Anscombe’s quartet as a lesson in why visualization matters.\n\n\nJun 15, 2026\n\n\n\n\n\n\nHypothesis Testing and Confidence Intervals\n\n\nApplying sampling theory to make inferences: how to evaluate claims using data (hypothesis testing and p-values) and how to construct ranges of plausible values for population parameters (confidence intervals).\n\n\nJun 15, 2026\n\n\n\n\n\n\nEssentials of Probability Theory for Statistics\n\n\nA conceptual and practical introduction to probability theory: random experiments, events, conditional probability, random variables, the normal distribution, expected values, and the bridge to descriptive statistics.\n\n\nJun 15, 2026\n\n\n\n\n\n\nSampling and Statistical Inference\n\n\nHow we move from sample statistics to conclusions about populations: sampling variability, Monte Carlo simulation, sampling distributions, standard error, the Central Limit Theorem, and the Law of Large Numbers.\n\n\nJun 15, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Methods Hub",
+    "objectID": "tracks/statistics-recap.html",
+    "href": "tracks/statistics-recap.html",
+    "title": "Track: A Recap of Undergraduate Statistics",
     "section": "",
-    "text": "Methods Hub is a public, citable educational resource library covering research methods in the social sciences. It serves students and researchers at all levels — BA, MA, and PhD — across both methodological topics (research design, literature review, epistemology, experiments) and implementation topics (R programming, data cleaning, visualization, regression).\nResources are written to stand on their own. Each page covers one task or concept, takes 20–40 minutes to work through, and generates its own citation so you can reference it in a course outline or research paper."
+    "text": "This track is for students and researchers who want a solid conceptual and practical grounding in the statistical fundamentals that underpin empirical work in the social sciences and management. It is particularly useful as a self-contained recap for students entering a methods course who need to refresh core ideas, or for anyone whose statistics education was primarily procedural and who wants to build deeper understanding.\nNo prior experience with R is assumed for the first two pages. Pages three and beyond involve R code alongside explanations — you do not need to follow along in R, but doing so will deepen your understanding.\nBy the end of the track, you will be able to describe and summarize data using appropriate statistical measures, interpret probability distributions and use them for inference, and understand the logic connecting sample statistics to population parameters."
   },
   {
-    "objectID": "index.html#where-do-you-want-to-go",
-    "href": "index.html#where-do-you-want-to-go",
-    "title": "Methods Hub",
-    "section": "Where do you want to go?",
-    "text": "Where do you want to go?\n\n\nResource Library\nBrowse or search individual resource pages by topic, level, and content type. Filter by category or use the search box to find what you need.\n\n\nTracks\nCurated learning paths that sequence resources into a coherent progression — useful if you want to build up knowledge on a topic rather than find a single reference.\n\n\nBlog\nEditorial commentary, updates, and notes on new resources and how they fit together.\n\n\nTeaching\nAn index of courses that use this hub as a supporting resource, with links to their separate course sites.\n\n\n\nThe hub is edited by Claudius Gräbner-Radkowitsch. All resource pages are citable — each page shows a full citation block at the bottom that you can copy directly."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About the Methods Hub",
+    "objectID": "tracks/statistics-recap.html#who-this-track-is-for",
+    "href": "tracks/statistics-recap.html#who-this-track-is-for",
+    "title": "Track: A Recap of Undergraduate Statistics",
     "section": "",
-    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+    "text": "This track is for students and researchers who want a solid conceptual and practical grounding in the statistical fundamentals that underpin empirical work in the social sciences and management. It is particularly useful as a self-contained recap for students entering a methods course who need to refresh core ideas, or for anyone whose statistics education was primarily procedural and who wants to build deeper understanding.\nNo prior experience with R is assumed for the first two pages. Pages three and beyond involve R code alongside explanations — you do not need to follow along in R, but doing so will deepen your understanding.\nBy the end of the track, you will be able to describe and summarize data using appropriate statistical measures, interpret probability distributions and use them for inference, and understand the logic connecting sample statistics to population parameters."
   },
   {
-    "objectID": "about.html#purpose",
-    "href": "about.html#purpose",
-    "title": "About the Methods Hub",
-    "section": "",
-    "text": "The Methods Hub is a public, citable resource library for research methods in the social sciences. It covers both methodological and theoretical topics — research design, literature review, epistemology, experiments — and practical implementation topics — R programming, data cleaning, visualization, regression analysis.\nThe hub is designed to serve students at the BA, MA, and PhD levels. Resources are written to be reusable across different courses and contexts, not tied to any single course or syllabus."
+    "objectID": "tracks/statistics-recap.html#core-sequence",
+    "href": "tracks/statistics-recap.html#core-sequence",
+    "title": "Track: A Recap of Undergraduate Statistics",
+    "section": "2 Core sequence",
+    "text": "2 Core sequence\nWork through these pages in order. Each page builds on the previous one.\n\nConceptual Foundations of Statistics What statistics is, why intuition is insufficient for interpreting data, and how probability theory provides the reference points we need. Start here.\nData Fundamentals: Types, Scales, and Notation The building blocks of data: categorical vs. numerical variables, the four scales of measurement, and standard statistical notation. Essential vocabulary for everything that follows.\nDescriptive Statistics in R Measures of centrality, dispersion, and association — computed in R. Includes correlation matrices, simple linear regression as a descriptive tool, and Anscombe’s quartet as a lesson in why visualization matters.\nEssentials of Probability Theory for Statistics Random variables, probability distributions, the normal distribution, expected values, and the bridge between descriptive statistics and probability. The conceptual foundation for inferential statistics.\nSampling and Statistical Inference How we move from sample statistics to conclusions about populations: sampling variability, Monte Carlo simulation, sampling distributions, standard error, the Central Limit Theorem, and the Law of Large Numbers.\nHypothesis Testing and Confidence Intervals Applying sampling theory to evaluate claims (hypothesis testing, p-values) and construct ranges of plausible values (confidence intervals). Includes the connection between the two and a guide to common misconceptions."
   },
   {
-    "objectID": "about.html#editorial-model",
-    "href": "about.html#editorial-model",
-    "title": "About the Methods Hub",
-    "section": "Editorial model",
-    "text": "Editorial model\nThe hub has a single editor: Claudius Gräbner-Radkowitsch (European University Flensburg / Johannes Kepler University Linz). The editor is responsible for maintaining consistency, quality, and scope across all pages.\nFuture contributors who write resource pages appear as the author of those pages. The editor field on all pages remains Claudius Gräbner-Radkowitsch, reflecting editorial responsibility for the hub as a whole."
+    "objectID": "tracks/statistics-recap.html#supplementary-reference",
+    "href": "tracks/statistics-recap.html#supplementary-reference",
+    "title": "Track: A Recap of Undergraduate Statistics",
+    "section": "3 Supplementary reference",
+    "text": "3 Supplementary reference\nCommon Probability Distributions A reference companion to page 4: binomial, Poisson, uniform, exponential, beta, and gamma distributions, with guidance on when to use each and how to work with them in R. Not part of the main sequence but useful alongside or after page 4."
   },
   {
-    "objectID": "about.html#how-to-cite-resources",
-    "href": "about.html#how-to-cite-resources",
-    "title": "About the Methods Hub",
-    "section": "How to cite resources",
-    "text": "How to cite resources\nEvery resource page auto-generates a citation block at the bottom of the page. To cite a resource, copy the citation shown there.\nThe general format is:\n\n[Author Last, First]. ([Year]). “[Page Title].” In Methods Hub, edited by Claudius Gräbner-Radkowitsch. [URL]\n\nYou can also export citations in BibTeX or other formats from the citation block on each page."
-  },
-  {
-    "objectID": "about.html#independence-from-courses",
-    "href": "about.html#independence-from-courses",
-    "title": "About the Methods Hub",
-    "section": "Independence from courses",
-    "text": "Independence from courses\nThe Methods Hub is independent of any single course. Courses taught by Claudius Gräbner-Radkowitsch and others may link into the hub for specific resources, but the hub itself is not a course companion. Its resources are written as general-purpose references that remain useful regardless of where a student encounters them.\nSee Teaching for an index of courses that use the hub."
+    "objectID": "tracks/statistics-recap.html#all-statistics-resources",
+    "href": "tracks/statistics-recap.html#all-statistics-resources",
+    "title": "Track: A Recap of Undergraduate Statistics",
+    "section": "4 All statistics resources",
+    "text": "4 All statistics resources\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\n\n\n\n\n\nCommon Probability Distributions: A Reference Overview\n\n\nAn overview of probability distributions beyond the normal: binomial, Poisson, uniform, exponential, beta, and gamma — with guidance on when to use each and how to work with them in R.\n\n\n\n\n\n\nConceptual Foundations of Statistics\n\n\nA first orientation to statistical thinking: what statistics is, why intuition alone is insufficient for interpreting data, and how probability theory provides the reference points we need to evaluate observations.\n\n\n\n\n\n\nData Fundamentals: Types, Scales, and Notation\n\n\nAn introduction to the building blocks of data: types of variables (categorical vs. numerical), scales of measurement (nominal, ordinal, interval, ratio), and the statistical notation used to describe them.\n\n\n\n\n\n\nDescriptive Statistics in R\n\n\nA guided introduction to descriptive statistics in R, covering measures of centrality, dispersion, and association — including correlation matrices, simple linear regression, and Anscombe’s quartet as a lesson in why visualization matters.\n\n\n\n\n\n\nHypothesis Testing and Confidence Intervals\n\n\nApplying sampling theory to make inferences: how to evaluate claims using data (hypothesis testing and p-values) and how to construct ranges of plausible values for population parameters (confidence intervals).\n\n\n\n\n\n\nEssentials of Probability Theory for Statistics\n\n\nA conceptual and practical introduction to probability theory: random experiments, events, conditional probability, random variables, the normal distribution, expected values, and the bridge to descriptive statistics.\n\n\n\n\n\n\nSampling and Statistical Inference\n\n\nHow we move from sample statistics to conclusions about populations: sampling variability, Monte Carlo simulation, sampling distributions, standard error, the Central Limit Theorem, and the Law of Large Numbers.\n\n\n\n\n\n\nNo matching items"
   }
 ]

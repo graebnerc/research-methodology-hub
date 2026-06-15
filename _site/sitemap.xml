@@ -1,47 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yourdomain.com/CONTRIBUTING.html</loc>
-    <lastmod>2026-06-15T08:08:14.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yourdomain.com/blog/index.html</loc>
+    <loc>https://euf-methodology-hub.netlify.app/blog/index.html</loc>
     <lastmod>2026-06-15T08:04:39.472Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/tracks/index.html</loc>
-    <lastmod>2026-06-15T08:04:38.203Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/index.html</loc>
+    <lastmod>2026-06-15T11:50:58.317Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/resources/epistemology/epistemology-ba.html</loc>
-    <lastmod>2026-06-15T08:07:46.978Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/sampling-and-inference.html</loc>
+    <lastmod>2026-06-15T19:51:48.430Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/resources/index.html</loc>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/hypothesis-testing-and-confidence-intervals.html</loc>
+    <lastmod>2026-06-15T19:50:15.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/data-fundamentals.html</loc>
+    <lastmod>2026-06-15T19:51:26.979Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/common-probability-distributions.html</loc>
+    <lastmod>2026-06-15T19:38:30.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review.html</loc>
+    <lastmod>2026-06-15T19:38:27.809Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/epistemology/epistemology-ba.html</loc>
+    <lastmod>2026-06-15T19:38:25.881Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/teaching.html</loc>
+    <lastmod>2026-06-15T09:52:05.779Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/index.html</loc>
+    <lastmod>2026-06-15T19:27:55.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/about.html</loc>
+    <lastmod>2026-06-15T08:04:20.876Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/CONTRIBUTING.html</loc>
+    <lastmod>2026-06-15T09:53:38.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/index.html</loc>
     <lastmod>2026-06-15T08:04:34.301Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/teaching.html</loc>
-    <lastmod>2026-06-15T09:30:16.295Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-r.html</loc>
+    <lastmod>2026-06-15T19:38:29.319Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/resources/r-programming/getting-started-with-r.html</loc>
-    <lastmod>2026-06-15T08:07:42.088Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics.html</loc>
+    <lastmod>2026-06-15T19:51:20.907Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/resources/literature-review/intro-to-systematic-literature-review.html</loc>
-    <lastmod>2026-06-15T08:07:44.778Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/descriptive-statistics.html</loc>
+    <lastmod>2026-06-15T19:51:33.904Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/tracks/getting-started-with-r.html</loc>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/probability-theory-essentials.html</loc>
+    <lastmod>2026-06-15T19:38:36.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r.html</loc>
     <lastmod>2026-06-15T08:05:48.631Z</lastmod>
   </url>
   <url>
-    <loc>https://yourdomain.com/index.html</loc>
-    <lastmod>2026-06-15T08:35:38.592Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yourdomain.com/about.html</loc>
-    <lastmod>2026-06-15T08:04:20.876Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/statistics-recap.html</loc>
+    <lastmod>2026-06-15T12:55:38.529Z</lastmod>
   </url>
 </urlset>

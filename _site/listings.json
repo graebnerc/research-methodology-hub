@@ -8,13 +8,37 @@
     "items": [
       "/resources/epistemology/epistemology-ba.html",
       "/resources/literature-review/intro-to-systematic-literature-review.html",
-      "/resources/r-programming/getting-started-with-r.html"
+      "/resources/r-programming/getting-started-with-r.html",
+      "/resources/statistics/common-probability-distributions.html",
+      "/resources/statistics/conceptual-foundations-of-statistics.html",
+      "/resources/statistics/data-fundamentals.html",
+      "/resources/statistics/descriptive-statistics.html",
+      "/resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+      "/resources/statistics/probability-theory-essentials.html",
+      "/resources/statistics/sampling-and-inference.html"
     ]
   },
   {
     "listing": "/tracks/getting-started-with-r.html",
     "items": [
-      "/resources/r-programming/getting-started-with-r.html"
+      "/resources/r-programming/getting-started-with-r.html",
+      "/resources/statistics/common-probability-distributions.html",
+      "/resources/statistics/descriptive-statistics.html",
+      "/resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+      "/resources/statistics/probability-theory-essentials.html",
+      "/resources/statistics/sampling-and-inference.html"
+    ]
+  },
+  {
+    "listing": "/tracks/statistics-recap.html",
+    "items": [
+      "/resources/statistics/common-probability-distributions.html",
+      "/resources/statistics/conceptual-foundations-of-statistics.html",
+      "/resources/statistics/data-fundamentals.html",
+      "/resources/statistics/descriptive-statistics.html",
+      "/resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+      "/resources/statistics/probability-theory-essentials.html",
+      "/resources/statistics/sampling-and-inference.html"
     ]
   }
 ]

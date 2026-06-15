@@ -26,9 +26,10 @@ content-type: reading
 citation:
   type: entry
   container-title: "Methods Hub"
+  title: "Introduction to Systematic Literature Reviews"
   editor:
     - name: "Claudius Gräbner-Radkowitsch"
-  url: https://yourdomain.com/resources/literature-review/intro-to-systematic-literature-review
+  url: https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review
 ---
 
 ## What is a Systematic Literature Review?

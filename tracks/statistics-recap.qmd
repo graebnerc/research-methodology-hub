@@ -1,0 +1,56 @@
+---
+title: "Track: A Recap of Undergraduate Statistics"
+description: "A curated sequence of pages covering the statistical fundamentals every empirical researcher needs: from conceptual foundations and data types through descriptive statistics, probability theory, and sampling."
+listing:
+  - id: related-statistics-resources
+    contents: "../resources/statistics/*.qmd"
+    type: table
+    sort: "date asc"
+    fields: [title, description]
+---
+
+## Who this track is for
+
+This track is for students and researchers who want a solid conceptual and practical grounding in the statistical fundamentals that underpin empirical work in the social sciences and management. It is particularly useful as a self-contained recap for students entering a methods course who need to refresh core ideas, or for anyone whose statistics education was primarily procedural and who wants to build deeper understanding.
+
+No prior experience with R is assumed for the first two pages. Pages three and beyond involve R code alongside explanations — you do not need to follow along in R, but doing so will deepen your understanding.
+
+By the end of the track, you will be able to describe and summarize data using appropriate statistical measures, interpret probability distributions and use them for inference, and understand the logic connecting sample statistics to population parameters.
+
+---
+
+## Core sequence
+
+Work through these pages in order. Each page builds on the previous one.
+
+1. **[Conceptual Foundations of Statistics](../resources/statistics/conceptual-foundations-of-statistics.qmd)**
+   What statistics is, why intuition is insufficient for interpreting data, and how probability theory provides the reference points we need. Start here.
+
+2. **[Data Fundamentals: Types, Scales, and Notation](../resources/statistics/data-fundamentals.qmd)**
+   The building blocks of data: categorical vs. numerical variables, the four scales of measurement, and standard statistical notation. Essential vocabulary for everything that follows.
+
+3. **[Descriptive Statistics in R](../resources/statistics/descriptive-statistics.qmd)**
+   Measures of centrality, dispersion, and association — computed in R. Includes correlation matrices, simple linear regression as a descriptive tool, and Anscombe's quartet as a lesson in why visualization matters.
+
+4. **[Essentials of Probability Theory for Statistics](../resources/statistics/probability-theory-essentials.qmd)**
+   Random variables, probability distributions, the normal distribution, expected values, and the bridge between descriptive statistics and probability. The conceptual foundation for inferential statistics.
+
+5. **[Sampling and Statistical Inference](../resources/statistics/sampling-and-inference.qmd)**
+   How we move from sample statistics to conclusions about populations: sampling variability, Monte Carlo simulation, sampling distributions, standard error, the Central Limit Theorem, and the Law of Large Numbers.
+
+6. **[Hypothesis Testing and Confidence Intervals](../resources/statistics/hypothesis-testing-and-confidence-intervals.qmd)**
+   Applying sampling theory to evaluate claims (hypothesis testing, p-values) and construct ranges of plausible values (confidence intervals). Includes the connection between the two and a guide to common misconceptions.
+
+---
+
+## Supplementary reference
+
+**[Common Probability Distributions](../resources/statistics/common-probability-distributions.qmd)**
+A reference companion to page 4: binomial, Poisson, uniform, exponential, beta, and gamma distributions, with guidance on when to use each and how to work with them in R. Not part of the main sequence but useful alongside or after page 4.
+
+---
+
+## All statistics resources
+
+::: {#related-statistics-resources}
+:::

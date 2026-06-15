@@ -27,11 +27,12 @@ Curated learning paths that sequence resources into a coherent progression — u
 ::: {.g-col-12 .g-col-md-6}
 ### [Blog](blog/index.qmd)
 Editorial commentary, updates, and notes on new resources and how they fit together.
+Also contains some analyses of and tutorials on contemporary methodological issues.
 :::
 
 ::: {.g-col-12 .g-col-md-6}
 ### [Teaching](teaching.qmd)
-An index of courses that use this hub as a supporting resource, with links to their separate course sites.
+An index of courses that use this hub as a supporting resource or cover related topics; with links to their separate course sites.
 :::
 
 :::
