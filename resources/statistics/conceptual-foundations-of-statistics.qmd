@@ -33,6 +33,13 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is the first entry in the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Next resource:** [Data Fundamentals: Types, Scales, and Notation](data-fundamentals.qmd)
+:::
+
 ```{r}
 #| code-summary: "Packages used for R examples"
 #| message: false
@@ -420,6 +427,10 @@ As you work through these materials, remember that developing statistical unders
 Statistical thinking involves several key habits of mind: being curious about data and asking probing questions about what patterns might mean; being appropriately skeptical of simple explanations for complex phenomena while remaining open to evidence; and being comfortable making decisions under uncertainty while acknowledging the limits of your knowledge.
 
 The concepts introduced here — the need for reference points to interpret data, the partnership between probability and statistics, the reality of uncertainty in empirical work — will become more concrete and intuitive as you work with real data. They reappear throughout the other pages in the [statistics recap track](../../tracks/statistics-recap.qmd), each time in a more applied context.
+
+---
+
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd) · **Next in the track:** [Data Fundamentals: Types, Scales, and Notation](data-fundamentals.qmd)
 
 ---
 

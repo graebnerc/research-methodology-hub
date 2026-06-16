@@ -35,6 +35,15 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/descriptive-statistics
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is part of the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Previous resource:** [Data Fundamentals: Types, Scales, and Notation](data-fundamentals.qmd)
+
+**Next resource:** [Essentials of Probability Theory for Statistics](probability-theory-essentials.qmd)
+:::
+
 ```{r}
 #| code-summary: "Packages used in R examples"
 #| message: false
@@ -485,6 +494,10 @@ Remember that the goal of descriptive statistics is not just to calculate number
 As you work with data, always consider multiple measures together, visualize your data when possible, and think critically about what the numbers are revealing. For instance, when analyzing customer satisfaction scores, look at both the average satisfaction and the variability — consistent high satisfaction is very different from highly variable satisfaction that averages to the same number.
 
 For further guidance on creating effective data visualizations in R and ggplot2, see the visualization resources in the [Resource Library](../../resources/index.qmd).
+
+---
+
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd) · **Next in the track:** [Essentials of Probability Theory for Statistics](probability-theory-essentials.qmd)
 
 ---
 

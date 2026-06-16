@@ -32,6 +32,15 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/data-fundamentals
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is part of the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Previous resource:** [Conceptual Foundations of Statistics](conceptual-foundations-of-statistics.qmd)
+
+**Next resource:** [Descriptive Statistics in R](descriptive-statistics.qmd)
+:::
+
 # Data Types and Scales of Measurement
 
 Before diving into the details, it is important to understand that **data types** and **scales of measurement** are two different but related ways of classifying variables. Think of them as two lenses through which we examine the same data.
@@ -208,6 +217,10 @@ Understanding data fundamentals allows you to approach any dataset with confiden
 > Each variable type suggests different analytical approaches and visualizations.
 
 These fundamentals serve as the foundation for everything else in statistics. The concepts introduced here reappear in [Descriptive Statistics](descriptive-statistics.qmd), where we start computing actual measures, and throughout the other pages in the [statistics recap track](../../tracks/statistics-recap.qmd).
+
+---
+
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd) · **Next in the track:** [Descriptive Statistics in R](descriptive-statistics.qmd)
 
 ---
 

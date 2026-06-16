@@ -16,5 +16,44 @@ The Methods Hub resource library is a searchable collection of individual pages 
 
 Use the filters below to browse by topic, level, or content type.
 
+```{=html}
+<div class="d-flex justify-content-end mb-2">
+  <div class="btn-group btn-group-sm" role="group" aria-label="View toggle">
+    <button id="view-btn-grid" type="button" class="btn btn-outline-secondary active">
+      <i class="fa-solid fa-grip"></i> Grid
+    </button>
+    <button id="view-btn-list" type="button" class="btn btn-outline-secondary">
+      <i class="fa-solid fa-list"></i> List
+    </button>
+  </div>
+</div>
+```
+
 ::: {#resource-listing}
 :::
+
+```{=html}
+<script>
+(function () {
+  function setView(view) {
+    var el = document.getElementById('listing-resource-listing');
+    var btnGrid = document.getElementById('view-btn-grid');
+    var btnList = document.getElementById('view-btn-list');
+    if (!el || !btnGrid || !btnList) return;
+    var isGrid = view === 'grid';
+    el.classList.toggle('list-mode', !isGrid);
+    btnGrid.classList.toggle('active', isGrid);
+    btnList.classList.toggle('active', !isGrid);
+    try { localStorage.setItem('resourceView', view); } catch (e) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var saved;
+    try { saved = localStorage.getItem('resourceView'); } catch (e) {}
+    setView(saved || 'grid');
+    document.getElementById('view-btn-grid').addEventListener('click', function () { setView('grid'); });
+    document.getElementById('view-btn-list').addEventListener('click', function () { setView('list'); });
+  });
+}());
+</script>
+```

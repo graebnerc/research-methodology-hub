@@ -35,6 +35,13 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/hypothesis-testing-and-confidence-intervals
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is the last entry in the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Previous resource:** [Sampling and Statistical Inference](sampling-and-inference.qmd)
+:::
+
 ```{r}
 #| code-summary: "Packages used for R examples"
 #| message: false
@@ -566,6 +573,8 @@ The equivalence between tests and CIs holds exactly only when both use the same 
 ---
 
 **This page ends the statistics recap track.** The tools covered across all six pages — descriptive statistics, probability theory, and the inferential machinery of sampling distributions, hypothesis tests, and confidence intervals — form the conceptual foundation for applied empirical work. The natural next step is applying these ideas within specific methods: regression analysis, experimental design, or survey methodology, all of which are covered in other sections of the [Resource Library](../../resources/index.qmd).
+
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd)
 
 ---
 

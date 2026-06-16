@@ -35,6 +35,15 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/probability-theory-essentials
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is part of the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Previous resource:** [Descriptive Statistics in R](descriptive-statistics.qmd)
+
+**Next resource:** [Sampling and Statistical Inference](sampling-and-inference.qmd)
+:::
+
 ```{r}
 #| code-summary: "Packages used for R examples"
 #| message: false
@@ -624,6 +633,26 @@ These concepts form the foundation for all advanced statistical techniques. When
 
 ---
 
-**Next in the track:** [Sampling and Statistical Inference](sampling-and-inference.qmd) builds directly on these foundations, showing how we use probability to make principled inferences from samples to populations.
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd) · **Next in the track:** [Sampling and Statistical Inference](sampling-and-inference.qmd)
 
-**For reference:** [Common Probability Distributions](common-probability-distributions.qmd) extends this page with an overview of binomial, Poisson, uniform, exponential, beta, and gamma distributions.
+**For reference:** [Common Probability Distributions](common-probability-distributions.qmd) covers binomial, Poisson, uniform, exponential, beta, and gamma distributions.
+
+---
+
+# Comments and questions
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

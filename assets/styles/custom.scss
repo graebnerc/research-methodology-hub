@@ -5,6 +5,63 @@ $body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 
 /*-- scss:rules --*/
 
+/* Resource library — list view toggle */
+#listing-resource-listing.list-mode {
+  .list.grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .g-col-1 {
+    width: 100%;
+  }
+
+  .quarto-grid-item.card {
+    flex-direction: row;
+    align-items: stretch;
+    height: auto !important;
+  }
+
+  .card-img-top {
+    width: 140px;
+    min-width: 140px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+      height: 100% !important;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-body.post-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .listing-title {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .listing-description {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-attribution {
+    display: none;
+  }
+}
+
 /* MA/PhD advanced-level callout — muted teal, distinct from default blue */
 .callout-note.level-advanced {
   border-left-color: #4a7c6f !important;

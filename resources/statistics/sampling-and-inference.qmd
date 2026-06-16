@@ -36,6 +36,15 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/statistics/sampling-and-inference
 ---
 
+::: {.callout-note collapse="true"}
+## Part of the Statistics Recap Track
+This page is part of the [Statistics Recap track](../../tracks/statistics-recap.qmd).
+
+**Previous resource:** [Essentials of Probability Theory for Statistics](probability-theory-essentials.qmd)
+
+**Next resource:** [Hypothesis Testing and Confidence Intervals](hypothesis-testing-and-confidence-intervals.qmd)
+:::
+
 ```{r}
 #| code-summary: "Packages used for R examples"
 #| message: false
@@ -569,7 +578,7 @@ ggplot(max_results, aes(x = max_est)) +
 
 ---
 
-**What comes next:** The tools on this page — sampling distributions, the CLT, standard error — are the machinery that makes statistical inference possible. The natural next application is using this machinery to evaluate claims (*hypothesis testing*) and to construct ranges of plausible values (*confidence intervals*). These are covered in the companion page [Hypothesis Testing and Confidence Intervals](hypothesis-testing-and-confidence-intervals.qmd), which picks up where this page leaves off.
+**Track overview:** [A Recap of Undergraduate Statistics](../../tracks/statistics-recap.qmd) · **Next in the track:** [Hypothesis Testing and Confidence Intervals](hypothesis-testing-and-confidence-intervals.qmd)
 
 ---
 
