@@ -1,0 +1,191 @@
+---
+title: "Exercise: Causal Reasoning and the Gender Wage Gap"
+description: "Practice DAG-based causal reasoning using a three-model regression progression on the gender wage gap — identify confounders and mediators, interpret coefficient changes, and specify a DAG in dagitty."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Explain why adding more control variables does not always bring a coefficient estimate closer to the causal truth"
+  - "Classify a variable as confounder, mediator, or collider and justify the classification"
+  - "Specify a causal DAG in `dagitty` and query its implied adjustment sets"
+  - "Write an analytical narrative that accurately describes what each model specification estimates"
+
+categories:
+  - causal-inference
+  - statistics
+  - R
+  - MA
+  - exercise
+
+level:
+  - MA
+
+content-type: exercise
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Exercise: Causal Reasoning and the Gender Wage Gap"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/causal-inference/exercise-gender-wage-gap-dags
+---
+
+::: {.callout-tip}
+## Before you start
+This exercise accompanies the [Causal Reasoning with DAGs](reasoning-with-dags.qmd) tutorial. Work through that page first.
+
+**Data:** `morg-2014-emp.csv` — CPS MORG 2014. Download from [gabors-data-analysis.com](https://gabors-data-analysis.com/datasets/cps-earnings) and place in a `data/` subfolder.
+
+**Business question:** *Is there a gender wage gap — and what would it take to interpret a regression coefficient as evidence of discrimination?*
+:::
+
+---
+
+# Setup
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(broom)
+library(modelsummary)
+library(flextable)
+library(dagitty)
+library(ggdag)
+
+raw <- read_csv("data/morg-2014-emp.csv", show_col_types = FALSE)
+
+cps <- raw |>
+  filter(
+    !is.na(earnwke), earnwke > 0,
+    !is.na(uhours),  uhours  > 0,
+    !is.na(occ2012), !is.na(grade92),
+    !is.na(age), !is.na(sex)
+  ) |>
+  mutate(
+    wage   = earnwke / uhours,
+    female = as.integer(sex == 2),
+    educ   = grade92,
+    occ    = factor(occ2012)
+  ) |>
+  filter(wage > 0, wage < 500) |>
+  select(wage, female, age, educ, occ)
+```
+
+---
+
+# Task 1: Explore the Raw Gap
+
+Summarise median and mean hourly wages by gender. Then produce a density plot of log wages by gender.
+
+```{r}
+# summary table
+```
+
+```{r}
+# density plot
+```
+
+**1a.** What is the raw gender wage gap in percentage terms?
+
+*Your answer:*
+
+**1b.** Why is it not appropriate to interpret this raw difference as evidence of pay discrimination?
+
+*Your answer:*
+
+---
+
+# Task 2: The Three-Model Progression
+
+Fit the following three models with `log(wage)` as the outcome:
+
+```{r}
+m1 <- lm(log(wage) ~ female,                    data = cps)
+m2 <- lm(log(wage) ~ female + age + educ,        data = cps)
+m3 <- lm(log(wage) ~ female + age + educ + occ,  data = cps)
+```
+
+Display them in a single table:
+
+```{r}
+# modelsummary(...)
+```
+
+**2a.** The female coefficient moves from Model 1 to Model 2 to Model 3. Describe the direction and magnitude of each change.
+
+*Your answer:*
+
+**2b.** The gap *grows* from Model 1 to Model 2. What explains this counterintuitive result? (Hint: look at how education is distributed across genders.)
+
+*Your answer:*
+
+**2c.** Model 3 shows the smallest gap. Does this mean Model 3 is the most accurate estimate of discrimination? Explain.
+
+*Your answer:*
+
+---
+
+# Task 3: Causal Reasoning about Occupation
+
+**3a.** Is occupation a **confounder**, a **mediator**, or a **collider** in the relationship between gender and wages? Justify your answer by checking each definition: does occupation affect wages? Is it affected by gender?
+
+*Your answer:*
+
+**3b.** What happens to the estimated gender–wage coefficient when we control for a mediator? Select the correct statement and explain it:
+
+a. The coefficient becomes more accurate — controlling for mediators removes confounding
+b. The coefficient estimates a different, narrower quantity — the direct pay gap within occupational categories
+c. The coefficient becomes less accurate because we have added too many controls
+
+*Your answer:*
+
+**3c.** Describe one variable that would be a *genuine confounder* in the gender–wage relationship (not occupation). What is the expected direction of the bias if it is omitted?
+
+*Your answer:*
+
+**3d.** Specify the gender wage gap DAG in `dagitty` and query the adjustment sets for two different questions:
+
+```{r}
+# gap_dag <- dagitty("dag { ... }")
+
+# Q1: total effect of Gender on Wage
+# adjustmentSets(gap_dag, exposure = "Gender", outcome = "Wage")
+
+# Q2: causal effect of Occupation on Wage
+# adjustmentSets(gap_dag, exposure = "Occupation", outcome = "Wage")
+```
+
+Interpret both results. Why does the adjustment set differ across the two questions?
+
+*Your answer:*
+
+---
+
+# Task 4: Write an Analytical Narrative
+
+Write a coherent paragraph for each of the three models. For each, state: (i) what the coefficient on `female` estimates, (ii) the key assumption required to interpret it causally, and (iii) why that assumption may or may not hold.
+
+Use a `{.callout-important}` block to flag the key caveat about Model 3.
+
+*Your narrative:*
+
+---
+
+# Bonus: Alternative Causal Setting
+
+Consider a firm analysing whether **advertising spend** causes higher **sales revenue**.
+
+**B1.** Sketch a DAG for this relationship. What variable(s) might confound it?
+
+**B2.** Is product quality a **confounder** or a **mediator** in the advertising–sales relationship? Justify your answer.
+
+**B3.** A manager proposes adding *manager experience* as a control because "experienced managers spend more on advertising and also run better firms." Is this a good idea? Draw the corresponding DAG.
+
+**B4.** What research design would be needed to establish that advertising *causes* sales? Why can observational regression alone not answer this question?
+
+*Your answers:*

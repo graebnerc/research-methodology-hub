@@ -1,0 +1,188 @@
+---
+title: "Exercise: Predicting Firm Exit with Logistic Regression"
+description: "Practice logistic regression end-to-end: fit a model for binary firm exit, extend it with additional predictors, interpret odds ratios, compute scenario-based predicted probabilities, and communicate findings with inline R code."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Fit and extend a logistic regression model with `glm()` and compare specifications using AIC"
+  - "Interpret a logistic regression coefficient as an odds ratio and communicate it in plain language"
+  - "Compute scenario-based predicted probabilities for two contrasting firm profiles"
+  - "Embed numerical results in written text using inline R code"
+
+categories:
+  - R
+  - regression
+  - statistics
+  - MA
+  - exercise
+
+level:
+  - MA
+
+content-type: exercise
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Exercise: Predicting Firm Exit with Logistic Regression"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/exercise-logistic-regression-firm-exit
+---
+
+::: {.callout-tip}
+## Before you start
+This exercise accompanies the [Logistic Regression for Binary Outcomes](logistic-regression-in-r.qmd) tutorial. Work through that page first.
+
+**Data:** `bisnode-firms.csv` — ~17,500 Hungarian manufacturing and services firms. Download from [gabors-data-analysis.com](https://gabors-data-analysis.com/datasets/#bisnode-firms) and place in a `data/` subfolder.
+
+**Business question:** *Can we predict which firms are likely to exit the market in the next year?*
+:::
+
+---
+
+# Setup
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+library(modelsummary)
+library(marginaleffects)
+library(broom)
+
+firms <- read_csv("data/bisnode-firms.csv")
+```
+
+Take two minutes to explore the data:
+
+```{r}
+glimpse(firms)
+```
+
+**Before coding:** What does one row represent? What does `exit = 1` mean?
+
+*Your answer:*
+
+---
+
+# Task 1: Fit a Logistic Regression Model
+
+Fit a logistic regression model that predicts firm exit using:
+
+- `sales_log` (log of sales revenue)
+- `profit_margin` (profit as a share of sales)
+- `employees_log` (log of number of employees)
+- `age` (firm age in years)
+
+Call your model `model_base`.
+
+```{r}
+# model_base <- ___
+```
+
+```{r}
+# summary(model_base)
+```
+
+**1a.** Which predictors are statistically significant at the 5% level?
+
+*Your answer:*
+
+**1b.** Based on the signs of the coefficients, which factors increase and which decrease the probability of exit? Does this make economic sense?
+
+*Your answer:*
+
+---
+
+# Task 2: Extend Your Model
+
+Add at least **two more predictors** to your model. Use subject-matter intuition: which firm characteristics might predict exit?
+
+```{r}
+# names(firms)   # explore available variables
+```
+
+```{r}
+# model_ext <- ___
+```
+
+Compare your two models with `modelsummary()`:
+
+```{r}
+# modelsummary(list("Base" = model_base, "Extended" = model_ext), ...)
+```
+
+**2a.** Did adding the new predictors improve model fit? Use AIC to compare (lower is better).
+
+*Your answer:*
+
+**2b.** Did any coefficients shift notably when you added the new variables? What might that indicate?
+
+*Your answer:*
+
+---
+
+# Task 3: Interpret Coefficients as Odds Ratios
+
+Compute and display the odds ratios with 95% confidence intervals for your extended model:
+
+```{r}
+# exp(coef(model_ext))
+# exp(confint(model_ext))
+```
+
+**Task 3:** Choose **one predictor** and write a complete interpretation using this template:
+
+> *"A one-unit increase in [variable] is associated with a multiplication of the odds of firm exit by [odds ratio]. This means the odds of exit [increase/decrease] by [X]%. This effect is [statistically significant / not significant] at the 5% level."*
+
+*Your answer:*
+
+---
+
+# Task 4: Predicted Probabilities for Two Firm Profiles
+
+Define two contrasting firm profiles and compute the predicted probability of exit for each:
+
+```{r}
+# scenarios <- tibble(
+#   label         = c("Profile A: ___", "Profile B: ___"),
+#   sales_log     = c(___, ___),
+#   employees_log = c(___, ___),
+#   profit_margin = c(___, ___),
+#   age           = c(___, ___)
+#   # add predictors you included in model_ext
+# )
+
+# scenarios |>
+#   mutate(pred_prob = predict(model_ext, newdata = scenarios, type = "response"))
+```
+
+**Task 4:** Describe your two profiles and explain what story the predicted probabilities tell.
+
+*Your answer:*
+
+---
+
+# Task 5: Communicate a Finding with Inline R Code
+
+Write a short paragraph (3–5 sentences) summarising one key finding. Embed at least **two numbers as inline R code** (not typed manually).
+
+*Your paragraph:*
+
+---
+
+# Bonus: Average Marginal Effects
+
+Compare the AME for `profit_margin` from logistic regression to the LPM coefficient for the same variable. Are they similar? What does this tell you about when the LPM might be acceptable?
+
+```{r}
+# avg_slopes(model_ext)
+# lpm <- lm(exit ~ sales_log + profit_margin + employees_log + age, data = firms)
+```
+
+*Your answer:*

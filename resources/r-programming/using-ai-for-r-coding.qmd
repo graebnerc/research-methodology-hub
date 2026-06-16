@@ -1,6 +1,6 @@
 ---
 title: "Using AI Tools for R Coding"
-description: "A practical overview of how to use AI assistants effectively for R programming tasks — from generating first-draft scripts to debugging — including how to write good prompts and what AI tools cannot do for you."
+description: "How to use AI assistants deliberately and critically in R programming — understanding what AI can and cannot do, three modes of effective use, the failure modes to watch for, and the one habit that makes AI assistance durable."
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
@@ -8,19 +8,21 @@ image: ../../assets/images/placeholder.png
 
 learning-objectives:
   - "Identify tasks where AI assistance adds value in R programming and where it does not"
-  - "Write prompts that give an AI tool enough context to generate useful R code"
-  - "Use AI to locate and explain errors in existing R code"
-  - "Compare the main AI coding tools available and their integration with RStudio"
+  - "Apply the three modes of AI use (autocomplete, thought partner, code reviewer) deliberately"
+  - "Recognise and diagnose the three common AI failure modes: package hallucination, stale API knowledge, and vibe coding"
+  - "Apply the prompt → inspect → run → diagnose habit consistently in your workflow"
 
 categories:
   - R
   - BA
-  - reading
+  - MA
+  - tutorial
 
 level:
   - BA
+  - MA
 
-content-type: reading
+content-type: tutorial
 
 citation:
   type: entry
@@ -35,18 +37,10 @@ Modern AI tools can meaningfully accelerate R programming work — but only if y
 understand the language well enough to evaluate what the AI produces. An AI that generates
 R code you cannot read is not a shortcut; it is a liability.
 
-With that caveat in mind, there are two use cases where AI assistance is particularly
-valuable:
-
-1. **Generating a first draft.** Given a clear description of what you want to do, an AI
-   tool can produce a working starting point faster than writing from scratch. You then read,
-   understand, and adapt it.
-2. **Debugging.** Paste code and an error message into an AI assistant, explain what you
-   expected, and it will often identify the problem quickly.
-
-In both cases, providing context is essential. An AI working without context about your
-data structure, packages, or project conventions will produce generic code that may not
-fit your situation. The more precisely you describe the problem, the more useful the output.
+Understanding what AI is actually doing helps. AI predicts plausible next tokens given
+its training data. It does not reason about your problem, look things up, or know what has
+changed since its training cutoff. Confidence is not correctness — fluent-looking code is
+not correct code. This has direct consequences for how you should use it.
 
 # Video lecture {.unnumbered}
 
@@ -60,9 +54,108 @@ fit your situation. The more precisely you describe the problem, the more useful
 </div>
 ```
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip}
 ## Prompts and code examples from the lecture
 <script src="https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js"></script>
+:::
+
+# Three modes of use
+
+AI assistance is most effective when you choose your mode deliberately. There are three
+distinct modes, each with a different risk–gain profile.
+
+**Autocomplete** — AI completes boilerplate you already know how to write. Risk is low,
+gain is modest. Use this when you would have typed it anyway.
+
+**Thought partner** — Ask for options, strategies, or chart recommendations — you decide
+what to act on. Risk is medium, gain can be high. Works best when you have enough domain
+knowledge to evaluate what comes back.
+
+**Code reviewer** — Paste your own code and ask what is wrong or what a careful reader
+would criticise. Risk is low, gain is very high. This is among the most useful and
+underused modes of AI assistance.
+
+The choice of mode is itself the skill. Modes also combine: use *thought partner* to
+sketch a plan, correct it yourself, then *autocomplete* fills in the code. Use *code
+reviewer* afterwards to catch what you missed.
+
+# Three failure modes
+
+Knowing where AI typically fails protects you from the most common traps.
+
+**Package hallucination.** AI invents plausible-sounding packages or functions that do
+not exist. A 2025 study across 16 models found roughly 20% of recommended packages were
+hallucinations. In R, this failure is silent until `library()` throws an error — there is
+no warning that the package was invented.
+
+**Stale API knowledge.** AI was trained on older code and cannot know what has changed
+since. A common example: the `size` argument in ggplot2 was renamed `linewidth` in
+version 3.4.0. The model will confidently emit the old syntax. Deprecated arguments,
+renamed functions, moved packages — these failures look identical to correct code until
+you run it.
+
+**Vibe coding.** Accepting AI output without reading it, then re-prompting when it breaks
+without diagnosing why. Each unread iteration compounds the confusion. This failure mode
+is independent of the tool you use; it is a habit failure.
+
+# The invariant habit
+
+One habit makes AI use durable as tools change:
+
+```
+prompt  →  inspect  →  run  →  diagnose
+   ↑                              │
+   └──────────────────────────────┘
+```
+
+**Inspect** — read the code *before* running it. Does it do what you asked? Are the
+function names real? Does the logic match your data structure?
+
+**Diagnose** — when it breaks, understand *why* before re-prompting. If you paste the
+error back without understanding it, you are asking the AI to fix something neither of
+you understands.
+
+Skipping *inspect* and *diagnose* is vibe coding, even without that label. Everything
+else about these tools may be obsolete in two years. This habit will not be.
+
+# Using AI with Quarto
+
+AI assistants are particularly useful for three Quarto-specific tasks.
+
+**Error diagnosis.** Paste a render error with the surrounding chunk:
+> "What is causing this error?"
+
+This is reliable on YAML errors and chunk option problems — the error messages tend to be
+syntactically well-defined and the model has seen many examples.
+
+**Goal-finding.** Ask how to achieve a specific Quarto output:
+> "How do I make a figure span the full slide width in Reveal.js?"
+
+Use AI here as a documentation shortcut — but always verify at quarto.org before relying
+on the answer.
+
+**Prose refinement.** Describe your figure and ask whether the claim holds:
+> "Is this claim supported by the figure? Can it be more concise?"
+
+Most tools accept a screenshot. If yours does not, describing the figure forces the
+clarity the caption needs anyway.
+
+::: {.callout-note .level-advanced}
+## MA / PhD
+
+In data visualisation work, mapping AI strengths and limits explicitly prevents
+frustration late in a project.
+
+**AI is strong on:** scaffolding a first draft, explaining error messages, adjusting
+individual aesthetic parameters, refactoring code to use the pipe.
+
+**AI struggles with:** choosing the right chart for the question, multi-panel composition
+and shared legends (e.g., with `patchwork`), keeping up with the current ggplot2 API
+(`linewidth` vs. `size`), journal-specific constraints it was not told about, and
+self-correcting when a hallucinated package fails.
+
+AI can get you to roughly 70% of a publication-ready figure. The last 30% requires
+judgment you cannot delegate.
 :::
 
 # Tools and resources
@@ -80,6 +173,9 @@ fit your situation. The more precisely you describe the problem, the more useful
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) — best suited for larger programming projects rather than single-file R scripts
 - [Windsurf](https://windsurf.com) — has a generous free tier but no RStudio integration
+
+For R-specific questions, prefer tools with web search enabled — they are less likely to
+emit stale package syntax.
 
 ::: {.callout-note}
 ## A note on reliance

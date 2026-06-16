@@ -570,6 +570,16 @@ The equivalence between tests and CIs holds exactly only when both use the same 
 | "The 95% CI means there is a 95% chance the true value is in this interval." | The true value is fixed (not random). The 95% refers to the procedure: 95% of such intervals cover the true value. |
 | "A statistically significant result is important." | Statistical significance depends on sample size. With large enough samples, trivially small effects become significant. Always consider effect size alongside the p-value. |
 
+::: {.callout-tip}
+## Practice exercises
+Test your understanding with the companion exercise set:
+[Hypothesis Testing and Confidence Intervals: Practice Exercises](hypothesis-testing-exercises.qmd)
+
+Seven exercises covering CI interpretation, p-value reasoning, statistical vs. practical
+significance, Type I/II error trade-offs, and step-by-step calculations — with hidden
+solutions.
+:::
+
 ---
 
 **This page ends the statistics recap track.** The tools covered across all six pages — descriptive statistics, probability theory, and the inferential machinery of sampling distributions, hypothesis tests, and confidence intervals — form the conceptual foundation for applied empirical work. The natural next step is applying these ideas within specific methods: regression analysis, experimental design, or survey methodology, all of which are covered in other sections of the [Resource Library](../../resources/index.qmd).

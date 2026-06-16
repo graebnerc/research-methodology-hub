@@ -1,0 +1,110 @@
+---
+title: "Regression and Causal Inference"
+description: "A structured learning path through applied regression modelling and causal reasoning in R, from multiple regression to panel fixed effects — written for MA students with basic regression experience."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../assets/images/placeholder.png
+
+categories:
+  - regression
+  - causal-inference
+  - statistics
+  - R
+  - MA
+
+level:
+  - MA
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Track: Regression and Causal Inference"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/tracks/regression-and-causal-inference
+---
+
+# Who This Track Is For
+
+This track is for MA students who have already encountered linear regression — you can fit a model, interpret a coefficient, and read a residuals plot — and want to take that foundation further in two directions: **better regression** (handling categorical outcomes, diagnosing problems, dealing with binary outcomes) and **better causal reasoning** (why coefficients are not automatically causal, how to think about what to control for, and how panel data helps).
+
+By the end of this track you will be able to:
+
+- Build and interpret regression models with categorical variables, interaction terms, and binary outcomes
+- Diagnose model problems and understand what diagnostics can and cannot reveal
+- Use DAGs to reason about what a regression coefficient actually estimates
+- Estimate fixed effects models for panel data and interpret the within-R²
+- Produce publication-ready figures for communicating quantitative results
+
+The track broadly follows the arc: *better regression* → *knowing its limits* → *causal thinking* → *panel methods* → *communication*. Each resource is self-contained, so you can skip or revisit sections as needed.
+
+---
+
+# Core Sequence
+
+## 1. Linear Regression in R (prerequisite)
+
+[Linear Regression in R](../resources/r-programming/linear-regression-r.qmd)
+
+The foundation: `lm()`, coefficient interpretation, R², log and quadratic transformations, and omitted variable bias. This is the assumed starting point for everything that follows.
+
+## 2. Categorical Variables and Interaction Terms
+
+[Categorical Variables and Interaction Terms in Regression](../resources/r-programming/multiple-regression-categorical-interactions.qmd)
+
+Extend your regression toolkit to handle binary and multi-category predictors, reference categories, and interaction terms. Worked through on a real earnings dataset where the age–earnings profile differs by gender.
+
+## 3. Regression Diagnostics
+
+[Regression Residuals and Model Diagnostics](../resources/r-programming/regression-residuals-diagnostics.qmd)
+
+Learn what the four standard diagnostic plots are checking, when to worry, and what to do about it. The MA section adds the Gauss-Markov framing, functional form testing, robust standard errors, influential observation analysis, and — crucially — the silent nature of omitted variable bias.
+
+## 4. Logistic Regression for Binary Outcomes
+
+[Logistic Regression for Binary Outcomes in R](../resources/r-programming/logistic-regression-in-r.qmd)
+
+When the outcome is binary, OLS breaks down. This page explains why and introduces logistic regression with `glm()`. Interpretation covers three levels: log-odds, odds ratios, and — most useful in practice — predicted probabilities and average marginal effects.
+
+## 5. Causal Reasoning with DAGs
+
+[Causal Reasoning with DAGs](../resources/causal-inference/reasoning-with-dags.qmd)
+
+The methodological pivot: why a regression coefficient is not automatically a causal effect. Introduces DAGs as a framework for making causal assumptions explicit, identifies confounders, mediators, and colliders, and illustrates the bad control problem with a worked example on the gender wage gap. Uses `dagitty` and `ggdag` in R.
+
+## 6. Panel Data and Fixed Effects
+
+[Panel Data and Fixed Effects in R](../resources/r-programming/panel-data-fixed-effects.qmd)
+
+When you have repeated observations on the same units over time, fixed effects estimation controls for all stable unit-level characteristics — observed and unobserved. Covers the within-transformation, `fixest::feols()`, two-way FE, clustered standard errors, and the within-R².
+
+## 7. Publication-Ready Figures
+
+[Publication-Ready Figures with ggplot2](../resources/r-programming/publication-ready-figures-ggplot2.qmd)
+
+Communicating results well is part of doing research well. This page covers the ugly/bad/wrong taxonomy, chart type selection, and five key ggplot2 extensions: `patchwork`, `ggrepel`, `gghighlight`, `ggtext`, and `scales`. Ends with the 7-item publication checklist and correct `ggsave()` usage.
+
+---
+
+# Practice Exercises
+
+Each tutorial above has an associated exercise. Work through them in sequence:
+
+| Exercise | Skills practised |
+|---|---|
+| [Predicting Firm Exit with Logistic Regression](../resources/r-programming/exercise-logistic-regression-firm-exit.qmd) | `glm()`, odds ratios, predicted probabilities, inline R code |
+| [Causal Reasoning and the Gender Wage Gap](../resources/causal-inference/exercise-gender-wage-gap-dags.qmd) | Three-model progression, DAG specification, analytical narrative writing |
+
+---
+
+# Related Resources
+
+```{r}
+#| echo: false
+#| label: related-resources
+
+```
+
+::: {.quarto-listing}
+:::

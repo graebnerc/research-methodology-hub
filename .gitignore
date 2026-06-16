@@ -9,3 +9,6 @@ __pycache__/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Large external datasets — download locally, do not commit
+**/data/morg-2014-emp.csv

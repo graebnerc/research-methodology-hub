@@ -1,0 +1,328 @@
+---
+title: "Hypothesis Testing and Confidence Intervals: Practice Exercises"
+description: "Conceptual and computational exercises to test and reinforce your understanding of hypothesis testing, p-values, confidence intervals, and the connections between them."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Apply the five-step hypothesis testing procedure to a new problem"
+  - "Diagnose common misinterpretations of p-values and confidence intervals"
+  - "Distinguish between statistical significance and practical importance"
+  - "Choose between Type I and Type II error priorities based on context"
+
+categories:
+  - statistics
+  - R
+  - BA
+  - MA
+  - exercise
+
+level:
+  - BA
+  - MA
+
+content-type: exercise
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Hypothesis Testing and Confidence Intervals: Practice Exercises"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/statistics/hypothesis-testing-exercises
+---
+
+::: {.callout-note}
+## Companion resource
+These exercises accompany the conceptual resource
+[Hypothesis Testing and Confidence Intervals](hypothesis-testing-and-confidence-intervals.qmd).
+Work through that page first, then use these exercises to check your understanding.
+Solutions are hidden — try each exercise before revealing the answer.
+:::
+
+# Conceptual exercises
+
+## Exercise 1 — Interpreting a confidence interval
+
+You survey 200 participants and find an average rating of 7.8 out of 10, with a 95%
+confidence interval of [7.5, 8.1]. A colleague says: "We know that 95% of all participants
+have ratings between 7.5 and 8.1."
+
+What is wrong with this interpretation? What should your colleague say instead?
+
+::: {.callout-tip}
+## Solution
+
+**What is wrong:**
+The colleague is confusing the confidence interval for the *population mean* with the
+range where *individual observations* fall. The interval [7.5, 8.1] estimates where the
+true *average* rating lies across the whole population — not where individual participants
+score.
+
+**Correct interpretation:**
+"We used a procedure that, over repeated sampling, would contain the true average rating
+in 95% of constructed intervals. Based on this sample, a plausible range for the true
+population mean is 7.5 to 8.1."
+
+**The distinction:**
+If you wanted a range containing 95% of individual scores, you would need something like
+$\bar{x} \pm 2s$, which uses the standard deviation (not the standard error) and would
+produce a much wider interval.
+:::
+
+## Exercise 2 — Interpreting a p-value
+
+A study yields $p = 0.08$ at a pre-specified significance level of $\alpha = 0.05$. A
+colleague concludes: "The test failed — there's no effect."
+
+What is problematic about this conclusion? What would be a more appropriate interpretation?
+
+::: {.callout-tip}
+## Solution
+
+**Problems with the conclusion:**
+
+1. "The test failed" — The test worked as intended; it simply did not produce sufficient
+   evidence to reject $H_0$ at the chosen threshold.
+2. "There's no effect" — Failing to find statistical significance is not evidence of
+   absence. It could mean: (a) no effect exists, (b) an effect exists but the sample was
+   too small to detect it, or (c) the effect exists but is smaller than this study was
+   powered to find.
+
+**Better interpretation:**
+"At $\alpha = 0.05$, we do not have sufficient evidence to reject the null hypothesis.
+With $p = 0.08$, the result is borderline. We should consider the effect size and
+confidence interval, and avoid concluding that no effect exists."
+
+**Key reminder:**
+$p > \alpha$ means "insufficient evidence to reject $H_0$" — not "$H_0$ is true."
+:::
+
+## Exercise 3 — Statistical vs. practical significance
+
+Two independent studies test the same intervention:
+
+- **Study A:** $n = 50$, observed effect = 15%, $p = 0.08$
+- **Study B:** $n = 50{,}000$, observed effect = 0.5%, $p = 0.001$
+
+Which finding is more likely to be decision-relevant? Why?
+
+::: {.callout-tip}
+## Solution
+
+**Study A is more likely to be decision-relevant**, despite not crossing the conventional
+significance threshold.
+
+**Reasoning:**
+
+- Study A reports a 15% effect. The non-significant $p$-value is most likely a
+  consequence of the small sample ($n = 50$), not an absence of effect. The effect size
+  is large enough that it would almost certainly matter in practice if confirmed with more
+  data.
+
+- Study B reports a 0.5% effect that is "highly significant" only because $n = 50{,}000$
+  gives the test enormous power to detect even negligible differences. A 0.5% improvement
+  rarely justifies the costs of implementation and change.
+
+**The core lesson:**
+The $p$-value is a function of effect size, sample size, and variability. With large
+enough samples, trivially small effects become statistically significant. Always evaluate
+effect size and practical relevance alongside the $p$-value.
+:::
+
+## Exercise 4 — Type I and Type II errors
+
+A quality control process tests whether a production batch meets safety standards.
+
+- $H_0$: The batch meets standards
+- $H_1$: The batch is below standards
+
+For each of the following contexts, decide which type of error is more serious and explain
+why:
+
+a) A manufacturer of medical devices
+b) A manufacturer of children's toys
+c) A car manufacturer testing brake components
+
+::: {.callout-tip}
+## Solution
+
+In all three cases, the error types map as follows:
+
+- **Type I error (false positive):** Concluding the batch fails when it actually meets
+  standards → unnecessary recall or production halt
+- **Type II error (false negative):** Concluding the batch passes when it is actually
+  below standards → defective products reach consumers
+
+**a) Medical devices — Type II error is more serious.**
+A missed defect could directly harm patients, lead to regulatory action, and create
+massive liability. The cost of a false alarm (halting production unnecessarily) is high
+but safe. Use a more liberal $\alpha$ (e.g., 0.10) to reduce the Type II error rate.
+
+**b) Children's toys — Type II error is more serious**, though the stakes are lower than
+medical devices. Defective toys reaching children creates safety risk, liability, and
+reputational damage. A standard or slightly elevated $\alpha$ is appropriate.
+
+**c) Brake components — Type II error is more serious.**
+Missing a safety defect in braking systems risks accidents and fatalities. The cost of
+an unnecessary production halt is high but preferable. Use a more liberal $\alpha$ for
+safety-critical components.
+
+**General principle:** When safety is at stake, minimise false negatives even at the cost
+of more false positives. When only money is at risk, balance error costs more evenly.
+:::
+
+# Computational exercises
+
+## Exercise 5 — Constructing a confidence interval
+
+A sample of 64 measurements yields:
+
+- Sample mean: $\bar{x} = 85$ units
+- Sample standard deviation: $s = 16$ units
+
+a) Calculate the standard error.
+b) Construct and interpret a 95% confidence interval for the population mean.
+
+The critical value for a 95% CI with $df = 63$ is $t^* \approx 2.00$.
+
+::: {.callout-tip}
+## Solution
+
+**a) Standard error:**
+$$SE = \frac{s}{\sqrt{n}} = \frac{16}{\sqrt{64}} = \frac{16}{8} = 2 \text{ units}$$
+
+**b) 95% confidence interval:**
+
+Margin of error:
+$$ME = t^* \times SE = 2.00 \times 2 = 4 \text{ units}$$
+
+Confidence interval:
+$$\bar{x} \pm ME = 85 \pm 4 \implies [81,\ 89] \text{ units}$$
+
+**Interpretation:**
+"We used a procedure that, if repeated many times, would contain the true population mean
+in 95% of constructed intervals. Based on this sample, the plausible range for the
+population mean is between 81 and 89 units."
+
+**In R:**
+```r
+# With raw data
+result <- t.test(your_data, conf.level = 0.95)
+result$conf.int
+
+# From summary statistics
+n <- 64; x_bar <- 85; s <- 16
+se <- s / sqrt(n)
+t_star <- qt(0.975, df = n - 1)
+c(x_bar - t_star * se, x_bar + t_star * se)
+```
+:::
+
+## Exercise 6 — Running a hypothesis test
+
+A service provider claims its average response time is 3 minutes. You observe 36 service
+interactions and find:
+
+- Sample mean: $\bar{x} = 3.5$ minutes
+- Sample standard deviation: $s = 1.2$ minutes
+
+a) State appropriate two-sided hypotheses.
+b) Calculate the test statistic.
+c) Would you reject $H_0$ at $\alpha = 0.05$? The critical value for a two-sided test
+   with $df = 35$ is $|t^*| = 2.03$.
+d) State your conclusion in plain language.
+
+::: {.callout-tip}
+## Solution
+
+**a) Hypotheses:**
+
+$$H_0: \mu = 3 \quad \text{(claimed response time)}$$
+$$H_1: \mu \neq 3 \quad \text{(two-sided: could be faster or slower)}$$
+
+**b) Test statistic:**
+$$SE = \frac{s}{\sqrt{n}} = \frac{1.2}{\sqrt{36}} = 0.2$$
+$$t = \frac{\bar{x} - \mu_0}{SE} = \frac{3.5 - 3.0}{0.2} = 2.5$$
+
+**c) Decision:**
+$|t| = 2.5 > 2.03$ (critical value), so we **reject $H_0$** at $\alpha = 0.05$.
+
+Equivalently, the $p$-value ($\approx 0.017$) is below $\alpha$.
+
+**d) Conclusion:**
+There is statistically significant evidence that the true average response time differs
+from the claimed 3 minutes. The sample suggests response times average 3.5 minutes — about
+30 seconds longer than claimed. A 95% confidence interval for the true mean is
+approximately [3.1, 3.9] minutes, consistent with the rejection of $H_0 = 3$.
+
+**In R:**
+```r
+# With raw data
+t.test(your_data, mu = 3, alternative = "two.sided")
+```
+:::
+
+## Exercise 7 — Interpreting a two-sample comparison
+
+Two training methods are compared on the same outcome measure:
+
+- Method A: $n = 40$, mean = 78, SD = 12
+- Method B: $n = 40$, mean = 82, SD = 12
+
+The 95% confidence interval for the difference (B − A) is $[-1,\ 9]$.
+
+a) What does this interval tell you about statistical significance?
+b) Given that the methods cost the same to implement, what would you recommend?
+c) What additional information would most improve this decision?
+
+::: {.callout-tip}
+## Solution
+
+**a) Statistical significance:**
+The interval [−1, 9] **includes zero**, which means the difference is not statistically
+significant at $\alpha = 0.05$. We cannot confidently conclude that Method B outperforms
+Method A based on this data alone.
+
+**b) Recommendation:**
+Two reasonable positions:
+
+- **Conservative:** Continue with Method A (current practice) until there is clearer
+  evidence of improvement.
+- **Pragmatic:** Adopt Method B, since the point estimate favours it by 4 points and the
+  downside is at most −1 (minimal risk), while the upside could be +9. Given equal costs
+  and no meaningful downside, this is defensible.
+
+Neither position is wrong — the interval shows genuine uncertainty, and context determines
+which error (acting too soon vs. waiting too long) is more costly.
+
+**c) Additional information that would help:**
+
+1. **More data.** With $n = 40$ per group and SD = 12, this study may have been
+   underpowered to detect a 4-point difference. A larger sample would narrow the interval
+   and clarify the result.
+2. **Effect size context.** Is a 4-point difference meaningful for the outcome you care
+   about? Statistical significance does not determine practical importance.
+3. **Secondary outcomes.** Do the methods differ on other relevant dimensions (time,
+   retention, scalability)?
+:::
+
+# Comments and questions
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

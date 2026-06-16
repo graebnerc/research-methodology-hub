@@ -17,10 +17,12 @@ categories:
   - regression
   - statistics
   - BA
+  - MA
   - tutorial
 
 level:
   - BA
+  - MA
 
 content-type: tutorial
 
@@ -639,6 +641,71 @@ model_no_influential <- lm(y ~ x, data = data[-influential_obs, ])
 7.  **Multiple diagnostics:** Don't rely on a single test or plot. A comprehensive assessment examines multiple perspectives on each assumption.
 
 Remember: Perfect adherence to all assumptions is rare in real data. The goal is to understand where and how assumptions are violated, assess the severity of violations, and make informed decisions about how to proceed with your analysis.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+**The Gauss-Markov theorem and why assumptions matter**
+
+The OLS estimator is **BLUE** (Best Linear Unbiased Estimator) under five assumptions: linearity, random sampling, no perfect multicollinearity, exogeneity ($E[\varepsilon | X] = 0$), and homoskedasticity. "Best" means minimum variance among all linear unbiased estimators. Knowing *which* assumption does *which* job clarifies what each diagnostic is actually protecting.
+
+The exogeneity assumption is the most important — and the only one that cannot be checked with residuals. Omitted variable bias (OVB) violates exogeneity silently: the residuals look fine, but the coefficient is wrong. A model with clean diagnostic plots can still be deeply misspecified if a correlated predictor has been omitted.
+
+**Functional form testing with the RESET test**
+
+The Breusch-Pagan and Shapiro-Wilk tests you have already seen address homoskedasticity and normality. A complementary test checks **functional form**: whether the linear specification is correctly capturing the relationship between X and Y.
+
+```r
+library(lmtest)
+resettest(model)
+```
+
+A significant p-value indicates that the squared and cubed fitted values add explanatory power — a sign that the functional form is wrong. When this happens, try log-transforming skewed variables or adding polynomial terms, then re-test. Note: with large samples (n > 1,000), even trivially small functional form deviations will produce significant RESET p-values. Use the plot of residuals vs. fitted values to assess practical severity alongside the test statistic.
+
+**Heteroskedasticity: fix, not just detect**
+
+The standard toolkit (Breusch-Pagan, Scale-Location plot) tells you *whether* variance is non-constant. The fix is **heteroskedasticity-consistent (HC) standard errors**, which adjust the covariance matrix without changing the point estimates:
+
+```r
+library(sandwich)
+library(lmtest)
+
+# HC1 (Hinkley): common in economics cross-sections
+coeftest(model, vcov = vcovHC(model, type = "HC1"))
+
+# Or with modelsummary (preferred for tables)
+modelsummary(list("Classical SEs" = model, "HC1 robust SEs" = model),
+             vcov = list("classical", "HC1"))
+```
+
+The point estimates are identical in both columns; only the standard errors (and therefore significance stars) change. With cross-sectional data, using robust standard errors by default costs nothing and protects against invalid inference. The opposite — reporting OLS standard errors when heteroskedasticity is present — produces confidence intervals that are too narrow and rejections that are too frequent.
+
+**Influential observations: Cook's distance properly**
+
+The `check_model()` diagnostic marks influential points, but the threshold matters. Cook's distance $D_i$ is affected by both leverage (unusual predictor values) and residual magnitude. A common threshold is $D_i > 4/n$; points above this warrant investigation — not automatic deletion.
+
+```r
+cooks_d <- cooks.distance(model)
+threshold <- 4 / nrow(data)
+data[cooks_d > threshold, ]   # inspect, not delete
+
+# Robustness check: refit without influential obs
+model_robust <- lm(y ~ x, data = data[cooks_d <= threshold, ])
+modelsummary(list("Full sample" = model, "Without influential" = model_robust))
+```
+
+If coefficients barely move, the model is robust. If they shift substantially, either the influential observations are genuine extreme cases that should be modelled separately, or the functional form needs revision.
+
+**OVB: the invisible bias**
+
+The most dangerous diagnostic failure: a model can pass every residual-based diagnostic test — linearity, homoskedasticity, normality, no influential outliers — and still produce a badly biased coefficient because of an omitted variable. OVB is invisible in the residuals because the bias is already absorbed into the coefficient before you look.
+
+The direction-of-bias rule: if an omitted variable $Z$ is positively correlated with $X$ and positively correlated with $Y$ (net of $X$), the OLS estimate of the $X$ coefficient is too large. Formally:
+
+$$\text{sign(bias)} = \text{sign}(\text{corr}(X, Z)) \times \text{sign}(\beta_Z)$$
+
+Use this rule to audit your model: list plausible omitted variables, sign the expected correlations, and report the likely direction of bias honestly.
+:::
 
 <script src="https://giscus.app/client.js"
         data-repo="graebnerc/research-methodology-hub"

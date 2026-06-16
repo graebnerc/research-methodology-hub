@@ -254,6 +254,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/exercise-logistic-regression-firm-exit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise: Predicting Firm Exit with Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../resources/r-programming/experiments-in-r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Experiments in R</span></a>
   </div>
@@ -298,6 +304,30 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../resources/r-programming/logarithms-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logarithms: A Gentle Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/logistic-regression-in-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic Regression for Binary Outcomes in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/multiple-regression-categorical-interactions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Categorical Variables and Interaction Terms in Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/panel-data-fixed-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Panel Data and Fixed Effects in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/publication-ready-figures-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Publication-Ready Figures with ggplot2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -452,6 +482,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/hypothesis-testing-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis Testing and Confidence Intervals: Practice Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../resources/statistics/probability-theory-essentials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Essentials of Probability Theory for Statistics</span></a>
   </div>
@@ -551,17 +587,20 @@ window.Quarto = {
 
 
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Note</span>Part of the Statistics Recap Track
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This page is the last entry in the <a href="../../tracks/statistics-recap.html">Statistics Recap track</a>.</p>
 <p><strong>Previous resource:</strong> <a href="../../resources/statistics/sampling-and-inference.html">Sampling and Statistical Inference</a></p>
+</div>
 </div>
 </div>
 <div class="cell">
@@ -1231,6 +1270,20 @@ Figure&nbsp;5: Confidence interval width decreases with sample size, but with di
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Practice exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Test your understanding with the companion exercise set: <a href="../../resources/statistics/hypothesis-testing-exercises.html">Hypothesis Testing and Confidence Intervals: Practice Exercises</a></p>
+<p>Seven exercises covering CI interpretation, p-value reasoning, statistical vs.&nbsp;practical significance, Type I/II error trade-offs, and step-by-step calculations — with hidden solutions.</p>
+</div>
+</div>
 <hr>
 <p><strong>This page ends the statistics recap track.</strong> The tools covered across all six pages — descriptive statistics, probability theory, and the inferential machinery of sampling distributions, hypothesis tests, and confidence intervals — form the conceptual foundation for applied empirical work. The natural next step is applying these ideas within specific methods: regression analysis, experimental design, or survey methodology, all of which are covered in other sections of the <a href="../../resources/index.html">Resource Library</a>.</p>
 <p><strong>Track overview:</strong> <a href="../../tracks/statistics-recap.html">A Recap of Undergraduate Statistics</a></p>
@@ -2312,31 +2365,41 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb27-592"><a href="#cb27-592" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> "The 95% CI means there is a 95% chance the true value is in this interval." <span class="pp">|</span> The true value is fixed (not random). The 95% refers to the procedure: 95% of such intervals cover the true value. <span class="pp">|</span></span>
 <span id="cb27-593"><a href="#cb27-593" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> "A statistically significant result is important." <span class="pp">|</span> Statistical significance depends on sample size. With large enough samples, trivially small effects become significant. Always consider effect size alongside the p-value. <span class="pp">|</span></span>
 <span id="cb27-594"><a href="#cb27-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-595"><a href="#cb27-595" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb27-596"><a href="#cb27-596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-597"><a href="#cb27-597" aria-hidden="true" tabindex="-1"></a>**This page ends the statistics recap track.** The tools covered across all six pages — descriptive statistics, probability theory, and the inferential machinery of sampling distributions, hypothesis tests, and confidence intervals — form the conceptual foundation for applied empirical work. The natural next step is applying these ideas within specific methods: regression analysis, experimental design, or survey methodology, all of which are covered in other sections of the <span class="co">[</span><span class="ot">Resource Library</span><span class="co">](../../resources/index.qmd)</span>.</span>
-<span id="cb27-598"><a href="#cb27-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-599"><a href="#cb27-599" aria-hidden="true" tabindex="-1"></a>**Track overview:** <span class="co">[</span><span class="ot">A Recap of Undergraduate Statistics</span><span class="co">](../../tracks/statistics-recap.qmd)</span></span>
-<span id="cb27-600"><a href="#cb27-600" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-601"><a href="#cb27-601" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb27-602"><a href="#cb27-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-603"><a href="#cb27-603" aria-hidden="true" tabindex="-1"></a><span class="fu"># Comments and questions</span></span>
+<span id="cb27-595"><a href="#cb27-595" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb27-596"><a href="#cb27-596" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practice exercises</span></span>
+<span id="cb27-597"><a href="#cb27-597" aria-hidden="true" tabindex="-1"></a>Test your understanding with the companion exercise set:</span>
+<span id="cb27-598"><a href="#cb27-598" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Hypothesis Testing and Confidence Intervals: Practice Exercises</span><span class="co">](hypothesis-testing-exercises.qmd)</span></span>
+<span id="cb27-599"><a href="#cb27-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-600"><a href="#cb27-600" aria-hidden="true" tabindex="-1"></a>Seven exercises covering CI interpretation, p-value reasoning, statistical vs. practical</span>
+<span id="cb27-601"><a href="#cb27-601" aria-hidden="true" tabindex="-1"></a>significance, Type I/II error trade-offs, and step-by-step calculations — with hidden</span>
+<span id="cb27-602"><a href="#cb27-602" aria-hidden="true" tabindex="-1"></a>solutions.</span>
+<span id="cb27-603"><a href="#cb27-603" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb27-604"><a href="#cb27-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-605"><a href="#cb27-605" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
-<span id="cb27-606"><a href="#cb27-606" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"graebnerc/research-methodology-hub"</span></span>
-<span id="cb27-607"><a href="#cb27-607" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOS7J-4w"</span></span>
-<span id="cb27-608"><a href="#cb27-608" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Comments"</span></span>
-<span id="cb27-609"><a href="#cb27-609" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOS7J-484C_N51"</span></span>
-<span id="cb27-610"><a href="#cb27-610" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
-<span id="cb27-611"><a href="#cb27-611" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb27-612"><a href="#cb27-612" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
-<span id="cb27-613"><a href="#cb27-613" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
-<span id="cb27-614"><a href="#cb27-614" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
-<span id="cb27-615"><a href="#cb27-615" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"preferred_color_scheme"</span></span>
-<span id="cb27-616"><a href="#cb27-616" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
-<span id="cb27-617"><a href="#cb27-617" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
-<span id="cb27-618"><a href="#cb27-618" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
-<span id="cb27-619"><a href="#cb27-619" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb27-605"><a href="#cb27-605" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb27-606"><a href="#cb27-606" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-607"><a href="#cb27-607" aria-hidden="true" tabindex="-1"></a>**This page ends the statistics recap track.** The tools covered across all six pages — descriptive statistics, probability theory, and the inferential machinery of sampling distributions, hypothesis tests, and confidence intervals — form the conceptual foundation for applied empirical work. The natural next step is applying these ideas within specific methods: regression analysis, experimental design, or survey methodology, all of which are covered in other sections of the <span class="co">[</span><span class="ot">Resource Library</span><span class="co">](../../resources/index.qmd)</span>.</span>
+<span id="cb27-608"><a href="#cb27-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-609"><a href="#cb27-609" aria-hidden="true" tabindex="-1"></a>**Track overview:** <span class="co">[</span><span class="ot">A Recap of Undergraduate Statistics</span><span class="co">](../../tracks/statistics-recap.qmd)</span></span>
+<span id="cb27-610"><a href="#cb27-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-611"><a href="#cb27-611" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb27-612"><a href="#cb27-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-613"><a href="#cb27-613" aria-hidden="true" tabindex="-1"></a><span class="fu"># Comments and questions</span></span>
+<span id="cb27-614"><a href="#cb27-614" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-615"><a href="#cb27-615" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
+<span id="cb27-616"><a href="#cb27-616" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"graebnerc/research-methodology-hub"</span></span>
+<span id="cb27-617"><a href="#cb27-617" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOS7J-4w"</span></span>
+<span id="cb27-618"><a href="#cb27-618" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Comments"</span></span>
+<span id="cb27-619"><a href="#cb27-619" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOS7J-484C_N51"</span></span>
+<span id="cb27-620"><a href="#cb27-620" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
+<span id="cb27-621"><a href="#cb27-621" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb27-622"><a href="#cb27-622" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
+<span id="cb27-623"><a href="#cb27-623" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb27-624"><a href="#cb27-624" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
+<span id="cb27-625"><a href="#cb27-625" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"preferred_color_scheme"</span></span>
+<span id="cb27-626"><a href="#cb27-626" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
+<span id="cb27-627"><a href="#cb27-627" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
+<span id="cb27-628"><a href="#cb27-628" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
+<span id="cb27-629"><a href="#cb27-629" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
