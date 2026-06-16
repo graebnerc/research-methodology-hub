@@ -4,7 +4,7 @@ description: "A conceptual and practical introduction to probability theory: ran
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Define random experiments, events, and probability using formal notation and business examples"

@@ -4,7 +4,7 @@ description: "Applying sampling theory to make inferences: how to evaluate claim
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Formulate a null and alternative hypothesis for a given research question"

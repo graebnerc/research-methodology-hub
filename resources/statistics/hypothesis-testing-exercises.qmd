@@ -4,7 +4,7 @@ description: "Conceptual and computational exercises to test and reinforce your 
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Apply the five-step hypothesis testing procedure to a new problem"

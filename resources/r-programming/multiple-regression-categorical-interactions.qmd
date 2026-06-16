@@ -4,7 +4,7 @@ description: "Extend linear regression to handle categorical predictors with mul
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Add a binary variable to a multiple regression model and interpret its coefficient as a ceteris paribus group difference"

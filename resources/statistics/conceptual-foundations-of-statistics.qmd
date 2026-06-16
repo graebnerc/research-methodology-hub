@@ -4,7 +4,7 @@ description: "A first orientation to statistical thinking: what statistics is, w
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Explain what statistics is and articulate why intuition alone is insufficient for interpreting data patterns"

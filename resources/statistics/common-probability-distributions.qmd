@@ -4,7 +4,7 @@ description: "An overview of probability distributions beyond the normal: binomi
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Identify when to use binomial, Poisson, uniform, exponential, beta, or gamma distributions based on data type and the generating process"

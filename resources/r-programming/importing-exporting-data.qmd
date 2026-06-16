@@ -4,7 +4,7 @@ description: "How to read CSV files into R using data.table::fread(), handle com
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Import a CSV file using data.table::fread() and convert it to a tibble"

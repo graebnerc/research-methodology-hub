@@ -4,7 +4,7 @@ description: "An introduction to Quarto — the modern successor to R Markdown �
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Create a Quarto document that combines prose and R code chunks"

@@ -4,7 +4,7 @@ description: "A practical introduction to logarithms for data science: what they
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Explain what a logarithm is and compute base-10, base-2, and natural logarithms in R"

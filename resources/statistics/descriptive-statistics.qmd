@@ -4,7 +4,7 @@ description: "A guided introduction to descriptive statistics in R, covering mea
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Compute measures of centrality (mean, median, mode) and dispersion (range, variance, standard deviation, coefficient of variation) in R"

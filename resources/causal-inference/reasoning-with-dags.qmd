@@ -4,7 +4,7 @@ description: "Learn to use Directed Acyclic Graphs (DAGs) to distinguish causal 
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/causal-inference.png
 
 learning-objectives:
   - "Articulate the identification problem: why a regression coefficient is not automatically a causal effect"

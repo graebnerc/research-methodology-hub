@@ -4,7 +4,7 @@ description: "An introduction to the building blocks of data: types of variables
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Distinguish between categorical and numerical variables and identify examples of each in a dataset"

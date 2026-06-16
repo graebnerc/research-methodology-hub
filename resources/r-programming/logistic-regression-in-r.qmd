@@ -4,7 +4,7 @@ description: "Understand why OLS fails for binary outcomes, fit logistic regress
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Explain why OLS produces invalid predictions and unreliable standard errors when the outcome is binary"

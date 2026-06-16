@@ -4,7 +4,7 @@ description: "An overview of what a systematic literature review is, how it diff
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/literature-review.png
 
 learning-objectives:
   - "Distinguish a systematic literature review from a narrative or scoping review"

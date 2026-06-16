@@ -4,7 +4,7 @@ description: "Step-by-step guide to installing R, RStudio, Git, Quarto, and regi
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Install R and RStudio on your operating system (Windows, macOS, or Linux)"

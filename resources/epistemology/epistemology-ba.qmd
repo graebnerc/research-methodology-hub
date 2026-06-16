@@ -4,7 +4,7 @@ description: "A first introduction to epistemology — the branch of philosophy 
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/epistemology.png
 
 learning-objectives:
   - "Explain what epistemology is and why it is relevant to empirical research"

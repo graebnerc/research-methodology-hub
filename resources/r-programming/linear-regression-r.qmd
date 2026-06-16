@@ -4,7 +4,7 @@ description: "Practical implementation of simple and multiple linear regression 
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Fit simple and multiple linear regression models using `lm()` and interpret the coefficients"

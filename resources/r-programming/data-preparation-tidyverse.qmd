@@ -4,7 +4,7 @@ description: "How to reshape data between wide and long format with tidyr, manip
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-16
 date-modified: 2026-06-16
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/r-programming.png
 
 learning-objectives:
   - "Reshape data from wide to long format and back using `tidyr::pivot_longer()` and `tidyr::pivot_wider()`"

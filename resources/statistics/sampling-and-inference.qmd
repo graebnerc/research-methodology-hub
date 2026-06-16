@@ -4,7 +4,7 @@ description: "How we move from sample statistics to conclusions about population
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
 date-modified: 2026-06-15
-image: ../../assets/images/placeholder.png
+image: ../../assets/images/statistics.png
 
 learning-objectives:
   - "Distinguish population parameters from sample statistics and explain why sampling variability makes inference necessary"
