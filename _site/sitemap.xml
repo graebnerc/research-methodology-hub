@@ -9,8 +9,12 @@
     <lastmod>2026-06-15T12:55:38.529Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/tracks/index.html</loc>
-    <lastmod>2026-06-15T11:50:58.317Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/introduction-to-regression-in-r.html</loc>
+    <lastmod>2026-06-16T20:48:13.474Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r.html</loc>
+    <lastmod>2026-06-16T20:47:57.888Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/statistics/sampling-and-inference.html</loc>
@@ -30,7 +34,7 @@
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/visualization-ggplot2.html</loc>
-    <lastmod>2026-06-16T09:23:49.445Z</lastmod>
+    <lastmod>2026-06-16T20:47:34.408Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project.html</loc>
@@ -146,7 +150,7 @@
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/using-ai-for-r-coding.html</loc>
-    <lastmod>2026-06-16T20:00:39.215Z</lastmod>
+    <lastmod>2026-06-16T20:47:35.436Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/statistics/common-probability-distributions.html</loc>
@@ -165,8 +169,12 @@
     <lastmod>2026-06-16T07:27:23.615Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r.html</loc>
-    <lastmod>2026-06-15T08:05:48.631Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/data-workflow-in-r.html</loc>
+    <lastmod>2026-06-16T20:48:30.063Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/index.html</loc>
+    <lastmod>2026-06-16T20:48:38.834Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/tracks/regression-and-causal-inference.html</loc>

@@ -19,6 +19,66 @@
     ]
   },
   {
+    "listing": "/tracks/introduction-to-regression-in-r.html",
+    "items": [
+      "/resources/statistics/common-probability-distributions.html",
+      "/resources/statistics/descriptive-statistics.html",
+      "/resources/statistics/hypothesis-testing-and-confidence-intervals.html",
+      "/resources/statistics/probability-theory-essentials.html",
+      "/resources/statistics/sampling-and-inference.html",
+      "/resources/causal-inference/exercise-gender-wage-gap-dags.html",
+      "/resources/causal-inference/reasoning-with-dags.html",
+      "/resources/r-programming/data-preparation-tidyverse.html",
+      "/resources/r-programming/exercise-logistic-regression-firm-exit.html",
+      "/resources/r-programming/experiments-in-r.html",
+      "/resources/r-programming/first-steps-in-r.html",
+      "/resources/r-programming/getting-started-with-quarto.html",
+      "/resources/r-programming/importing-exporting-data.html",
+      "/resources/r-programming/installing-r-and-rstudio.html",
+      "/resources/r-programming/installing-r-packages.html",
+      "/resources/r-programming/linear-regression-r.html",
+      "/resources/r-programming/logarithms-introduction.html",
+      "/resources/r-programming/logistic-regression-in-r.html",
+      "/resources/r-programming/multiple-regression-categorical-interactions.html",
+      "/resources/r-programming/panel-data-fixed-effects.html",
+      "/resources/r-programming/publication-ready-figures-ggplot2.html",
+      "/resources/r-programming/r-object-types-i-functions.html",
+      "/resources/r-programming/r-object-types-ii-vectors.html",
+      "/resources/r-programming/r-object-types-iii-factors-dataframes.html",
+      "/resources/r-programming/regression-residuals-diagnostics.html",
+      "/resources/r-programming/setting-up-an-r-project.html",
+      "/resources/r-programming/using-ai-for-r-coding.html",
+      "/resources/r-programming/visualization-ggplot2.html",
+      "/resources/statistics/hypothesis-testing-exercises.html"
+    ]
+  },
+  {
+    "listing": "/tracks/getting-started-with-r.html",
+    "items": [
+      "/resources/r-programming/data-preparation-tidyverse.html",
+      "/resources/r-programming/exercise-logistic-regression-firm-exit.html",
+      "/resources/r-programming/experiments-in-r.html",
+      "/resources/r-programming/first-steps-in-r.html",
+      "/resources/r-programming/getting-started-with-quarto.html",
+      "/resources/r-programming/importing-exporting-data.html",
+      "/resources/r-programming/installing-r-and-rstudio.html",
+      "/resources/r-programming/installing-r-packages.html",
+      "/resources/r-programming/linear-regression-r.html",
+      "/resources/r-programming/logarithms-introduction.html",
+      "/resources/r-programming/logistic-regression-in-r.html",
+      "/resources/r-programming/multiple-regression-categorical-interactions.html",
+      "/resources/r-programming/panel-data-fixed-effects.html",
+      "/resources/r-programming/publication-ready-figures-ggplot2.html",
+      "/resources/r-programming/r-object-types-i-functions.html",
+      "/resources/r-programming/r-object-types-ii-vectors.html",
+      "/resources/r-programming/r-object-types-iii-factors-dataframes.html",
+      "/resources/r-programming/regression-residuals-diagnostics.html",
+      "/resources/r-programming/setting-up-an-r-project.html",
+      "/resources/r-programming/using-ai-for-r-coding.html",
+      "/resources/r-programming/visualization-ggplot2.html"
+    ]
+  },
+  {
     "listing": "/resources/index.html",
     "items": [
       "/resources/causal-inference/exercise-gender-wage-gap-dags.html",
@@ -57,37 +117,12 @@
     ]
   },
   {
-    "listing": "/tracks/getting-started-with-r.html",
+    "listing": "/tracks/data-workflow-in-r.html",
     "items": [
-      "/resources/statistics/common-probability-distributions.html",
-      "/resources/statistics/descriptive-statistics.html",
-      "/resources/statistics/hypothesis-testing-and-confidence-intervals.html",
-      "/resources/statistics/probability-theory-essentials.html",
-      "/resources/statistics/sampling-and-inference.html",
-      "/resources/causal-inference/exercise-gender-wage-gap-dags.html",
-      "/resources/causal-inference/reasoning-with-dags.html",
       "/resources/r-programming/data-preparation-tidyverse.html",
-      "/resources/r-programming/exercise-logistic-regression-firm-exit.html",
-      "/resources/r-programming/experiments-in-r.html",
-      "/resources/r-programming/first-steps-in-r.html",
-      "/resources/r-programming/getting-started-with-quarto.html",
       "/resources/r-programming/importing-exporting-data.html",
-      "/resources/r-programming/installing-r-and-rstudio.html",
-      "/resources/r-programming/installing-r-packages.html",
-      "/resources/r-programming/linear-regression-r.html",
-      "/resources/r-programming/logarithms-introduction.html",
-      "/resources/r-programming/logistic-regression-in-r.html",
-      "/resources/r-programming/multiple-regression-categorical-interactions.html",
-      "/resources/r-programming/panel-data-fixed-effects.html",
       "/resources/r-programming/publication-ready-figures-ggplot2.html",
-      "/resources/r-programming/r-object-types-i-functions.html",
-      "/resources/r-programming/r-object-types-ii-vectors.html",
-      "/resources/r-programming/r-object-types-iii-factors-dataframes.html",
-      "/resources/r-programming/regression-residuals-diagnostics.html",
-      "/resources/r-programming/setting-up-an-r-project.html",
-      "/resources/r-programming/using-ai-for-r-coding.html",
-      "/resources/r-programming/visualization-ggplot2.html",
-      "/resources/statistics/hypothesis-testing-exercises.html"
+      "/resources/r-programming/visualization-ggplot2.html"
     ]
   }
 ]

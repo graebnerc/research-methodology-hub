@@ -1,0 +1,91 @@
+---
+title: "Track: Data Workflow in R"
+description: "A practical learning path through the core data workflow every analyst needs: importing data, cleaning and reshaping it with the tidyverse, visualising it with ggplot2, and documenting work in Quarto."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../assets/images/placeholder.png
+
+categories:
+  - R
+  - data-cleaning
+  - visualization
+  - tidyverse
+  - quarto
+  - reproducibility
+  - BA
+
+level:
+  - BA
+
+listing:
+  - id: related-workflow-resources
+    contents: "../resources/r-programming/*.qmd"
+    include:
+      categories: [data-cleaning, visualization, tidyverse]
+    type: table
+    sort: "date asc"
+    fields: [title, description]
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Track: Data Workflow in R"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/tracks/data-workflow-in-r
+---
+
+# Who This Track Is For
+
+This track is for students who have the R basics in place — you can write simple code, understand functions and vectors, and have an RStudio project set up — and now want to do something useful with data. It covers the end-to-end workflow from raw data files to a communicable result.
+
+If you are not yet comfortable with R basics, start with the [Getting Started with R](getting-started-with-r.qmd) track first.
+
+By the end of this track you will be able to:
+
+- Import data from CSV, Excel, and Stata files into R
+- Clean, filter, reshape, and summarise a dataset using `dplyr` and `tidyr`
+- Build informative plots with `ggplot2` and save them to files
+- Combine prose, code, and output in a reproducible Quarto document
+
+---
+
+# Core Sequence
+
+## 1. Importing and Exporting Data
+
+[Importing and Exporting Data in R](../resources/r-programming/importing-exporting-data.qmd)
+
+Read CSV, RDS, Excel, and Stata files into R using `data.table`, `dplyr`, and `haven`; write data back to disk; and understand why relative file paths matter for reproducibility. The starting point for any real data project.
+
+## 2. Data Preparation with the Tidyverse
+
+[Data Preparation with the Tidyverse](../resources/r-programming/data-preparation-tidyverse.qmd)
+
+Filter rows, select and rename columns, create new variables with `mutate()`, summarise by group, reshape between wide and long format with `tidyr`, and join tables. The tidyverse grammar covers 90% of data preparation tasks.
+
+## 3. Visualisation with ggplot2
+
+[Visualization with ggplot2](../resources/r-programming/visualization-ggplot2.qmd)
+
+Build scatter plots, line plots, and bar charts using ggplot2's layer-by-layer grammar; map variables to aesthetics; adjust axis labels, colour palettes, and themes; and save finished plots with `ggsave()`. Visualisation is both an exploratory and a communication tool.
+
+## 4. Reproducible Documents with Quarto
+
+[Getting Started with Quarto](../resources/r-programming/getting-started-with-quarto.qmd)
+
+Combine prose, R code, and output in a single `.qmd` file and render it to HTML or PDF. Quarto makes your analysis self-documenting: anyone who has the file can reproduce every number and figure in your report.
+
+---
+
+# Going Further
+
+Once you have the data workflow in place, the natural next step is analysis. The [Introduction to Regression in R](introduction-to-regression-in-r.qmd) track picks up directly from here and covers fitting, interpreting, and diagnosing regression models. For producing polished, publication-ready figures, see [Publication-Ready Figures with ggplot2](../resources/r-programming/publication-ready-figures-ggplot2.qmd) (MA level).
+
+---
+
+# Related Resources
+
+::: {#related-workflow-resources}
+:::

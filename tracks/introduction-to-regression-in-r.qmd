@@ -1,0 +1,82 @@
+---
+title: "Track: Introduction to Regression in R"
+description: "A step-by-step learning path through linear regression for BA students — from the mathematics of logarithms through model fitting, diagnostics, and categorical predictors, entirely in R."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../assets/images/placeholder.png
+
+categories:
+  - regression
+  - statistics
+  - R
+  - BA
+
+level:
+  - BA
+
+listing:
+  - id: related-regression-resources
+    contents: "../resources/*/*.qmd"
+    include:
+      categories: [regression, R]
+    type: table
+    sort: "date asc"
+    fields: [title, description]
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Track: Introduction to Regression in R"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/tracks/introduction-to-regression-in-r
+---
+
+# Who This Track Is For
+
+This track is for BA students who have encountered the idea of regression in a statistics or methods course and now want to implement it in R. It assumes you can read a scatterplot, have some intuition about what a "line of best fit" does, and have worked through the basic R programming resources (or have equivalent experience).
+
+By the end of this track you will be able to:
+
+- Fit and interpret a linear regression model in R using `lm()`
+- Apply log transformations to variables and interpret log-transformed coefficients correctly
+- Read standard regression diagnostic plots and identify common assumption violations
+- Extend a model with categorical predictors (dummy variables) and interaction terms
+
+The track covers *linear regression for BA-level students*. For extensions into logistic regression, panel data, and causal reasoning, see the [Regression and Causal Inference](regression-and-causal-inference.qmd) track (MA level).
+
+---
+
+# Core Sequence
+
+## 1. Logarithms
+
+[Logarithms: A Gentle Introduction](../resources/r-programming/logarithms-introduction.qmd)
+
+Why logarithms appear so often in regression models, how to work with them in R, and how to interpret coefficients when variables are log-transformed. A short conceptual page that pays dividends in every regression you run.
+
+## 2. Linear Regression in R
+
+[Linear Regression in R](../resources/r-programming/linear-regression-r.qmd)
+
+Fit a bivariate and multiple regression with `lm()`, interpret coefficients and R², understand what omitted variable bias means in practice, and apply log and quadratic transformations. The methodological core of this track.
+
+## 3. Regression Diagnostics
+
+[Regression Residuals and Model Diagnostics](../resources/r-programming/regression-residuals-diagnostics.qmd)
+
+Learn what the four standard diagnostic plots are checking, how to spot problems (non-linearity, heteroskedasticity, outliers), and what to do about them. A model that has not been diagnosed is a model that should not be trusted.
+
+## 4. Categorical Variables and Interactions
+
+[Categorical Variables and Interaction Terms in Regression](../resources/r-programming/multiple-regression-categorical-interactions.qmd)
+
+Extend your regression toolkit to handle binary and multi-category predictors: how R encodes them as dummies, how to choose a reference category, and how to specify and interpret interaction terms when the relationship between two variables depends on a third.
+
+---
+
+# Related Resources
+
+::: {#related-regression-resources}
+:::

@@ -10,7 +10,16 @@ Tracks are written as general learning paths, not course companions. They are us
 
 ## Available tracks
 
-*Tracks will appear here as they are added. Check back soon.*
+### Getting started
 
-- [A Recap of Undergraduate Statistics](statistics-recap.qmd) — conceptual foundations, data types, descriptive statistics, and probability theory
-- [Getting Started with R](getting-started-with-r.qmd) *(skeleton — in progress)*
+- [Getting Started with R](getting-started-with-r.qmd) — installation, the RStudio interface, core object types, and project setup; no prior experience required
+- [A Recap of Undergraduate Statistics](statistics-recap.qmd) — conceptual foundations, data types, descriptive statistics, probability theory, and inference
+
+### Applied data work (BA)
+
+- [Data Workflow in R](data-workflow-in-r.qmd) — importing data, cleaning with the tidyverse, visualising with ggplot2, and documenting in Quarto
+- [Introduction to Regression in R](introduction-to-regression-in-r.qmd) — logarithms, linear regression with `lm()`, diagnostics, categorical predictors, and interaction terms
+
+### Advanced methods (MA)
+
+- [Regression and Causal Inference](regression-and-causal-inference.qmd) — logistic regression, DAGs, panel fixed effects, and publication-ready figures

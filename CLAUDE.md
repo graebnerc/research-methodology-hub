@@ -97,7 +97,7 @@ Default to Pattern 1. Switch to Pattern 2 only when you find yourself writing a 
 ### Tags
 Use existing tags from the taxonomy before inventing new ones. Current tags:
 
-**Thematic:** `data-cleaning`, `R`, `visualization`, `experiments`, `statistics`, `regression`, `causal-inference`, `literature-review`, `research-design`, `qualitative-methods`, `reproducibility`, `quarto`, `survey-methods`, `epistemology`, `tidyverse`
+**Thematic:** `data-cleaning`, `R`, `visualization`, `experiments`, `statistics`, `regression`, `causal-inference`, `literature-review`, `research-design`, `qualitative-methods`, `reproducibility`, `quarto`, `survey-methods`, `epistemology`, `tidyverse`, `artificial-intelligence`
 
 **Content type:** `tutorial`, `video`, `slides`, `reading`, `exercise`, `concept`
 
@@ -193,6 +193,14 @@ methods-hub/
     │   └── custom.scss
     └── images/
 ```
+
+### Folder conventions for r-programming/ vs causal-inference/
+
+`r-programming/` is the folder for **implementation-first** pages — the primary purpose is to show how to do something in R. The thematic domain (regression, causal inference, visualization) is conveyed via tags, not by moving the file.
+
+`causal-inference/` is the folder for **concept-first** pages — the primary focus is a methodological or conceptual framework (e.g., DAGs, potential outcomes), with R used to illustrate. These pages would be meaningful even without any R code.
+
+A page can be in `r-programming/` and carry the `causal-inference` tag if its focus is on *implementing* a causal inference method in R. Tags govern discovery; the folder governs only physical location.
 
 ## Deployment
 

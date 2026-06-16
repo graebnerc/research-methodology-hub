@@ -1,38 +1,96 @@
 ---
 title: "Track: Getting Started with R"
-description: "A beginner learning path for students with no prior programming experience who want to use R for data analysis."
+description: "A beginner learning path for students with no prior programming experience who want to use R for data analysis — from installation through data objects, project setup, and first workflows."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../assets/images/placeholder.png
+
+categories:
+  - R
+  - BA
+
+level:
+  - BA
+
 listing:
   - id: related-r-resources
-    contents: "../resources/*/*.qmd"
-    include:
-      categories: "R"
+    contents: "../resources/r-programming/*.qmd"
     type: table
     sort: "date asc"
-    fields: [title, description, date]
+    fields: [title, description]
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Track: Getting Started with R"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r
 ---
 
-## Who this track is for
+# Who This Track Is For
 
-This track is for students who have never programmed before and want to learn R for data analysis. By the end of the track, you will be able to load, clean, and visualize data in R using the tidyverse.
+This track is for students who have never used R before and want to reach the point where they can load, inspect, and work with data confidently. No prior programming experience is assumed — a working computer and a willingness to experiment are all you need.
 
-No prior experience with R or any other programming language is assumed. A working computer and a willingness to make mistakes are all you need.
+By the end of this track you will be able to:
 
----
+- Install R, RStudio, and packages on your own machine
+- Navigate the RStudio interface and write basic R code
+- Understand R's core object types: functions, vectors, factors, and data frames
+- Organise your work in a reproducible R project with a sensible folder structure
 
-## Core sequence
-
-Work through these resources in order. Each page builds on the previous one.
-
-1. **[Getting Started with R](../resources/r-programming/getting-started-with-r.qmd)**
-   Install R and RStudio, understand the interface, and run your first commands. Start here if you have never opened R before.
-
-*Additional pages will be added to this track as the hub grows.*
+This track ends where data work begins. After completing it, continue with the [Data Workflow in R](data-workflow-in-r.qmd) track to load, clean, and visualise real data.
 
 ---
 
-## Related resources
+# Core Sequence
 
-All hub resources tagged with `R`:
+## 1. Installation
+
+[Getting Started with R: Installing Everything You Need](../resources/r-programming/installing-r-and-rstudio.qmd)
+
+Install R and RStudio, orient yourself in the RStudio interface, and run your first commands in the console. Start here if you have never opened R before.
+
+## 2. Packages
+
+[Installing R Packages](../resources/r-programming/installing-r-packages.qmd)
+
+Understand what packages are, install them from CRAN, and load them into a session. Covers the difference between `install.packages()` and `library()` and how to find packages you need.
+
+## 3. First Steps
+
+[First Steps in R](../resources/r-programming/first-steps-in-r.qmd)
+
+Write your first R code: arithmetic, variable assignment, and basic operations. Develops the mental model of R as an interactive calculator before introducing more structured programming.
+
+## 4. Functions
+
+[Object Types in R I: Functions](../resources/r-programming/r-object-types-i-functions.qmd)
+
+Understand how functions work in R — arguments, defaults, return values, and how to read help documentation. Functions are the primary way of doing anything in R; this page makes them legible.
+
+## 5. Vectors
+
+[Object Types in R II: Vectors](../resources/r-programming/r-object-types-ii-vectors.qmd)
+
+The fundamental data structure in R: atomic vectors, their types, how to create and index them, and how vectorised operations work. Understanding vectors makes everything else in R predictable.
+
+## 6. Factors and Data Frames
+
+[Object Types in R III: Factors and Data Frames](../resources/r-programming/r-object-types-iii-factors-dataframes.qmd)
+
+Factors encode categorical variables; data frames hold rectangular datasets. This page covers both — how to create them, access their contents, and why factors behave differently from character vectors.
+
+## 7. Project Setup
+
+[Setting Up an R Project](../resources/r-programming/setting-up-an-r-project.qmd)
+
+Create an RStudio project, organise files into a sensible folder structure, and use `here::here()` for portable file paths. Good project hygiene from the start makes your work reproducible and shareable.
+
+---
+
+# All R Programming Resources
 
 ::: {#related-r-resources}
 :::

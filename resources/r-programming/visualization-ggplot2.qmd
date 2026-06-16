@@ -15,6 +15,7 @@ learning-objectives:
 categories:
   - R
   - visualization
+  - tidyverse
   - BA
   - tutorial
 

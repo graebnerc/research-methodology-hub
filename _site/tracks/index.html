@@ -178,7 +178,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#available-tracks" id="toc-available-tracks" class="nav-link active" data-scroll-target="#available-tracks"><span class="header-section-number">1</span> Available tracks</a></li>
+  <li><a href="#available-tracks" id="toc-available-tracks" class="nav-link active" data-scroll-target="#available-tracks"><span class="header-section-number">1</span> Available tracks</a>
+  <ul class="collapse">
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#applied-data-work-ba" id="toc-applied-data-work-ba" class="nav-link" data-scroll-target="#applied-data-work-ba">Applied data work (BA)</a></li>
+  <li><a href="#advanced-methods-ma" id="toc-advanced-methods-ma" class="nav-link" data-scroll-target="#advanced-methods-ma">Advanced methods (MA)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -215,15 +220,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="available-tracks" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="available-tracks"><span class="header-section-number">1</span> Available tracks</h2>
-<p><em>Tracks will appear here as they are added. Check back soon.</em></p>
+<section id="getting-started" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started">Getting started</h3>
 <ul>
-<li><a href="../tracks/statistics-recap.html">A Recap of Undergraduate Statistics</a> — conceptual foundations, data types, descriptive statistics, and probability theory</li>
-<li><a href="../tracks/getting-started-with-r.html">Getting Started with R</a> <em>(skeleton — in progress)</em></li>
+<li><a href="../tracks/getting-started-with-r.html">Getting Started with R</a> — installation, the RStudio interface, core object types, and project setup; no prior experience required</li>
+<li><a href="../tracks/statistics-recap.html">A Recap of Undergraduate Statistics</a> — conceptual foundations, data types, descriptive statistics, probability theory, and inference</li>
+</ul>
+</section>
+<section id="applied-data-work-ba" class="level3">
+<h3 class="anchored" data-anchor-id="applied-data-work-ba">Applied data work (BA)</h3>
+<ul>
+<li><a href="../tracks/data-workflow-in-r.html">Data Workflow in R</a> — importing data, cleaning with the tidyverse, visualising with ggplot2, and documenting in Quarto</li>
+<li><a href="../tracks/introduction-to-regression-in-r.html">Introduction to Regression in R</a> — logarithms, linear regression with <code>lm()</code>, diagnostics, categorical predictors, and interaction terms</li>
+</ul>
+</section>
+<section id="advanced-methods-ma" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-methods-ma">Advanced methods (MA)</h3>
+<ul>
+<li><a href="../tracks/regression-and-causal-inference.html">Regression and Causal Inference</a> — logistic regression, DAGs, panel fixed effects, and publication-ready figures</li>
 </ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gräbner-radkowitsch,
@@ -722,10 +742,19 @@ document.addEventListener('DOMContentLoaded', function () {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Available tracks</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>*Tracks will appear here as they are added. Check back soon.*</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Getting started</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">A Recap of Undergraduate Statistics</span><span class="co">](statistics-recap.qmd)</span> — conceptual foundations, data types, descriptive statistics, and probability theory</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Getting Started with R</span><span class="co">](getting-started-with-r.qmd)</span> *(skeleton — in progress)*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Getting Started with R</span><span class="co">](getting-started-with-r.qmd)</span> — installation, the RStudio interface, core object types, and project setup; no prior experience required</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">A Recap of Undergraduate Statistics</span><span class="co">](statistics-recap.qmd)</span> — conceptual foundations, data types, descriptive statistics, probability theory, and inference</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Applied data work (BA)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Workflow in R</span><span class="co">](data-workflow-in-r.qmd)</span> — importing data, cleaning with the tidyverse, visualising with ggplot2, and documenting in Quarto</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Introduction to Regression in R</span><span class="co">](introduction-to-regression-in-r.qmd)</span> — logarithms, linear regression with <span class="in">`lm()`</span>, diagnostics, categorical predictors, and interaction terms</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Advanced methods (MA)</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Regression and Causal Inference</span><span class="co">](regression-and-causal-inference.qmd)</span> — logistic regression, DAGs, panel fixed effects, and publication-ready figures</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
