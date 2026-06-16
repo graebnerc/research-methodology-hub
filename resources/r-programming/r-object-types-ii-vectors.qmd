@@ -1,0 +1,783 @@
+---
+title: "Object Types in R II: Vectors"
+description: "A thorough introduction to atomic vectors and lists in R: types (logical, integer, double, character), coercion, logical operations, vectorization, indexing, and useful functions."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Identify the four atomic vector types (logical, integer, double, character) and explain the type hierarchy"
+  - "Test and coerce vector types using `is.*()` and `as.*()` functions"
+  - "Apply logical operators and vectorized operations to atomic vectors"
+  - "Index, subset, and modify elements of atomic vectors and lists"
+
+categories:
+  - R
+  - BA
+  - tutorial
+
+level:
+  - BA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Object Types in R II: Vectors"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-ii-vectors
+---
+
+## Video lecture
+
+```{=html}
+<div class="embed-container">
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=Oaw5AHoXca2QkbFL&amp;list=PLZDawQMrG1RJ1oZwuZtiG0fOWSOgyZhYC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
+## Overview
+
+We already learned that everything in R that exists is an *object*.
+You most likely noted that there are different types of objects:
+`2`, for instance, was a number, but `assign` was a function.
+As you might have guessed, there are many more types of objects.
+To understand the fundamental object types in R is an essential prerequisite
+to master more complicated programming challenges than those we have encountered
+so far.
+
+These data types are summarized in the following figure:
+
+```{r echo=FALSE}
+knitr::include_graphics("vector-classification.png", auto_pdf = TRUE)
+```
+
+This tutorial will be about the most common types of vectors.
+See [Object Types in R I: Functions](r-object-types-i-functions.qmd)
+for a treatment of functions, and
+[Object Types in R III: Factors and Data Frames](r-object-types-iii-factors-dataframes.qmd)
+for more advanced types of vectors.
+
+## Vectors
+
+Vectors are the most important object type in `R` - almost all data that we will
+work with in `R` are vectors of some sort. Within the class of vectors, the most
+important distinction is that between **atomic vectors** and **lists**, which
+are sometimes also called *generic vectors*.
+Both atomic vectors and lists consist of one or more other objects. What
+distinguishes the two is that while
+*atomic vectors are composed only of objects of the same type*, lists can
+comprise objects of different types.
+
+## Atomic vectors
+
+This makes it easy to classify atomic vectors in more detail: we usually say
+that the type of atomic vector is the type of the object it encompasses.
+Four major types of atomic vectors in this sense exist:
+
+* `logical` (logical values): there are only two relevant logical values:
+`TRUE` und `FALSE`
+* `integer` (whole numbers): this type should be self-explanatory. Less
+intuitive is the rule that in order to define an integer in `R` you need to type
+the number followed by the letter `L` such that `R` interprets the number
+as an integer. Examples are `1L`, `-400L` or `10L`.
+* `double` (decimal numbers): these should be self-explanatory as well.
+Examples are `1.5`, `0.0`, or `-500.32`.
+* Whole and decimal numbers are often summarized in the category `numeric`.
+However, the use of `numeric` is almost always confusing, and many functions
+show counter-intuitive behavior when this category is used. It is recommended
+to never use it.
+* `character` (words): these can contain all kinds of tokens and are characterized
+by the fact that they always start and end with `"` (or `'`). Examples would be
+`"Hello"`, `"500"` or `"1_2_Three"`.
+
+As indicated above, an atomic vector only comprises elements of the same type.
+In this context, we should mention the at first sight 'strange'
+data type `NA`, which denotes a missing value:
+whenever an element of a vector is missing, e.g. when the vector is used to
+store observations of subjects that have participated in an experiment, and
+for some subjects the observation is
+missing, we will use `NA`.
+
+### Testing and coercing types
+
+In the following we will study the different types of atomic vectors and their
+typical behavior in more detail. But before doing so we should introduce the
+function `typeof()`: it helps us to identify the type of an object in the first
+place. To see how, lets call the function with the object (or the name of the
+object) we are interested about:
+
+```{r}
+typeof(2L)
+```
+```{r}
+x <- 22.0
+typeof(x)
+```
+
+There is also a family of functions that allows us to test whether an object
+is actually of a certain type or not. The general syntax here is `is.*()`.
+For instance:
+
+```{r}
+x <- 1.0
+is.integer(x)
+```
+```{r}
+is.double(x)
+```
+
+This function always returns an object of type `logical`:
+
+```{r}
+y <- is.double(x)
+typeof(y)
+```
+
+We can also try to transform objects from one type into another.
+We call this process 'coercion' and the general syntax is `as.*()`.
+For instance:
+
+```{r}
+x <- "2"
+print(
+  typeof(x)
+)
+x <- as.double(x)
+print(
+  typeof(x)
+)
+```
+
+Such a transformation is, however, not always possible:
+
+```{r}
+as.double("Hello")
+```
+
+Since `R` does not know how to turn the word 'Hello' into a decimal number,
+it transforms it into a 'missing value' - `NA`.
+
+For the basic types discussed above there is a logical hierarchy of feasible
+transformations:
+`logical` → `integer` → `double` → `character`,
+meaning that you can always transform a decimal number into a word, but not
+vice versa.
+
+> **Why change the types of objects?**
+> Data types are extremely important for a programming language because
+otherwise it would remain unclear how mathematical operations could be
+applied to different objects such as numbers or words.
+You will transform objects yourself especially when you want to use a certain
+operation that is only defined for a certain type of object, and the object
+you are dealing with has been stored as a different type.
+This can happen, for example, when you read in data or translate words into
+numerical values yourself.
+If unexpected errors occur in your code with cryptic error messages, it is
+always a good idea to check the types of the objects used and transform them
+if necessary.
+
+```{r}
+x <- 2
+y <- as.character(x)
+print(y)
+z <- as.double(y) # This works
+print(z)
+k <- as.double("Hallo") # This does not work
+print(k)
+```
+
+When transforming logical values, `TRUE` counts as `1` and `FALSE` as `0`,
+a fact that will come in handy later on:
+
+```{r}
+x <- TRUE
+as.integer(x)
+```
+
+```{r}
+y <- FALSE
+as.integer(y)
+```
+
+Since it is not always clear when `R` issues a warning for transformations
+that are incompatible with the hierarchy just introduced and when it does not,
+you should always be cautious!
+
+Moreover, transformations might change the properties of the transformed objects
+implicitly in unexpected ways.
+For instance, a transformation from a decimal number to a whole number can lead
+to unexpected rounding behavior:
+
+```{r}
+x <- 1.99
+as.integer(x)
+```
+
+Another example is the following:
+
+```{r}
+z <- as.logical(99)
+print(z)
+```
+
+Such implicit changes of the object properties do not necessarily come with a
+warning message, so one should always be careful when transforming objects!
+
+In many cases, functions do the necessary transformations of their arguments
+automatically. In most cases this is very practical:
+
+```{r}
+x <- 1L # Integer
+y <- 2.0 # Double
+z <- x + y
+typeof(z)
+```
+
+But it can be dangerous in some cases as well.
+
+When adding up logical values they are transformed to numbers:
+
+```{r}
+x <- TRUE
+y <- FALSE
+z <- x + y # TRUE counts as 1, FALSE as 0
+print(z)
+```
+
+This is useful if you want to know, for instance, how many elements of a vector
+meet a certain logical criterion:
+
+```{r}
+x <- c(1,2,3,4,5)
+sum(x > 3)
+```
+
+In all these cases it is very important to stay informed about the types of
+objects you are dealing with. To help you out, the following table contains
+an overview over the most important transformation and test functions:
+
+Type      | Test           | Transformation |
+----------+----------------+----------------|
+logical   | `is.logical`   | `as.logical`   |
+double    | `is.double`    | `as.double`    |
+integer   | `is.integer`   | `as.integer`   |
+character | `is.character` | `as.character` |
+function  | `is.function`  | `as.function`  |
+NA        | `is.na`        | NA             |
+NULL      | `is.null`      | `as.null`      |
+
+A final remark on **scalars**:
+with scalar we usually refer to 'single numbers', such as `2`.
+There is no such concept in R: `2` is a vector with one element
+(or: of length 1).
+Thus, we do not distinguish the type of a vector with or more than one
+elements.
+
+
+**Note:** As you might have guessed already, we use the function `c()` to
+create longer vectors:
+
+```{r}
+x <- c(1, 2, 3)
+x
+```
+
+We can also use this function to concatenate vectors:
+
+```{r}
+x <- 1:3 # Shortcut for: x <- c(1, 2, 3)
+y <- 4:6
+z <- c(x, y)
+z
+```
+
+Since atomic vectors can only contain objects of the same type, one might expect
+the following code, which tries to concatenate objects of different types, to
+produce an error:
+
+```{r}
+x <- c(1, "Hallo")
+```
+
+But this is not what happens! R transforms the objects according to the
+hierarchy discussed above:
+`logical` → `integer` → `double` → `character`.
+Due to the absence of errors or warning messages, such operations are a
+regular source for mistakes.
+
+**Note:** The length of a vector corresponds to its number of elements. We
+can 'measure' its length using the function `length()`:
+
+```{r}
+x =  c(1, 2, 3)
+len_x <- length(x)
+len_x
+```
+
+### Logical operations
+
+The logical values `TRUE` and `FALSE` are often the result of logical
+operations, such as 'Is 2 larger than 1?'.
+Such logical operations occur very frequently and it is a good idea to familiarize
+yourself with the logical operators. You can find an overview in the following
+table:
+
+| Operator | Function in R | Example  |
+|:--------:|:-------------:|:---------|
+| larger | `>` | `2>1` |
+| smaller | `<` | `2<4` |
+| equal   | `==` | `4==3` |
+| larger or equal | `>=` | `8>=8` |
+| smaller or equal | `<=` | `5<=9` |
+| not equal | `!=` | `4!=5` |
+| and | `&` | `x<90 & x>55` |
+| or | `|` | `x<90 | x>55` |
+| either or | `xor()` | `xor(2<1, 2>1)` |
+| not | `!` | `!(x==2)` |
+| is true | `isTRUE()` | `isTRUE(1>2)` |
+
+The result of such logical operations is always a logical value:
+
+```{r}
+x <- 4
+y <- x == 8
+typeof(y)
+```
+
+You may also test longer vectors:
+
+```{r}
+x <- 1:3
+x<2
+```
+
+Tests can also be chained:
+
+```{r}
+x <- 1L
+x>2 | x<2 & (is.double(x) & x!=0)
+```
+
+Since many mathematical operations interpret `TRUE` as `1`, it is easy to
+check how often a certain condition is met:
+
+```{r}
+x <- 1:50
+smaller_20 <- x<20
+print(
+  sum(smaller_20) # How many elements are smaller than 20?
+  )
+print(
+  sum(smaller_20/length(x)) # What's the share of these elements?
+)
+```
+
+### Vectorization
+
+The chained operation we just saw is an example for *vectorizing* an operation.
+This means that the same operation is applied to many elements, all of which
+are concatenated as a vector. For instance, if you want to compute the
+square root of the numbers 5, 6 and 7 you could do:
+
+```{r}
+sqrt(5)
+sqrt(6)
+sqrt(7)
+```
+
+Or you vectorize the operation:
+
+```{r}
+sqrt(c(5,6,7))
+```
+
+Vectorizing operations is very useful since it speeds up the computations
+considerably. Vectorized operations are *far* more efficient and faster
+than applying the operation to each element of the vector separately. Thus,
+whenever you need to apply a certain operation more than once you should always
+think about using vectorization.
+
+### More on words
+
+Words are distinguished by the fact that their beginning and their end gets
+indicated by the symbol `'` or `"`:
+
+```{r}
+x <- "Hello"
+typeof(x)
+```
+```{r}
+y <- 'Bye!'
+typeof(y)
+```
+
+Just as other kinds of atomic vectors, they can be concatenated using `c()`:
+
+```{r}
+z <- c(x, "und", y)
+z
+```
+
+A useful function in this context is `paste()`, which transforms and combines
+elements of several vectors:
+
+```{r}
+x <- 1:10
+y <- paste("Try nb.", x)
+y
+```
+
+The function `paste()` also accepts an optional argument `sep`, which allows
+us to specify a token that should be placed between the elements to be
+combined (the default is `sep=" "`):
+
+```{r}
+day_nr <- 1:10
+x_axis <- paste("Day", day_nr, sep = ": ")
+x_axis
+```
+
+### Missing values and NULL
+
+As indicated above, missing values are encoded as `NA`. This is particularly
+useful in statistical contexts, where a particular element of a vector cannot
+simply be removed if it is unavailable.
+
+Most operations that get `NA` as an input will also give `NA` as an output,
+because it is unclear what the result of the operation would be for different
+values for the missing value:
+
+```{r}
+5 + NA
+```
+
+The only exception is an operation that yields a certain value completely
+independent from what you would substitute for `NA`:
+
+```{r}
+NA | TRUE # Always TRUE, no matter what you substitute for NA
+```
+
+To test whether a vector `x` contains missing values you should always use the
+function `is.na`, never `x==NA`:
+
+```{r}
+x <- c(NA, 5, NA, 10)
+print(x == NA) # Unclear since not clear whether all NA must stand for the same value
+
+print(
+  is.na(x)
+)
+```
+
+Whenever an operation yields a value that cannot be defined, the result is
+not `NA` but `NaN` (*not a number*):
+
+```{r}
+0 / 0
+```
+
+Another special element is `NULL`.
+`NULL` is in fact a data type in itself (i.e. it is not a vector),
+but in practice it is best thought of as a vector of length zero:
+
+```{r}
+x <- NULL
+length(x)
+```
+
+`NULL` is frequently used to indicate that something does not exist.
+An empty vector, for instance, is `NULL`:
+
+```{r}
+x <- c()
+x
+length(x)
+```
+
+This is different to a vector with one (or more) missing *elements*:
+
+```{r}
+y <- NA
+length(y)
+```
+
+When you define your own functions, you might use `NULL` as the default value
+for optional arguments.
+
+### Indexing and replacement
+
+We can extract single elements of a vector using squared brackets:
+
+```{r}
+x <- c(2,4,6)
+x[1]
+```
+
+This also allows us to modify specific elements:
+
+```{r}
+x <- c(2,4,6)
+x[2] <- 99
+x
+```
+
+But we can also extract more than one element:
+
+```{r}
+x[1:2]
+```
+
+Negative indices eliminate the respective elements:
+
+```{r}
+x[-1]
+```
+
+To get the last element of a vector you might combine this idea with the
+function `length()`:
+
+```{r}
+x[length(x)]
+```
+
+
+### Useful functions when working with atomic vectors
+
+A sequence of whole numbers is something that we use very frequently.
+To create such sequences, the shortcut `:` comes in handy:
+
+```{r}
+x <- 1:10
+x
+```
+```{r}
+y <- 10:1
+y
+```
+
+To build more complex sequences we can use `seq()`, which in its simplest
+case is equivalent to `:`:
+
+```{r}
+x <- seq(1, 10)
+print(x)
+```
+
+The function `seq()`, however, allows for a number of useful optional arguments.
+For instance, `by` allows us to control the space between the numbers:
+
+```{r}
+y <- seq(1, 10, by = 0.5)
+print(y)
+```
+
+If we want to specify the desired length of the resulting vector and let
+`R` choose the necessary space between the elements, we may use `length.out`:
+
+```{r}
+z <- seq(2, 8, length.out = 4)
+print(z)
+```
+
+Another common task is to repeat a certain vector. This can be done with `rep()`:
+
+```{r}
+x <- rep(NA, 5)
+print(x)
+```
+
+For the **length** of a vector we can use the function `length()`:
+
+```{r}
+x <- c(1,2,3,4)
+length(x)
+```
+
+If we are looking for the **largest** and **smallest** value of a vector we can
+use `min()` and `max()`:
+
+```{r}
+min(x)
+```
+
+```{r}
+max(x)
+```
+
+Both functions (and many more similar functions) have the optional argument
+`na.rm`, which can be either `TRUE` or `FALSE`.
+In the case of `TRUE`, all `NA` values are removed before the operation
+gets applied:
+
+```{r}
+y <- c(1,2,3,4,NA)
+min(y)
+```
+```{r}
+min(y, na.rm = TRUE)
+```
+
+The **mean** or the **variance/standard deviation** of the elements can be
+computed with `mean()`, `var()`, and `sd()`, all of which have also the
+optional argument `na.rm`:
+
+```{r}
+mean(x)
+```
+```{r}
+var(y)
+```
+```{r}
+var(y, na.rm = T)
+```
+
+Finally, we often want to compute the **sum** or the **product** of all
+the elements of the vector. Here the functions `sum()` and `prod()` are useful:
+
+```{r}
+sum(x)
+```
+
+```{r}
+prod(y, na.rm = T)
+```
+
+
+## Lists
+
+In contrast to atomic vectors, lists can contain objects of different types.
+We create lists via the function `list()`:
+
+```{r}
+l_1 <- list(
+  "a",
+  c(1,2,3),
+  FALSE
+)
+typeof(l_1)
+```
+
+```{r}
+l_1
+```
+
+Lists can become very complex. The function `str()` (short for "structure")
+helps us to get a quick overview over a list and its elements:
+
+```{r}
+str(l_1)
+```
+
+We can name the elements of lists:
+
+```{r}
+l_2 <- list(
+  "first_element" = "a",
+  "second_element" = c(1,2,3),
+  "third_element" = FALSE
+)
+```
+
+We can retrieve the names of all elements of the list with `names()`:
+
+```{r}
+names(l_2)
+```
+
+There are two very important differences in the handling of vectors and lists:
+
+1. Vectorization does not work for lists
+2. Indexing works differently
+
+The first issue can be illustrated easily:
+
+```{r}
+vec_expl <- c(1,2,3)
+list_expl <- list(1,2,3)
+sqrt(vec_expl)
+```
+
+But:
+```{r, error=TRUE}
+sqrt(list_expl)
+```
+
+The second issue is due to the more complex structure of lists. For vectors we
+extracted single elements via `[`. For lists, there is a difference between
+`[` and `[[`. The former always returns a list:
+
+```{r}
+l_1[2]
+```
+
+The second then returns a vector and is more similar to the behavior of `[` in
+the context of atomic vectors:
+
+```{r}
+l_1[[2]]
+```
+
+To extract an element of this vector we can chain the brackets:
+
+```{r}
+l_1[[2]][3]
+```
+
+We can also extract elements by their name:
+
+```{r}
+l_2[[1]]
+```
+```{r}
+l_2[["first_element"]]
+```
+
+Lists are fundamental to many more complex structures that we will encounter
+later. They are more flexible than atomic vectors, but this flexibility also
+makes them more difficult to use and less efficient for tasks where this
+flexibility is not needed. As a rule of thumb, whenever you can represent
+something as an atomic vector, you should do so. You should always have a good
+reason for using lists!
+
+## Practice
+
+The `ObjectTypes1` exercise set in the `DataScienceExercises` package covers the
+main concepts from this tutorial:
+
+```{r, eval=FALSE}
+learnr::run_tutorial(
+  name = "ObjectTypes1",
+  package = "DataScienceExercises",
+  shiny_args = list("launch.browser" = TRUE)
+)
+```
+
+See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
+for installation instructions.
+
+## Further reading
+
+- Sections 1-3 in [Chapter 12](https://r4ds.hadley.nz/logicals) of R for Data Science
+- [Chapter 13](https://r4ds.hadley.nz/numbers) in R for Data Science
+- [Chapter 14](https://r4ds.hadley.nz/strings) in R for Data Science
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

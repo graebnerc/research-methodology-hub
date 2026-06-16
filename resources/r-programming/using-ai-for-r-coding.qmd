@@ -1,0 +1,91 @@
+---
+title: "Using AI Tools for R Coding"
+description: "A practical overview of how to use AI assistants effectively for R programming tasks — from generating first-draft scripts to debugging — including how to write good prompts and what AI tools cannot do for you."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Identify tasks where AI assistance adds value in R programming and where it does not"
+  - "Write prompts that give an AI tool enough context to generate useful R code"
+  - "Use AI to locate and explain errors in existing R code"
+  - "Compare the main AI coding tools available and their integration with RStudio"
+
+categories:
+  - R
+  - BA
+  - reading
+
+level:
+  - BA
+
+content-type: reading
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Using AI Tools for R Coding"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/using-ai-for-r-coding
+---
+
+Modern AI tools can meaningfully accelerate R programming work — but only if you already
+understand the language well enough to evaluate what the AI produces. An AI that generates
+R code you cannot read is not a shortcut; it is a liability.
+
+With that caveat in mind, there are two use cases where AI assistance is particularly
+valuable:
+
+1. **Generating a first draft.** Given a clear description of what you want to do, an AI
+   tool can produce a working starting point faster than writing from scratch. You then read,
+   understand, and adapt it.
+2. **Debugging.** Paste code and an error message into an AI assistant, explain what you
+   expected, and it will often identify the problem quickly.
+
+In both cases, providing context is essential. An AI working without context about your
+data structure, packages, or project conventions will produce generic code that may not
+fit your situation. The more precisely you describe the problem, the more useful the output.
+
+## Video lecture
+
+```{=html}
+<div class="embed-container">
+  <iframe
+    src="https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js"
+    style="border: 0.5px"
+    width="80%" height="80%">
+  </iframe>
+</div>
+```
+
+::: {.callout-tip collapse="true"}
+## Prompts and code examples from the lecture
+<script src="https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js"></script>
+:::
+
+## Tools and resources
+
+**Learning to prompt effectively**
+
+- [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) — a thorough, hands-on course on writing good prompts
+
+**Integrating AI into RStudio**
+
+- [GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) — tab-completion and inline suggestions directly in the editor; free for students via [GitHub Education](https://github.com/education/students)
+- [Gemini Code Assist](https://codeassist.google) — free tier, but no direct RStudio plugin
+
+**Standalone AI coding environments**
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) — best suited for larger programming projects rather than single-file R scripts
+- [Windsurf](https://windsurf.com) — has a generous free tier but no RStudio integration
+
+::: {.callout-note}
+## A note on reliance
+
+AI tools improve fastest when you treat their output critically. If you paste code you
+do not understand into your script, you will struggle to adapt it, debug it, or explain
+it — all of which you will eventually need to do. Use AI as an accelerator, not a
+replacement for understanding.
+:::

@@ -1,0 +1,15 @@
+{
+  "hash": "5996b782d4e1408396f0930460d7a438",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Practicing R with the DataScienceExercises Package\"\ndescription: \"How to install and use the DataScienceExercises interactive exercise package to practice R with immediate feedback.\"\nauthor: \"Claudius Gräbner-Radkowitsch\"\ndate: 2026-06-16\ndate-modified: 2026-06-16\ncategories:\n  - R\n  - exercises\n---\n\nWhen learning a programming language, applying new concepts regularly is essential. Without regular practice it is hard to remember — and to find out what you have not yet understood well enough.\n\nThe `DataScienceExercises` package provides a set of interactive exercises for core R topics. Each exercise runs in your browser and gives immediate feedback on your answers. This post explains how to install the package and run exercises.\n\n## Installation\n\nThe exercises use three packages: `learnr`, `gradethis`, and `DataScienceExercises`. All three are installed from GitHub, so you first need the `remotes` package:\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"remotes\")\n```\n:::\n\n\nThen install the exercise packages:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nremotes::install_github(\n  repo = c(\n    \"rstudio/learnr\",\n    \"rstudio/gradethis\",\n    \"graebnerc/DataScienceExercises\"\n  ),\n  upgrade = \"always\"\n)\n```\n:::\n\n\n## Keeping the package up to date\n\nThe exercises are updated and extended over time. Before starting a practice session, run:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nremotes::install_github(\n  repo = \"graebnerc/DataScienceExercises\",\n  upgrade = \"always\"\n)\n```\n:::\n\n\nAn internet connection is only needed to update — the exercises themselves run offline once installed.\n\n## Running an exercise\n\nResource pages on this hub that have associated exercises list the name of the exercise set. To launch one, pass that name to `learnr::run_tutorial()`. For example, to run the `Basics` set:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlearnr::run_tutorial(\n  name = \"Basics\",\n  package = \"DataScienceExercises\",\n  shiny_args = list(\"launch.browser\" = TRUE)\n)\n```\n:::\n\n\nReplace `\"Basics\"` with the name of whichever exercise set you want to practice.\n\n## Reporting bugs or suggestions\n\nIf you find a mistake or have an idea for a new exercise, use the [issue tracker](https://github.com/graebnerc/DataScienceExercises/issues) on GitHub.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

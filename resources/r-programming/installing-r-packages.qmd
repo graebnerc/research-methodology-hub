@@ -1,0 +1,170 @@
+---
+title: "Installing R Packages"
+description: "How to install the R packages needed for data science work, verify your installation using the DataScienceExercises package, and set up LaTeX for PDF output."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Install a set of required R packages using an installation script"
+  - "Verify that the DataScienceExercises package and learnr exercises are working"
+  - "Install tinytex via Quarto to enable PDF rendering"
+
+categories:
+  - R
+  - BA
+  - tutorial
+
+level:
+  - BA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Installing R Packages"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/installing-r-packages
+---
+
+```{r, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(out.width='90%')
+```
+
+## Video lecture
+
+```{=html}
+<div class="embed-container">
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=UBJo1AiCblQZFtZD&amp;list=PLZDawQMrG1RImURlbldAF773MDRqeARNu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
+## Installing R packages
+
+After installing [R and R-Studio](installing-r-and-rstudio.qmd), you
+still need to install a number of so called [R packages](https://r-pkgs.org/).
+We will learn more about what packages are and how to use them later.
+Nevertheless, it is strongly
+recommended to install all the packages you will need over the
+following semester already now. This way you make sure that everything is working,
+and you save yourself from trouble during the semester. Moreover, installing
+these packages is necessary to do the exercises provided after each session.
+
+To install packages, a stable internet connection is required. Then, proceed
+as follows:
+
+1. Download the installation script provided by your course and save it in a
+directory of your choice.
+2. Open the file in R-Studio. To this end,
+right-click on the file and select `Open with`, and then choose R-Studio.
+3. Adjust the first line of the script to the OS you are using
+(e.g. `"Mac"` or `"Windows"`).
+4. Select all the lines and click on the button `Run`.
+5. Check if the package `here` was installed. You will get the respective
+message in the console.
+
+If you encounter any problems, please make a screenshot and describe the problem
+in detail when asking for help.
+
+6. Select the rest of the script and run it as you did with the first lines.
+If you get a success message at the end, all packages were installed successfully.
+
+Note: you may see the following message during the installation process:
+
+```
+Do you want to install from sources the packages which need compilation?
+```
+
+I recommend typing `No` and pressing enter. If the installation is not successful
+you might run the installation commands again and try responding with `Yes`,
+which sometimes fixes the problem.
+
+## Verify the usability of exercises
+
+If everything worked until here you should be able to access the
+exercise sets provided after each session via the `DataScienceExercises` package.
+To make sure everything works as expected, please run the following command
+in the console and press enter:
+
+```{r, eval=FALSE}
+learnr::run_tutorial(
+  name = "Basics",
+  package = "DataScienceExercises",
+  shiny_args=list("launch.browser"=TRUE))
+```
+
+If the exercise window opens, everything is working correctly.
+
+After you closed the window and the process is still active, just click on the
+`Stop` button in R-Studio, and then click on the `Console` tab on the left
+to return to the console.
+
+See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
+for full installation instructions for the exercises package.
+
+## Installing LaTeX
+
+To create PDF-documents you have to install a
+[LaTeX distribution](https://www.latex-project.org/).
+It is recommended to install the distribution
+[tinytex](https://yihui.org/tinytex/),
+no matter whether you already have a different distribution or not.
+
+The easiest route is to install tinytex via Quarto. If you have not yet
+installed Quarto, follow the instructions on
+[this webpage](https://quarto.org/docs/get-started/).
+
+Then follow the instructions from [this tutorial](https://quarto.org/docs/output-formats/pdf-engine.html).
+What you essentially need to do is to open your terminal and issue
+the following command:
+
+```
+quarto install tinytex
+```
+
+To make sure everything runs smoothly you should create a small test `.qmd` file
+and try to render it as a PDF by clicking the `Render` button in R-Studio.
+
+If this works you are all set. If there are any errors showing up, please
+search for solutions online or ask for help.
+
+### A common problem when installing tinytex on a Mac
+
+If after the attempted installation of `tinytex` you see an error message about
+missing paths, execute the following command in your R console within
+R-Studio:
+
+```{r, eval=FALSE}
+tinytex::install_tinytex(force = TRUE)
+```
+
+Then close R-Studio and restart your computer. If the problem persists, please
+open your Mac Terminal and enter the following commands:
+
+```
+sudo chown -R `whoami`:admin /usr/local/bin
+
+~/Library/TinyTeX/bin/x86_64-darwin/tlmgr path add
+```
+
+Then install `tinytex` again as described above, restart your computer, and
+try to render a PDF again.
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

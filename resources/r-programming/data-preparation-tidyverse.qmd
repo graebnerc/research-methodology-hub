@@ -1,0 +1,639 @@
+---
+title: "Data Preparation with the Tidyverse"
+description: "How to reshape data between wide and long format with tidyr, manipulate variables and filter rows with dplyr, merge data sets, and chain steps together using pipes."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Reshape data from wide to long format and back using `tidyr::pivot_longer()` and `tidyr::pivot_wider()`"
+  - "Create, modify, filter, and select columns using dplyr verbs (`mutate`, `filter`, `select`)"
+  - "Merge two data sets using `dplyr::left_join()`, `right_join()`, `inner_join()`, and `full_join()`"
+  - "Chain multiple wrangling steps into readable pipelines using the `%>%` pipe"
+
+categories:
+  - R
+  - data-cleaning
+  - tidyverse
+  - BA
+  - tutorial
+
+level:
+  - BA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Data Preparation with the Tidyverse"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/data-preparation-tidyverse
+---
+
+## Video lecture
+
+```{=html}
+<div class="embed-container">
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=t69pnr-CSejvV0ZH&amp;list=PLZDawQMrG1RIzp07hiVKmu6wUs8tqdKod" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+```
+
+## Packages and data used
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(here)
+```
+
+```{r, include=FALSE}
+data_raw <- fread(file = "data/wrangling_data_raw.csv")
+data_raw_long <- fread(file = "data/wrangling_data_raw_long.csv")
+data_final_expl <- fread(file = "data/wrangling_data_final_expl.csv")
+gini_join <- fread(file = "data/wrangling_gini_join.csv")
+gdp_join <- fread(file = "data/wrangling_gdp_join.csv")
+```
+
+The data sets used in these notes are:
+
+* `wrangling_data_raw.csv` (`data_raw`)
+* `wrangling_data_raw_long.csv` (`data_raw_long`)
+* `wrangling_data_final_expl.csv` (`data_final_expl`)
+* `wrangling_gini_join.csv` (`gini_join`)
+* `wrangling_gdp_join.csv` (`gdp_join`)
+
+The brackets show the names of the data sets used below.
+
+## General remarks
+
+* If you imported the data from a file, make sure that the import went as expected
+* Start with a data set that is of the type `tibble` (use `tibble::as_tibble()` if necessary)
+* Before starting to wrangle, make a note to yourself of how the final data set should look like;
+  * Then think about the different steps you need to take to reach this goal;
+  * Each step should only address one single wrangling challenge
+* It is often useful to save the wrangling code in one script in which you
+import raw data in the beginning and save tidy data in the end; this allows you
+to keep data wrangling, visualization, and modelling in separate files
+
+## Reshaping data with the tidyr package
+
+At the end of each data wrangling activity, you should have created
+[tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
+The R package that contains functions meant to assist you in
+this process is called [tidyr](https://tidyr.tidyverse.org/).
+While it contains functions for various purposes, the by far most common
+(and, to be honest, the most demanding) task is to reshape data from long to
+wide format and vice versa. This will be the focus of this section.
+
+### Wide and long format: definition
+
+There is no strict definition for wide and long data. Rather, the two
+should be understood as *relative* descriptions of data, meaning that it is
+more straightforward to speak of a data set that is long*er* relative to
+another one, rather than *a long* data set per se.
+
+Here is an example for a rather long data set:
+
+```{r, echo=FALSE}
+data_raw_long
+```
+
+Here, we have one column identifying the variable, the value of which is
+stored in a separate column.
+This means that the data is relatively 'long' in the sense of having
+many rows. At the same time, it is relatively 'narrow' in the sense of not
+having too many columns since the variable identifier is kept in a single
+column.
+
+Contrast this with an example for a rather wide data set, where each variable
+has its own column:
+
+```{r, echo=FALSE}
+data_raw
+```
+
+While the number of columns remains the same, the data set has relatively more
+columns as compared to the rows.
+
+While the long format is often easier to read and preferable when communicating
+data to humans, making data tidy often involves the task of making data
+'longer'.
+
+### Transforming long data into wide data
+
+To make data wider we use the function `tidyr::pivot_wider()`.
+
+Assume that we start with our long data set introduced above and that this
+data set is bound to the name `data_raw_long`.
+
+```{r}
+dplyr::glimpse(data_raw_long)
+```
+
+We will now use `tidyr::pivot_wider()` to make this data set wider. The most
+important arguments of this function are as follows:
+
+* `data` is the first argument and refers to the name of the data set to be considered
+* `names_from` denotes the column that includes the names of the new columns
+* `values_from` denotes the column that includes the values to be allocated in the newly created cells
+
+In the present case, the call would look like the following:
+
+```{r}
+data_raw_wide <- tidyr::pivot_wider(
+  data = data_raw_long,
+  names_from = "variable",
+  values_from = "value")
+data_raw_wide
+```
+
+### Transforming wide data into long data
+
+Assume we want to take the data set `data_raw_wide` and re-create the original
+long version. To achieve this we can use `tidyr::pivot_longer()`. Again, lets
+have a look at the most important arguments:
+
+* `data` is the first argument and refers to the name of the data set to be considered
+* `cols` denotes the columns that should be transformed into the longer format
+* `names_to` denotes the column that includes the names of the new columns
+* `values_to` denotes the column that includes the values to be allocated in the newly created cells
+
+The arguments `names_to` and `values_to` are not strictly necessary since they
+have useful default values, but its usually nicer to be explicit.
+
+When specifying the argument `cols` you have several possibilities. The
+simplest variant is to pass a character vector with the column names.
+But note that you can save a lot of writing by using so called
+[selection helpers](https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html),
+a very useful tool we will learn about later.
+
+In our case this amounts to:
+
+```{r}
+data_raw_long <- tidyr::pivot_longer(
+  data = data_raw_wide,
+  cols = c("unemp", "gdp"),
+  names_to = "indicator",
+  values_to = "values")
+data_raw_long
+```
+
+
+## Chaining wrangling tasks using pipes
+
+Pipes are provided via the package `magrittr`, which is loaded automatically if
+you attach packages such as `tidyr` or `dplyr`. Pipes are short keywords that
+facilitate the development of very readable and transparent data wrangling code.
+
+While there are many
+[different pipes](https://magrittr.tidyverse.org/reference/index.html),
+the one we will use extensively is `%>%`.
+It is always used at the end of a line, and it basically 'throws' the result
+of this line into the next line of code. In this line, you can refer to the
+intermediate result via `.`, or it is used implicitly as the first argument
+to the function you use.
+
+In other words, `x %>% f(y)` (or `x %>% f(., y)`) is equivalent to `f(x, y)`.
+
+But lets look at an example! Assume we start with the following data set:
+
+```{r, echo=TRUE}
+pipe_data_raw <- data_raw %>%
+  select(country, year, gdp, unemp)
+pipe_data_raw
+```
+
+And what we want is this:
+
+```{r, echo=FALSE}
+pipe_data_raw %>%
+  pivot_longer(cols = c("gdp", "unemp")) %>%
+  pivot_wider(names_from = "year", values_from = "value")
+```
+
+We can do this by first making the data longer, and then wider. We could do
+this explicitly:
+
+```{r}
+pipe_data_1 <- pivot_longer(
+  data = pipe_data_raw,
+  cols = all_of(c("gdp", "unemp")))
+
+pipe_data_2 <- pivot_wider(
+  data = pipe_data_1,
+  names_from = "year",
+  values_from = "value")
+```
+
+
+But we can also write this code more concisely using the pipe:
+
+```{r}
+pipe_data_final <- pivot_longer(
+  data = pipe_data_raw,
+  cols = all_of(c("gdp", "unemp"))) %>%
+  pivot_wider(
+  names_from = "year",
+  values_from = "value")
+```
+
+The `%>%`-pipe allows you to write very readable code, so make sure you use it
+often. But for code development it might be nevertheless helpful to write the
+intermediate steps explicitly.
+
+## Manipulating data with the dplyr package
+
+The package `tidyr` is for turning messy data sets into tidy data sets.
+Another important part of data preparation is to manipulate an existing data
+set. To do this, the package [dplyr](https://dplyr.tidyverse.org/) contains
+many useful functions. You will regularly use functions from both the `tidyr` and
+`dplyr` package within your script for data preparation.
+
+### Creating or manipulating variables
+
+The function `dplyr::mutate()` is used both for manipulating existing
+columns as well as creating new columns. In the first case the name of the
+column that the result of `dplyr::mutate()` is written into already exists,
+in the second case we just use a new name.
+
+Consider the following data set with the unemployment rate as an example:
+
+```{r, include=FALSE}
+data_unemp <- data_raw %>%
+  select(c("country", "year", "unemp")) %>%
+  pivot_wider(names_from = "country", values_from = "unemp")
+```
+
+
+```{r}
+data_unemp
+```
+
+Assume we want to express the percentage values via decimal numbers and, to
+this end, divide the values in the columns `Germany` and `Greece` by 100. We
+can use `dplyr::mutate()` to achieve this:
+
+```{r}
+data_unemp %>%
+  dplyr::mutate(
+    Germany = Germany/100,
+    Greece = Greece/100
+  )
+```
+
+But we could use basically the same code to create a new column. Assume, for
+instance, we want a new column containing the difference between the
+unemployment rates:
+
+```{r}
+data_unemp %>%
+  dplyr::mutate(
+    Difference = Greece - Germany
+  )
+```
+
+The only difference here was that the left-hand-side name of the column to
+be manipulated did not exist before!
+
+### Filtering rows
+
+The function `dplyr::filter()` can be used to filter rows according to
+certain conditions. The conditions must evaluate for each cell entry to
+either `TRUE` or `FALSE`, and only those rows for which they evaluate to `TRUE`
+remain in the data set. Often, the conditions are specified via
+logical operators, which were covered in [Object Types in R II: Vectors](r-object-types-ii-vectors.qmd).
+
+As always, the first argument to `dplyr::filter()` is `data`, i.e. the data
+set on which you want to operate. Then follow an arbitrary number of logical
+conditions on the different columns of the data set in question.
+
+Assume we want to take the previously defined data set `data_raw_long`
+
+```{r}
+data_raw_long
+```
+
+and only want to keep data on GDP:
+
+```{r}
+data_raw_long %>%
+  dplyr::filter(indicator=="gdp")
+```
+
+You may also combine more than one condition in one call to `dplyr::filter()`.
+If you also want to filter by values and only keep those rows where the value
+is below 50.000:
+
+```{r}
+data_raw_long %>%
+  dplyr::filter(
+    indicator=="gdp",
+    values < 50000)
+```
+
+### Selecting columns
+
+When you only want to keep certain *columns* we speak of selecting (rather than
+filtering) columns. This is done - surprise - via the function `dplyr::select()`.
+
+There are different ways for selecting columns. In any case, the first argument
+is, again, `data`, i.e. the data set considered. In the present case, we will
+refer to `data_raw`:
+
+```{r}
+data_raw
+```
+
+Then we can now select columns using one of the following two options.
+First, you may refer to columns via their *name*:
+
+```{r}
+data_raw %>%
+  dplyr::select(country, year, unemp)
+```
+
+But this is often error-prone. Thus, it is usually better to refer to the columns via
+[selection helpers](https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html),
+which is also the most flexible version. While we will learn about more selection
+helpers later, here we will mainly use `dplyr::all_of()`, which accepts a character
+vector of column names:
+
+```{r}
+data_raw %>%
+  dplyr::select(dplyr::all_of(c("country", "year", "gdp")))
+```
+
+> **Caution:** Do not forget the `c()`! Otherwise:
+
+```{r, error=TRUE}
+data_raw %>%
+  dplyr::select(dplyr::all_of("country", "year", "gdp"))
+```
+
+> It is also possible to define the column vector first:
+
+```{r}
+cols2keep <- c("country", "year", "gdp")
+data_raw %>%
+  dplyr::select(dplyr::all_of(cols2keep))
+```
+
+> Selection helpers allow you to specify the columns to be selected more
+generally. For instance, `dplyr::ends_with()` allows you to select all columns
+that end with a certain pattern:
+
+```{r}
+data_raw %>%
+  dplyr::select(dplyr::ends_with("p"))
+```
+
+In any case, you can also specify the columns you want to *drop*. To this end,
+just add a `-` in front of the selection command:
+
+```{r}
+data_raw %>%
+  dplyr::select(-unemp, -gdp)
+```
+
+### Merging data sets
+
+Often you need to obtain data from different sources. To merge all your data
+in one single data set, you need to use one of the `*_join()` functions of the
+`dplyr`-package. These functions all merge two data sets, but the way they do
+it is different. Below we illustrate the most common joins (so called
+[mutating joins](https://dplyr.tidyverse.org/reference/mutate-joins.html)).
+
+As a guiding example we use the following two data sets:
+
+First, data on income inequality from the
+[SWIID data base](https://fsolt.org/swiid/):
+
+```{r}
+gini_join
+```
+
+Second, data on GDP per capita from the
+[World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD):
+
+```{r}
+gdp_join
+```
+
+We will consider the behavior of the following four functions:
+
+* `dplyr::left_join()`
+* `dplyr::right_join()`
+* `dplyr::full_join()`
+* `dplyr::inner_join()`
+
+All of them accept the following arguments:
+
+* `x` and `y`: the two data sets to be merged
+* `by`: a vector or a named vector indicating on which columns the data sets
+should be merged
+
+First, `dplyr::left_join()` joins the data sets on those
+columns mentioned in `by`, but only keeps those rows for which `x` contains
+an observation:
+
+```{r}
+dplyr::left_join(x = gdp_join, y = gini_join, by = c("country", "year"))
+```
+
+This might introduce `NA`s into the columns of `y`, but not of `x`. It is the
+other way around for `dplyr::right_join()`: it only keeps those rows for
+which `y` contains an observation:
+
+```{r}
+dplyr::right_join(x = gdp_join, y = gini_join, by = c("country", "year"))
+```
+
+`dplyr::inner_join()` is the most restrictive option, keeping only those rows
+for which both `x` and `y` contain an observation (i.e. it never introduces
+`NA`s):
+
+```{r}
+dplyr::inner_join(x = gdp_join, y = gini_join, by = c("country", "year"))
+```
+
+Finally, `dplyr::full_join()` contains all rows that occur at least in `x` *or*
+`y`, i.e. it might introduce `NA`s in both the columns of `x` and `y`:
+
+```{r}
+dplyr::full_join(x = gdp_join, y = gini_join, by = c("country", "year"))
+```
+
+Two final remarks: first, the types of the columns on which you merge the
+data sets must be equal, otherwise R throws an error. Just enforce the correct
+data type before merging.
+
+Second, you can also merge on columns with different names by passing named
+vectors to `by`:
+
+```{r}
+dplyr::left_join(
+  x = gdp_join, y = gini_join,
+  by = c("country", "year"="year"))
+```
+
+### Grouping and summarising data
+
+The final challenge we consider involves the application of two functions
+(at least in most cases): `dplyr::group_by()` and `dplyr::summarize()`.
+
+`dplyr::group_by()` is usually used within pipes and groups a data set
+according to an arbitrary number of variables, each of which must refer to
+one (and only one) column. It produces a grouped data set:
+
+```{r}
+data_raw_grouped <- data_raw %>%
+  dplyr::group_by(country)
+data_raw_grouped
+```
+
+Grouped data sets are usually not interesting in themselves. You can ungroup them
+via `dplyr::ungroup()`.
+
+They are most useful if used in conjunction with `dplyr::summarise()`, which
+summarizes variables. While it can be used without
+`dplyr::group_by()`, it is most useful if it is applied to grouped data sets:
+then it computes summary statistics for each group.
+
+```{r}
+data_raw %>%
+  summarise(
+    avg_gdp=mean(gdp)
+  )
+```
+
+```{r}
+data_raw_grouped %>%
+  summarise(
+    avg_gdp=mean(gdp)
+  )
+```
+
+You can also summarize more than one column:
+
+```{r}
+data_raw_grouped %>%
+  summarise(
+    avg_gdp=mean(gdp),
+    median_unemp=median(unemp)
+  )
+```
+
+Note that `dplyr::summarise()` drops all columns that it is not asked to
+compute summary statistics for, except potential grouping variables.
+
+## A final example
+
+Thanks to the pipes it is easy to chain the many different wrangling steps into
+one function call. But in practice it is very important that you (1) inspect
+your raw data very clearly, (2) write down the desired end product, and then (3)
+think about the single steps required to reach the desired outcome. Each step
+should address one (and only one) wrangling challenge.
+
+To illustrate this, assume we start start with this raw data:
+
+```{r}
+str(data_final_expl)
+```
+
+What we want to do is to compute the difference in the country averages of the
+variables for the time periods 2005-2007 and 2010-2013. We can chain a number
+of wrangling challenges introduced above:
+
+```{r}
+data_final_expl %>%
+  dplyr::mutate(
+    period = ifelse(
+      test = year %in% 2005:2007,
+      yes = "Early",
+      no =  ifelse(
+        test = year %in% 2010:2013,
+        yes = "Late",
+        no = NA))
+  ) %>%
+  dplyr::filter(!is.na(period)) %>%
+  group_by(country, period) %>%
+  summarise(
+    avg_unemp = mean(unemp),
+    avg_gdp = mean(gdp),
+    .groups = "drop"
+  ) %>%
+  tidyr::pivot_longer(
+    cols = dplyr::all_of(c("avg_unemp", "avg_gdp")),
+    names_to = "indicator",
+    values_to = "values") %>%
+  tidyr::pivot_wider(
+    names_from = "period",
+    values_from = "values") %>%
+  dplyr::mutate(
+    Difference = Late - Early
+  ) %>%
+  dplyr::select(-Early, -Late) %>%
+  tidyr::pivot_wider(
+    names_from = "indicator",
+    values_from = "Difference")
+```
+
+If you have trouble understanding the many steps, redo the computations
+yourself and always check what happens in the single steps. It is not a good
+idea to write such a long chain in one working step, but rather to make sure
+that you always understand what happens in any single step, and then expand
+the chain one by one.
+
+## Practice
+
+The `Wrangling1` exercise set in the `DataScienceExercises` package covers the
+main concepts from this tutorial:
+
+```{r, eval=FALSE}
+learnr::run_tutorial(
+  name = "Wrangling1",
+  package = "DataScienceExercises",
+  shiny_args = list("launch.browser" = TRUE)
+)
+```
+
+For additional practice on reshaping data:
+
+```{r, eval=FALSE}
+learnr::run_tutorial(
+  name = "Wrangling2",
+  package = "DataScienceExercises",
+  shiny_args = list("launch.browser" = TRUE)
+)
+```
+
+See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
+for installation instructions.
+
+## Further reading
+
+- [Chapter 5](https://r4ds.hadley.nz/data-tidy.html) in R for Data Science
+- The help page for the [selection helpers](https://dplyr.tidyverse.org/reference/select.html)
+- [Chapter 13](https://r4ds.hadley.nz/numbers) in R for Data Science
+- [Chapter 14](https://r4ds.hadley.nz/strings) in R for Data Science
+- Wickham (2014) on the concept of [tidy data](https://www.jstatsoft.org/article/view/v059i10)
+
+<script src="https://giscus.app/client.js"
+        data-repo="graebnerc/research-methodology-hub"
+        data-repo-id="R_kgDOS7J-4w"
+        data-category="Comments"
+        data-category-id="DIC_kwDOS7J-484C_N51"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

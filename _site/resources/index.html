@@ -119,7 +119,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     const options = {
       valueNames: ['listing-image','listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 24,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
@@ -271,8 +272,98 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/r-programming/getting-started-with-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started with R</span></a>
+  <a href="../resources/r-programming/data-preparation-tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preparation with the Tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/experiments-in-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Experiments in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/first-steps-in-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">First Steps in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/getting-started-with-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/importing-exporting-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing and Exporting Data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/installing-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with R: Installing Everything You Need</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/installing-r-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing R Packages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/linear-regression-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/logarithms-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logarithms: A Gentle Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/r-object-types-i-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R I: Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/r-object-types-ii-vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R II: Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/r-object-types-iii-factors-dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R III: Factors and Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/regression-residuals-diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression Residuals and Model Diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/setting-up-an-r-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting Up an R Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/using-ai-for-r-coding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using AI Tools for R Coding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/r-programming/visualization-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualization with ggplot2</span></a>
   </div>
 </li>
       </ul>
@@ -300,7 +391,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../resources/literature-review/intro-to-systematic-literature-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Systematic Literature Reviews</span></a>
+ <span class="menu-text">PLACEHOLDER: Introduction to Systematic Literature Reviews</span></a>
   </div>
 </li>
       </ul>
@@ -328,7 +419,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../resources/epistemology/epistemology-ba.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">What is Epistemology? (BA)</span></a>
+ <span class="menu-text">PLACEHOLDER: What is Epistemology? (BA)</span></a>
   </div>
 </li>
       </ul>
@@ -406,7 +497,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="QkE=">BA <span class="quarto-category-count">(10)</span></div><div class="category" data-category="Y29uY2VwdA==">concept <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZXBpc3RlbW9sb2d5">epistemology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGl0ZXJhdHVyZS1yZXZpZXc=">literature-review <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUE=">MA <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="cmVhZGluZw==">reading <span class="quarto-category-count">(6)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(25)</span></div><div class="category" data-category="QkE=">BA <span class="quarto-category-count">(25)</span></div><div class="category" data-category="Y29uY2VwdA==">concept <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YS1jbGVhbmluZw==">data-cleaning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZXBpc3RlbW9sb2d5">epistemology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXhwZXJpbWVudHM=">experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGl0ZXJhdHVyZS1yZXZpZXc=">literature-review <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUE=">MA <span class="quarto-category-count">(8)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(21)</span></div><div class="category" data-category="cmVhZGluZw==">reading <span class="quarto-category-count">(7)</span></div><div class="category" data-category="cmVncmVzc2lvbg==">regression <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmVwcm9kdWNpYmlsaXR5">reproducibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(11)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(15)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -471,7 +562,515 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="ZXBpc3RlbW9sb2d5JTJDQkElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781552305881" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
+<div class="g-col-1" data-index="0" data-categories="UiUyQ2RhdGEtY2xlYW5pbmclMkN0aWR5dmVyc2UlMkNCQSUyQ3R1dG9yaWFs" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598250273" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="13" data-listing-word-count-sort="2580">
+<a href="../resources/r-programming/data-preparation-tidyverse.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Data Preparation with the Tidyverse
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS1jbGVhbmluZw=='); return false;">data-cleaning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGlkeXZlcnNl'); return false;">tidyverse</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to reshape data between wide and long format with tidyr, manipulate variables and filter rows with dplyr, merge data sets, and chain steps together using pipes.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UiUyQ2V4cGVyaW1lbnRzJTJDc3RhdGlzdGljcyUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598835408" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="21" data-listing-word-count-sort="4036">
+<a href="../resources/r-programming/experiments-in-r.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Experiments in R
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZXhwZXJpbWVudHM='); return false;">experiments</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to analyze experimental data in R: t-tests for simple comparisons, one-way and two-way ANOVA for multi-group designs, effect sizes, post-hoc tests, and power analysis.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781597583852" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="13" data-listing-word-count-sort="2455">
+<a href="../resources/r-programming/first-steps-in-r.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+First Steps in R
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Learn the basic syntax of R: how to issue commands, use objects, assignments, and functions, and how to install and use R packages.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="UiUyQ3F1YXJ0byUyQ3JlcHJvZHVjaWJpbGl0eSUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781595963760" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="2" data-listing-word-count-sort="360">
+<a href="../resources/r-programming/getting-started-with-quarto.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Getting Started with Quarto
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVwcm9kdWNpYmlsaXR5'); return false;">reproducibility</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>An introduction to Quarto — the modern successor to R Markdown — covering how to create documents that mix text and code, control output rendering, and produce HTML and PDF…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="UiUyQ2RhdGEtY2xlYW5pbmclMkNCQSUyQ3R1dG9yaWFs" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781596965660" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1256">
+<a href="../resources/r-programming/importing-exporting-data.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Importing and Exporting Data in R
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS1jbGVhbmluZw=='); return false;">data-cleaning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to read CSV files into R using data.table::fread(), handle common format variations (separators, decimal signs, leading zeros), and save data to CSV, RDS, RData, and…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781597434220" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1600">
+<a href="../resources/r-programming/installing-r-and-rstudio.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Getting Started with R: Installing Everything You Need
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Step-by-step guide to installing R, RStudio, Git, Quarto, and registering for GitHub and Netlify so you have a complete working environment for data science.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781597476815" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="4" data-listing-word-count-sort="675">
+<a href="../resources/r-programming/installing-r-packages.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Installing R Packages
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to install the R packages needed for data science work, verify your installation using the DataScienceExercises package, and set up LaTeX for PDF output.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="UiUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDQkElMkN0dXRvcmlhbA==" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598476123" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="16" data-listing-word-count-sort="3013">
+<a href="../resources/r-programming/linear-regression-r.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Linear Regression in R
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Practical implementation of simple and multiple linear regression in R: fitting models with lm(), interpreting coefficients, computing R², understanding omitted variable…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="UiUyQ3N0YXRpc3RpY3MlMkNyZWdyZXNzaW9uJTJDQkElMkN0dXRvcmlhbA==" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598683670" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="11" data-listing-word-count-sort="2036">
+<a href="../resources/r-programming/logarithms-introduction.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Logarithms: A Gentle Introduction
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A practical introduction to logarithms for data science: what they are, the natural logarithm, the relationship with exponential functions, and when and why to use log…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781597749675" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1640">
+<a href="../resources/r-programming/r-object-types-i-functions.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Object Types in R I: Functions
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>An introduction to functions as R objects: how to call them in prefix and infix form, how to work with arguments, and how to define and document your own functions.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598000900" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="14" data-listing-word-count-sort="2638">
+<a href="../resources/r-programming/r-object-types-ii-vectors.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Object Types in R II: Vectors
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A thorough introduction to atomic vectors and lists in R: types (logical, integer, double, character), coercion, logical operations, vectorization, indexing, and useful…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598127836" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1682">
+<a href="../resources/r-programming/r-object-types-iii-factors-dataframes.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Object Types in R III: Factors and Data Frames
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>An introduction to factors and data frames in R: how they are built upon base types, how to create and manipulate them, and the tibble as a modern alternative.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="12" data-categories="UiUyQ3JlZ3Jlc3Npb24lMkNzdGF0aXN0aWNzJTJDQkElMkN0dXRvcmlhbA==" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598597365" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="16" data-listing-word-count-sort="3114">
+<a href="../resources/r-programming/regression-residuals-diagnostics.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Regression Residuals and Model Diagnostics
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVncmVzc2lvbg=='); return false;">regression</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Understand the distinction between residuals and error terms, learn the key assumptions of linear regression, and apply visual and quantitative diagnostic tests to evaluate…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="13" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781597672349" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1985">
+<a href="../resources/r-programming/setting-up-an-r-project.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Setting Up an R Project
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to create a well-structured R project directory, understand working directories and file paths, and use the here package to write portable, reproducible code.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="14" data-categories="UiUyQ0JBJTJDcmVhZGluZw==" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781595983135" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="2" data-listing-word-count-sort="321">
+<a href="../resources/r-programming/using-ai-for-r-coding.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Using AI Tools for R Coding
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVhZGluZw=='); return false;">reading</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A practical overview of how to use AI assistants effectively for R programming tasks — from generating first-draft scripts to debugging — including how to write good prompts…</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="15" data-categories="UiUyQ3Zpc3VhbGl6YXRpb24lMkNCQSUyQ3R1dG9yaWFs" data-listing-date-sort="1781560800000" data-listing-file-modified-sort="1781598351407" data-listing-date-modified-sort="1781560800000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2399">
+<a href="../resources/r-programming/visualization-ggplot2.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Visualization with ggplot2
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>How to build publication-quality plots in R using ggplot2: the layer-by-layer workflow, mapping aesthetics, adding geoms, adjusting scales, themes, and saving plots.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Jun 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="16" data-categories="ZXBpc3RlbW9sb2d5JTJDQkElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594957294" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
 <a href="../resources/epistemology/epistemology-ba.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -479,7 +1078,7 @@ window.Quarto = {
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-What is Epistemology? (BA)
+PLACEHOLDER: What is Epistemology? (BA)
 </h5>
 <div class="listing-categories">
 
@@ -501,7 +1100,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="bGl0ZXJhdHVyZS1yZXZpZXclMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781552307809" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="156">
+<div class="g-col-1" data-index="17" data-categories="bGl0ZXJhdHVyZS1yZXZpZXclMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594966219" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="156">
 <a href="../resources/literature-review/intro-to-systematic-literature-review.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -509,7 +1108,7 @@ Jun 15, 2026
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Introduction to Systematic Literature Reviews
+PLACEHOLDER: Introduction to Systematic Literature Reviews
 </h5>
 <div class="listing-categories">
 
@@ -533,37 +1132,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UiUyQ0JBJTJDdHV0b3JpYWw=" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781552309319" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<a href="../resources/r-programming/getting-started-with-r.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Getting Started with R
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QkE='); return false;">BA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A first introduction to R and RStudio — installing the software, understanding the interface, and running your first commands.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 15, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781552310977" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="11" data-listing-word-count-sort="2057">
+<div class="g-col-1" data-index="18" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781552310977" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="11" data-listing-word-count-sort="2057">
 <a href="../resources/statistics/common-probability-distributions.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -597,7 +1166,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="c3RhdGlzdGljcyUyQ0JBJTJDTUElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594841316" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="19" data-listing-word-count-sort="3675">
+<div class="g-col-1" data-index="19" data-categories="c3RhdGlzdGljcyUyQ0JBJTJDTUElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594841316" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="19" data-listing-word-count-sort="3675">
 <a href="../resources/statistics/conceptual-foundations-of-statistics.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -629,7 +1198,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="c3RhdGlzdGljcyUyQ0JBJTJDTUElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594842087" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1725">
+<div class="g-col-1" data-index="20" data-categories="c3RhdGlzdGljcyUyQ0JBJTJDTUElMkNjb25jZXB0" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594842087" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1725">
 <a href="../resources/statistics/data-fundamentals.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -661,7 +1230,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="c3RhdGlzdGljcyUyQ1IlMkN0aWR5dmVyc2UlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594842890" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="18" data-listing-word-count-sort="3587">
+<div class="g-col-1" data-index="21" data-categories="c3RhdGlzdGljcyUyQ1IlMkN0aWR5dmVyc2UlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594842890" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="18" data-listing-word-count-sort="3587">
 <a href="../resources/statistics/descriptive-statistics.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -697,7 +1266,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594844817" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="24" data-listing-word-count-sort="4783">
+<div class="g-col-1" data-index="22" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594844817" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="24" data-listing-word-count-sort="4783">
 <a href="../resources/statistics/hypothesis-testing-and-confidence-intervals.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -731,7 +1300,7 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594843615" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4884">
+<div class="g-col-1" data-index="23" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594843615" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4884">
 <a href="../resources/statistics/probability-theory-essentials.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -765,11 +1334,11 @@ Jun 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594872249" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4859">
+<div class="g-col-1" data-index="24" data-categories="c3RhdGlzdGljcyUyQ1IlMkNCQSUyQ01BJTJDcmVhZGluZw==" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781594872249" data-listing-date-modified-sort="1781474400000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4859">
 <a href="../resources/statistics/sampling-and-inference.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../assets/images/placeholder.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -801,6 +1370,9 @@ Jun 15, 2026
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="resource-listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 <script>
 (function () {

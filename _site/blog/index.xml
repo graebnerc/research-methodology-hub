@@ -10,6 +10,151 @@
 <atom:link href="https://euf-methodology-hub.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Tue, 16 Jun 2026 07:28:37 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jun 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Practicing R with the DataScienceExercises Package</title>
+  <dc:creator>Claudius Gräbner-Radkowitsch</dc:creator>
+  <link>https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>When learning a programming language, applying new concepts regularly is essential. Without regular practice it is hard to remember — and to find out what you have not yet understood well enough.</p>
+<p>The <code>DataScienceExercises</code> package provides a set of interactive exercises for core R topics. Each exercise runs in your browser and gives immediate feedback on your answers. This post explains how to install the package and run exercises.</p>
+<section id="installation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="installation"><span class="header-section-number">1</span> Installation</h2>
+<p>The exercises use three packages: <code>learnr</code>, <code>gradethis</code>, and <code>DataScienceExercises</code>. All three are installed from GitHub, so you first need the <code>remotes</code> package:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"remotes"</span>)</span></code></pre></div></div>
+</details>
+</div>
+<p>Then install the exercise packages:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(</span>
+<span id="cb2-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repo =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb2-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rstudio/learnr"</span>,</span>
+<span id="cb2-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rstudio/gradethis"</span>,</span>
+<span id="cb2-5">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"graebnerc/DataScienceExercises"</span></span>
+<span id="cb2-6">  ),</span>
+<span id="cb2-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">upgrade =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"always"</span></span>
+<span id="cb2-8">)</span></code></pre></div></div>
+</details>
+</div>
+</section>
+<section id="keeping-the-package-up-to-date" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="keeping-the-package-up-to-date"><span class="header-section-number">2</span> Keeping the package up to date</h2>
+<p>The exercises are updated and extended over time. Before starting a practice session, run:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(</span>
+<span id="cb3-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repo =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"graebnerc/DataScienceExercises"</span>,</span>
+<span id="cb3-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">upgrade =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"always"</span></span>
+<span id="cb3-4">)</span></code></pre></div></div>
+</details>
+</div>
+<p>An internet connection is only needed to update — the exercises themselves run offline once installed.</p>
+</section>
+<section id="running-an-exercise" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="running-an-exercise"><span class="header-section-number">3</span> Running an exercise</h2>
+<p>Resource pages on this hub that have associated exercises list the name of the exercise set. To launch one, pass that name to <code>learnr::run_tutorial()</code>. For example, to run the <code>Basics</code> set:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">learnr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run_tutorial</span>(</span>
+<span id="cb4-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Basics"</span>,</span>
+<span id="cb4-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"DataScienceExercises"</span>,</span>
+<span id="cb4-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shiny_args =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"launch.browser"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb4-5">)</span></code></pre></div></div>
+</details>
+</div>
+<p>Replace <code>"Basics"</code> with the name of whichever exercise set you want to practice.</p>
+</section>
+<section id="reporting-bugs-or-suggestions" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="reporting-bugs-or-suggestions"><span class="header-section-number">4</span> Reporting bugs or suggestions</h2>
+<p>If you find a mistake or have an idea for a new exercise, use the <a href="https://github.com/graebnerc/DataScienceExercises/issues">issue tracker</a> on GitHub.</p>
+
+
+<!-- -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gräbner-radkowitsch2026,
+  author = {Gräbner-Radkowitsch, Claudius},
+  title = {Methods {Hub}},
+  date = {2026-06-16},
+  url = {https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gräbner-radkowitsch2026" class="csl-entry quarto-appendix-citeas">
+Gräbner-Radkowitsch, Claudius. 2026. <span>“Methods Hub.”</span> June
+16. <a href="https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/">https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>exercises</category>
+  <guid>https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/</guid>
+  <pubDate>Mon, 15 Jun 2026 22:00:00 GMT</pubDate>
+</item>
 </channel>
 </rss>

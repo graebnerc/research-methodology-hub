@@ -1,0 +1,113 @@
+---
+title: "Getting Started with Quarto"
+description: "An introduction to Quarto — the modern successor to R Markdown — covering how to create documents that mix text and code, control output rendering, and produce HTML and PDF reports."
+author: "Claudius Gräbner-Radkowitsch"
+date: 2026-06-16
+date-modified: 2026-06-16
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Create a Quarto document that combines prose and R code chunks"
+  - "Control code and output visibility using chunk options (echo, eval, include)"
+  - "Render a Quarto document to HTML with a table of contents and a custom theme"
+  - "Render a Quarto document to PDF"
+  - "Share a rendered HTML document online using Netlify Drop"
+
+categories:
+  - R
+  - quarto
+  - reproducibility
+  - BA
+  - tutorial
+
+level:
+  - BA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Getting Started with Quarto"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-quarto
+---
+
+Quarto is a modern, multi-language successor to *R Markdown*. The core idea is simple:
+write text and code in the same document, render it, and get a polished report, paper,
+or website. Quarto handles the conversion — you focus on the content.
+
+This website is itself written in Quarto, which gives you a sense of what is possible
+with the tool even for everyday writing tasks.
+
+## Video lectures
+
+```{=html}
+<iframe
+  width="560" height="315"
+  src="https://www.youtube-nocookie.com/embed/videoseries?si=Ts2M1v35TDmtfbr3&amp;list=PLZDawQMrG1RLKUDufKf8EJz4Kj4WC_Kco"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+```
+
+## Required reading
+
+Work through these in order — they cover everything you need to get started:
+
+1. [The CommonMark markdown tutorial](https://commonmark.org/help/tutorial/) — markdown
+   is the text-formatting language inside every Quarto document; this interactive tutorial
+   takes about 10 minutes
+2. [Quarto tutorial I: the basics](https://quarto.org/docs/get-started/hello/rstudio.html)
+3. [Quarto tutorial II: computations](https://quarto.org/docs/get-started/computations/rstudio.html)
+4. [Quarto tutorial III: authoring](https://quarto.org/docs/get-started/authoring/rstudio.html)
+
+## Exercise
+
+Create a new Quarto document where you set the title, date, and author explicitly.
+Write a sample text that includes:
+
+- at least one level-1 heading
+- at least two level-2 headings
+- a YAML option that hides R code by default
+- one R chunk where both the code and output are shown
+- one R chunk that produces a ggplot2 figure, with the code hidden
+
+Then do the following:
+
+1. Render to HTML with a floating table of contents and a
+   [custom theme](https://quarto.org/docs/output-formats/html-themes.html).
+2. Publish the HTML via [Netlify Drop](https://app.netlify.com/drop) and add a download
+   link for the source file.
+   *(The HTML file must be named `index.html` for Netlify Drop to work.)*
+3. Render to PDF and include a table of contents.
+
+::: {.callout-tip collapse="true"}
+## Sample solution
+A sample solution is available as a [GitHub Gist](https://gist.github.com/graebnerc/f42962b9ecbf9d7a7e6dc5593be691bd).
+The rendered Netlify version is [here](https://quarto-ex-solution.netlify.app/).
+:::
+
+You can also practice with the interactive `Quarto` exercise set from the
+`DataScienceExercises` package (see the [blog post](../../blog/2026-06-16-datascienceexercises/index.qmd)
+on how to install and run it):
+
+```{r, eval=FALSE}
+learnr::run_tutorial(
+  name = "Quarto",
+  package = "DataScienceExercises",
+  shiny_args = list("launch.browser" = TRUE)
+)
+```
+
+## Further reading
+
+- [We don't talk about Quarto](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/) — a readable blog post introducing Quarto
+- [Quarto and R Markdown](https://yihui.org/en/2022/04/quarto-r-markdown/) — context on the transition from R Markdown
+- [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) — the full Quarto markdown reference
+- [The comprehensive Quarto documentation](https://quarto.org/docs/guide/)
+- [The R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) — still relevant for understanding the ecosystem

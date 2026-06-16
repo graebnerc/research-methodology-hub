@@ -5,32 +5,64 @@
     <lastmod>2026-06-15T08:04:39.472Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/tracks/index.html</loc>
-    <lastmod>2026-06-15T11:50:58.317Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/statistics-recap.html</loc>
+    <lastmod>2026-06-15T12:55:38.529Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/sampling-and-inference.html</loc>
-    <lastmod>2026-06-16T07:27:52.249Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r.html</loc>
+    <lastmod>2026-06-15T08:05:48.631Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/hypothesis-testing-and-confidence-intervals.html</loc>
-    <lastmod>2026-06-16T07:27:24.817Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/probability-theory-essentials.html</loc>
+    <lastmod>2026-06-16T07:27:23.615Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/data-fundamentals.html</loc>
-    <lastmod>2026-06-16T07:27:22.087Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/descriptive-statistics.html</loc>
+    <lastmod>2026-06-16T07:27:22.890Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/common-probability-distributions.html</loc>
-    <lastmod>2026-06-15T19:38:30.977Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics.html</loc>
+    <lastmod>2026-06-16T07:27:21.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/visualization-ggplot2.html</loc>
+    <lastmod>2026-06-16T08:25:51.407Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project.html</loc>
+    <lastmod>2026-06-16T08:14:32.349Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-iii-factors-dataframes.html</loc>
+    <lastmod>2026-06-16T08:22:07.836Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-i-functions.html</loc>
+    <lastmod>2026-06-16T08:15:49.675Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/linear-regression-r.html</loc>
+    <lastmod>2026-06-16T08:27:56.123Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/installing-r-and-rstudio.html</loc>
+    <lastmod>2026-06-16T08:10:34.220Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-quarto.html</loc>
+    <lastmod>2026-06-16T07:46:03.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/experiments-in-r.html</loc>
+    <lastmod>2026-06-16T08:33:55.408Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review.html</loc>
-    <lastmod>2026-06-15T19:38:27.809Z</lastmod>
+    <lastmod>2026-06-16T07:29:26.219Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/resources/epistemology/epistemology-ba.html</loc>
-    <lastmod>2026-06-15T19:38:25.881Z</lastmod>
+    <lastmod>2026-06-16T07:29:17.294Z</lastmod>
   </url>
   <url>
     <loc>https://euf-methodology-hub.netlify.app/teaching.html</loc>
@@ -53,27 +85,59 @@
     <lastmod>2026-06-16T06:53:56.032Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-r.html</loc>
-    <lastmod>2026-06-15T19:38:29.319Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/data-preparation-tidyverse.html</loc>
+    <lastmod>2026-06-16T08:24:10.273Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/conceptual-foundations-of-statistics.html</loc>
-    <lastmod>2026-06-16T07:27:21.316Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/first-steps-in-r.html</loc>
+    <lastmod>2026-06-16T08:13:03.852Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/descriptive-statistics.html</loc>
-    <lastmod>2026-06-16T07:27:22.890Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/importing-exporting-data.html</loc>
+    <lastmod>2026-06-16T08:02:45.660Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/probability-theory-essentials.html</loc>
-    <lastmod>2026-06-16T07:27:23.615Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/installing-r-packages.html</loc>
+    <lastmod>2026-06-16T08:11:16.815Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/tracks/getting-started-with-r.html</loc>
-    <lastmod>2026-06-15T08:05:48.631Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/logarithms-introduction.html</loc>
+    <lastmod>2026-06-16T08:31:23.670Z</lastmod>
   </url>
   <url>
-    <loc>https://euf-methodology-hub.netlify.app/tracks/statistics-recap.html</loc>
-    <lastmod>2026-06-15T12:55:38.529Z</lastmod>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-ii-vectors.html</loc>
+    <lastmod>2026-06-16T08:20:00.900Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics.html</loc>
+    <lastmod>2026-06-16T08:29:57.365Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/r-programming/using-ai-for-r-coding.html</loc>
+    <lastmod>2026-06-16T07:46:23.135Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/common-probability-distributions.html</loc>
+    <lastmod>2026-06-15T19:38:30.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/data-fundamentals.html</loc>
+    <lastmod>2026-06-16T07:27:22.087Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/hypothesis-testing-and-confidence-intervals.html</loc>
+    <lastmod>2026-06-16T07:27:24.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/resources/statistics/sampling-and-inference.html</loc>
+    <lastmod>2026-06-16T07:27:52.249Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/tracks/index.html</loc>
+    <lastmod>2026-06-15T11:50:58.317Z</lastmod>
+  </url>
+  <url>
+    <loc>https://euf-methodology-hub.netlify.app/blog/2026-06-16-datascienceexercises/index.html</loc>
+    <lastmod>2026-06-16T07:45:24.558Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Claudius Gräbner-Radkowitsch">
+<meta name="dcterms.date" content="2026-06-16">
+<meta name="description" content="Understand the distinction between residuals and error terms, learn the key assumptions of linear regression, and apply visual and quantitative diagnostic tests to evaluate model quality.">
+
+<title>Regression Residuals and Model Diagnostics – Methods Hub</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4ecbb2011013e9defd5d80b0e4d0bb77.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="citation_title" content="Regression Residuals and Model Diagnostics">
+<meta name="citation_author" content="Claudius Gräbner-Radkowitsch">
+<meta name="citation_editor" content="Claudius Gräbner-Radkowitsch">
+<meta name="citation_publication_date" content="2026-06-16">
+<meta name="citation_cover_date" content="2026-06-16">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-06-16">
+<meta name="citation_fulltext_html_url" content="https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Methods Hub">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Methods Hub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../resources/index.html" aria-current="page"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tracks/index.html"> 
+<span class="menu-text">Tracks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/graebnerc/research-methodology-hub"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">R Programming</li><li class="breadcrumb-item"><a href="../../resources/r-programming/data-preparation-tidyverse.html">R Programming</a></li><li class="breadcrumb-item"><a href="../../resources/r-programming/regression-residuals-diagnostics.html">Regression Residuals and Model Diagnostics</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resource Library</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">R Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">R Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/data-preparation-tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preparation with the Tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/experiments-in-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Experiments in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/first-steps-in-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">First Steps in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/getting-started-with-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/importing-exporting-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Importing and Exporting Data in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/installing-r-and-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with R: Installing Everything You Need</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/installing-r-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing R Packages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/linear-regression-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/logarithms-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logarithms: A Gentle Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/r-object-types-i-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R I: Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/r-object-types-ii-vectors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R II: Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/r-object-types-iii-factors-dataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Types in R III: Factors and Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/regression-residuals-diagnostics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Regression Residuals and Model Diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/setting-up-an-r-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setting Up an R Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/using-ai-for-r-coding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using AI Tools for R Coding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/r-programming/visualization-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualization with ggplot2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Literature Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Literature Review</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/literature-review/intro-to-systematic-literature-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PLACEHOLDER: Introduction to Systematic Literature Reviews</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Epistemology</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Epistemology</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/epistemology/epistemology-ba.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PLACEHOLDER: What is Epistemology? (BA)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/common-probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Common Probability Distributions: A Reference Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/conceptual-foundations-of-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conceptual Foundations of Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/data-fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Fundamentals: Types, Scales, and Notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/descriptive-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics in R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/hypothesis-testing-and-confidence-intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hypothesis Testing and Confidence Intervals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/probability-theory-essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Essentials of Probability Theory for Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics/sampling-and-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling and Statistical Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#understanding-residuals-the-foundation-of-diagnostics" id="toc-understanding-residuals-the-foundation-of-diagnostics" class="nav-link active" data-scroll-target="#understanding-residuals-the-foundation-of-diagnostics"><span class="header-section-number">1</span> Understanding Residuals: The Foundation of Diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#what-are-residuals" id="toc-what-are-residuals" class="nav-link" data-scroll-target="#what-are-residuals">What Are Residuals?</a></li>
+  <li><a href="#residuals-vs.-error-terms-a-critical-distinction" id="toc-residuals-vs.-error-terms-a-critical-distinction" class="nav-link" data-scroll-target="#residuals-vs.-error-terms-a-critical-distinction">Residuals vs.&nbsp;Error Terms: A Critical Distinction</a></li>
+  <li><a href="#why-this-distinction-matters" id="toc-why-this-distinction-matters" class="nav-link" data-scroll-target="#why-this-distinction-matters">Why This Distinction Matters</a></li>
+  <li><a href="#types-of-residuals-in-diagnostics" id="toc-types-of-residuals-in-diagnostics" class="nav-link" data-scroll-target="#types-of-residuals-in-diagnostics">Types of Residuals in Diagnostics</a></li>
+  <li><a href="#why-residuals-are-central-to-diagnostics" id="toc-why-residuals-are-central-to-diagnostics" class="nav-link" data-scroll-target="#why-residuals-are-central-to-diagnostics">Why Residuals Are Central to Diagnostics</a></li>
+  <li><a href="#the-diagnostic-philosophy" id="toc-the-diagnostic-philosophy" class="nav-link" data-scroll-target="#the-diagnostic-philosophy">The Diagnostic Philosophy</a></li>
+  </ul></li>
+  <li><a href="#understanding-the-assumptions" id="toc-understanding-the-assumptions" class="nav-link" data-scroll-target="#understanding-the-assumptions"><span class="header-section-number">2</span> Understanding the Assumptions</a>
+  <ul class="collapse">
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">1. Linearity</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">2. Independence</a></li>
+  <li><a href="#homoscedasticity" id="toc-homoscedasticity" class="nav-link" data-scroll-target="#homoscedasticity">3. Homoscedasticity</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">4. Normality</a></li>
+  <li><a href="#no-influential-outliers" id="toc-no-influential-outliers" class="nav-link" data-scroll-target="#no-influential-outliers">5. No Influential Outliers</a></li>
+  </ul></li>
+  <li><a href="#summary-table-of-assumptions-and-tests" id="toc-summary-table-of-assumptions-and-tests" class="nav-link" data-scroll-target="#summary-table-of-assumptions-and-tests"><span class="header-section-number">3</span> Summary Table of Assumptions and Tests</a></li>
+  <li><a href="#essential-visual-diagnostic-tests" id="toc-essential-visual-diagnostic-tests" class="nav-link" data-scroll-target="#essential-visual-diagnostic-tests"><span class="header-section-number">4</span> Essential Visual Diagnostic Tests</a>
+  <ul class="collapse">
+  <li><a href="#the-four-standard-diagnostic-plots" id="toc-the-four-standard-diagnostic-plots" class="nav-link" data-scroll-target="#the-four-standard-diagnostic-plots">The Four Standard Diagnostic Plots</a></li>
+  </ul></li>
+  <li><a href="#quantitative-diagnostic-tests-optional" id="toc-quantitative-diagnostic-tests-optional" class="nav-link" data-scroll-target="#quantitative-diagnostic-tests-optional"><span class="header-section-number">5</span> Quantitative Diagnostic Tests (Optional)</a>
+  <ul class="collapse">
+  <li><a href="#tests-for-normality" id="toc-tests-for-normality" class="nav-link" data-scroll-target="#tests-for-normality">Tests for Normality</a></li>
+  <li><a href="#tests-for-homoscedasticity" id="toc-tests-for-homoscedasticity" class="nav-link" data-scroll-target="#tests-for-homoscedasticity">Tests for Homoscedasticity</a></li>
+  <li><a href="#test-for-independence" id="toc-test-for-independence" class="nav-link" data-scroll-target="#test-for-independence">Test for Independence</a></li>
+  <li><a href="#test-for-linearity" id="toc-test-for-linearity" class="nav-link" data-scroll-target="#test-for-linearity">Test for Linearity</a></li>
+  <li><a href="#tests-for-multicollinearity" id="toc-tests-for-multicollinearity" class="nav-link" data-scroll-target="#tests-for-multicollinearity">Tests for Multicollinearity</a></li>
+  </ul></li>
+  <li><a href="#practical-workflow-for-diagnostics" id="toc-practical-workflow-for-diagnostics" class="nav-link" data-scroll-target="#practical-workflow-for-diagnostics"><span class="header-section-number">6</span> Practical Workflow for Diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#always-start-with-visual-diagnostics" id="toc-always-start-with-visual-diagnostics" class="nav-link" data-scroll-target="#always-start-with-visual-diagnostics">1. Always Start with Visual Diagnostics</a></li>
+  <li><a href="#run-key-quantitative-tests-optional" id="toc-run-key-quantitative-tests-optional" class="nav-link" data-scroll-target="#run-key-quantitative-tests-optional">2. Run Key Quantitative Tests (Optional)</a></li>
+  <li><a href="#investigate-issues-identified" id="toc-investigate-issues-identified" class="nav-link" data-scroll-target="#investigate-issues-identified">3. Investigate Issues Identified</a></li>
+  </ul></li>
+  <li><a href="#key-principles-to-remember" id="toc-key-principles-to-remember" class="nav-link" data-scroll-target="#key-principles-to-remember"><span class="header-section-number">7</span> Key Principles to Remember</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">R Programming</li><li class="breadcrumb-item"><a href="../../resources/r-programming/data-preparation-tidyverse.html">R Programming</a></li><li class="breadcrumb-item"><a href="../../resources/r-programming/regression-residuals-diagnostics.html">Regression Residuals and Model Diagnostics</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Regression Residuals and Model Diagnostics</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">regression</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">BA</div>
+    <div class="quarto-category">tutorial</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Understand the distinction between residuals and error terms, learn the key assumptions of linear regression, and apply visual and quantitative diagnostic tests to evaluate model quality.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Claudius Gräbner-Radkowitsch </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 16, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 16, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<details class="code-fold">
+<summary>R Packages Used</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<section id="understanding-residuals-the-foundation-of-diagnostics" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="understanding-residuals-the-foundation-of-diagnostics"><span class="header-section-number">1</span> Understanding Residuals: The Foundation of Diagnostics</h2>
+<p>Before diving into assumptions and diagnostic tests, we need to understand residuals—the cornerstone of all regression diagnostics. Many students confuse residuals with error terms, but understanding the distinction is crucial for interpreting diagnostic plots and tests.</p>
+<section id="what-are-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-residuals">What Are Residuals?</h3>
+<p><strong>Residuals</strong> are the observed differences between actual values and predicted values from your fitted model:</p>
+<p><span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(e_i\)</span> is the residual for observation <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(y_i\)</span> is the actual observed value</li>
+<li><span class="math inline">\(\hat{y}_i\)</span> is the predicted value from your regression model</li>
+</ul>
+<p><strong>In plain language:</strong> A residual tells you how far off your prediction was for each observation. If your model predicts a customer will spend 100 EUR but they actually spent 120 EUR, the residual is 20 EUR (see also <a href="#fig-residuals" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-residuals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-residuals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="residuals_plot.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residuals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Illustration of a residual.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="residuals-vs.-error-terms-a-critical-distinction" class="level3">
+<h3 class="anchored" data-anchor-id="residuals-vs.-error-terms-a-critical-distinction">Residuals vs.&nbsp;Error Terms: A Critical Distinction</h3>
+<p>Students often use “residual” and “error” interchangeably, but they are fundamentally different concepts:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concept</th>
+<th>Symbol</th>
+<th>What It Is</th>
+<th>Can We Observe It?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Error term</strong></td>
+<td><span class="math inline">\(\epsilon_i\)</span></td>
+<td>True, unknown deviation from the population regression line</td>
+<td><strong>No</strong> - it’s a theoretical concept</td>
+</tr>
+<tr class="even">
+<td><strong>Residual</strong></td>
+<td><span class="math inline">\(e_i\)</span></td>
+<td>Observed deviation from our fitted sample regression line</td>
+<td><strong>Yes</strong> - we calculate it from our data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The error term</strong> (<span class="math inline">\(\epsilon_i\)</span>) is the true, unobservable deviation in the population model:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \epsilon_i\]</span></p>
+<p>This represents the “true” relationship in the population. We never observe <span class="math inline">\(\epsilon_i\)</span> because we don’t know the true population parameters (<span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>).</p>
+<p><strong>The residual</strong> (<span class="math inline">\(e_i\)</span>) is what we actually observe from our fitted sample model:</p>
+<p><span class="math display">\[y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i\]</span></p>
+<p>This is our estimate based on sample data. We calculate <span class="math inline">\(e_i\)</span> because we have estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+</section>
+<section id="why-this-distinction-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-distinction-matters">Why This Distinction Matters</h3>
+<ol type="1">
+<li><p><strong>Assumptions are about error terms, not residuals:</strong> When we say “errors are normally distributed” or “errors have constant variance,” we’re making statements about the unobservable <span class="math inline">\(\epsilon_i\)</span> in the population.</p></li>
+<li><p><strong>Diagnostics use residuals to learn about errors:</strong> Since we can’t observe <span class="math inline">\(\epsilon_i\)</span>, we use residuals <span class="math inline">\(e_i\)</span> as our best approximation. We examine residuals hoping they reveal the properties of the true errors.</p></li>
+<li><p><strong>Residuals are estimates of errors:</strong> Under the regression assumptions, residuals should behave similarly to errors. If they don’t (showing patterns, non-constant variance, etc.), it suggests the assumptions are violated.</p></li>
+</ol>
+</section>
+<section id="types-of-residuals-in-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-residuals-in-diagnostics">Types of Residuals in Diagnostics</h3>
+<p>You’ll encounter several types of residuals in diagnostic output:</p>
+<p><strong>1. Raw residuals</strong> (<span class="math inline">\(e_i\)</span>): <span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
+<p>These are what we’ve been discussing—the basic difference between observed and predicted values.</p>
+<p><strong>2. Standardized residuals</strong> (<span class="math inline">\(e_i^*\)</span>): <span class="math display">\[e_i^* = \frac{e_i}{\hat{\sigma}\sqrt{1-h_i}}\]</span></p>
+<p>where <span class="math inline">\(\hat{\sigma}\)</span> is the residual standard error and <span class="math inline">\(h_i\)</span> is the leverage. Standardized residuals have approximately unit variance, making them comparable across observations. Values beyond ±2 or ±3 suggest potential outliers.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Understanding Leverage
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Leverage</strong> (denoted as <span class="math inline">\(h_i\)</span> or “hat value”) measures how unusual or extreme an observation’s predictor values (X values) are compared to the rest of the data. It quantifies how far an observation is from the center of the predictor space.</p>
+<p><strong>Key properties:</strong></p>
+<ul>
+<li>Leverage ranges from <span class="math inline">\(\frac{1}{n}\)</span> to 1</li>
+<li>Average leverage is <span class="math inline">\(\frac{p}{n}\)</span> where <span class="math inline">\(p\)</span> is the number of parameters (including intercept)</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Low leverage</strong> (<span class="math inline">\(h_i \approx \frac{p}{n}\)</span>): The observation’s X values are typical, close to the center of the data</li>
+<li><strong>High leverage</strong> (<span class="math inline">\(h_i &gt; \frac{2p}{n}\)</span> or <span class="math inline">\(\frac{3p}{n}\)</span>): The observation’s X values are unusual or extreme</li>
+</ul>
+<p><strong>Why leverage matters:</strong></p>
+<p>High leverage observations have greater potential to influence the regression line because they’re far from the center of the data.</p>
+<p>However, <strong>high leverage alone doesn’t make a point influential</strong>:</p>
+<ul>
+<li>If a high leverage point fits the model well (small residual), it reinforces the pattern and isn’t problematic</li>
+<li>If a high leverage point doesn’t fit the model (large residual), it can dramatically pull the regression line toward itself</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>3. Studentized residuals:</strong></p>
+<p>Similar to standardized but use a different estimate of variance that excludes observation <span class="math inline">\(i\)</span>. More robust for identifying outliers.</p>
+</section>
+<section id="why-residuals-are-central-to-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="why-residuals-are-central-to-diagnostics">Why Residuals Are Central to Diagnostics</h3>
+<p>Residuals are the empirical manifestation of all our modeling assumptions. Here’s why they’re so important:</p>
+<p><strong>1. They reveal assumption violations:</strong></p>
+<ul>
+<li><strong>Linearity:</strong> If the relationship isn’t linear, residuals will show systematic patterns (curves, waves)</li>
+<li><strong>Homoscedasticity:</strong> If variance isn’t constant, residuals will spread out (or contract) across fitted values</li>
+<li><strong>Normality:</strong> If errors aren’t normal, the distribution of residuals will deviate from normality</li>
+<li><strong>Independence:</strong> If observations aren’t independent, residuals will show autocorrelation or clustering</li>
+</ul>
+<p><strong>2. They’re model-free diagnostics:</strong></p>
+<p>Residuals don’t require you to know the “true” model. They simply show you what’s left unexplained after fitting your model. Large, systematic patterns in residuals mean your model is missing something important.</p>
+<p><strong>3. They quantify model performance:</strong></p>
+<p>The magnitude of residuals tells you about prediction accuracy. Ideally, residuals should be:</p>
+<ul>
+<li>Small in magnitude (good predictions)</li>
+<li>Random in pattern (no systematic errors)</li>
+<li>Homogeneous in variance (consistent precision)</li>
+<li>Approximately normal (valid inference)</li>
+</ul>
+</section>
+<section id="the-diagnostic-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="the-diagnostic-philosophy">The Diagnostic Philosophy</h3>
+<p>When you examine diagnostic plots, you’re asking: <strong>“Do these residuals behave like random noise, or do they show systematic patterns that suggest model problems?”</strong></p>
+<p>If residuals are truly random (as they should be when assumptions hold), they should:</p>
+<ul>
+<li>Scatter randomly around zero with no patterns</li>
+<li>Have roughly constant spread across all fitted values</li>
+<li>Follow a normal distribution (for the population errors)</li>
+<li>Show no relationship to predictor variables, fitted values, or observation order</li>
+</ul>
+<p>Any deviation from this ideal suggests where your model or assumptions may be failing.</p>
+<hr>
+</section>
+</section>
+<section id="understanding-the-assumptions" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="understanding-the-assumptions"><span class="header-section-number">2</span> Understanding the Assumptions</h2>
+<p>Linear regression relies on several key assumptions about the data and the relationship between variables. Understanding these assumptions is crucial because violations can lead to:</p>
+<ul>
+<li><strong>Biased parameter estimates</strong> (incorrect coefficients)</li>
+<li><strong>Invalid standard errors</strong> (unreliable confidence intervals)</li>
+<li><strong>Incorrect hypothesis tests</strong> (wrong p-values and conclusions)</li>
+<li><strong>Poor predictions</strong> (inaccurate forecasts)</li>
+</ul>
+<section id="linearity" class="level3">
+<h3 class="anchored" data-anchor-id="linearity">1. Linearity</h3>
+<p><strong>What it means:</strong> The relationship between each predictor variable and the outcome variable is linear. In mathematical terms, the conditional expectation of Y given X follows a linear function: <span class="math inline">\(E[Y|X] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p\)</span></p>
+<p><strong>Why it matters:</strong> Linear regression models can only capture linear relationships. If the true relationship is curved or more complex, the model will systematically mispredict values, leading to biased estimates and poor fit.</p>
+</section>
+<section id="independence" class="level3">
+<h3 class="anchored" data-anchor-id="independence">2. Independence</h3>
+<p><strong>What it means:</strong> Each observation is independent of all other observations. The residual (error) for one observation does not depend on the residual for any other observation: <span class="math inline">\(Cov(\epsilon_i, \epsilon_j) = 0\)</span> for <span class="math inline">\(i \neq j\)</span>.</p>
+<p><strong>Why it matters:</strong> Independence is required for valid standard errors and hypothesis tests.</p>
+<p><strong>Common violations:</strong> Time series data (autocorrelation), clustered data (students within schools), repeated measures (multiple observations per subject), spatial data (nearby locations are similar).</p>
+</section>
+<section id="homoscedasticity" class="level3">
+<h3 class="anchored" data-anchor-id="homoscedasticity">3. Homoscedasticity</h3>
+<p><strong>What it means:</strong> The variance of the residuals is constant across all levels of the predictor variables: <span class="math inline">\(Var(\epsilon_i) = \sigma^2\)</span> for all <span class="math inline">\(i\)</span>.</p>
+<p><strong>Why it matters:</strong> Heteroscedasticity (non-constant variance) leads to inefficient estimates and incorrect standard errors.</p>
+</section>
+<section id="normality" class="level3">
+<h3 class="anchored" data-anchor-id="normality">4. Normality</h3>
+<p><strong>What it means:</strong> The residuals (errors) follow a normal distribution: <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span>. Note that this assumption is about the residuals, not the variables themselves.</p>
+<p><strong>Why it matters:</strong> Normality is primarily required for valid hypothesis tests and confidence intervals, especially in small samples.</p>
+<p><strong>Important note:</strong> This is the least critical assumption for large samples due to the Central Limit Theorem.</p>
+</section>
+<section id="no-influential-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="no-influential-outliers">5. No Influential Outliers</h3>
+<p><strong>What it means:</strong> No single observation has disproportionate influence on the regression estimates.</p>
+<p><strong>Why it matters:</strong> One or two unusual observations can completely change your conclusions.</p>
+<p><strong>Key distinction:</strong> - <strong>Outliers</strong> have unusual Y values (large residuals) - <strong>High leverage points</strong> have unusual X values - <strong>Influential points</strong> have both high leverage AND large residuals</p>
+<hr>
+</section>
+</section>
+<section id="summary-table-of-assumptions-and-tests" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="summary-table-of-assumptions-and-tests"><span class="header-section-number">3</span> Summary Table of Assumptions and Tests</h2>
+<div id="tbl-assumptions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-assumptions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Summary of linear regression assumptions and diagnostic approaches
+</figcaption>
+<div aria-describedby="tbl-assumptions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Assumption</th>
+<th>Description</th>
+<th>Visual Test</th>
+<th>Quantitative Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Linearity</strong></td>
+<td>The relationship between predictors and outcome is linear</td>
+<td>Residuals vs Fitted plot (Tukey-Anscombe)</td>
+<td>RESET test (Ramsey)</td>
+</tr>
+<tr class="even">
+<td><strong>Independence</strong></td>
+<td>Observations are independent of each other</td>
+<td>Residuals vs Order plot; ACF plot</td>
+<td>Durbin-Watson test</td>
+</tr>
+<tr class="odd">
+<td><strong>Homoscedasticity</strong></td>
+<td>Constant variance of residuals across all levels of predictors</td>
+<td>Residuals vs Fitted; Scale-Location plot</td>
+<td>Breusch-Pagan test; White test</td>
+</tr>
+<tr class="even">
+<td><strong>Normality</strong></td>
+<td>Residuals follow a normal distribution</td>
+<td>QQ plot; Histogram of residuals</td>
+<td>Shapiro-Wilk test; Kolmogorov-Smirnov test</td>
+</tr>
+<tr class="odd">
+<td><strong>No influential outliers</strong></td>
+<td>No single observation has undue influence on the model</td>
+<td>Residuals vs Leverage plot; Cook’s distance plot</td>
+<td>Cook’s distance (&gt; 0.5 or &gt; 1); DFFITS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<hr>
+</section>
+<section id="essential-visual-diagnostic-tests" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="essential-visual-diagnostic-tests"><span class="header-section-number">4</span> Essential Visual Diagnostic Tests</h2>
+<p>Visual diagnostics are your first and most important line of defense. R automatically generates four diagnostic plots with <code>plot(lm_model)</code> that provide a comprehensive visual assessment. Always examine these plots before moving to quantitative tests.</p>
+<section id="the-four-standard-diagnostic-plots" class="level3">
+<h3 class="anchored" data-anchor-id="the-four-standard-diagnostic-plots">The Four Standard Diagnostic Plots</h3>
+<section id="plot-1-residuals-vs-fitted-tukey-anscombe-plot" class="level4">
+<h4 class="anchored" data-anchor-id="plot-1-residuals-vs-fitted-tukey-anscombe-plot">Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</h4>
+<p><strong>Purpose:</strong> Checks linearity and homoscedasticity simultaneously.</p>
+<p><strong>How it works:</strong> Plots residuals (<span class="math inline">\(e_i = y_i - \hat{y}_i\)</span>) against fitted values (<span class="math inline">\(\hat{y}_i\)</span>). If the linearity and homoscedasticity assumptions hold, residuals should be randomly scattered around zero with no patterns or trends.</p>
+<p><strong>What to look for:</strong></p>
+<ul>
+<li><strong>Good:</strong> Random scatter around the horizontal line at zero, with no discernible pattern (see <a href="#fig-residfit-good" class="quarto-xref">Figure&nbsp;2</a>)</li>
+<li><strong>Problem - Non-linearity:</strong> Curved pattern (U-shape, inverted U, or other systematic curves) indicates the relationship is not linear (see <a href="#fig-residfit-nonlinear" class="quarto-xref">Figure&nbsp;3</a>)</li>
+<li><strong>Problem - Heteroscedasticity:</strong> Funnel shape (expanding or contracting spread) indicates non-constant variance (see <a href="#fig-residfit-hetero" class="quarto-xref">Figure&nbsp;4</a>)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-residfit-good" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-residfit-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-residfit-good-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residfit-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Residuals vs Fitted plot showing a good model fit. Residuals are randomly scattered around zero with no patterns, indicating linearity and homoscedasticity are satisfied.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-residfit-nonlinear" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-residfit-nonlinear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-residfit-nonlinear-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residfit-nonlinear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Residuals vs Fitted plot showing a non-linear relationship. The curved pattern in the residuals indicates that a linear model is inadequate.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-residfit-hetero" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-residfit-hetero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-residfit-hetero-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-residfit-hetero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Residuals vs Fitted plot showing heteroscedasticity. The funnel shape indicates that variance is not constant across the range of fitted values.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation:</strong> The smoothed line (blue) should be approximately horizontal at zero. Any systematic deviation indicates assumption violations.</p>
+<hr>
+</section>
+<section id="plot-2-normal-q-q-plot" class="level4">
+<h4 class="anchored" data-anchor-id="plot-2-normal-q-q-plot">Plot 2: Normal Q-Q Plot</h4>
+<p><strong>Purpose:</strong> Checks whether residuals follow a normal distribution.</p>
+<p><strong>How it works:</strong> Plots the quantiles of standardized residuals against theoretical quantiles from a standard normal distribution. If residuals are normally distributed, points should fall along the diagonal reference line.</p>
+<p><strong>What to look for:</strong></p>
+<ul>
+<li><strong>Good:</strong> Points closely follow the diagonal line from lower-left to upper-right (see <a href="#fig-qq-good" class="quarto-xref">Figure&nbsp;5</a>)</li>
+<li><strong>Problem - Heavy tails:</strong> Points deviate from the line at both extremes (see <a href="#fig-qq-nonnormal" class="quarto-xref">Figure&nbsp;6</a>)</li>
+<li><strong>Problem - Skewness:</strong> Points deviate systematically in one direction, showing an S-curve</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-qq-good" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qq-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-qq-good-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Normal Q-Q plot showing normally distributed residuals.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-qq-nonnormal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qq-nonnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-qq-nonnormal-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq-nonnormal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Normal Q-Q plot showing non-normally distributed residuals.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation:</strong> Minor deviations are often acceptable, especially with larger sample sizes (n &gt; 30-50) where the Central Limit Theorem provides robustness.</p>
+<hr>
+</section>
+<section id="plot-3-scale-location-plot" class="level4">
+<h4 class="anchored" data-anchor-id="plot-3-scale-location-plot">Plot 3: Scale-Location Plot</h4>
+<p><strong>Purpose:</strong> Checks homoscedasticity more clearly than the Residuals vs Fitted plot.</p>
+<p><strong>How it works:</strong> Plots the square root of standardized residuals (<span class="math inline">\(\sqrt{|e_i^*|}\)</span>) against fitted values.</p>
+<p><strong>What to look for:</strong></p>
+<ul>
+<li><strong>Good:</strong> Roughly horizontal smoothed line with points evenly spread around it (see <a href="#fig-scale-good" class="quarto-xref">Figure&nbsp;7</a>)</li>
+<li><strong>Problem:</strong> Smoothed line has a clear trend, or the spread of points increases/decreases systematically (see <a href="#fig-scale-hetero" class="quarto-xref">Figure&nbsp;8</a>)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scale-good" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scale-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-scale-good-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scale-good-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Scale-Location plot showing homoscedasticity.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scale-hetero" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scale-hetero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="regression-residuals-diagnostics_files/figure-html/fig-scale-hetero-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scale-hetero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="plot-4-residuals-vs-leverage" class="level4">
+<h4 class="anchored" data-anchor-id="plot-4-residuals-vs-leverage">Plot 4: Residuals vs Leverage</h4>
+<p><strong>Purpose:</strong> Identifies influential observations that disproportionately affect the regression model.</p>
+<p><strong>How it works:</strong> Plots standardized residuals against leverage (hat values). Includes Cook’s distance contours to identify problematic points.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Understanding Cook’s Distance and Contours
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Cook’s Distance</strong> measures the influence of each observation on the fitted values:</p>
+<p><span class="math display">\[D_i = \frac{(e_i^*)^2}{p} \times \frac{h_i}{1-h_i}\]</span></p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><span class="math inline">\(D_i &gt; 0.5\)</span>: Investigate this observation carefully</li>
+<li><span class="math inline">\(D_i &gt; 1.0\)</span>: This observation is highly influential and seriously affects your results</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>What to look for:</strong></p>
+<ul>
+<li><strong>Good:</strong> All points well within Cook’s distance contours</li>
+<li><strong>Problem:</strong> Points outside Cook’s distance contours (typically shown as dashed lines), particularly in the upper-right or lower-right corners</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="quantitative-diagnostic-tests-optional" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="quantitative-diagnostic-tests-optional"><span class="header-section-number">5</span> Quantitative Diagnostic Tests (Optional)</h2>
+<p>While visual diagnostics should always be your primary tool, quantitative tests can provide additional confirmation.</p>
+<section id="tests-for-normality" class="level3">
+<h3 class="anchored" data-anchor-id="tests-for-normality">Tests for Normality</h3>
+<section id="shapiro-wilk-test" class="level4">
+<h4 class="anchored" data-anchor-id="shapiro-wilk-test">Shapiro-Wilk Test</h4>
+<p><strong>Purpose:</strong> Formal test of whether residuals follow a normal distribution.</p>
+<p><strong>R code:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Decision rule:</strong></p>
+<ul>
+<li>If p-value &lt; 0.05: Reject normality assumption</li>
+<li>If p-value &gt;= 0.05: Cannot reject normality assumption</li>
+</ul>
+<p><strong>Important notes:</strong></p>
+<ul>
+<li>Very sensitive to sample size (may detect trivial deviations in large samples)</li>
+<li>Should be used in conjunction with QQ plots, not as a replacement</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="tests-for-homoscedasticity" class="level3">
+<h3 class="anchored" data-anchor-id="tests-for-homoscedasticity">Tests for Homoscedasticity</h3>
+<section id="breusch-pagan-test" class="level4">
+<h4 class="anchored" data-anchor-id="breusch-pagan-test">Breusch-Pagan Test</h4>
+<p><strong>Purpose:</strong> Formal test for heteroscedasticity (non-constant variance).</p>
+<p><strong>R code:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Decision rule:</strong></p>
+<ul>
+<li>If p-value &lt; 0.05: Reject homoscedasticity (variance is not constant)</li>
+<li>If p-value &gt;= 0.05: Cannot reject homoscedasticity</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="test-for-independence" class="level3">
+<h3 class="anchored" data-anchor-id="test-for-independence">Test for Independence</h3>
+<section id="durbin-watson-test" class="level4">
+<h4 class="anchored" data-anchor-id="durbin-watson-test">Durbin-Watson Test</h4>
+<p><strong>When to use:</strong> Primarily for time series data or any data with a natural ordering.</p>
+<p><strong>R code:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>DW ≈ 2: No autocorrelation (ideal)</li>
+<li>DW &lt; 1.5 or &gt; 2.5: Potential concern</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="test-for-linearity" class="level3">
+<h3 class="anchored" data-anchor-id="test-for-linearity">Test for Linearity</h3>
+<section id="reset-test" class="level4">
+<h4 class="anchored" data-anchor-id="reset-test">RESET Test</h4>
+<p><strong>Purpose:</strong> Tests for functional form misspecification.</p>
+<p><strong>R code:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resettest</span>(model, <span class="at">power =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="tests-for-multicollinearity" class="level3">
+<h3 class="anchored" data-anchor-id="tests-for-multicollinearity">Tests for Multicollinearity</h3>
+<section id="variance-inflation-factor-vif" class="level4">
+<h4 class="anchored" data-anchor-id="variance-inflation-factor-vif">Variance Inflation Factor (VIF)</h4>
+<p><strong>When to use:</strong> Multiple regression with 2 or more predictors.</p>
+<p><strong>R code:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Decision rules:</strong></p>
+<ul>
+<li><strong>VIF &lt; 5</strong>: Generally acceptable</li>
+<li><strong>VIF 5-10</strong>: Moderate multicollinearity; investigate</li>
+<li><strong>VIF &gt; 10</strong>: Serious multicollinearity; action needed</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="practical-workflow-for-diagnostics" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="practical-workflow-for-diagnostics"><span class="header-section-number">6</span> Practical Workflow for Diagnostics</h2>
+<p>Follow this systematic approach for every regression analysis:</p>
+<section id="always-start-with-visual-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="always-start-with-visual-diagnostics">1. Always Start with Visual Diagnostics</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate all four diagnostic plots at once</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Examine each plot carefully:</p>
+<ul>
+<li>Plot 1: Check for patterns in residuals (linearity, homoscedasticity)</li>
+<li>Plot 2: Check for deviations from the diagonal (normality)</li>
+<li>Plot 3: Check for trends in spread (homoscedasticity)</li>
+<li>Plot 4: Check for influential points (Cook’s distance)</li>
+</ul>
+</section>
+<section id="run-key-quantitative-tests-optional" class="level3">
+<h3 class="anchored" data-anchor-id="run-key-quantitative-tests-optional">2. Run Key Quantitative Tests (Optional)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Homoscedasticity</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Multicollinearity (if multiple predictors)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="investigate-issues-identified" class="level3">
+<h3 class="anchored" data-anchor-id="investigate-issues-identified">3. Investigate Issues Identified</h3>
+<p><strong>If heteroscedasticity is detected:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use robust standard errors</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(model, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(model, <span class="at">type =</span> <span class="st">"HC3"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>If influential points are found:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract Cook's distance</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cooks_d <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(model)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify influential observations</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>influential_obs <span class="ot">&lt;-</span> <span class="fu">which</span>(cooks_d <span class="sc">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine these observations</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>data[influential_obs, ]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Refit model without them and compare</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>model_no_influential <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data[<span class="sc">-</span>influential_obs, ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="key-principles-to-remember" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="key-principles-to-remember"><span class="header-section-number">7</span> Key Principles to Remember</h2>
+<ol type="1">
+<li><p><strong>Visual diagnostics come first:</strong> Plots are more informative than p-values, especially in large samples where tests become overly sensitive.</p></li>
+<li><p><strong>Statistical tests are supplements:</strong> Use quantitative tests to confirm what you see visually, not as a replacement for visual inspection.</p></li>
+<li><p><strong>Context matters:</strong> Not all violations are equally serious. Linearity and independence are typically most critical; moderate violations of normality are often acceptable with reasonable sample sizes.</p></li>
+<li><p><strong>Large samples are robust:</strong> With n &gt; 100, minor violations of normality and homoscedasticity have minimal practical impact due to the Central Limit Theorem and robustness of OLS.</p></li>
+<li><p><strong>Never automatically delete outliers:</strong> Understand why they’re outliers first. They may contain important information or indicate model misspecification.</p></li>
+<li><p><strong>Report transparently:</strong> If you identify violations, acknowledge them and discuss their potential impact.</p></li>
+<li><p><strong>Multiple diagnostics:</strong> Don’t rely on a single test or plot. A comprehensive assessment examines multiple perspectives on each assumption.</p></li>
+</ol>
+<p>Remember: Perfect adherence to all assumptions is rare in real data. The goal is to understand where and how assumptions are violated, assess the severity of violations, and make informed decisions about how to proceed with your analysis.</p>
+<script src="https://giscus.app/client.js" data-repo="graebnerc/research-methodology-hub" data-repo-id="R_kgDOS7J-4w" data-category="Comments" data-category-id="DIC_kwDOS7J-484C_N51" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async="">
+</script>
+
+
+<!-- -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{gräbner-radkowitsch2026,
+  author = {Gräbner-Radkowitsch, Claudius},
+  editor = {Gräbner-Radkowitsch, Claudius},
+  title = {Regression {Residuals} and {Model} {Diagnostics}},
+  date = {2026-06-16},
+  url = {https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gräbner-radkowitsch2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Gräbner-Radkowitsch, Claudius. 2026. <span>“Regression Residuals and
+Model Diagnostics.”</span> In <em>Methods Hub</em>, edited by Claudius
+Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics">https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/euf-methodology-hub\.netlify\.app");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Regression Residuals and Model Diagnostics"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Understand the distinction between residuals and error terms, learn the key assumptions of linear regression, and apply visual and quantitative diagnostic tests to evaluate model quality."</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Claudius Gräbner-Radkowitsch"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2026-06-16</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> 2026-06-16</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> ../../assets/images/placeholder.png</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">learning-objectives:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - "Distinguish between residuals and error terms and explain why residuals are central to diagnostics"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - "Describe the five key assumptions of linear regression (linearity, independence, homoscedasticity, normality, no influential outliers)"</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - "Interpret the four standard diagnostic plots: Residuals vs Fitted, Normal Q-Q, Scale-Location, and Residuals vs Leverage"</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - "Apply quantitative tests (Shapiro-Wilk, Breusch-Pagan, Durbin-Watson, VIF) to check specific assumptions"</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">  - R</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">  - regression</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">  - statistics</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">  - BA</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">  - tutorial</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="an">level:</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">  - BA</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="an">content-type:</span><span class="co"> tutorial</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">  type: entry</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">  container-title: "Methods Hub"</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co">  title: "Regression Residuals and Model Diagnostics"</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">  editor:</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: "Claudius Gräbner-Radkowitsch"</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "R Packages Used"</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding Residuals: The Foundation of Diagnostics</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>Before diving into assumptions and diagnostic tests, we need to understand residuals—the cornerstone of all regression diagnostics. Many students confuse residuals with error terms, but understanding the distinction is crucial for interpreting diagnostic plots and tests.</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### What Are Residuals?</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>**Residuals** are the observed differences between actual values and predicted values from your fitted model:</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>$$e_i = y_i - \hat{y}_i$$</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>where:</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$e_i$ is the residual for observation $i$</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$y_i$ is the actual observed value</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\hat{y}_i$ is the predicted value from your regression model</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>**In plain language:** A residual tells you how far off your prediction was for each observation. If your model predicts a customer will spend 100 EUR but they actually spent 120 EUR, the residual is 20 EUR (see also @fig-residuals).</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-residuals</span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Illustration of a residual."</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "50%"</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"residuals_plot.png"</span>)</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuals vs. Error Terms: A Critical Distinction</span></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>Students often use "residual" and "error" interchangeably, but they are fundamentally different concepts:</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Concept <span class="pp">|</span> Symbol <span class="pp">|</span> What It Is <span class="pp">|</span> Can We Observe It? <span class="pp">|</span></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------|----------------|----------------|-------------------------|</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Error term** | $\epsilon_i$ | True, unknown deviation from the population regression line | **No** - it's a theoretical concept <span class="pp">|</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Residual** | $e_i$ | Observed deviation from our fitted sample regression line | **Yes** - we calculate it from our data <span class="pp">|</span></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>**The error term** ($\epsilon_i$) is the true, unobservable deviation in the population model:</span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>$$y_i = \beta_0 + \beta_1 x_i + \epsilon_i$$</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>This represents the "true" relationship in the population. We never observe $\epsilon_i$ because we don't know the true population parameters ($\beta_0$ and $\beta_1$).</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>**The residual** ($e_i$) is what we actually observe from our fitted sample model:</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>$$y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i$$</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>This is our estimate based on sample data. We calculate $e_i$ because we have estimates $\hat{\beta}_0$ and $\hat{\beta}_1$.</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why This Distinction Matters</span></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Assumptions are about error terms, not residuals:** When we say "errors are normally distributed" or "errors have constant variance," we're making statements about the unobservable $\epsilon_i$ in the population.</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Diagnostics use residuals to learn about errors:** Since we can't observe $\epsilon_i$, we use residuals $e_i$ as our best approximation. We examine residuals hoping they reveal the properties of the true errors.</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Residuals are estimates of errors:** Under the regression assumptions, residuals should behave similarly to errors. If they don't (showing patterns, non-constant variance, etc.), it suggests the assumptions are violated.</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Types of Residuals in Diagnostics</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>You'll encounter several types of residuals in diagnostic output:</span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>**1. Raw residuals** ($e_i$): $$e_i = y_i - \hat{y}_i$$</span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>These are what we've been discussing—the basic difference between observed and predicted values.</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>**2. Standardized residuals** ($e_i^*$): $$e_i^* = \frac{e_i}{\hat{\sigma}\sqrt{1-h_i}}$$</span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>where $\hat{\sigma}$ is the residual standard error and $h_i$ is the leverage. Standardized residuals have approximately unit variance, making them comparable across observations. Values beyond ±2 or ±3 suggest potential outliers.</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false collapse="true"}</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding Leverage</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>**Leverage** (denoted as $h_i$ or "hat value") measures how unusual or extreme an observation's predictor values (X values) are compared to the rest of the data. It quantifies how far an observation is from the center of the predictor space.</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>**Key properties:**</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Leverage ranges from $\frac{1}{n}$ to 1</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Average leverage is $\frac{p}{n}$ where $p$ is the number of parameters (including intercept)</span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>**Interpretation:**</span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Low leverage** ($h_i \approx \frac{p}{n}$): The observation's X values are typical, close to the center of the data</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**High leverage** ($h_i &gt; \frac{2p}{n}$ or $\frac{3p}{n}$): The observation's X values are unusual or extreme</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>**Why leverage matters:**</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>High leverage observations have greater potential to influence the regression line because they're far from the center of the data.</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>However, **high leverage alone doesn't make a point influential**:</span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If a high leverage point fits the model well (small residual), it reinforces the pattern and isn't problematic</span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If a high leverage point doesn't fit the model (large residual), it can dramatically pull the regression line toward itself</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>**3. Studentized residuals:**</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>Similar to standardized but use a different estimate of variance that excludes observation $i$. More robust for identifying outliers.</span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Residuals Are Central to Diagnostics</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>Residuals are the empirical manifestation of all our modeling assumptions. Here's why they're so important:</span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>**1. They reveal assumption violations:**</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Linearity:** If the relationship isn't linear, residuals will show systematic patterns (curves, waves)</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Homoscedasticity:** If variance isn't constant, residuals will spread out (or contract) across fitted values</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Normality:** If errors aren't normal, the distribution of residuals will deviate from normality</span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Independence:** If observations aren't independent, residuals will show autocorrelation or clustering</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>**2. They're model-free diagnostics:**</span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>Residuals don't require you to know the "true" model. They simply show you what's left unexplained after fitting your model. Large, systematic patterns in residuals mean your model is missing something important.</span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>**3. They quantify model performance:**</span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>The magnitude of residuals tells you about prediction accuracy. Ideally, residuals should be:</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Small in magnitude (good predictions)</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Random in pattern (no systematic errors)</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Homogeneous in variance (consistent precision)</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Approximately normal (valid inference)</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Diagnostic Philosophy</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>When you examine diagnostic plots, you're asking: **"Do these residuals behave like random noise, or do they show systematic patterns that suggest model problems?"**</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>If residuals are truly random (as they should be when assumptions hold), they should:</span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Scatter randomly around zero with no patterns</span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Have roughly constant spread across all fitted values</span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Follow a normal distribution (for the population errors)</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Show no relationship to predictor variables, fitted values, or observation order</span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>Any deviation from this ideal suggests where your model or assumptions may be failing.</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding the Assumptions</span></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>Linear regression relies on several key assumptions about the data and the relationship between variables. Understanding these assumptions is crucial because violations can lead to:</span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Biased parameter estimates** (incorrect coefficients)</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Invalid standard errors** (unreliable confidence intervals)</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Incorrect hypothesis tests** (wrong p-values and conclusions)</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Poor predictions** (inaccurate forecasts)</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Linearity</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>**What it means:** The relationship between each predictor variable and the outcome variable is linear. In mathematical terms, the conditional expectation of Y given X follows a linear function: $E<span class="co">[</span><span class="ot">Y|X</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Linear regression models can only capture linear relationships. If the true relationship is curved or more complex, the model will systematically mispredict values, leading to biased estimates and poor fit.</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Independence</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>**What it means:** Each observation is independent of all other observations. The residual (error) for one observation does not depend on the residual for any other observation: $Cov(\epsilon_i, \epsilon_j) = 0$ for $i \neq j$.</span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Independence is required for valid standard errors and hypothesis tests.</span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a>**Common violations:** Time series data (autocorrelation), clustered data (students within schools), repeated measures (multiple observations per subject), spatial data (nearby locations are similar).</span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Homoscedasticity</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>**What it means:** The variance of the residuals is constant across all levels of the predictor variables: $Var(\epsilon_i) = \sigma^2$ for all $i$.</span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Heteroscedasticity (non-constant variance) leads to inefficient estimates and incorrect standard errors.</span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Normality</span></span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>**What it means:** The residuals (errors) follow a normal distribution: $\epsilon_i \sim N(0, \sigma^2)$. Note that this assumption is about the residuals, not the variables themselves.</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Normality is primarily required for valid hypothesis tests and confidence intervals, especially in small samples.</span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>**Important note:** This is the least critical assumption for large samples due to the Central Limit Theorem.</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. No Influential Outliers</span></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>**What it means:** No single observation has disproportionate influence on the regression estimates.</span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>**Why it matters:** One or two unusual observations can completely change your conclusions.</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>**Key distinction:**</span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Outliers** have unusual Y values (large residuals)</span>
+<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**High leverage points** have unusual X values</span>
+<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Influential points** have both high leverage AND large residuals</span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Table of Assumptions and Tests</span></span>
+<span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Assumption <span class="pp">|</span> Description <span class="pp">|</span> Visual Test <span class="pp">|</span> Quantitative Test <span class="pp">|</span></span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------------|-----------------|-----------------|----------------------|</span></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Linearity** <span class="pp">|</span> The relationship between predictors and outcome is linear <span class="pp">|</span> Residuals vs Fitted plot (Tukey-Anscombe) <span class="pp">|</span> RESET test (Ramsey) <span class="pp">|</span></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Independence** <span class="pp">|</span> Observations are independent of each other <span class="pp">|</span> Residuals vs Order plot; ACF plot <span class="pp">|</span> Durbin-Watson test <span class="pp">|</span></span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Homoscedasticity** <span class="pp">|</span> Constant variance of residuals across all levels of predictors <span class="pp">|</span> Residuals vs Fitted; Scale-Location plot <span class="pp">|</span> Breusch-Pagan test; White test <span class="pp">|</span></span>
+<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Normality** <span class="pp">|</span> Residuals follow a normal distribution <span class="pp">|</span> QQ plot; Histogram of residuals <span class="pp">|</span> Shapiro-Wilk test; Kolmogorov-Smirnov test <span class="pp">|</span></span>
+<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **No influential outliers** <span class="pp">|</span> No single observation has undue influence on the model <span class="pp">|</span> Residuals vs Leverage plot; Cook's distance plot <span class="pp">|</span> Cook's distance (&gt; 0.5 or &gt; 1); DFFITS <span class="pp">|</span></span>
+<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a>: Summary of linear regression assumptions and diagnostic approaches {#tbl-assumptions}</span>
+<span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## Essential Visual Diagnostic Tests</span></span>
+<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>Visual diagnostics are your first and most important line of defense. R automatically generates four diagnostic plots with <span class="in">`plot(lm_model)`</span> that provide a comprehensive visual assessment. Always examine these plots before moving to quantitative tests.</span>
+<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Four Standard Diagnostic Plots</span></span>
+<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create diagnostic plot data</span></span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>create_diagnostic_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">scenario =</span> <span class="st">"good"</span>) {</span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (scenario <span class="sc">==</span> <span class="st">"good"</span>) {</span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (scenario <span class="sc">==</span> <span class="st">"nonlinear"</span>) {</span>
+<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (scenario <span class="sc">==</span> <span class="st">"heteroscedastic"</span>) {</span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="fl">0.3</span><span class="sc">*</span>x)</span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (scenario <span class="sc">==</span> <span class="st">"nonnormal"</span>) {</span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rexp</span>(n, <span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">fitted =</span> <span class="fu">fitted</span>(model),</span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">residuals =</span> <span class="fu">residuals</span>(model),</span>
+<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_residuals =</span> <span class="fu">rstandard</span>(model),</span>
+<span id="cb11-288"><a href="#cb11-288" aria-hidden="true" tabindex="-1"></a>    <span class="at">sqrt_std_residuals =</span> <span class="fu">sqrt</span>(<span class="fu">abs</span>(<span class="fu">rstandard</span>(model))),</span>
+<span id="cb11-289"><a href="#cb11-289" aria-hidden="true" tabindex="-1"></a>    <span class="at">leverage =</span> <span class="fu">hatvalues</span>(model),</span>
+<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a>    <span class="at">cooks =</span> <span class="fu">cooks.distance</span>(model)</span>
+<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Create datasets</span></span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>good_data <span class="ot">&lt;-</span> <span class="fu">create_diagnostic_data</span>(<span class="st">"good"</span>)</span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>nonlinear_data <span class="ot">&lt;-</span> <span class="fu">create_diagnostic_data</span>(<span class="st">"nonlinear"</span>)</span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>hetero_data <span class="ot">&lt;-</span> <span class="fu">create_diagnostic_data</span>(<span class="st">"heteroscedastic"</span>)</span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>nonnormal_data <span class="ot">&lt;-</span> <span class="fu">create_diagnostic_data</span>(<span class="st">"nonnormal"</span>)</span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</span></span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks linearity and homoscedasticity simultaneously.</span>
+<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>**How it works:** Plots residuals ($e_i = y_i - \hat{y}_i$) against fitted values ($\hat{y}_i$). If the linearity and homoscedasticity assumptions hold, residuals should be randomly scattered around zero with no patterns or trends.</span>
+<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a>**What to look for:**</span>
+<span id="cb11-308"><a href="#cb11-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-309"><a href="#cb11-309" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Good:** Random scatter around the horizontal line at zero, with no discernible pattern (see @fig-residfit-good)</span>
+<span id="cb11-310"><a href="#cb11-310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem - Non-linearity:** Curved pattern (U-shape, inverted U, or other systematic curves) indicates the relationship is not linear (see @fig-residfit-nonlinear)</span>
+<span id="cb11-311"><a href="#cb11-311" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem - Heteroscedasticity:** Funnel shape (expanding or contracting spread) indicates non-constant variance (see @fig-residfit-hetero)</span>
+<span id="cb11-312"><a href="#cb11-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-315"><a href="#cb11-315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-316"><a href="#cb11-316" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-residfit-good</span></span>
+<span id="cb11-317"><a href="#cb11-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Residuals vs Fitted plot showing a good model fit. Residuals are randomly scattered around zero with no patterns, indicating linearity and homoscedasticity are satisfied."</span></span>
+<span id="cb11-318"><a href="#cb11-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-319"><a href="#cb11-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(good_data, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-322"><a href="#cb11-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-323"><a href="#cb11-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>,</span>
+<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Good: Random scatter around zero"</span>) <span class="sc">+</span></span>
+<span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-327"><a href="#cb11-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-328"><a href="#cb11-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-332"><a href="#cb11-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-residfit-nonlinear</span></span>
+<span id="cb11-333"><a href="#cb11-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Residuals vs Fitted plot showing a non-linear relationship. The curved pattern in the residuals indicates that a linear model is inadequate."</span></span>
+<span id="cb11-334"><a href="#cb11-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-335"><a href="#cb11-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-336"><a href="#cb11-336" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nonlinear_data, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb11-337"><a href="#cb11-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-338"><a href="#cb11-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-339"><a href="#cb11-339" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-340"><a href="#cb11-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>,</span>
+<span id="cb11-341"><a href="#cb11-341" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Problem: Curved pattern (non-linearity)"</span>) <span class="sc">+</span></span>
+<span id="cb11-342"><a href="#cb11-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-343"><a href="#cb11-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-344"><a href="#cb11-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-347"><a href="#cb11-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-348"><a href="#cb11-348" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-residfit-hetero</span></span>
+<span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Residuals vs Fitted plot showing heteroscedasticity. The funnel shape indicates that variance is not constant across the range of fitted values."</span></span>
+<span id="cb11-350"><a href="#cb11-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-351"><a href="#cb11-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-352"><a href="#cb11-352" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hetero_data, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb11-353"><a href="#cb11-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="st">"Residuals"</span>,</span>
+<span id="cb11-357"><a href="#cb11-357" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Problem: Funnel shape (heteroscedasticity)"</span>) <span class="sc">+</span></span>
+<span id="cb11-358"><a href="#cb11-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-359"><a href="#cb11-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-360"><a href="#cb11-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-361"><a href="#cb11-361" aria-hidden="true" tabindex="-1"></a>**Interpretation:** The smoothed line (blue) should be approximately horizontal at zero. Any systematic deviation indicates assumption violations.</span>
+<span id="cb11-362"><a href="#cb11-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-363"><a href="#cb11-363" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 2: Normal Q-Q Plot</span></span>
+<span id="cb11-366"><a href="#cb11-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-367"><a href="#cb11-367" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks whether residuals follow a normal distribution.</span>
+<span id="cb11-368"><a href="#cb11-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-369"><a href="#cb11-369" aria-hidden="true" tabindex="-1"></a>**How it works:** Plots the quantiles of standardized residuals against theoretical quantiles from a standard normal distribution. If residuals are normally distributed, points should fall along the diagonal reference line.</span>
+<span id="cb11-370"><a href="#cb11-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-371"><a href="#cb11-371" aria-hidden="true" tabindex="-1"></a>**What to look for:**</span>
+<span id="cb11-372"><a href="#cb11-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-373"><a href="#cb11-373" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Good:** Points closely follow the diagonal line from lower-left to upper-right (see @fig-qq-good)</span>
+<span id="cb11-374"><a href="#cb11-374" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem - Heavy tails:** Points deviate from the line at both extremes (see @fig-qq-nonnormal)</span>
+<span id="cb11-375"><a href="#cb11-375" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem - Skewness:** Points deviate systematically in one direction, showing an S-curve</span>
+<span id="cb11-376"><a href="#cb11-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-379"><a href="#cb11-379" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-380"><a href="#cb11-380" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-qq-good</span></span>
+<span id="cb11-381"><a href="#cb11-381" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Normal Q-Q plot showing normally distributed residuals."</span></span>
+<span id="cb11-382"><a href="#cb11-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-383"><a href="#cb11-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-384"><a href="#cb11-384" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(good_data, <span class="fu">aes</span>(<span class="at">sample =</span> std_residuals)) <span class="sc">+</span></span>
+<span id="cb11-385"><a href="#cb11-385" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb11-386"><a href="#cb11-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-387"><a href="#cb11-387" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Theoretical Quantiles"</span>, <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>,</span>
+<span id="cb11-388"><a href="#cb11-388" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Good: Points follow diagonal line"</span>) <span class="sc">+</span></span>
+<span id="cb11-389"><a href="#cb11-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-390"><a href="#cb11-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-391"><a href="#cb11-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-394"><a href="#cb11-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-395"><a href="#cb11-395" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-qq-nonnormal</span></span>
+<span id="cb11-396"><a href="#cb11-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Normal Q-Q plot showing non-normally distributed residuals."</span></span>
+<span id="cb11-397"><a href="#cb11-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-398"><a href="#cb11-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-399"><a href="#cb11-399" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nonnormal_data, <span class="fu">aes</span>(<span class="at">sample =</span> std_residuals)) <span class="sc">+</span></span>
+<span id="cb11-400"><a href="#cb11-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb11-401"><a href="#cb11-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb11-402"><a href="#cb11-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Theoretical Quantiles"</span>, <span class="at">y =</span> <span class="st">"Standardized Residuals"</span>,</span>
+<span id="cb11-403"><a href="#cb11-403" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Problem: Heavy right tail (skewness)"</span>) <span class="sc">+</span></span>
+<span id="cb11-404"><a href="#cb11-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-405"><a href="#cb11-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-406"><a href="#cb11-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-407"><a href="#cb11-407" aria-hidden="true" tabindex="-1"></a>**Interpretation:** Minor deviations are often acceptable, especially with larger sample sizes (n &gt; 30-50) where the Central Limit Theorem provides robustness.</span>
+<span id="cb11-408"><a href="#cb11-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-410"><a href="#cb11-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 3: Scale-Location Plot</span></span>
+<span id="cb11-412"><a href="#cb11-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-413"><a href="#cb11-413" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks homoscedasticity more clearly than the Residuals vs Fitted plot.</span>
+<span id="cb11-414"><a href="#cb11-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-415"><a href="#cb11-415" aria-hidden="true" tabindex="-1"></a>**How it works:** Plots the square root of standardized residuals ($\sqrt{|e_i^*|}$) against fitted values.</span>
+<span id="cb11-416"><a href="#cb11-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-417"><a href="#cb11-417" aria-hidden="true" tabindex="-1"></a>**What to look for:**</span>
+<span id="cb11-418"><a href="#cb11-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-419"><a href="#cb11-419" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Good:** Roughly horizontal smoothed line with points evenly spread around it (see @fig-scale-good)</span>
+<span id="cb11-420"><a href="#cb11-420" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem:** Smoothed line has a clear trend, or the spread of points increases/decreases systematically (see @fig-scale-hetero)</span>
+<span id="cb11-421"><a href="#cb11-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-424"><a href="#cb11-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-425"><a href="#cb11-425" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-scale-good</span></span>
+<span id="cb11-426"><a href="#cb11-426" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Scale-Location plot showing homoscedasticity."</span></span>
+<span id="cb11-427"><a href="#cb11-427" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-428"><a href="#cb11-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-429"><a href="#cb11-429" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(good_data, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> sqrt_std_residuals)) <span class="sc">+</span></span>
+<span id="cb11-430"><a href="#cb11-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-431"><a href="#cb11-431" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-432"><a href="#cb11-432" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">sqrt</span>(<span class="st">"|Standardized residuals|"</span>)),</span>
+<span id="cb11-433"><a href="#cb11-433" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Good: Horizontal line, constant spread"</span>) <span class="sc">+</span></span>
+<span id="cb11-434"><a href="#cb11-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-435"><a href="#cb11-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-436"><a href="#cb11-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-439"><a href="#cb11-439" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-440"><a href="#cb11-440" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-scale-hetero</span></span>
+<span id="cb11-441"><a href="#cb11-441" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Scale-Location plot showing heteroscedasticity."</span></span>
+<span id="cb11-442"><a href="#cb11-442" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-443"><a href="#cb11-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-444"><a href="#cb11-444" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hetero_data, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> sqrt_std_residuals)) <span class="sc">+</span></span>
+<span id="cb11-445"><a href="#cb11-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-446"><a href="#cb11-446" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb11-447"><a href="#cb11-447" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">sqrt</span>(<span class="st">"|Standardized residuals|"</span>)),</span>
+<span id="cb11-448"><a href="#cb11-448" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Problem: Increasing spread (heteroscedasticity)"</span>) <span class="sc">+</span></span>
+<span id="cb11-449"><a href="#cb11-449" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-450"><a href="#cb11-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-451"><a href="#cb11-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-452"><a href="#cb11-452" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-453"><a href="#cb11-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-454"><a href="#cb11-454" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 4: Residuals vs Leverage</span></span>
+<span id="cb11-455"><a href="#cb11-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-456"><a href="#cb11-456" aria-hidden="true" tabindex="-1"></a>**Purpose:** Identifies influential observations that disproportionately affect the regression model.</span>
+<span id="cb11-457"><a href="#cb11-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-458"><a href="#cb11-458" aria-hidden="true" tabindex="-1"></a>**How it works:** Plots standardized residuals against leverage (hat values). Includes Cook's distance contours to identify problematic points.</span>
+<span id="cb11-459"><a href="#cb11-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-460"><a href="#cb11-460" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon="false" collapse="true"}</span>
+<span id="cb11-461"><a href="#cb11-461" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding Cook's Distance and Contours</span></span>
+<span id="cb11-462"><a href="#cb11-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-463"><a href="#cb11-463" aria-hidden="true" tabindex="-1"></a>**Cook's Distance** measures the influence of each observation on the fitted values:</span>
+<span id="cb11-464"><a href="#cb11-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-465"><a href="#cb11-465" aria-hidden="true" tabindex="-1"></a>$$D_i = \frac{(e_i^*)^2}{p} \times \frac{h_i}{1-h_i}$$</span>
+<span id="cb11-466"><a href="#cb11-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-467"><a href="#cb11-467" aria-hidden="true" tabindex="-1"></a>**Interpretation:**</span>
+<span id="cb11-468"><a href="#cb11-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-469"><a href="#cb11-469" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_i &gt; 0.5$: Investigate this observation carefully</span>
+<span id="cb11-470"><a href="#cb11-470" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$D_i &gt; 1.0$: This observation is highly influential and seriously affects your results</span>
+<span id="cb11-471"><a href="#cb11-471" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-472"><a href="#cb11-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-473"><a href="#cb11-473" aria-hidden="true" tabindex="-1"></a>**What to look for:**</span>
+<span id="cb11-474"><a href="#cb11-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-475"><a href="#cb11-475" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Good:** All points well within Cook's distance contours</span>
+<span id="cb11-476"><a href="#cb11-476" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Problem:** Points outside Cook's distance contours (typically shown as dashed lines), particularly in the upper-right or lower-right corners</span>
+<span id="cb11-477"><a href="#cb11-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-478"><a href="#cb11-478" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-479"><a href="#cb11-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quantitative Diagnostic Tests (Optional)</span></span>
+<span id="cb11-481"><a href="#cb11-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-482"><a href="#cb11-482" aria-hidden="true" tabindex="-1"></a>While visual diagnostics should always be your primary tool, quantitative tests can provide additional confirmation.</span>
+<span id="cb11-483"><a href="#cb11-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Normality</span></span>
+<span id="cb11-485"><a href="#cb11-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Shapiro-Wilk Test</span></span>
+<span id="cb11-487"><a href="#cb11-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-488"><a href="#cb11-488" aria-hidden="true" tabindex="-1"></a>**Purpose:** Formal test of whether residuals follow a normal distribution.</span>
+<span id="cb11-489"><a href="#cb11-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-490"><a href="#cb11-490" aria-hidden="true" tabindex="-1"></a>**R code:**</span>
+<span id="cb11-491"><a href="#cb11-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-492"><a href="#cb11-492" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-493"><a href="#cb11-493" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb11-494"><a href="#cb11-494" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-495"><a href="#cb11-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-496"><a href="#cb11-496" aria-hidden="true" tabindex="-1"></a>**Decision rule:**</span>
+<span id="cb11-497"><a href="#cb11-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-498"><a href="#cb11-498" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If p-value &lt; 0.05: Reject normality assumption</span>
+<span id="cb11-499"><a href="#cb11-499" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If p-value &gt;= 0.05: Cannot reject normality assumption</span>
+<span id="cb11-500"><a href="#cb11-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-501"><a href="#cb11-501" aria-hidden="true" tabindex="-1"></a>**Important notes:**</span>
+<span id="cb11-502"><a href="#cb11-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-503"><a href="#cb11-503" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Very sensitive to sample size (may detect trivial deviations in large samples)</span>
+<span id="cb11-504"><a href="#cb11-504" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Should be used in conjunction with QQ plots, not as a replacement</span>
+<span id="cb11-505"><a href="#cb11-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-506"><a href="#cb11-506" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-507"><a href="#cb11-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Homoscedasticity</span></span>
+<span id="cb11-509"><a href="#cb11-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-510"><a href="#cb11-510" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Breusch-Pagan Test</span></span>
+<span id="cb11-511"><a href="#cb11-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-512"><a href="#cb11-512" aria-hidden="true" tabindex="-1"></a>**Purpose:** Formal test for heteroscedasticity (non-constant variance).</span>
+<span id="cb11-513"><a href="#cb11-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-514"><a href="#cb11-514" aria-hidden="true" tabindex="-1"></a>**R code:**</span>
+<span id="cb11-515"><a href="#cb11-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-516"><a href="#cb11-516" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-517"><a href="#cb11-517" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb11-518"><a href="#cb11-518" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model)</span>
+<span id="cb11-519"><a href="#cb11-519" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-520"><a href="#cb11-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-521"><a href="#cb11-521" aria-hidden="true" tabindex="-1"></a>**Decision rule:**</span>
+<span id="cb11-522"><a href="#cb11-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-523"><a href="#cb11-523" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If p-value &lt; 0.05: Reject homoscedasticity (variance is not constant)</span>
+<span id="cb11-524"><a href="#cb11-524" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>If p-value &gt;= 0.05: Cannot reject homoscedasticity</span>
+<span id="cb11-525"><a href="#cb11-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-526"><a href="#cb11-526" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-527"><a href="#cb11-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-528"><a href="#cb11-528" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test for Independence</span></span>
+<span id="cb11-529"><a href="#cb11-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-530"><a href="#cb11-530" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Durbin-Watson Test</span></span>
+<span id="cb11-531"><a href="#cb11-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-532"><a href="#cb11-532" aria-hidden="true" tabindex="-1"></a>**When to use:** Primarily for time series data or any data with a natural ordering.</span>
+<span id="cb11-533"><a href="#cb11-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-534"><a href="#cb11-534" aria-hidden="true" tabindex="-1"></a>**R code:**</span>
+<span id="cb11-535"><a href="#cb11-535" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-536"><a href="#cb11-536" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-537"><a href="#cb11-537" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb11-538"><a href="#cb11-538" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model)</span>
+<span id="cb11-539"><a href="#cb11-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-540"><a href="#cb11-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-541"><a href="#cb11-541" aria-hidden="true" tabindex="-1"></a>**Interpretation:**</span>
+<span id="cb11-542"><a href="#cb11-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-543"><a href="#cb11-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>DW ≈ 2: No autocorrelation (ideal)</span>
+<span id="cb11-544"><a href="#cb11-544" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>DW &lt; 1.5 or &gt; 2.5: Potential concern</span>
+<span id="cb11-545"><a href="#cb11-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-546"><a href="#cb11-546" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-547"><a href="#cb11-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-548"><a href="#cb11-548" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test for Linearity</span></span>
+<span id="cb11-549"><a href="#cb11-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-550"><a href="#cb11-550" aria-hidden="true" tabindex="-1"></a><span class="fu">#### RESET Test</span></span>
+<span id="cb11-551"><a href="#cb11-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-552"><a href="#cb11-552" aria-hidden="true" tabindex="-1"></a>**Purpose:** Tests for functional form misspecification.</span>
+<span id="cb11-553"><a href="#cb11-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-554"><a href="#cb11-554" aria-hidden="true" tabindex="-1"></a>**R code:**</span>
+<span id="cb11-555"><a href="#cb11-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-556"><a href="#cb11-556" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-557"><a href="#cb11-557" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb11-558"><a href="#cb11-558" aria-hidden="true" tabindex="-1"></a><span class="fu">resettest</span>(model, <span class="at">power =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb11-559"><a href="#cb11-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-560"><a href="#cb11-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-561"><a href="#cb11-561" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-562"><a href="#cb11-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-563"><a href="#cb11-563" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Multicollinearity</span></span>
+<span id="cb11-564"><a href="#cb11-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-565"><a href="#cb11-565" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variance Inflation Factor (VIF)</span></span>
+<span id="cb11-566"><a href="#cb11-566" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-567"><a href="#cb11-567" aria-hidden="true" tabindex="-1"></a>**When to use:** Multiple regression with 2 or more predictors.</span>
+<span id="cb11-568"><a href="#cb11-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-569"><a href="#cb11-569" aria-hidden="true" tabindex="-1"></a>**R code:**</span>
+<span id="cb11-570"><a href="#cb11-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-571"><a href="#cb11-571" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-572"><a href="#cb11-572" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb11-573"><a href="#cb11-573" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span>
+<span id="cb11-574"><a href="#cb11-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-575"><a href="#cb11-575" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-576"><a href="#cb11-576" aria-hidden="true" tabindex="-1"></a>**Decision rules:**</span>
+<span id="cb11-577"><a href="#cb11-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-578"><a href="#cb11-578" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**VIF &lt; 5**: Generally acceptable</span>
+<span id="cb11-579"><a href="#cb11-579" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**VIF 5-10**: Moderate multicollinearity; investigate</span>
+<span id="cb11-580"><a href="#cb11-580" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**VIF &gt; 10**: Serious multicollinearity; action needed</span>
+<span id="cb11-581"><a href="#cb11-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-582"><a href="#cb11-582" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-583"><a href="#cb11-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-584"><a href="#cb11-584" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Workflow for Diagnostics</span></span>
+<span id="cb11-585"><a href="#cb11-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-586"><a href="#cb11-586" aria-hidden="true" tabindex="-1"></a>Follow this systematic approach for every regression analysis:</span>
+<span id="cb11-587"><a href="#cb11-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-588"><a href="#cb11-588" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Always Start with Visual Diagnostics</span></span>
+<span id="cb11-589"><a href="#cb11-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-590"><a href="#cb11-590" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-591"><a href="#cb11-591" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate all four diagnostic plots at once</span></span>
+<span id="cb11-592"><a href="#cb11-592" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb11-593"><a href="#cb11-593" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
+<span id="cb11-594"><a href="#cb11-594" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb11-595"><a href="#cb11-595" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-596"><a href="#cb11-596" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-597"><a href="#cb11-597" aria-hidden="true" tabindex="-1"></a>Examine each plot carefully:</span>
+<span id="cb11-598"><a href="#cb11-598" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-599"><a href="#cb11-599" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 1: Check for patterns in residuals (linearity, homoscedasticity)</span>
+<span id="cb11-600"><a href="#cb11-600" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 2: Check for deviations from the diagonal (normality)</span>
+<span id="cb11-601"><a href="#cb11-601" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 3: Check for trends in spread (homoscedasticity)</span>
+<span id="cb11-602"><a href="#cb11-602" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 4: Check for influential points (Cook's distance)</span>
+<span id="cb11-603"><a href="#cb11-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-604"><a href="#cb11-604" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Run Key Quantitative Tests (Optional)</span></span>
+<span id="cb11-605"><a href="#cb11-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-606"><a href="#cb11-606" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-607"><a href="#cb11-607" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality</span></span>
+<span id="cb11-608"><a href="#cb11-608" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb11-609"><a href="#cb11-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-610"><a href="#cb11-610" aria-hidden="true" tabindex="-1"></a><span class="co"># Homoscedasticity</span></span>
+<span id="cb11-611"><a href="#cb11-611" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb11-612"><a href="#cb11-612" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(model)</span>
+<span id="cb11-613"><a href="#cb11-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-614"><a href="#cb11-614" aria-hidden="true" tabindex="-1"></a><span class="co"># Multicollinearity (if multiple predictors)</span></span>
+<span id="cb11-615"><a href="#cb11-615" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb11-616"><a href="#cb11-616" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span>
+<span id="cb11-617"><a href="#cb11-617" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-618"><a href="#cb11-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-619"><a href="#cb11-619" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Investigate Issues Identified</span></span>
+<span id="cb11-620"><a href="#cb11-620" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-621"><a href="#cb11-621" aria-hidden="true" tabindex="-1"></a>**If heteroscedasticity is detected:**</span>
+<span id="cb11-622"><a href="#cb11-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-623"><a href="#cb11-623" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-624"><a href="#cb11-624" aria-hidden="true" tabindex="-1"></a><span class="co"># Use robust standard errors</span></span>
+<span id="cb11-625"><a href="#cb11-625" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb11-626"><a href="#cb11-626" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb11-627"><a href="#cb11-627" aria-hidden="true" tabindex="-1"></a><span class="fu">coeftest</span>(model, <span class="at">vcov =</span> <span class="fu">vcovHC</span>(model, <span class="at">type =</span> <span class="st">"HC3"</span>))</span>
+<span id="cb11-628"><a href="#cb11-628" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-629"><a href="#cb11-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-630"><a href="#cb11-630" aria-hidden="true" tabindex="-1"></a>**If influential points are found:**</span>
+<span id="cb11-631"><a href="#cb11-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-632"><a href="#cb11-632" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-633"><a href="#cb11-633" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract Cook's distance</span></span>
+<span id="cb11-634"><a href="#cb11-634" aria-hidden="true" tabindex="-1"></a>cooks_d <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(model)</span>
+<span id="cb11-635"><a href="#cb11-635" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify influential observations</span></span>
+<span id="cb11-636"><a href="#cb11-636" aria-hidden="true" tabindex="-1"></a>influential_obs <span class="ot">&lt;-</span> <span class="fu">which</span>(cooks_d <span class="sc">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-637"><a href="#cb11-637" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine these observations</span></span>
+<span id="cb11-638"><a href="#cb11-638" aria-hidden="true" tabindex="-1"></a>data[influential_obs, ]</span>
+<span id="cb11-639"><a href="#cb11-639" aria-hidden="true" tabindex="-1"></a><span class="co"># Refit model without them and compare</span></span>
+<span id="cb11-640"><a href="#cb11-640" aria-hidden="true" tabindex="-1"></a>model_no_influential <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data[<span class="sc">-</span>influential_obs, ])</span>
+<span id="cb11-641"><a href="#cb11-641" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-642"><a href="#cb11-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-643"><a href="#cb11-643" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb11-644"><a href="#cb11-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-645"><a href="#cb11-645" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Principles to Remember</span></span>
+<span id="cb11-646"><a href="#cb11-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-647"><a href="#cb11-647" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Visual diagnostics come first:** Plots are more informative than p-values, especially in large samples where tests become overly sensitive.</span>
+<span id="cb11-648"><a href="#cb11-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-649"><a href="#cb11-649" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Statistical tests are supplements:** Use quantitative tests to confirm what you see visually, not as a replacement for visual inspection.</span>
+<span id="cb11-650"><a href="#cb11-650" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-651"><a href="#cb11-651" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Context matters:** Not all violations are equally serious. Linearity and independence are typically most critical; moderate violations of normality are often acceptable with reasonable sample sizes.</span>
+<span id="cb11-652"><a href="#cb11-652" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-653"><a href="#cb11-653" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Large samples are robust:** With n &gt; 100, minor violations of normality and homoscedasticity have minimal practical impact due to the Central Limit Theorem and robustness of OLS.</span>
+<span id="cb11-654"><a href="#cb11-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-655"><a href="#cb11-655" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Never automatically delete outliers:** Understand why they're outliers first. They may contain important information or indicate model misspecification.</span>
+<span id="cb11-656"><a href="#cb11-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-657"><a href="#cb11-657" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Report transparently:** If you identify violations, acknowledge them and discuss their potential impact.</span>
+<span id="cb11-658"><a href="#cb11-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-659"><a href="#cb11-659" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**Multiple diagnostics:** Don't rely on a single test or plot. A comprehensive assessment examines multiple perspectives on each assumption.</span>
+<span id="cb11-660"><a href="#cb11-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-661"><a href="#cb11-661" aria-hidden="true" tabindex="-1"></a>Remember: Perfect adherence to all assumptions is rare in real data. The goal is to understand where and how assumptions are violated, assess the severity of violations, and make informed decisions about how to proceed with your analysis.</span>
+<span id="cb11-662"><a href="#cb11-662" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-663"><a href="#cb11-663" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://giscus.app/client.js"</span></span>
+<span id="cb11-664"><a href="#cb11-664" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo</span><span class="op">=</span><span class="st">"graebnerc/research-methodology-hub"</span></span>
+<span id="cb11-665"><a href="#cb11-665" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-repo-id</span><span class="op">=</span><span class="st">"R_kgDOS7J-4w"</span></span>
+<span id="cb11-666"><a href="#cb11-666" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category</span><span class="op">=</span><span class="st">"Comments"</span></span>
+<span id="cb11-667"><a href="#cb11-667" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-category-id</span><span class="op">=</span><span class="st">"DIC_kwDOS7J-484C_N51"</span></span>
+<span id="cb11-668"><a href="#cb11-668" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-mapping</span><span class="op">=</span><span class="st">"pathname"</span></span>
+<span id="cb11-669"><a href="#cb11-669" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-strict</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb11-670"><a href="#cb11-670" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-reactions-enabled</span><span class="op">=</span><span class="st">"1"</span></span>
+<span id="cb11-671"><a href="#cb11-671" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-emit-metadata</span><span class="op">=</span><span class="st">"0"</span></span>
+<span id="cb11-672"><a href="#cb11-672" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-input-position</span><span class="op">=</span><span class="st">"bottom"</span></span>
+<span id="cb11-673"><a href="#cb11-673" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-theme</span><span class="op">=</span><span class="st">"preferred_color_scheme"</span></span>
+<span id="cb11-674"><a href="#cb11-674" aria-hidden="true" tabindex="-1"></a><span class="ot">        data-lang</span><span class="op">=</span><span class="st">"en"</span></span>
+<span id="cb11-675"><a href="#cb11-675" aria-hidden="true" tabindex="-1"></a><span class="ot">        crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
+<span id="cb11-676"><a href="#cb11-676" aria-hidden="true" tabindex="-1"></a><span class="ot">        async</span><span class="dt">&gt;</span></span>
+<span id="cb11-677"><a href="#cb11-677" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Claudius Gräbner-Radkowitsch</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../blog/index.xml">
+      <i class="bi bi-rss" role="img" aria-label="RSS Feed">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
