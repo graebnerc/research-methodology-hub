@@ -126,6 +126,31 @@ Each track page has three parts:
 ### Citability
 Every resource page auto-generates a citation block via Quarto's citation feature. The `editor` field is always `Claudius Gräbner-Radkowitsch`. When future contributors add pages, they appear as `author`; the editor field stays the same.
 
+### Heading hierarchy
+Resource pages use a consistent three-level heading structure:
+
+| Level | Markdown | Use |
+|-------|----------|-----|
+| 1 | `#` | Main sections (Introduction, background, exercises, etc.) |
+| 2 | `##` | Subsections within a main section |
+| 3 | `###` | Sub-subsections |
+
+**Callout titles** use `##` inside the `:::` fence — this is callout syntax, not a page heading, and should never be promoted.
+
+Body content always starts at level 1. Never use `##` as the first heading level in the body.
+
+### Video lecture sections
+When a resource page has an embedded video, place it under a level-1 unnumbered heading immediately after the front matter (before the introduction):
+
+```markdown
+# Video lecture {.unnumbered}
+```
+
+Use this exact casing and `{.unnumbered}` to suppress the auto-numbering from `_quarto.yml`.
+
+### Callout boxes
+All callout boxes are **collapsed by default** via a global JavaScript snippet (`assets/scripts/collapse-callouts.html`). Do not add `collapse="true"` to individual callouts — that would duplicate the global behaviour and produce double toggle buttons. Write callouts without any collapse attribute; the script handles the rest.
+
 ### Relative paths
 **Never hardcode the domain or Netlify URL** anywhere in `.qmd` files. Always use relative paths for internal links. This ensures the custom domain migration is seamless.
 
@@ -226,3 +251,6 @@ Netlify picks up the new `_site/` immediately. No build triggered.
 - Add a Netlify build command or suggest configuring Netlify to run `quarto render`
 - Remove `_site/` or `_freeze/` from version control
 - Suggest running `quarto render` (full) when only a single page has changed
+- Use `##` as the first heading level in the body — body sections always start at `#`
+- Use `## Video lecture` (level 2) for video sections — always use `# Video lecture {.unnumbered}`
+- Add `collapse="true"` to individual callouts — the global JS script collapses all callouts automatically

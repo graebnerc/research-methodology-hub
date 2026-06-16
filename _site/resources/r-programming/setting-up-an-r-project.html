@@ -507,8 +507,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>This tutorial is about how you set up an adequate project environment. By this we mean the folders you should create, and how you should save your files. The structure introduced here will help you to keep your project structured and to keep an overview about your work, but also to make it easier to share your project with others.</p>
 <p>In all, whenever you start a new programming project you should set up the infrastructure described below. Such project could be a term paper, a research endeavor, or just the code to create some visualizations. Later you might find that some aspects of the infrastructure below feel like a bit of an overkill, especially for very small undertakings. But especially in the beginning its better to be safe than sorry and to set up the whole project as described below.</p>
 <p>In all, setting up a good working environment includes the following steps:</p>
@@ -524,8 +524,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the distinction between <em>absolute</em> and <em>relative</em> paths</li>
 </ol>
 </section>
-<section id="preface-working-directory-and-paths" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="preface-working-directory-and-paths"><span class="header-section-number">2</span> Preface: Working directory and paths</h2>
+<section id="preface-working-directory-and-paths" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Preface: Working directory and paths</h1>
 <p>The <a href="https://en.wikipedia.org/wiki/Working_directory">working directory</a> is a folder on the computer which R uses as a default anchor for all file paths used to access input, such as data sets, or to store output. The default working directory is the user directory, but it can be changed. We can display the current working directory using the <code>getwd()</code> function. In my case the working directory looks like this:</p>
 <pre><code>/Users/graebnerc/Teaching/DataScience22/</code></pre>
 <p>Now assume we produced a plot in our current session and want to save it using the function <code>ggplot2::ggsave()</code>. This function takes, among others, an argument <code>filename</code> that specifies the name of the file that is meant to contain the plot. Now if we tell R to save the plot under the name <code>test.pdf</code> like this:</p>
@@ -562,20 +562,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This path involves my account name — it is <em>highly unlikely</em> that a path involving it exists on your computer. Thus, if I sent you a script that contains a reference to this path, it will produce an error once you execute it. Thus, we will always use relative paths below.</p>
 <p>Of course, one problem is that the ‘anchor’ from which the relative path will be evaluated on my and your computer must somehow be harmonized. As we will learn below, this can be achieved through the use of R project files and the package <a href="https://here.r-lib.org/">here</a>.</p>
 </section>
-<section id="step-1-find-a-good-place-for-the-project-on-your-computer" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="step-1-find-a-good-place-for-the-project-on-your-computer"><span class="header-section-number">3</span> Step 1: Find a good place for the project on your computer</h2>
+<section id="step-1-find-a-good-place-for-the-project-on-your-computer" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Step 1: Find a good place for the project on your computer</h1>
 <p>First of all you have to decide on a place on your computer in which all data related to your project, i.e.&nbsp;data, scripts, images, etc., should be saved. It is usually a good idea to avoid places such as the Desktop or your Download folder.</p>
 </section>
-<section id="step-2-create-an-r-project" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="step-2-create-an-r-project"><span class="header-section-number">4</span> Step 2: Create an R-project</h2>
+<section id="step-2-create-an-r-project" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Step 2: Create an R-project</h1>
 <p>After having identified the right place for our project on our computer, we will now create an R-project at exactly this place. To do this, open R-Studio, and either click on <code>File/New Project</code>, or on the blue button in the upper left part of the pane, directly to the right of the <code>New File</code> button. You should now see the ‘New Project Wizard’.</p>
 <p>Click on <code>New Directory</code> and then on <code>New Project</code>. Enter the name of your project in the field <code>Directory name</code>. The name should not contain any special characters or blanks, and should be informative about the content of the project. Below you choose the location for the project that you have determined in the previous step. By clicking on <code>Create Project</code>, R-Studio creates a folder of the name of the project within in the directory you have chosen. Within this folder, R-Studio automatically creates a file called <code>NameOfYourProject.Rproj</code>.</p>
 <p>From now on, whenever you want to work on this project you can just double click on this project file to open R-studio and link it to this project automatically. Alternatively, you can also open R Studio, and then open the project by choosing the <code>.Rproj</code> file via <code>File/Open Project...</code>.</p>
 <p>You should always make sure that when you work on your project using R-Studio, the current session is linked to this project. You can see the project your current session is linked to in the upper right of the R-Studio pane.</p>
 <p>Linking your current session to a project comes with many advantages: not only is your working directory automatically set to the project folder, you can also access previous commands in a command history, and its easier to transfer the project from one computer to another.</p>
 </section>
-<section id="step-3-create-the-relevant-sub-directories" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="step-3-create-the-relevant-sub-directories"><span class="header-section-number">5</span> Step 3: Create the relevant sub-directories</h2>
+<section id="step-3-create-the-relevant-sub-directories" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Step 3: Create the relevant sub-directories</h1>
 <p>A sensible directory structure helps (1) not to lose track of one’s programming project, (2) to collaborate with others across computers, and (3) to use collaboration platforms such as Github and to conduct research that can be replicated and understood by others.</p>
 <p>The following directory structure is an established recommendation. In some projects you may not need all the sub-directories suggested here, in others, it may be more appropriate to use more. In any case, the structure below is usually an excellent starting point:</p>
 <ul>
@@ -591,8 +591,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>A subdirectory <code>misc</code> in which you put everything that does not fit into any of the other directories. Such a directory is important: you should not save any miscellaneous files in the root directory. This will cause a lot of confusion. As a rule of thumb, the only files you should keep in your project main directory are the <code>.Rproj</code> file and, if applicable a <code>LICENSE.md</code> containing a license for your code, and a <code>README.md</code> file in which you explain the content and functioning of your project.</p></li>
 </ul>
 </section>
-<section id="creating-portable-relative-paths-using-the-here-package" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="creating-portable-relative-paths-using-the-here-package"><span class="header-section-number">6</span> Creating portable relative paths using the here-package</h2>
+<section id="creating-portable-relative-paths-using-the-here-package" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Creating portable relative paths using the here-package</h1>
 <p>The <a href="https://github.com/r-lib/here">here</a>-package allows you to create file paths in a way that those parts of your code that contain file paths always work across different computers.</p>
 <p>As described above, you should always use <em>relative</em> paths in everyday work. In two situations, however, the use of relative paths can be problematic: (1) when collaborating with others, and (2) when using R Markdown or Quarto.</p>
 <p>Suppose, for instance, that Birte and Claudius are working together on an R script. The following line appears in the code:</p>
@@ -642,8 +642,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Note:</strong> The call of <code>here::i_am()</code> at the very beginning of a script is an exception to the important rule that a script should always start with a reference to the packages used within the script.</p>
 </blockquote>
 </section>
-<section id="further-reading" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">7</span> Further reading</h2>
+<section id="further-reading" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Further reading</h1>
 <ul>
 <li><a href="https://rogerdudler.github.io/git-guide/">Very concise introduction to Git</a> — optional but recommended for version control</li>
 <li><a href="https://skills.github.com/">GitHub skills</a> and the <a href="https://docs.github.com/en">official docs</a></li>
@@ -669,6 +669,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Setting Up an R
 Project.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project">https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1153,7 +1177,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project</span></span>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
 <span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>This tutorial is about how you set up an adequate project environment.</span>
 <span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>By this we mean the folders you should create, and how you should save your</span>
@@ -1189,7 +1213,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>(1) the concept of a *working directory* and</span>
 <span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>(2) the distinction between *absolute* and *relative* paths</span>
 <span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preface: Working directory and paths</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preface: Working directory and paths</span></span>
 <span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">working directory</span><span class="co">](https://en.wikipedia.org/wiki/Working_directory)</span></span>
 <span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>is a folder on the computer which R uses as a default anchor</span>
@@ -1273,7 +1297,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>learn below, this can be achieved through the use of R project files and the</span>
 <span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>package <span class="co">[</span><span class="ot">here</span><span class="co">](https://here.r-lib.org/)</span>.</span>
 <span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1: Find a good place for the project on your computer</span></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 1: Find a good place for the project on your computer</span></span>
 <span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a>First of all you have to decide on a place on your computer in which</span>
 <span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a>all data related to your project, i.e. data, scripts, images,</span>
@@ -1281,7 +1305,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a>It is usually a good idea to avoid places such as the Desktop or your</span>
 <span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>Download folder.</span>
 <span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 2: Create an R-project</span></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 2: Create an R-project</span></span>
 <span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>After having identified the right place for our project on our computer, we</span>
 <span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>will now create an R-project at exactly this place. To do this, open R-Studio,</span>
@@ -1314,7 +1338,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>access previous commands in a command history, and its easier to transfer the</span>
 <span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a>project from one computer to another.</span>
 <span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 3: Create the relevant sub-directories</span></span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 3: Create the relevant sub-directories</span></span>
 <span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>A sensible directory structure helps (1) not to lose track of one's programming</span>
 <span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>project, (2) to collaborate with others across computers, and</span>
@@ -1366,7 +1390,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-244"><a href="#cb13-244" aria-hidden="true" tabindex="-1"></a>a license for your code, and a <span class="in">`README.md`</span> file in which you explain the</span>
 <span id="cb13-245"><a href="#cb13-245" aria-hidden="true" tabindex="-1"></a>content and functioning of your project.</span>
 <span id="cb13-246"><a href="#cb13-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating portable relative paths using the here-package</span></span>
+<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a><span class="fu"># Creating portable relative paths using the here-package</span></span>
 <span id="cb13-248"><a href="#cb13-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/r-lib/here)</span>-package allows you to create</span>
 <span id="cb13-250"><a href="#cb13-250" aria-hidden="true" tabindex="-1"></a>file paths in a way that those parts of your code that contain file paths</span>
@@ -1449,7 +1473,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb13-327"><a href="#cb13-327" aria-hidden="true" tabindex="-1"></a><span class="at">exception to the important rule that a script should always start with a</span></span>
 <span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a><span class="at">reference to the packages used within the script.</span></span>
 <span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further reading</span></span>
+<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a><span class="fu"># Further reading</span></span>
 <span id="cb13-331"><a href="#cb13-331" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-332"><a href="#cb13-332" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Very concise introduction to Git</span><span class="co">](https://rogerdudler.github.io/git-guide/)</span> — optional but recommended for version control</span>
 <span id="cb13-333"><a href="#cb13-333" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">GitHub skills</span><span class="co">](https://skills.github.com/)</span> and the <span class="co">[</span><span class="ot">official docs</span><span class="co">](https://docs.github.com/en)</span></span>

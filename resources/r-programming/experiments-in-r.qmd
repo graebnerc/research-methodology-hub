@@ -33,7 +33,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/experiments-in-r
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">

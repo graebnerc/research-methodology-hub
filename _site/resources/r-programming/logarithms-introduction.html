@@ -478,7 +478,7 @@ window.Quarto = {
   <ul>
   <li><a href="#what-are-logarithms" id="toc-what-are-logarithms" class="nav-link active" data-scroll-target="#what-are-logarithms"><span class="header-section-number">1</span> What are logarithms?</a>
   <ul class="collapse">
-  <li><a href="#understanding-the-base-of-a-logarithm" id="toc-understanding-the-base-of-a-logarithm" class="nav-link" data-scroll-target="#understanding-the-base-of-a-logarithm">Understanding the base of a logarithm</a></li>
+  <li><a href="#understanding-the-base-of-a-logarithm" id="toc-understanding-the-base-of-a-logarithm" class="nav-link" data-scroll-target="#understanding-the-base-of-a-logarithm"><span class="header-section-number">1.1</span> Understanding the base of a logarithm</a></li>
   </ul></li>
   <li><a href="#the-natural-logarithm-and-exponential-functions" id="toc-the-natural-logarithm-and-exponential-functions" class="nav-link" data-scroll-target="#the-natural-logarithm-and-exponential-functions"><span class="header-section-number">2</span> The natural logarithm and exponential functions</a></li>
   <li><a href="#when-and-why-do-we-use-logarithms" id="toc-when-and-why-do-we-use-logarithms" class="nav-link" data-scroll-target="#when-and-why-do-we-use-logarithms"><span class="header-section-number">3</span> When and why do we use logarithms?</a></li>
@@ -548,15 +548,15 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="what-are-logarithms" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="what-are-logarithms"><span class="header-section-number">1</span> What are logarithms?</h2>
+<section id="what-are-logarithms" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> What are logarithms?</h1>
 <p>A logarithm is simply a way of asking: “To what power must I raise one number to get another number?”</p>
 <p>For example, if we ask “what is the logarithm of 100 in base 10?”, we’re really asking: “10 raised to what power gives us 100?” The answer is 2, because <span class="math inline">\(10^2=100\)</span>.</p>
 <p>We write this as:</p>
 <p><span class="math display">\[\log_{10}\left(100\right)=2\]</span></p>
 <p>We say this out loud as: “log base 10 of 100 equals 2”</p>
-<section id="understanding-the-base-of-a-logarithm" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-base-of-a-logarithm">Understanding the base of a logarithm</h3>
+<section id="understanding-the-base-of-a-logarithm" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="understanding-the-base-of-a-logarithm"><span class="header-section-number">1.1</span> Understanding the base of a logarithm</h2>
 <p>The <strong>base</strong> of a logarithm is the number we’re repeatedly multiplying. In <span class="math inline">\(\log_{10}\left(100\right)=2\)</span>, the base is <span class="math inline">\(10\)</span>. This tells us “10 multiplied by itself 2 times equals 100.”</p>
 <p>Different bases are useful in different contexts:</p>
 <ul>
@@ -659,8 +659,8 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="the-natural-logarithm-and-exponential-functions" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="the-natural-logarithm-and-exponential-functions"><span class="header-section-number">2</span> The natural logarithm and exponential functions</h2>
+<section id="the-natural-logarithm-and-exponential-functions" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The natural logarithm and exponential functions</h1>
 <p>The natural logarithm and the exponential function <span class="math inline">\(e^x\)</span> are mathematical inverses—they undo each other. If you apply one and then the other, you get back to where you started:</p>
 <ul>
 <li><span class="math inline">\(\ln\left(e^x\right)=x\)</span></li>
@@ -731,8 +731,8 @@ Figure&nbsp;1: Transforming exponential growth into a linear relationship using 
 </div>
 </div>
 </section>
-<section id="when-and-why-do-we-use-logarithms" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="when-and-why-do-we-use-logarithms"><span class="header-section-number">3</span> When and why do we use logarithms?</h2>
+<section id="when-and-why-do-we-use-logarithms" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> When and why do we use logarithms?</h1>
 <p>Logarithms are useful in statistics and research for a number of reasons:</p>
 <p><strong>Making skewed data more symmetric.</strong> Many real-world variables—like income, property prices, or company revenues—have a few very large values and many small values. Taking the logarithm compresses those large values and spreads out the small ones, making the data easier to analyze with standard statistical methods, as illustrated in <a href="#fig-skewed-data" class="quarto-xref">Figure&nbsp;2</a>.</p>
 <div class="cell">
@@ -962,8 +962,8 @@ Table&nbsp;1: Regression results.
 </div>
 <p>In this example, the coefficient for weeks (0.151, see <a href="#tbl-logmodel-results" class="quarto-xref">Table&nbsp;1</a>) tells us users are growing at approximately 15.1% per week—going from around 97 users at launch to over 1,899 users after 20 weeks.</p>
 </section>
-<section id="summary" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="summary"><span class="header-section-number">4</span> Summary</h2>
+<section id="summary" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Summary</h1>
 <p>You don’t need to calculate logarithms by hand—statistical software handles this automatically. What matters is understanding when and why we use them in our analyses:</p>
 <ul>
 <li>Use logarithms when your data is highly skewed</li>
@@ -992,6 +992,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Logarithms: A Gentle
 Introduction.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/logarithms-introduction">https://euf-methodology-hub.netlify.app/resources/r-programming/logarithms-introduction</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1489,7 +1513,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## What are logarithms?</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="fu"># What are logarithms?</span></span>
 <span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>A logarithm is simply a way of asking: "To what power must I raise one number to get another number?"</span>
 <span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a></span>
@@ -1501,7 +1525,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>We say this out loud as: "log base 10 of 100 equals 2"</span>
 <span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Understanding the base of a logarithm</span></span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding the base of a logarithm</span></span>
 <span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>The **base** of a logarithm is the number we're repeatedly multiplying. In $\log_{10}\left(100\right)=2$, the base is $10$. This tells us "10 multiplied by itself 2 times equals 100."</span>
 <span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a></span>
@@ -1570,7 +1594,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>Taking the natural logarithm lets you easily work backwards: if your investment grew to EUR 2,000, you can find how long it took by calculating ln(2000/1000) ÷ 0.05 = 13.86 years.</span>
 <span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## The natural logarithm and exponential functions</span></span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a><span class="fu"># The natural logarithm and exponential functions</span></span>
 <span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>The natural logarithm and the exponential function $e^x$ are mathematical inverses—they undo each other. If you apply one and then the other, you get back to where you started:</span>
 <span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a></span>
@@ -1624,7 +1648,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A)"</span>, <span class="st">"B)"</span>))</span>
 <span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="fu">## When and why do we use logarithms?</span></span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="fu"># When and why do we use logarithms?</span></span>
 <span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>Logarithms are useful in statistics and research for a number of reasons:</span>
 <span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a></span>
@@ -1796,7 +1820,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a>In this example, the coefficient for weeks (<span class="in">`r round(log_growth_coef, 3)`</span>, see @tbl-logmodel-results) tells us users are growing at approximately <span class="in">`r weekly_growth_pct`</span>% per week—going from around <span class="in">`r initial_users`</span> users at launch to over <span class="in">`r format(final_users, big.mark = ",")`</span> users after 20 weeks.</span>
 <span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary</span></span>
 <span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a>You don't need to calculate logarithms by hand—statistical software handles this automatically. What matters is understanding when and why we use them in our analyses:</span>
 <span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a></span>

@@ -32,17 +32,17 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review
 ---
 
-## What is a Systematic Literature Review?
+# What is a Systematic Literature Review?
 
 *Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.*
 
 A systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.
 
-## Key Stages
+# Key Stages
 
 *Content to be added.*
 
-## Formulating a Research Question
+# Formulating a Research Question
 
 *Content to be added.*
 
@@ -54,6 +54,6 @@ At the MA and PhD level, a systematic review typically also requires pre-registr
 *Placeholder — MA/PhD extension content to be added.*
 :::
 
-## Practical Tools
+# Practical Tools
 
 *Content to be added.*

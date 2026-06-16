@@ -505,17 +505,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="what-is-a-systematic-literature-review" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="what-is-a-systematic-literature-review"><span class="header-section-number">1</span> What is a Systematic Literature Review?</h2>
+<section id="what-is-a-systematic-literature-review" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> What is a Systematic Literature Review?</h1>
 <p><em>Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.</em></p>
 <p>A systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.</p>
 </section>
-<section id="key-stages" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="key-stages"><span class="header-section-number">2</span> Key Stages</h2>
+<section id="key-stages" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Key Stages</h1>
 <p><em>Content to be added.</em></p>
 </section>
-<section id="formulating-a-research-question" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="formulating-a-research-question"><span class="header-section-number">3</span> Formulating a Research Question</h2>
+<section id="formulating-a-research-question" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Formulating a Research Question</h1>
 <p><em>Content to be added.</em></p>
 <div class="level-advanced callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -532,8 +532,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="practical-tools" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="practical-tools"><span class="header-section-number">4</span> Practical Tools</h2>
+<section id="practical-tools" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Practical Tools</h1>
 <p><em>Content to be added.</em></p>
 
 
@@ -554,6 +554,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Introduction to Systematic
 Literature Reviews.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 15. <a href="https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review">https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1039,17 +1063,17 @@ Gräbner-Radkowitsch. June 15. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## What is a Systematic Literature Review?</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># What is a Systematic Literature Review?</span></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>*Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.*</span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>A systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Stages</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># Key Stages</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>*Content to be added.*</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Formulating a Research Question</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu"># Formulating a Research Question</span></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>*Content to be added.*</span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
@@ -1061,7 +1085,7 @@ Gräbner-Radkowitsch. June 15. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>*Placeholder — MA/PhD extension content to be added.*</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Tools</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># Practical Tools</span></span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>*Content to be added.*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>

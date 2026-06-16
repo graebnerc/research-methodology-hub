@@ -32,7 +32,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/visualization-ggplot2
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -40,7 +40,7 @@ citation:
 </div>
 ```
 
-## Packages used
+# Packages used
 
 ```{r}
 library(DataScienceExercises)
@@ -48,7 +48,7 @@ library(ggplot2)
 ```
 
 
-## Developing a ggplot - the general workflow
+# Developing a ggplot - the general workflow
 
 Make a shortcut to the data and inspect it:
 
@@ -428,7 +428,7 @@ Another great thing is that the syntax remains largely the same, no matter
 whether you want to make a scatter plot as above, or a line graph or a histogram.
 All that changes is the particular `geom_*()` function used.
 
-## An alternative line plot
+# An alternative line plot
 
 To illustrate the similarities of the code used for a different plot type, we
 will now use a data set that is very similar to the one used previously, only
@@ -517,7 +517,7 @@ gdp_dyn_plot
 A very nice plot — and much faster to complete than the first one,
 thanks to the amazingly consistent syntax of `ggplot2`!
 
-## Saving your plot
+# Saving your plot
 
 You can save your plot using the function `ggplot2::ggsave()`.
 The function saves, by default, the last plot you created, but
@@ -532,7 +532,7 @@ ggplot2::ggsave(
   width = 6, height = 4.2)
 ```
 
-## Further reading
+# Further reading
 
 - Wilkinson (2005) on the grammar of graphics — the theory underlying `ggplot2`
 - [ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf)

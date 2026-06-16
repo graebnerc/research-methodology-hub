@@ -34,7 +34,7 @@ citation:
 knitr::opts_chunk$set(out.width='90%')
 ```
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -42,7 +42,7 @@ knitr::opts_chunk$set(out.width='90%')
 </div>
 ```
 
-## Installing R packages
+# Installing R packages
 
 After installing [R and R-Studio](installing-r-and-rstudio.qmd), you
 still need to install a number of so called [R packages](https://r-pkgs.org/).
@@ -82,7 +82,7 @@ I recommend typing `No` and pressing enter. If the installation is not successfu
 you might run the installation commands again and try responding with `Yes`,
 which sometimes fixes the problem.
 
-## Verify the usability of exercises
+# Verify the usability of exercises
 
 If everything worked until here you should be able to access the
 exercise sets provided after each session via the `DataScienceExercises` package.
@@ -105,7 +105,7 @@ to return to the console.
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for full installation instructions for the exercises package.
 
-## Installing LaTeX
+# Installing LaTeX
 
 To create PDF-documents you have to install a
 [LaTeX distribution](https://www.latex-project.org/).
@@ -131,7 +131,7 @@ and try to render it as a PDF by clicking the `Render` button in R-Studio.
 If this works you are all set. If there are any errors showing up, please
 search for solutions online or ask for help.
 
-### A common problem when installing tinytex on a Mac
+## A common problem when installing tinytex on a Mac
 
 If after the attempted installation of `tinytex` you see an error message about
 missing paths, execute the following command in your R console within

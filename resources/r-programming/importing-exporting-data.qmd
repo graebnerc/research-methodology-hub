@@ -44,7 +44,7 @@ library(data.table)
 library(dplyr)
 ```
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -57,7 +57,7 @@ library(dplyr)
 </div>
 ```
 
-## Introduction
+# Introduction
 
 Functions for importing data take a path to a file, parse that file, and return an
 R object (usually a kind of `data.frame`) containing the data.
@@ -88,7 +88,7 @@ This tutorial assumes you already have an R project set up with a proper directo
 structure — see the tutorial on
 [Setting Up an R Project](setting-up-an-r-project.qmd) if you have not done this yet.
 
-## Importing CSV data with fread
+# Importing CSV data with fread
 
 Assume the dataset you want to import is called `exp_data.csv` and sits in your project's
 `data/tidy/` folder. Your project structure looks like this:
@@ -138,7 +138,7 @@ The most important optional arguments are:
 - `nrows` / `skip`: limit rows read or skip file headers
 - `header`: whether the first row contains column names
 
-### Separator and decimal sign: `sep` and `dec`
+## Separator and decimal sign: `sep` and `dec`
 
 In Germany (and many other European countries), `;` is used as the column separator
 and `,` as the decimal sign. The same data in this format looks like:
@@ -174,7 +174,7 @@ Or use `dplyr::glimpse()` or `str()`:
 str(exp_data)
 ```
 
-### Column types: `colClasses`
+## Column types: `colClasses`
 
 `fread()`'s automatic type detection is generally good, but it fails in one important
 case: numerical codes with leading zeros. Product codes like HS codes are a common example:
@@ -221,7 +221,7 @@ tibble::as_tibble(exp_prod_data)
 For data with many columns, `rep()` saves typing — e.g. `rep("double", 6)` for six
 consecutive double columns.
 
-### Reading a subset of rows: `nrows` and `skip`
+## Reading a subset of rows: `nrows` and `skip`
 
 Specifying column types requires knowing the column structure. For large files you cannot
 open in a text editor, read a small number of rows first:
@@ -280,7 +280,7 @@ exp_data <- tibble::as_tibble(data.table::fread(
 exp_data
 ```
 
-### Selecting columns: `select` and `drop`
+## Selecting columns: `select` and `drop`
 
 To read only a subset of columns — useful for speed with large files:
 
@@ -348,9 +348,9 @@ exp_data <- tibble::as_tibble(exp_data)
 exp_data
 ```
 
-## Importing other file formats
+# Importing other file formats
 
-### R-native formats: `.rds` and `.RData`
+## R-native formats: `.rds` and `.RData`
 
 R has two proprietary formats that are fast, compressed, and platform-compatible — but
 can only be opened with R.
@@ -381,7 +381,7 @@ test_dat
 test_vec
 ```
 
-### Stata files: `.dta`
+## Stata files: `.dta`
 
 The [haven](https://github.com/tidyverse/haven) package reads Stata's native format:
 
@@ -391,9 +391,9 @@ dta_data <- haven::read_dta(file = here::here("data/tidy/exp_data.dta"))
 
 `haven` also supports SAS and SPSS formats via similarly named functions.
 
-## Exporting data
+# Exporting data
 
-### CSV with fwrite
+## CSV with fwrite
 
 `data.table::fwrite()` is the fastest function for writing CSV files and the natural
 companion to `fread()`:
@@ -408,7 +408,7 @@ data.table::fwrite(
 CSV is the right default for sharing data: it is platform-independent and readable by
 any software.
 
-### R-native formats
+## R-native formats
 
 For single objects, `saveRDS()` with optional compression:
 
@@ -432,7 +432,7 @@ save(
 Use R-native formats when all consumers of the data use R — they are faster and smaller
 than CSV for large datasets.
 
-### Stata format
+## Stata format
 
 ```{r, eval=FALSE}
 haven::write_dta(
@@ -441,7 +441,7 @@ haven::write_dta(
 )
 ```
 
-## Practice
+# Practice
 
 The `ImportData` exercise set in the `DataScienceExercises` package covers the main
 concepts from this tutorial:
@@ -457,7 +457,7 @@ learnr::run_tutorial(
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for installation instructions.
 
-## Further reading
+# Further reading
 
 - [Efficient R Input/Output](https://csgillespie.github.io/efficientR/efficient-inputoutput.html) — benchmark comparison of file formats and read/write functions
 - [R data frame benchmark](https://data.nozav.org/tutorial/2019-r-data-frame-benchmark/) — detailed speed comparison

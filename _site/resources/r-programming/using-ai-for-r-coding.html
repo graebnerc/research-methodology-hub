@@ -447,8 +447,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture"><span class="header-section-number">1</span> Video lecture</a></li>
-  <li><a href="#tools-and-resources" id="toc-tools-and-resources" class="nav-link" data-scroll-target="#tools-and-resources"><span class="header-section-number">2</span> Tools and resources</a></li>
+  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture">Video lecture</a></li>
+  <li><a href="#tools-and-resources" id="toc-tools-and-resources" class="nav-link" data-scroll-target="#tools-and-resources"><span class="header-section-number">1</span> Tools and resources</a></li>
   </ul>
 </nav>
     </div>
@@ -509,8 +509,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Debugging.</strong> Paste code and an error message into an AI assistant, explain what you expected, and it will often identify the problem quickly.</li>
 </ol>
 <p>In both cases, providing context is essential. An AI working without context about your data structure, packages, or project conventions will produce generic code that may not fit your situation. The more precisely you describe the problem, the more useful the output.</p>
-<section id="video-lecture" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="video-lecture"><span class="header-section-number">1</span> Video lecture</h2>
+<section id="video-lecture" class="level1 unnumbered">
+<h1 class="unnumbered">Video lecture</h1>
 <div class="embed-container">
   <iframe src="https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js" style="border: 0.5px" width="80%" height="80%">
   </iframe>
@@ -532,8 +532,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="tools-and-resources" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="tools-and-resources"><span class="header-section-number">2</span> Tools and resources</h2>
+<section id="tools-and-resources" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Tools and resources</h1>
 <p><strong>Learning to prompt effectively</strong></p>
 <ul>
 <li><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial">Anthropic’s Prompt Engineering Interactive Tutorial</a> — a thorough, hands-on course on writing good prompts</li>
@@ -580,6 +580,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Using AI Tools for R
 Coding.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/using-ai-for-r-coding">https://euf-methodology-hub.netlify.app/resources/r-programming/using-ai-for-r-coding</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1081,7 +1105,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>data structure, packages, or project conventions will produce generic code that may not</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>fit your situation. The more precisely you describe the problem, the more useful the output.</span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Video lecture</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu"># Video lecture {.unnumbered}</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="embed-container"&gt;</span></span>
@@ -1098,7 +1122,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tools and resources</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># Tools and resources</span></span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**Learning to prompt effectively**</span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>

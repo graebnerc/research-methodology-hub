@@ -41,11 +41,11 @@ library(ggtext)
 ```
 
 
-## Understanding Residuals: The Foundation of Diagnostics
+# Understanding Residuals: The Foundation of Diagnostics
 
 Before diving into assumptions and diagnostic tests, we need to understand residuals—the cornerstone of all regression diagnostics. Many students confuse residuals with error terms, but understanding the distinction is crucial for interpreting diagnostic plots and tests.
 
-### What Are Residuals?
+## What Are Residuals?
 
 **Residuals** are the observed differences between actual values and predicted values from your fitted model:
 
@@ -70,7 +70,7 @@ knitr::include_graphics("residuals_plot.png")
 
 
 
-### Residuals vs. Error Terms: A Critical Distinction
+## Residuals vs. Error Terms: A Critical Distinction
 
 Students often use "residual" and "error" interchangeably, but they are fundamentally different concepts:
 
@@ -91,7 +91,7 @@ $$y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i$$
 
 This is our estimate based on sample data. We calculate $e_i$ because we have estimates $\hat{\beta}_0$ and $\hat{\beta}_1$.
 
-### Why This Distinction Matters
+## Why This Distinction Matters
 
 1.  **Assumptions are about error terms, not residuals:** When we say "errors are normally distributed" or "errors have constant variance," we're making statements about the unobservable $\epsilon_i$ in the population.
 
@@ -99,7 +99,7 @@ This is our estimate based on sample data. We calculate $e_i$ because we have es
 
 3.  **Residuals are estimates of errors:** Under the regression assumptions, residuals should behave similarly to errors. If they don't (showing patterns, non-constant variance, etc.), it suggests the assumptions are violated.
 
-### Types of Residuals in Diagnostics
+## Types of Residuals in Diagnostics
 
 You'll encounter several types of residuals in diagnostic output:
 
@@ -140,7 +140,7 @@ However, **high leverage alone doesn't make a point influential**:
 
 Similar to standardized but use a different estimate of variance that excludes observation $i$. More robust for identifying outliers.
 
-### Why Residuals Are Central to Diagnostics
+## Why Residuals Are Central to Diagnostics
 
 Residuals are the empirical manifestation of all our modeling assumptions. Here's why they're so important:
 
@@ -164,7 +164,7 @@ The magnitude of residuals tells you about prediction accuracy. Ideally, residua
 -   Homogeneous in variance (consistent precision)
 -   Approximately normal (valid inference)
 
-### The Diagnostic Philosophy
+## The Diagnostic Philosophy
 
 When you examine diagnostic plots, you're asking: **"Do these residuals behave like random noise, or do they show systematic patterns that suggest model problems?"**
 
@@ -179,7 +179,7 @@ Any deviation from this ideal suggests where your model or assumptions may be fa
 
 ------------------------------------------------------------------------
 
-## Understanding the Assumptions
+# Understanding the Assumptions
 
 Linear regression relies on several key assumptions about the data and the relationship between variables. Understanding these assumptions is crucial because violations can lead to:
 
@@ -188,13 +188,13 @@ Linear regression relies on several key assumptions about the data and the relat
 -   **Incorrect hypothesis tests** (wrong p-values and conclusions)
 -   **Poor predictions** (inaccurate forecasts)
 
-### 1. Linearity
+## 1. Linearity
 
 **What it means:** The relationship between each predictor variable and the outcome variable is linear. In mathematical terms, the conditional expectation of Y given X follows a linear function: $E[Y|X] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$
 
 **Why it matters:** Linear regression models can only capture linear relationships. If the true relationship is curved or more complex, the model will systematically mispredict values, leading to biased estimates and poor fit.
 
-### 2. Independence
+## 2. Independence
 
 **What it means:** Each observation is independent of all other observations. The residual (error) for one observation does not depend on the residual for any other observation: $Cov(\epsilon_i, \epsilon_j) = 0$ for $i \neq j$.
 
@@ -202,13 +202,13 @@ Linear regression relies on several key assumptions about the data and the relat
 
 **Common violations:** Time series data (autocorrelation), clustered data (students within schools), repeated measures (multiple observations per subject), spatial data (nearby locations are similar).
 
-### 3. Homoscedasticity
+## 3. Homoscedasticity
 
 **What it means:** The variance of the residuals is constant across all levels of the predictor variables: $Var(\epsilon_i) = \sigma^2$ for all $i$.
 
 **Why it matters:** Heteroscedasticity (non-constant variance) leads to inefficient estimates and incorrect standard errors.
 
-### 4. Normality
+## 4. Normality
 
 **What it means:** The residuals (errors) follow a normal distribution: $\epsilon_i \sim N(0, \sigma^2)$. Note that this assumption is about the residuals, not the variables themselves.
 
@@ -216,7 +216,7 @@ Linear regression relies on several key assumptions about the data and the relat
 
 **Important note:** This is the least critical assumption for large samples due to the Central Limit Theorem.
 
-### 5. No Influential Outliers
+## 5. No Influential Outliers
 
 **What it means:** No single observation has disproportionate influence on the regression estimates.
 
@@ -229,7 +229,7 @@ Linear regression relies on several key assumptions about the data and the relat
 
 ------------------------------------------------------------------------
 
-## Summary Table of Assumptions and Tests
+# Summary Table of Assumptions and Tests
 
 | Assumption | Description | Visual Test | Quantitative Test |
 |-----------------|-----------------|-----------------|----------------------|
@@ -243,11 +243,11 @@ Linear regression relies on several key assumptions about the data and the relat
 
 ------------------------------------------------------------------------
 
-## Essential Visual Diagnostic Tests
+# Essential Visual Diagnostic Tests
 
 Visual diagnostics are your first and most important line of defense. R automatically generates four diagnostic plots with `plot(lm_model)` that provide a comprehensive visual assessment. Always examine these plots before moving to quantitative tests.
 
-### The Four Standard Diagnostic Plots
+## The Four Standard Diagnostic Plots
 
 ```{r}
 #| echo: false
@@ -292,7 +292,7 @@ hetero_data <- create_diagnostic_data("heteroscedastic")
 nonnormal_data <- create_diagnostic_data("nonnormal")
 ```
 
-#### Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)
+### Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)
 
 **Purpose:** Checks linearity and homoscedasticity simultaneously.
 
@@ -350,7 +350,7 @@ ggplot(hetero_data, aes(x = fitted, y = residuals)) +
 
 ------------------------------------------------------------------------
 
-#### Plot 2: Normal Q-Q Plot
+### Plot 2: Normal Q-Q Plot
 
 **Purpose:** Checks whether residuals follow a normal distribution.
 
@@ -392,7 +392,7 @@ ggplot(nonnormal_data, aes(sample = std_residuals)) +
 
 ------------------------------------------------------------------------
 
-#### Plot 3: Scale-Location Plot
+### Plot 3: Scale-Location Plot
 
 **Purpose:** Checks homoscedasticity more clearly than the Residuals vs Fitted plot.
 
@@ -431,7 +431,7 @@ ggplot(hetero_data, aes(x = fitted, y = sqrt_std_residuals)) +
 
 ------------------------------------------------------------------------
 
-#### Plot 4: Residuals vs Leverage
+### Plot 4: Residuals vs Leverage
 
 **Purpose:** Identifies influential observations that disproportionately affect the regression model.
 
@@ -457,13 +457,13 @@ $$D_i = \frac{(e_i^*)^2}{p} \times \frac{h_i}{1-h_i}$$
 
 ------------------------------------------------------------------------
 
-## Quantitative Diagnostic Tests (Optional)
+# Quantitative Diagnostic Tests (Optional)
 
 While visual diagnostics should always be your primary tool, quantitative tests can provide additional confirmation.
 
-### Tests for Normality
+## Tests for Normality
 
-#### Shapiro-Wilk Test
+### Shapiro-Wilk Test
 
 **Purpose:** Formal test of whether residuals follow a normal distribution.
 
@@ -485,9 +485,9 @@ shapiro.test(residuals(model))
 
 ------------------------------------------------------------------------
 
-### Tests for Homoscedasticity
+## Tests for Homoscedasticity
 
-#### Breusch-Pagan Test
+### Breusch-Pagan Test
 
 **Purpose:** Formal test for heteroscedasticity (non-constant variance).
 
@@ -505,9 +505,9 @@ bptest(model)
 
 ------------------------------------------------------------------------
 
-### Test for Independence
+## Test for Independence
 
-#### Durbin-Watson Test
+### Durbin-Watson Test
 
 **When to use:** Primarily for time series data or any data with a natural ordering.
 
@@ -525,9 +525,9 @@ dwtest(model)
 
 ------------------------------------------------------------------------
 
-### Test for Linearity
+## Test for Linearity
 
-#### RESET Test
+### RESET Test
 
 **Purpose:** Tests for functional form misspecification.
 
@@ -540,9 +540,9 @@ resettest(model, power = 2:3)
 
 ------------------------------------------------------------------------
 
-### Tests for Multicollinearity
+## Tests for Multicollinearity
 
-#### Variance Inflation Factor (VIF)
+### Variance Inflation Factor (VIF)
 
 **When to use:** Multiple regression with 2 or more predictors.
 
@@ -561,11 +561,11 @@ vif(model)
 
 ------------------------------------------------------------------------
 
-## Practical Workflow for Diagnostics
+# Practical Workflow for Diagnostics
 
 Follow this systematic approach for every regression analysis:
 
-### 1. Always Start with Visual Diagnostics
+## 1. Always Start with Visual Diagnostics
 
 ``` r
 # Generate all four diagnostic plots at once
@@ -581,7 +581,7 @@ Examine each plot carefully:
 -   Plot 3: Check for trends in spread (homoscedasticity)
 -   Plot 4: Check for influential points (Cook's distance)
 
-### 2. Run Key Quantitative Tests (Optional)
+## 2. Run Key Quantitative Tests (Optional)
 
 ``` r
 # Normality
@@ -596,7 +596,7 @@ library(car)
 vif(model)
 ```
 
-### 3. Investigate Issues Identified
+## 3. Investigate Issues Identified
 
 **If heteroscedasticity is detected:**
 
@@ -622,7 +622,7 @@ model_no_influential <- lm(y ~ x, data = data[-influential_obs, ])
 
 ------------------------------------------------------------------------
 
-## Key Principles to Remember
+# Key Principles to Remember
 
 1.  **Visual diagnostics come first:** Plots are more informative than p-values, especially in large samples where tests become overly sensitive.
 

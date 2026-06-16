@@ -31,7 +31,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/setting-up-an-r-project
 ---
 
-## Introduction
+# Introduction
 
 This tutorial is about how you set up an adequate project environment.
 By this we mean the folders you should create, and how you should save your
@@ -67,7 +67,7 @@ technical concepts:
 (1) the concept of a *working directory* and
 (2) the distinction between *absolute* and *relative* paths
 
-## Preface: Working directory and paths
+# Preface: Working directory and paths
 
 The [working directory](https://en.wikipedia.org/wiki/Working_directory)
 is a folder on the computer which R uses as a default anchor
@@ -151,7 +151,7 @@ be evaluated on my and your computer must somehow be harmonized. As we will
 learn below, this can be achieved through the use of R project files and the
 package [here](https://here.r-lib.org/).
 
-## Step 1: Find a good place for the project on your computer
+# Step 1: Find a good place for the project on your computer
 
 First of all you have to decide on a place on your computer in which
 all data related to your project, i.e. data, scripts, images,
@@ -159,7 +159,7 @@ etc., should be saved.
 It is usually a good idea to avoid places such as the Desktop or your
 Download folder.
 
-## Step 2: Create an R-project
+# Step 2: Create an R-project
 
 After having identified the right place for our project on our computer, we
 will now create an R-project at exactly this place. To do this, open R-Studio,
@@ -192,7 +192,7 @@ is your working directory automatically set to the project folder, you can also
 access previous commands in a command history, and its easier to transfer the
 project from one computer to another.
 
-## Step 3: Create the relevant sub-directories
+# Step 3: Create the relevant sub-directories
 
 A sensible directory structure helps (1) not to lose track of one's programming
 project, (2) to collaborate with others across computers, and
@@ -244,7 +244,7 @@ main directory are the `.Rproj` file and, if applicable a `LICENSE.md` containin
 a license for your code, and a `README.md` file in which you explain the
 content and functioning of your project.
 
-## Creating portable relative paths using the here-package
+# Creating portable relative paths using the here-package
 
 The [here](https://github.com/r-lib/here)-package allows you to create
 file paths in a way that those parts of your code that contain file paths
@@ -327,7 +327,7 @@ absolute paths.
 exception to the important rule that a script should always start with a
 reference to the packages used within the script.
 
-## Further reading
+# Further reading
 
 - [Very concise introduction to Git](https://rogerdudler.github.io/git-guide/) — optional but recommended for version control
 - [GitHub skills](https://skills.github.com/) and the [official docs](https://docs.github.com/en)

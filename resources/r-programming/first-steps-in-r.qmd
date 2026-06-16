@@ -35,7 +35,7 @@ citation:
 knitr::opts_chunk$set(comment = "#>", warning = F, message = F)
 ```
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -43,7 +43,7 @@ knitr::opts_chunk$set(comment = "#>", warning = F, message = F)
 </div>
 ```
 
-## Introduction
+# Introduction
 
 In this tutorial we will learn about the basic *syntax* of R.
 The syntax basically refers to the grammatical rules you must adhere to when
@@ -57,7 +57,7 @@ To learn about these important basics, the tutorial follows the following struct
 * Objects, functions, and assignments
 * R packages
 
-## Issue commands to your computer
+# Issue commands to your computer
 
 There are two ways we can communicate with our computer in
 R Studio: either issuing commands directly via the *console*,
@@ -128,7 +128,7 @@ The operations that we have conducted so far are not particularly exciting, to
 be honest. Before we proceed with more complex operations, however, we need to
 understand the ideas of `objects`, `functions`, and `assignments`.
 
-## Objects, functions, and assignments
+# Objects, functions, and assignments
 
 > To understand computations in R, two slogans are helpful:
 >   Everything that exists is an object.
@@ -280,7 +280,7 @@ by calling the following command:
 rm(list=ls())
 ```
 
-## R packages
+# R packages
 
 Packages are a combination of `R` code, data, documentation and tests.
 They are the best way to create reproducible code and make it available
@@ -390,7 +390,7 @@ the function `conflicts()`.
 For the sake of transparency, always use the notation with `::` whenever
 referring to an object that is not defined in `base R`.
 
-## Taking stock
+# Taking stock
 
 Let us recap what we have learned so far about issuing commands, names and
 assignments:
@@ -419,7 +419,7 @@ name `assign`, then just type the following:
 help(assign)
 ```
 
-## Practice
+# Practice
 
 The `Basics` and `Functions` exercise sets in the `DataScienceExercises` package
 cover the main concepts from this tutorial.
@@ -447,7 +447,7 @@ learnr::run_tutorial(
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for installation instructions.
 
-## Further reading
+# Further reading
 
 - [Chapter 2](https://r4ds.hadley.nz/workflow-basics) in R for Data Science
 - [R Studio Cheat Sheet](https://rstudio.github.io/cheatsheets/html/rstudio-ide.html)

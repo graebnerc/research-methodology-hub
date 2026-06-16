@@ -31,7 +31,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-iii-factors-dataframes
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 The second part of the session 4 video covers advanced object types (factors and data frames):
 
@@ -41,7 +41,7 @@ The second part of the session 4 video covers advanced object types (factors and
 </div>
 ```
 
-## Optional background info: attributes and classes
+# Optional background info: attributes and classes
 
 In the previous tutorials you learned about the most important fundamental data
 types in `R`.
@@ -125,7 +125,7 @@ you wrapped your head around this, many confusing behaviors suddenly start to ma
 sense, e.g. that mutating factors within a `data.frame` can result in whole
 numbers, a phenomenon we will discuss in the context of data wrangling later.
 
-## Factors {#introfactors}
+# Factors {#introfactors}
 
 We usually use factors to represent ordinal or categorical data.
 At first sight a factor is an atomic vector that can only take a pre-specified
@@ -207,7 +207,7 @@ factor elements, a task that is very common for categorical data:
 table(x)
 ```
 
-## Data Frames
+# Data Frames
 
 The `data.frame` is a special type of list. It is among the most widespread
 data types used in data science.
@@ -364,7 +364,7 @@ the package [data.table](https://github.com/Rdatatable/data.table). It is
 designed to work with large data sets and is by far the fastest and computationally
 most efficient approach to data processing.
 
-## Digression: Matrices in R {#intro-matrix}
+# Digression: Matrices in R {#intro-matrix}
 
 Another data type that is used frequently in many
 circumstances, especially statistics and engineering, are
@@ -401,7 +401,7 @@ To test whether an object is a matrix use `is.matrix()`:
 is.matrix(m_1)
 ```
 
-## Practice
+# Practice
 
 The `ObjectTypes2` exercise set in the `DataScienceExercises` package covers the
 main concepts from this tutorial:
@@ -417,7 +417,7 @@ learnr::run_tutorial(
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for installation instructions.
 
-## Further reading
+# Further reading
 
 - [Chapter 16](https://r4ds.hadley.nz/factors) in R for Data Science
 - [Chapter 10](https://r4ds.had.co.nz/tibbles.html) on tibbles in R for Data Science

@@ -44,7 +44,7 @@ library(kableExtra)
 ```
 
 
-## What are logarithms?
+# What are logarithms?
 
 A logarithm is simply a way of asking: "To what power must I raise one number to get another number?"
 
@@ -56,7 +56,7 @@ $$\log_{10}\left(100\right)=2$$
 
 We say this out loud as: "log base 10 of 100 equals 2"
 
-### Understanding the base of a logarithm
+## Understanding the base of a logarithm
 
 The **base** of a logarithm is the number we're repeatedly multiplying. In $\log_{10}\left(100\right)=2$, the base is $10$. This tells us "10 multiplied by itself 2 times equals 100."
 
@@ -125,7 +125,7 @@ Banks use continuous compounding, which naturally involves *e*. If you invest 1,
 Taking the natural logarithm lets you easily work backwards: if your investment grew to EUR 2,000, you can find how long it took by calculating ln(2000/1000) ÷ 0.05 = 13.86 years.
 :::
 
-## The natural logarithm and exponential functions
+# The natural logarithm and exponential functions
 
 The natural logarithm and the exponential function $e^x$ are mathematical inverses—they undo each other. If you apply one and then the other, you get back to where you started:
 
@@ -179,7 +179,7 @@ p2 <- ggplot(df, aes(x = time, y = log_value)) +
 ggarrange(p1, p2, ncol = 2, labels = c("A)", "B)"))
 ```
 
-## When and why do we use logarithms?
+# When and why do we use logarithms?
 
 Logarithms are useful in statistics and research for a number of reasons:
 
@@ -351,7 +351,7 @@ get_regression_table(model_log) |>
 In this example, the coefficient for weeks (`r round(log_growth_coef, 3)`, see @tbl-logmodel-results) tells us users are growing at approximately `r weekly_growth_pct`% per week—going from around `r initial_users` users at launch to over `r format(final_users, big.mark = ",")` users after 20 weeks.
 
 
-## Summary
+# Summary
 
 You don't need to calculate logarithms by hand—statistical software handles this automatically. What matters is understanding when and why we use them in our analyses:
 

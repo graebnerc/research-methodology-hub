@@ -31,7 +31,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-ii-vectors
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -39,7 +39,7 @@ citation:
 </div>
 ```
 
-## Overview
+# Overview
 
 We already learned that everything in R that exists is an *object*.
 You most likely noted that there are different types of objects:
@@ -61,7 +61,7 @@ for a treatment of functions, and
 [Object Types in R III: Factors and Data Frames](r-object-types-iii-factors-dataframes.qmd)
 for more advanced types of vectors.
 
-## Vectors
+# Vectors
 
 Vectors are the most important object type in `R` - almost all data that we will
 work with in `R` are vectors of some sort. Within the class of vectors, the most
@@ -72,7 +72,7 @@ distinguishes the two is that while
 *atomic vectors are composed only of objects of the same type*, lists can
 comprise objects of different types.
 
-## Atomic vectors
+# Atomic vectors
 
 This makes it easy to classify atomic vectors in more detail: we usually say
 that the type of atomic vector is the type of the object it encompasses.
@@ -102,7 +102,7 @@ store observations of subjects that have participated in an experiment, and
 for some subjects the observation is
 missing, we will use `NA`.
 
-### Testing and coercing types
+## Testing and coercing types
 
 In the following we will study the different types of atomic vectors and their
 typical behavior in more detail. But before doing so we should introduce the
@@ -318,7 +318,7 @@ len_x <- length(x)
 len_x
 ```
 
-### Logical operations
+## Logical operations
 
 The logical values `TRUE` and `FALSE` are often the result of logical
 operations, such as 'Is 2 larger than 1?'.
@@ -376,7 +376,7 @@ print(
 )
 ```
 
-### Vectorization
+## Vectorization
 
 The chained operation we just saw is an example for *vectorizing* an operation.
 This means that the same operation is applied to many elements, all of which
@@ -401,7 +401,7 @@ than applying the operation to each element of the vector separately. Thus,
 whenever you need to apply a certain operation more than once you should always
 think about using vectorization.
 
-### More on words
+## More on words
 
 Words are distinguished by the fact that their beginning and their end gets
 indicated by the symbol `'` or `"`:
@@ -441,7 +441,7 @@ x_axis <- paste("Day", day_nr, sep = ": ")
 x_axis
 ```
 
-### Missing values and NULL
+## Missing values and NULL
 
 As indicated above, missing values are encoded as `NA`. This is particularly
 useful in statistical contexts, where a particular element of a vector cannot
@@ -509,7 +509,7 @@ length(y)
 When you define your own functions, you might use `NULL` as the default value
 for optional arguments.
 
-### Indexing and replacement
+## Indexing and replacement
 
 We can extract single elements of a vector using squared brackets:
 
@@ -546,7 +546,7 @@ x[length(x)]
 ```
 
 
-### Useful functions when working with atomic vectors
+## Useful functions when working with atomic vectors
 
 A sequence of whole numbers is something that we use very frequently.
 To create such sequences, the shortcut `:` comes in handy:
@@ -648,7 +648,7 @@ prod(y, na.rm = T)
 ```
 
 
-## Lists
+# Lists
 
 In contrast to atomic vectors, lists can contain objects of different types.
 We create lists via the function `list()`:
@@ -744,7 +744,7 @@ flexibility is not needed. As a rule of thumb, whenever you can represent
 something as an atomic vector, you should do so. You should always have a good
 reason for using lists!
 
-## Practice
+# Practice
 
 The `ObjectTypes1` exercise set in the `DataScienceExercises` package covers the
 main concepts from this tutorial:
@@ -760,7 +760,7 @@ learnr::run_tutorial(
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for installation instructions.
 
-## Further reading
+# Further reading
 
 - Sections 1-3 in [Chapter 12](https://r4ds.hadley.nz/logicals) of R for Data Science
 - [Chapter 13](https://r4ds.hadley.nz/numbers) in R for Data Science

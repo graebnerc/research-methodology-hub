@@ -31,7 +31,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/installing-r-and-rstudio
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -39,7 +39,7 @@ citation:
 </div>
 ```
 
-## Introduction
+# Introduction
 
 During a typical data science course you will use the following software and services:
 
@@ -58,7 +58,7 @@ going to use. It is best to continue with
 [Installing R Packages](installing-r-packages.qmd) directly after you have
 completed this one.
 
-## An overview of the apps and services
+# An overview of the apps and services
 
 [R](https://www.r-project.org/)
 is the programming language we are using. Installing `R` basically gives
@@ -106,7 +106,7 @@ ease of use, it is a great tool if you want to polish your results up visually
 and send them to friends or colleagues who might not even use R themselves.
 
 
-## Installation guidelines
+# Installation guidelines
 
 The information in this tutorial is provided for Mac OS, Windows, and Linux.
 Given the variety of different Linux distributions the comments on
@@ -118,7 +118,7 @@ what remains is to install the R packages we require over the course of the
 seminar. To this end, please consult the
 [Installing R Packages tutorial](installing-r-packages.qmd).
 
-### Install R
+## Install R
 
 The installation of `R` is very similar across operating systems (OS).
 The easiest
@@ -136,7 +136,7 @@ using in the new window. If you have an Apple chip, always install R for
 the so called `arm64` architecture. Intel chip users must use the `x86_64`
 architecture instead.
 
-#### Only Windows: Install RTools
+### Only Windows: Install RTools
 
 If you are using Windows, it is necessary to install
 `RTools`, which is required if you want to use packages written
@@ -149,7 +149,7 @@ When asked during the installation process, do *not*
 select the box for `Add rtools to system PATH`, but *do*
 select the box for `Save version information to registry`.
 
-#### Only Mac: Command Line Developer Tools
+### Only Mac: Command Line Developer Tools
 
 The Command Line Developer Tools could be thought of as the Mac pendant to
 RTools. These allow you
@@ -167,7 +167,7 @@ xcode-select --install
 and press `Enter`. Then a pop up window will open and allow
 you to install the software.
 
-### Update R
+## Update R
 
 In case R is already installed on your computer you should make sure that your
 version is more or less up to date. For recent courses you should use at least R
@@ -178,7 +178,7 @@ Please note: if you installed R anew in the previous step, you do *not* need
 to update it. The information on updating R is mainly relevant for people
 who have installed R already some time ago.
 
-#### MacOS users
+### MacOS users
 
 For **MacOS users**, the easiest route to update `R` is to just re-install the
 most current version from the [R Homepage](https://www.r-project.org/).
@@ -209,7 +209,7 @@ install.packages(missing_packages)
 update.packages()
 ```
 
-#### Windows users
+### Windows users
 
 **Windows users** have a slightly more convenient route available to them: the
 [installr package](https://github.com/talgalili/installr).
@@ -225,7 +225,7 @@ updateR(TRUE)
 For more information see
 [the package website](https://github.com/talgalili/installr).
 
-#### Linux users
+### Linux users
 
 Linux users simply install `R` via their package manager. A quick search on
 Google should provide you with the information that are relevant for your
@@ -234,7 +234,7 @@ Updating is usually
 straightforward as well: just run the respective command from your package
 manager.
 
-### R-Studio
+## R-Studio
 
 Installing R-Studio is easy. The only thing you should keep in mind is that
 you should **install R first**, and **R-Studio second**.
@@ -252,11 +252,11 @@ is from late January 2024. You can check your version by clicking on
 `RStudio` in the upper left part of your screen when R-Studio is open.
 Then click on `About RStudio`.
 
-### Git
+## Git
 
 Installing Git is straightforward, but the right approach depends on your OS.
 
-#### MacOS
+### MacOS
 
 On **MacOS** you should install Git as part of the Command Line Developer
 Tools, which themselves are part of XCode (see above).
@@ -271,19 +271,19 @@ If you get an output such as `git version 2.34.1` you already have what you
 need. If not, you
 will be asked to install the respective software packages (see above).
 
-#### Windows
+### Windows
 
 On **Windows** you download `Git for Windows` from the
 [official Webpage](https://git-scm.com/download/win), which also provides you
 with all the relevant instructions.
 
-#### Linux
+### Linux
 
 On **Linux** use your package manager. In most cases the name of the relevant
 package is `git-all`, so on Ubuntu, for instance, you would install Git
 via `sudo apt install git-all`.
 
-### Install Quarto
+## Install Quarto
 
 Quarto allows you to write text and R code within one document.
 This is very useful in many instances, and allows you to create a wide
@@ -292,14 +292,14 @@ apps, websites, statistical reports, and much more. To install Quarto
 just follow the instructions from
 [this webpage](https://quarto.org/docs/get-started/).
 
-## Register for the necessary services
+# Register for the necessary services
 
-### Github
+## Github
 
 This is easy. Just visit [https://github.com/](https://github.com/) and
 sign up using your email account.
 
-### Netlify
+## Netlify
 
 This is easy as well. Visit [https://www.netlify.com/](https://www.netlify.com/)
 and click on `Sign up` in the upper right of the webpage.
@@ -307,7 +307,7 @@ You can now either create a Netlify account by clicking on `Email` and
 register a new email address, or you can link Netlify to one of the other
 accounts you might already have.
 
-## Next steps
+# Next steps
 
 Once you have finished installing all the relevant software described in this
 tutorial, continue with [Installing R Packages](installing-r-packages.qmd)

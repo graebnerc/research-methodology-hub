@@ -41,7 +41,7 @@ or website. Quarto handles the conversion — you focus on the content.
 This website is itself written in Quarto, which gives you a sense of what is possible
 with the tool even for everyday writing tasks.
 
-## Video lectures
+# Video lecture {.unnumbered}
 
 ```{=html}
 <iframe
@@ -55,7 +55,7 @@ with the tool even for everyday writing tasks.
 </iframe>
 ```
 
-## Required reading
+# Required reading
 
 Work through these in order — they cover everything you need to get started:
 
@@ -66,7 +66,7 @@ Work through these in order — they cover everything you need to get started:
 3. [Quarto tutorial II: computations](https://quarto.org/docs/get-started/computations/rstudio.html)
 4. [Quarto tutorial III: authoring](https://quarto.org/docs/get-started/authoring/rstudio.html)
 
-## Exercise
+# Exercise
 
 Create a new Quarto document where you set the title, date, and author explicitly.
 Write a sample text that includes:
@@ -104,7 +104,7 @@ learnr::run_tutorial(
 )
 ```
 
-## Further reading
+# Further reading
 
 - [We don't talk about Quarto](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/) — a readable blog post introducing Quarto
 - [Quarto and R Markdown](https://yihui.org/en/2022/04/quarto-r-markdown/) — context on the transition from R Markdown

@@ -48,7 +48,7 @@ In both cases, providing context is essential. An AI working without context abo
 data structure, packages, or project conventions will produce generic code that may not
 fit your situation. The more precisely you describe the problem, the more useful the output.
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -65,7 +65,7 @@ fit your situation. The more precisely you describe the problem, the more useful
 <script src="https://gist.github.com/graebnerc/5bf7f47a92afc22beb63c6fbc1d30831.js"></script>
 :::
 
-## Tools and resources
+# Tools and resources
 
 **Learning to prompt effectively**
 

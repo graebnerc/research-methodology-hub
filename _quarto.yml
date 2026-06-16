@@ -94,3 +94,4 @@ format:
     highlight-style: github
     number-sections: true
     number-depth: 2
+    include-after-body: assets/scripts/collapse-callouts.html

@@ -478,39 +478,60 @@ window.Quarto = {
   <ul>
   <li><a href="#understanding-residuals-the-foundation-of-diagnostics" id="toc-understanding-residuals-the-foundation-of-diagnostics" class="nav-link active" data-scroll-target="#understanding-residuals-the-foundation-of-diagnostics"><span class="header-section-number">1</span> Understanding Residuals: The Foundation of Diagnostics</a>
   <ul class="collapse">
-  <li><a href="#what-are-residuals" id="toc-what-are-residuals" class="nav-link" data-scroll-target="#what-are-residuals">What Are Residuals?</a></li>
-  <li><a href="#residuals-vs.-error-terms-a-critical-distinction" id="toc-residuals-vs.-error-terms-a-critical-distinction" class="nav-link" data-scroll-target="#residuals-vs.-error-terms-a-critical-distinction">Residuals vs.&nbsp;Error Terms: A Critical Distinction</a></li>
-  <li><a href="#why-this-distinction-matters" id="toc-why-this-distinction-matters" class="nav-link" data-scroll-target="#why-this-distinction-matters">Why This Distinction Matters</a></li>
-  <li><a href="#types-of-residuals-in-diagnostics" id="toc-types-of-residuals-in-diagnostics" class="nav-link" data-scroll-target="#types-of-residuals-in-diagnostics">Types of Residuals in Diagnostics</a></li>
-  <li><a href="#why-residuals-are-central-to-diagnostics" id="toc-why-residuals-are-central-to-diagnostics" class="nav-link" data-scroll-target="#why-residuals-are-central-to-diagnostics">Why Residuals Are Central to Diagnostics</a></li>
-  <li><a href="#the-diagnostic-philosophy" id="toc-the-diagnostic-philosophy" class="nav-link" data-scroll-target="#the-diagnostic-philosophy">The Diagnostic Philosophy</a></li>
+  <li><a href="#what-are-residuals" id="toc-what-are-residuals" class="nav-link" data-scroll-target="#what-are-residuals"><span class="header-section-number">1.1</span> What Are Residuals?</a></li>
+  <li><a href="#residuals-vs.-error-terms-a-critical-distinction" id="toc-residuals-vs.-error-terms-a-critical-distinction" class="nav-link" data-scroll-target="#residuals-vs.-error-terms-a-critical-distinction"><span class="header-section-number">1.2</span> Residuals vs.&nbsp;Error Terms: A Critical Distinction</a></li>
+  <li><a href="#why-this-distinction-matters" id="toc-why-this-distinction-matters" class="nav-link" data-scroll-target="#why-this-distinction-matters"><span class="header-section-number">1.3</span> Why This Distinction Matters</a></li>
+  <li><a href="#types-of-residuals-in-diagnostics" id="toc-types-of-residuals-in-diagnostics" class="nav-link" data-scroll-target="#types-of-residuals-in-diagnostics"><span class="header-section-number">1.4</span> Types of Residuals in Diagnostics</a></li>
+  <li><a href="#why-residuals-are-central-to-diagnostics" id="toc-why-residuals-are-central-to-diagnostics" class="nav-link" data-scroll-target="#why-residuals-are-central-to-diagnostics"><span class="header-section-number">1.5</span> Why Residuals Are Central to Diagnostics</a></li>
+  <li><a href="#the-diagnostic-philosophy" id="toc-the-diagnostic-philosophy" class="nav-link" data-scroll-target="#the-diagnostic-philosophy"><span class="header-section-number">1.6</span> The Diagnostic Philosophy</a></li>
   </ul></li>
   <li><a href="#understanding-the-assumptions" id="toc-understanding-the-assumptions" class="nav-link" data-scroll-target="#understanding-the-assumptions"><span class="header-section-number">2</span> Understanding the Assumptions</a>
   <ul class="collapse">
-  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">1. Linearity</a></li>
-  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">2. Independence</a></li>
-  <li><a href="#homoscedasticity" id="toc-homoscedasticity" class="nav-link" data-scroll-target="#homoscedasticity">3. Homoscedasticity</a></li>
-  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">4. Normality</a></li>
-  <li><a href="#no-influential-outliers" id="toc-no-influential-outliers" class="nav-link" data-scroll-target="#no-influential-outliers">5. No Influential Outliers</a></li>
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity"><span class="header-section-number">2.1</span> 1. Linearity</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">2.2</span> 2. Independence</a></li>
+  <li><a href="#homoscedasticity" id="toc-homoscedasticity" class="nav-link" data-scroll-target="#homoscedasticity"><span class="header-section-number">2.3</span> 3. Homoscedasticity</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality"><span class="header-section-number">2.4</span> 4. Normality</a></li>
+  <li><a href="#no-influential-outliers" id="toc-no-influential-outliers" class="nav-link" data-scroll-target="#no-influential-outliers"><span class="header-section-number">2.5</span> 5. No Influential Outliers</a></li>
   </ul></li>
   <li><a href="#summary-table-of-assumptions-and-tests" id="toc-summary-table-of-assumptions-and-tests" class="nav-link" data-scroll-target="#summary-table-of-assumptions-and-tests"><span class="header-section-number">3</span> Summary Table of Assumptions and Tests</a></li>
   <li><a href="#essential-visual-diagnostic-tests" id="toc-essential-visual-diagnostic-tests" class="nav-link" data-scroll-target="#essential-visual-diagnostic-tests"><span class="header-section-number">4</span> Essential Visual Diagnostic Tests</a>
   <ul class="collapse">
-  <li><a href="#the-four-standard-diagnostic-plots" id="toc-the-four-standard-diagnostic-plots" class="nav-link" data-scroll-target="#the-four-standard-diagnostic-plots">The Four Standard Diagnostic Plots</a></li>
+  <li><a href="#the-four-standard-diagnostic-plots" id="toc-the-four-standard-diagnostic-plots" class="nav-link" data-scroll-target="#the-four-standard-diagnostic-plots"><span class="header-section-number">4.1</span> The Four Standard Diagnostic Plots</a>
+  <ul class="collapse">
+  <li><a href="#plot-1-residuals-vs-fitted-tukey-anscombe-plot" id="toc-plot-1-residuals-vs-fitted-tukey-anscombe-plot" class="nav-link" data-scroll-target="#plot-1-residuals-vs-fitted-tukey-anscombe-plot">Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</a></li>
+  <li><a href="#plot-2-normal-q-q-plot" id="toc-plot-2-normal-q-q-plot" class="nav-link" data-scroll-target="#plot-2-normal-q-q-plot">Plot 2: Normal Q-Q Plot</a></li>
+  <li><a href="#plot-3-scale-location-plot" id="toc-plot-3-scale-location-plot" class="nav-link" data-scroll-target="#plot-3-scale-location-plot">Plot 3: Scale-Location Plot</a></li>
+  <li><a href="#plot-4-residuals-vs-leverage" id="toc-plot-4-residuals-vs-leverage" class="nav-link" data-scroll-target="#plot-4-residuals-vs-leverage">Plot 4: Residuals vs Leverage</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#quantitative-diagnostic-tests-optional" id="toc-quantitative-diagnostic-tests-optional" class="nav-link" data-scroll-target="#quantitative-diagnostic-tests-optional"><span class="header-section-number">5</span> Quantitative Diagnostic Tests (Optional)</a>
   <ul class="collapse">
-  <li><a href="#tests-for-normality" id="toc-tests-for-normality" class="nav-link" data-scroll-target="#tests-for-normality">Tests for Normality</a></li>
-  <li><a href="#tests-for-homoscedasticity" id="toc-tests-for-homoscedasticity" class="nav-link" data-scroll-target="#tests-for-homoscedasticity">Tests for Homoscedasticity</a></li>
-  <li><a href="#test-for-independence" id="toc-test-for-independence" class="nav-link" data-scroll-target="#test-for-independence">Test for Independence</a></li>
-  <li><a href="#test-for-linearity" id="toc-test-for-linearity" class="nav-link" data-scroll-target="#test-for-linearity">Test for Linearity</a></li>
-  <li><a href="#tests-for-multicollinearity" id="toc-tests-for-multicollinearity" class="nav-link" data-scroll-target="#tests-for-multicollinearity">Tests for Multicollinearity</a></li>
+  <li><a href="#tests-for-normality" id="toc-tests-for-normality" class="nav-link" data-scroll-target="#tests-for-normality"><span class="header-section-number">5.1</span> Tests for Normality</a>
+  <ul class="collapse">
+  <li><a href="#shapiro-wilk-test" id="toc-shapiro-wilk-test" class="nav-link" data-scroll-target="#shapiro-wilk-test">Shapiro-Wilk Test</a></li>
+  </ul></li>
+  <li><a href="#tests-for-homoscedasticity" id="toc-tests-for-homoscedasticity" class="nav-link" data-scroll-target="#tests-for-homoscedasticity"><span class="header-section-number">5.2</span> Tests for Homoscedasticity</a>
+  <ul class="collapse">
+  <li><a href="#breusch-pagan-test" id="toc-breusch-pagan-test" class="nav-link" data-scroll-target="#breusch-pagan-test">Breusch-Pagan Test</a></li>
+  </ul></li>
+  <li><a href="#test-for-independence" id="toc-test-for-independence" class="nav-link" data-scroll-target="#test-for-independence"><span class="header-section-number">5.3</span> Test for Independence</a>
+  <ul class="collapse">
+  <li><a href="#durbin-watson-test" id="toc-durbin-watson-test" class="nav-link" data-scroll-target="#durbin-watson-test">Durbin-Watson Test</a></li>
+  </ul></li>
+  <li><a href="#test-for-linearity" id="toc-test-for-linearity" class="nav-link" data-scroll-target="#test-for-linearity"><span class="header-section-number">5.4</span> Test for Linearity</a>
+  <ul class="collapse">
+  <li><a href="#reset-test" id="toc-reset-test" class="nav-link" data-scroll-target="#reset-test">RESET Test</a></li>
+  </ul></li>
+  <li><a href="#tests-for-multicollinearity" id="toc-tests-for-multicollinearity" class="nav-link" data-scroll-target="#tests-for-multicollinearity"><span class="header-section-number">5.5</span> Tests for Multicollinearity</a>
+  <ul class="collapse">
+  <li><a href="#variance-inflation-factor-vif" id="toc-variance-inflation-factor-vif" class="nav-link" data-scroll-target="#variance-inflation-factor-vif">Variance Inflation Factor (VIF)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#practical-workflow-for-diagnostics" id="toc-practical-workflow-for-diagnostics" class="nav-link" data-scroll-target="#practical-workflow-for-diagnostics"><span class="header-section-number">6</span> Practical Workflow for Diagnostics</a>
   <ul class="collapse">
-  <li><a href="#always-start-with-visual-diagnostics" id="toc-always-start-with-visual-diagnostics" class="nav-link" data-scroll-target="#always-start-with-visual-diagnostics">1. Always Start with Visual Diagnostics</a></li>
-  <li><a href="#run-key-quantitative-tests-optional" id="toc-run-key-quantitative-tests-optional" class="nav-link" data-scroll-target="#run-key-quantitative-tests-optional">2. Run Key Quantitative Tests (Optional)</a></li>
-  <li><a href="#investigate-issues-identified" id="toc-investigate-issues-identified" class="nav-link" data-scroll-target="#investigate-issues-identified">3. Investigate Issues Identified</a></li>
+  <li><a href="#always-start-with-visual-diagnostics" id="toc-always-start-with-visual-diagnostics" class="nav-link" data-scroll-target="#always-start-with-visual-diagnostics"><span class="header-section-number">6.1</span> 1. Always Start with Visual Diagnostics</a></li>
+  <li><a href="#run-key-quantitative-tests-optional" id="toc-run-key-quantitative-tests-optional" class="nav-link" data-scroll-target="#run-key-quantitative-tests-optional"><span class="header-section-number">6.2</span> 2. Run Key Quantitative Tests (Optional)</a></li>
+  <li><a href="#investigate-issues-identified" id="toc-investigate-issues-identified" class="nav-link" data-scroll-target="#investigate-issues-identified"><span class="header-section-number">6.3</span> 3. Investigate Issues Identified</a></li>
   </ul></li>
   <li><a href="#key-principles-to-remember" id="toc-key-principles-to-remember" class="nav-link" data-scroll-target="#key-principles-to-remember"><span class="header-section-number">7</span> Key Principles to Remember</a></li>
   </ul>
@@ -575,11 +596,11 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<section id="understanding-residuals-the-foundation-of-diagnostics" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="understanding-residuals-the-foundation-of-diagnostics"><span class="header-section-number">1</span> Understanding Residuals: The Foundation of Diagnostics</h2>
+<section id="understanding-residuals-the-foundation-of-diagnostics" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Understanding Residuals: The Foundation of Diagnostics</h1>
 <p>Before diving into assumptions and diagnostic tests, we need to understand residuals—the cornerstone of all regression diagnostics. Many students confuse residuals with error terms, but understanding the distinction is crucial for interpreting diagnostic plots and tests.</p>
-<section id="what-are-residuals" class="level3">
-<h3 class="anchored" data-anchor-id="what-are-residuals">What Are Residuals?</h3>
+<section id="what-are-residuals" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-are-residuals"><span class="header-section-number">1.1</span> What Are Residuals?</h2>
 <p><strong>Residuals</strong> are the observed differences between actual values and predicted values from your fitted model:</p>
 <p><span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
 <p>where:</p>
@@ -604,8 +625,8 @@ Figure&nbsp;1: Illustration of a residual.
 </div>
 </div>
 </section>
-<section id="residuals-vs.-error-terms-a-critical-distinction" class="level3">
-<h3 class="anchored" data-anchor-id="residuals-vs.-error-terms-a-critical-distinction">Residuals vs.&nbsp;Error Terms: A Critical Distinction</h3>
+<section id="residuals-vs.-error-terms-a-critical-distinction" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="residuals-vs.-error-terms-a-critical-distinction"><span class="header-section-number">1.2</span> Residuals vs.&nbsp;Error Terms: A Critical Distinction</h2>
 <p>Students often use “residual” and “error” interchangeably, but they are fundamentally different concepts:</p>
 <table class="caption-top table">
 <colgroup>
@@ -644,16 +665,16 @@ Figure&nbsp;1: Illustration of a residual.
 <p><span class="math display">\[y_i = \hat{\beta}_0 + \hat{\beta}_1 x_i + e_i\]</span></p>
 <p>This is our estimate based on sample data. We calculate <span class="math inline">\(e_i\)</span> because we have estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
 </section>
-<section id="why-this-distinction-matters" class="level3">
-<h3 class="anchored" data-anchor-id="why-this-distinction-matters">Why This Distinction Matters</h3>
+<section id="why-this-distinction-matters" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="why-this-distinction-matters"><span class="header-section-number">1.3</span> Why This Distinction Matters</h2>
 <ol type="1">
 <li><p><strong>Assumptions are about error terms, not residuals:</strong> When we say “errors are normally distributed” or “errors have constant variance,” we’re making statements about the unobservable <span class="math inline">\(\epsilon_i\)</span> in the population.</p></li>
 <li><p><strong>Diagnostics use residuals to learn about errors:</strong> Since we can’t observe <span class="math inline">\(\epsilon_i\)</span>, we use residuals <span class="math inline">\(e_i\)</span> as our best approximation. We examine residuals hoping they reveal the properties of the true errors.</p></li>
 <li><p><strong>Residuals are estimates of errors:</strong> Under the regression assumptions, residuals should behave similarly to errors. If they don’t (showing patterns, non-constant variance, etc.), it suggests the assumptions are violated.</p></li>
 </ol>
 </section>
-<section id="types-of-residuals-in-diagnostics" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-residuals-in-diagnostics">Types of Residuals in Diagnostics</h3>
+<section id="types-of-residuals-in-diagnostics" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="types-of-residuals-in-diagnostics"><span class="header-section-number">1.4</span> Types of Residuals in Diagnostics</h2>
 <p>You’ll encounter several types of residuals in diagnostic output:</p>
 <p><strong>1. Raw residuals</strong> (<span class="math inline">\(e_i\)</span>): <span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
 <p>These are what we’ve been discussing—the basic difference between observed and predicted values.</p>
@@ -695,8 +716,8 @@ Figure&nbsp;1: Illustration of a residual.
 <p><strong>3. Studentized residuals:</strong></p>
 <p>Similar to standardized but use a different estimate of variance that excludes observation <span class="math inline">\(i\)</span>. More robust for identifying outliers.</p>
 </section>
-<section id="why-residuals-are-central-to-diagnostics" class="level3">
-<h3 class="anchored" data-anchor-id="why-residuals-are-central-to-diagnostics">Why Residuals Are Central to Diagnostics</h3>
+<section id="why-residuals-are-central-to-diagnostics" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="why-residuals-are-central-to-diagnostics"><span class="header-section-number">1.5</span> Why Residuals Are Central to Diagnostics</h2>
 <p>Residuals are the empirical manifestation of all our modeling assumptions. Here’s why they’re so important:</p>
 <p><strong>1. They reveal assumption violations:</strong></p>
 <ul>
@@ -716,8 +737,8 @@ Figure&nbsp;1: Illustration of a residual.
 <li>Approximately normal (valid inference)</li>
 </ul>
 </section>
-<section id="the-diagnostic-philosophy" class="level3">
-<h3 class="anchored" data-anchor-id="the-diagnostic-philosophy">The Diagnostic Philosophy</h3>
+<section id="the-diagnostic-philosophy" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="the-diagnostic-philosophy"><span class="header-section-number">1.6</span> The Diagnostic Philosophy</h2>
 <p>When you examine diagnostic plots, you’re asking: <strong>“Do these residuals behave like random noise, or do they show systematic patterns that suggest model problems?”</strong></p>
 <p>If residuals are truly random (as they should be when assumptions hold), they should:</p>
 <ul>
@@ -730,8 +751,8 @@ Figure&nbsp;1: Illustration of a residual.
 <hr>
 </section>
 </section>
-<section id="understanding-the-assumptions" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="understanding-the-assumptions"><span class="header-section-number">2</span> Understanding the Assumptions</h2>
+<section id="understanding-the-assumptions" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Understanding the Assumptions</h1>
 <p>Linear regression relies on several key assumptions about the data and the relationship between variables. Understanding these assumptions is crucial because violations can lead to:</p>
 <ul>
 <li><strong>Biased parameter estimates</strong> (incorrect coefficients)</li>
@@ -739,38 +760,38 @@ Figure&nbsp;1: Illustration of a residual.
 <li><strong>Incorrect hypothesis tests</strong> (wrong p-values and conclusions)</li>
 <li><strong>Poor predictions</strong> (inaccurate forecasts)</li>
 </ul>
-<section id="linearity" class="level3">
-<h3 class="anchored" data-anchor-id="linearity">1. Linearity</h3>
+<section id="linearity" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="linearity"><span class="header-section-number">2.1</span> 1. Linearity</h2>
 <p><strong>What it means:</strong> The relationship between each predictor variable and the outcome variable is linear. In mathematical terms, the conditional expectation of Y given X follows a linear function: <span class="math inline">\(E[Y|X] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p\)</span></p>
 <p><strong>Why it matters:</strong> Linear regression models can only capture linear relationships. If the true relationship is curved or more complex, the model will systematically mispredict values, leading to biased estimates and poor fit.</p>
 </section>
-<section id="independence" class="level3">
-<h3 class="anchored" data-anchor-id="independence">2. Independence</h3>
+<section id="independence" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="independence"><span class="header-section-number">2.2</span> 2. Independence</h2>
 <p><strong>What it means:</strong> Each observation is independent of all other observations. The residual (error) for one observation does not depend on the residual for any other observation: <span class="math inline">\(Cov(\epsilon_i, \epsilon_j) = 0\)</span> for <span class="math inline">\(i \neq j\)</span>.</p>
 <p><strong>Why it matters:</strong> Independence is required for valid standard errors and hypothesis tests.</p>
 <p><strong>Common violations:</strong> Time series data (autocorrelation), clustered data (students within schools), repeated measures (multiple observations per subject), spatial data (nearby locations are similar).</p>
 </section>
-<section id="homoscedasticity" class="level3">
-<h3 class="anchored" data-anchor-id="homoscedasticity">3. Homoscedasticity</h3>
+<section id="homoscedasticity" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="homoscedasticity"><span class="header-section-number">2.3</span> 3. Homoscedasticity</h2>
 <p><strong>What it means:</strong> The variance of the residuals is constant across all levels of the predictor variables: <span class="math inline">\(Var(\epsilon_i) = \sigma^2\)</span> for all <span class="math inline">\(i\)</span>.</p>
 <p><strong>Why it matters:</strong> Heteroscedasticity (non-constant variance) leads to inefficient estimates and incorrect standard errors.</p>
 </section>
-<section id="normality" class="level3">
-<h3 class="anchored" data-anchor-id="normality">4. Normality</h3>
+<section id="normality" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="normality"><span class="header-section-number">2.4</span> 4. Normality</h2>
 <p><strong>What it means:</strong> The residuals (errors) follow a normal distribution: <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span>. Note that this assumption is about the residuals, not the variables themselves.</p>
 <p><strong>Why it matters:</strong> Normality is primarily required for valid hypothesis tests and confidence intervals, especially in small samples.</p>
 <p><strong>Important note:</strong> This is the least critical assumption for large samples due to the Central Limit Theorem.</p>
 </section>
-<section id="no-influential-outliers" class="level3">
-<h3 class="anchored" data-anchor-id="no-influential-outliers">5. No Influential Outliers</h3>
+<section id="no-influential-outliers" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="no-influential-outliers"><span class="header-section-number">2.5</span> 5. No Influential Outliers</h2>
 <p><strong>What it means:</strong> No single observation has disproportionate influence on the regression estimates.</p>
 <p><strong>Why it matters:</strong> One or two unusual observations can completely change your conclusions.</p>
 <p><strong>Key distinction:</strong> - <strong>Outliers</strong> have unusual Y values (large residuals) - <strong>High leverage points</strong> have unusual X values - <strong>Influential points</strong> have both high leverage AND large residuals</p>
 <hr>
 </section>
 </section>
-<section id="summary-table-of-assumptions-and-tests" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="summary-table-of-assumptions-and-tests"><span class="header-section-number">3</span> Summary Table of Assumptions and Tests</h2>
+<section id="summary-table-of-assumptions-and-tests" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Summary Table of Assumptions and Tests</h1>
 <div id="tbl-assumptions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-assumptions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -830,13 +851,13 @@ Table&nbsp;1: Summary of linear regression assumptions and diagnostic approaches
 </div>
 <hr>
 </section>
-<section id="essential-visual-diagnostic-tests" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="essential-visual-diagnostic-tests"><span class="header-section-number">4</span> Essential Visual Diagnostic Tests</h2>
+<section id="essential-visual-diagnostic-tests" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Essential Visual Diagnostic Tests</h1>
 <p>Visual diagnostics are your first and most important line of defense. R automatically generates four diagnostic plots with <code>plot(lm_model)</code> that provide a comprehensive visual assessment. Always examine these plots before moving to quantitative tests.</p>
-<section id="the-four-standard-diagnostic-plots" class="level3">
-<h3 class="anchored" data-anchor-id="the-four-standard-diagnostic-plots">The Four Standard Diagnostic Plots</h3>
-<section id="plot-1-residuals-vs-fitted-tukey-anscombe-plot" class="level4">
-<h4 class="anchored" data-anchor-id="plot-1-residuals-vs-fitted-tukey-anscombe-plot">Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</h4>
+<section id="the-four-standard-diagnostic-plots" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-four-standard-diagnostic-plots"><span class="header-section-number">4.1</span> The Four Standard Diagnostic Plots</h2>
+<section id="plot-1-residuals-vs-fitted-tukey-anscombe-plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot-1-residuals-vs-fitted-tukey-anscombe-plot">Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</h3>
 <p><strong>Purpose:</strong> Checks linearity and homoscedasticity simultaneously.</p>
 <p><strong>How it works:</strong> Plots residuals (<span class="math inline">\(e_i = y_i - \hat{y}_i\)</span>) against fitted values (<span class="math inline">\(\hat{y}_i\)</span>). If the linearity and homoscedasticity assumptions hold, residuals should be randomly scattered around zero with no patterns or trends.</p>
 <p><strong>What to look for:</strong></p>
@@ -890,8 +911,8 @@ Figure&nbsp;4: Residuals vs Fitted plot showing heteroscedasticity. The funnel s
 <p><strong>Interpretation:</strong> The smoothed line (blue) should be approximately horizontal at zero. Any systematic deviation indicates assumption violations.</p>
 <hr>
 </section>
-<section id="plot-2-normal-q-q-plot" class="level4">
-<h4 class="anchored" data-anchor-id="plot-2-normal-q-q-plot">Plot 2: Normal Q-Q Plot</h4>
+<section id="plot-2-normal-q-q-plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot-2-normal-q-q-plot">Plot 2: Normal Q-Q Plot</h3>
 <p><strong>Purpose:</strong> Checks whether residuals follow a normal distribution.</p>
 <p><strong>How it works:</strong> Plots the quantiles of standardized residuals against theoretical quantiles from a standard normal distribution. If residuals are normally distributed, points should fall along the diagonal reference line.</p>
 <p><strong>What to look for:</strong></p>
@@ -931,8 +952,8 @@ Figure&nbsp;6: Normal Q-Q plot showing non-normally distributed residuals.
 <p><strong>Interpretation:</strong> Minor deviations are often acceptable, especially with larger sample sizes (n &gt; 30-50) where the Central Limit Theorem provides robustness.</p>
 <hr>
 </section>
-<section id="plot-3-scale-location-plot" class="level4">
-<h4 class="anchored" data-anchor-id="plot-3-scale-location-plot">Plot 3: Scale-Location Plot</h4>
+<section id="plot-3-scale-location-plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot-3-scale-location-plot">Plot 3: Scale-Location Plot</h3>
 <p><strong>Purpose:</strong> Checks homoscedasticity more clearly than the Residuals vs Fitted plot.</p>
 <p><strong>How it works:</strong> Plots the square root of standardized residuals (<span class="math inline">\(\sqrt{|e_i^*|}\)</span>) against fitted values.</p>
 <p><strong>What to look for:</strong></p>
@@ -970,8 +991,8 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 </div>
 <hr>
 </section>
-<section id="plot-4-residuals-vs-leverage" class="level4">
-<h4 class="anchored" data-anchor-id="plot-4-residuals-vs-leverage">Plot 4: Residuals vs Leverage</h4>
+<section id="plot-4-residuals-vs-leverage" class="level3">
+<h3 class="anchored" data-anchor-id="plot-4-residuals-vs-leverage">Plot 4: Residuals vs Leverage</h3>
 <p><strong>Purpose:</strong> Identifies influential observations that disproportionately affect the regression model.</p>
 <p><strong>How it works:</strong> Plots standardized residuals against leverage (hat values). Includes Cook’s distance contours to identify problematic points.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -1005,13 +1026,13 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 </section>
 </section>
 </section>
-<section id="quantitative-diagnostic-tests-optional" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="quantitative-diagnostic-tests-optional"><span class="header-section-number">5</span> Quantitative Diagnostic Tests (Optional)</h2>
+<section id="quantitative-diagnostic-tests-optional" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Quantitative Diagnostic Tests (Optional)</h1>
 <p>While visual diagnostics should always be your primary tool, quantitative tests can provide additional confirmation.</p>
-<section id="tests-for-normality" class="level3">
-<h3 class="anchored" data-anchor-id="tests-for-normality">Tests for Normality</h3>
-<section id="shapiro-wilk-test" class="level4">
-<h4 class="anchored" data-anchor-id="shapiro-wilk-test">Shapiro-Wilk Test</h4>
+<section id="tests-for-normality" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tests-for-normality"><span class="header-section-number">5.1</span> Tests for Normality</h2>
+<section id="shapiro-wilk-test" class="level3">
+<h3 class="anchored" data-anchor-id="shapiro-wilk-test">Shapiro-Wilk Test</h3>
 <p><strong>Purpose:</strong> Formal test of whether residuals follow a normal distribution.</p>
 <p><strong>R code:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1028,10 +1049,10 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <hr>
 </section>
 </section>
-<section id="tests-for-homoscedasticity" class="level3">
-<h3 class="anchored" data-anchor-id="tests-for-homoscedasticity">Tests for Homoscedasticity</h3>
-<section id="breusch-pagan-test" class="level4">
-<h4 class="anchored" data-anchor-id="breusch-pagan-test">Breusch-Pagan Test</h4>
+<section id="tests-for-homoscedasticity" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="tests-for-homoscedasticity"><span class="header-section-number">5.2</span> Tests for Homoscedasticity</h2>
+<section id="breusch-pagan-test" class="level3">
+<h3 class="anchored" data-anchor-id="breusch-pagan-test">Breusch-Pagan Test</h3>
 <p><strong>Purpose:</strong> Formal test for heteroscedasticity (non-constant variance).</p>
 <p><strong>R code:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
@@ -1044,10 +1065,10 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <hr>
 </section>
 </section>
-<section id="test-for-independence" class="level3">
-<h3 class="anchored" data-anchor-id="test-for-independence">Test for Independence</h3>
-<section id="durbin-watson-test" class="level4">
-<h4 class="anchored" data-anchor-id="durbin-watson-test">Durbin-Watson Test</h4>
+<section id="test-for-independence" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="test-for-independence"><span class="header-section-number">5.3</span> Test for Independence</h2>
+<section id="durbin-watson-test" class="level3">
+<h3 class="anchored" data-anchor-id="durbin-watson-test">Durbin-Watson Test</h3>
 <p><strong>When to use:</strong> Primarily for time series data or any data with a natural ordering.</p>
 <p><strong>R code:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
@@ -1060,10 +1081,10 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <hr>
 </section>
 </section>
-<section id="test-for-linearity" class="level3">
-<h3 class="anchored" data-anchor-id="test-for-linearity">Test for Linearity</h3>
-<section id="reset-test" class="level4">
-<h4 class="anchored" data-anchor-id="reset-test">RESET Test</h4>
+<section id="test-for-linearity" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="test-for-linearity"><span class="header-section-number">5.4</span> Test for Linearity</h2>
+<section id="reset-test" class="level3">
+<h3 class="anchored" data-anchor-id="reset-test">RESET Test</h3>
 <p><strong>Purpose:</strong> Tests for functional form misspecification.</p>
 <p><strong>R code:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
@@ -1071,10 +1092,10 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <hr>
 </section>
 </section>
-<section id="tests-for-multicollinearity" class="level3">
-<h3 class="anchored" data-anchor-id="tests-for-multicollinearity">Tests for Multicollinearity</h3>
-<section id="variance-inflation-factor-vif" class="level4">
-<h4 class="anchored" data-anchor-id="variance-inflation-factor-vif">Variance Inflation Factor (VIF)</h4>
+<section id="tests-for-multicollinearity" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="tests-for-multicollinearity"><span class="header-section-number">5.5</span> Tests for Multicollinearity</h2>
+<section id="variance-inflation-factor-vif" class="level3">
+<h3 class="anchored" data-anchor-id="variance-inflation-factor-vif">Variance Inflation Factor (VIF)</h3>
 <p><strong>When to use:</strong> Multiple regression with 2 or more predictors.</p>
 <p><strong>R code:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
@@ -1089,11 +1110,11 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 </section>
 </section>
 </section>
-<section id="practical-workflow-for-diagnostics" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="practical-workflow-for-diagnostics"><span class="header-section-number">6</span> Practical Workflow for Diagnostics</h2>
+<section id="practical-workflow-for-diagnostics" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Practical Workflow for Diagnostics</h1>
 <p>Follow this systematic approach for every regression analysis:</p>
-<section id="always-start-with-visual-diagnostics" class="level3">
-<h3 class="anchored" data-anchor-id="always-start-with-visual-diagnostics">1. Always Start with Visual Diagnostics</h3>
+<section id="always-start-with-visual-diagnostics" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="always-start-with-visual-diagnostics"><span class="header-section-number">6.1</span> 1. Always Start with Visual Diagnostics</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate all four diagnostic plots at once</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
@@ -1106,8 +1127,8 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <li>Plot 4: Check for influential points (Cook’s distance)</li>
 </ul>
 </section>
-<section id="run-key-quantitative-tests-optional" class="level3">
-<h3 class="anchored" data-anchor-id="run-key-quantitative-tests-optional">2. Run Key Quantitative Tests (Optional)</h3>
+<section id="run-key-quantitative-tests-optional" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="run-key-quantitative-tests-optional"><span class="header-section-number">6.2</span> 2. Run Key Quantitative Tests (Optional)</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1119,8 +1140,8 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="investigate-issues-identified" class="level3">
-<h3 class="anchored" data-anchor-id="investigate-issues-identified">3. Investigate Issues Identified</h3>
+<section id="investigate-issues-identified" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="investigate-issues-identified"><span class="header-section-number">6.3</span> 3. Investigate Issues Identified</h2>
 <p><strong>If heteroscedasticity is detected:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use robust standard errors</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
@@ -1138,8 +1159,8 @@ Figure&nbsp;8: Scale-Location plot showing heteroscedasticity.
 <hr>
 </section>
 </section>
-<section id="key-principles-to-remember" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="key-principles-to-remember"><span class="header-section-number">7</span> Key Principles to Remember</h2>
+<section id="key-principles-to-remember" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Key Principles to Remember</h1>
 <ol type="1">
 <li><p><strong>Visual diagnostics come first:</strong> Plots are more informative than p-values, especially in large samples where tests become overly sensitive.</p></li>
 <li><p><strong>Statistical tests are supplements:</strong> Use quantitative tests to confirm what you see visually, not as a replacement for visual inspection.</p></li>
@@ -1171,6 +1192,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Regression Residuals and
 Model Diagnostics.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics">https://euf-methodology-hub.netlify.app/resources/r-programming/regression-residuals-diagnostics</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1665,11 +1710,11 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding Residuals: The Foundation of Diagnostics</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="fu"># Understanding Residuals: The Foundation of Diagnostics</span></span>
 <span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>Before diving into assumptions and diagnostic tests, we need to understand residuals—the cornerstone of all regression diagnostics. Many students confuse residuals with error terms, but understanding the distinction is crucial for interpreting diagnostic plots and tests.</span>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### What Are Residuals?</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## What Are Residuals?</span></span>
 <span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>**Residuals** are the observed differences between actual values and predicted values from your fitted model:</span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
@@ -1694,7 +1739,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuals vs. Error Terms: A Critical Distinction</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Residuals vs. Error Terms: A Critical Distinction</span></span>
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>Students often use "residual" and "error" interchangeably, but they are fundamentally different concepts:</span>
 <span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a></span>
@@ -1715,7 +1760,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>This is our estimate based on sample data. We calculate $e_i$ because we have estimates $\hat{\beta}_0$ and $\hat{\beta}_1$.</span>
 <span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why This Distinction Matters</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why This Distinction Matters</span></span>
 <span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Assumptions are about error terms, not residuals:** When we say "errors are normally distributed" or "errors have constant variance," we're making statements about the unobservable $\epsilon_i$ in the population.</span>
 <span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
@@ -1723,7 +1768,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Residuals are estimates of errors:** Under the regression assumptions, residuals should behave similarly to errors. If they don't (showing patterns, non-constant variance, etc.), it suggests the assumptions are violated.</span>
 <span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Types of Residuals in Diagnostics</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Types of Residuals in Diagnostics</span></span>
 <span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>You'll encounter several types of residuals in diagnostic output:</span>
 <span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a></span>
@@ -1764,7 +1809,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>Similar to standardized but use a different estimate of variance that excludes observation $i$. More robust for identifying outliers.</span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Residuals Are Central to Diagnostics</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Residuals Are Central to Diagnostics</span></span>
 <span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>Residuals are the empirical manifestation of all our modeling assumptions. Here's why they're so important:</span>
 <span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a></span>
@@ -1788,7 +1833,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Homogeneous in variance (consistent precision)</span>
 <span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Approximately normal (valid inference)</span>
 <span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Diagnostic Philosophy</span></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Diagnostic Philosophy</span></span>
 <span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>When you examine diagnostic plots, you're asking: **"Do these residuals behave like random noise, or do they show systematic patterns that suggest model problems?"**</span>
 <span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a></span>
@@ -1803,7 +1848,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding the Assumptions</span></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="fu"># Understanding the Assumptions</span></span>
 <span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>Linear regression relies on several key assumptions about the data and the relationship between variables. Understanding these assumptions is crucial because violations can lead to:</span>
 <span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a></span>
@@ -1812,13 +1857,13 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Incorrect hypothesis tests** (wrong p-values and conclusions)</span>
 <span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Poor predictions** (inaccurate forecasts)</span>
 <span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Linearity</span></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Linearity</span></span>
 <span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>**What it means:** The relationship between each predictor variable and the outcome variable is linear. In mathematical terms, the conditional expectation of Y given X follows a linear function: $E<span class="co">[</span><span class="ot">Y|X</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$</span>
 <span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Linear regression models can only capture linear relationships. If the true relationship is curved or more complex, the model will systematically mispredict values, leading to biased estimates and poor fit.</span>
 <span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Independence</span></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Independence</span></span>
 <span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>**What it means:** Each observation is independent of all other observations. The residual (error) for one observation does not depend on the residual for any other observation: $Cov(\epsilon_i, \epsilon_j) = 0$ for $i \neq j$.</span>
 <span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a></span>
@@ -1826,13 +1871,13 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a>**Common violations:** Time series data (autocorrelation), clustered data (students within schools), repeated measures (multiple observations per subject), spatial data (nearby locations are similar).</span>
 <span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Homoscedasticity</span></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Homoscedasticity</span></span>
 <span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>**What it means:** The variance of the residuals is constant across all levels of the predictor variables: $Var(\epsilon_i) = \sigma^2$ for all $i$.</span>
 <span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>**Why it matters:** Heteroscedasticity (non-constant variance) leads to inefficient estimates and incorrect standard errors.</span>
 <span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Normality</span></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Normality</span></span>
 <span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>**What it means:** The residuals (errors) follow a normal distribution: $\epsilon_i \sim N(0, \sigma^2)$. Note that this assumption is about the residuals, not the variables themselves.</span>
 <span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a></span>
@@ -1840,7 +1885,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>**Important note:** This is the least critical assumption for large samples due to the Central Limit Theorem.</span>
 <span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. No Influential Outliers</span></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. No Influential Outliers</span></span>
 <span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>**What it means:** No single observation has disproportionate influence on the regression estimates.</span>
 <span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
@@ -1853,7 +1898,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Table of Assumptions and Tests</span></span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summary Table of Assumptions and Tests</span></span>
 <span id="cb11-237"><a href="#cb11-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-238"><a href="#cb11-238" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Assumption <span class="pp">|</span> Description <span class="pp">|</span> Visual Test <span class="pp">|</span> Quantitative Test <span class="pp">|</span></span>
 <span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------------|-----------------|-----------------|----------------------|</span></span>
@@ -1867,11 +1912,11 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a><span class="fu">## Essential Visual Diagnostic Tests</span></span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a><span class="fu"># Essential Visual Diagnostic Tests</span></span>
 <span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>Visual diagnostics are your first and most important line of defense. R automatically generates four diagnostic plots with <span class="in">`plot(lm_model)`</span> that provide a comprehensive visual assessment. Always examine these plots before moving to quantitative tests.</span>
 <span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Four Standard Diagnostic Plots</span></span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Four Standard Diagnostic Plots</span></span>
 <span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
@@ -1916,7 +1961,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>nonnormal_data <span class="ot">&lt;-</span> <span class="fu">create_diagnostic_data</span>(<span class="st">"nonnormal"</span>)</span>
 <span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</span></span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plot 1: Residuals vs Fitted (Tukey-Anscombe Plot)</span></span>
 <span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks linearity and homoscedasticity simultaneously.</span>
 <span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a></span>
@@ -1974,7 +2019,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-362"><a href="#cb11-362" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-363"><a href="#cb11-363" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 2: Normal Q-Q Plot</span></span>
+<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plot 2: Normal Q-Q Plot</span></span>
 <span id="cb11-366"><a href="#cb11-366" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-367"><a href="#cb11-367" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks whether residuals follow a normal distribution.</span>
 <span id="cb11-368"><a href="#cb11-368" aria-hidden="true" tabindex="-1"></a></span>
@@ -2016,7 +2061,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-408"><a href="#cb11-408" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-410"><a href="#cb11-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 3: Scale-Location Plot</span></span>
+<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plot 3: Scale-Location Plot</span></span>
 <span id="cb11-412"><a href="#cb11-412" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-413"><a href="#cb11-413" aria-hidden="true" tabindex="-1"></a>**Purpose:** Checks homoscedasticity more clearly than the Residuals vs Fitted plot.</span>
 <span id="cb11-414"><a href="#cb11-414" aria-hidden="true" tabindex="-1"></a></span>
@@ -2055,7 +2100,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-451"><a href="#cb11-451" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-452"><a href="#cb11-452" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-453"><a href="#cb11-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-454"><a href="#cb11-454" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Plot 4: Residuals vs Leverage</span></span>
+<span id="cb11-454"><a href="#cb11-454" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plot 4: Residuals vs Leverage</span></span>
 <span id="cb11-455"><a href="#cb11-455" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-456"><a href="#cb11-456" aria-hidden="true" tabindex="-1"></a>**Purpose:** Identifies influential observations that disproportionately affect the regression model.</span>
 <span id="cb11-457"><a href="#cb11-457" aria-hidden="true" tabindex="-1"></a></span>
@@ -2081,13 +2126,13 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-477"><a href="#cb11-477" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-478"><a href="#cb11-478" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-479"><a href="#cb11-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quantitative Diagnostic Tests (Optional)</span></span>
+<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quantitative Diagnostic Tests (Optional)</span></span>
 <span id="cb11-481"><a href="#cb11-481" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-482"><a href="#cb11-482" aria-hidden="true" tabindex="-1"></a>While visual diagnostics should always be your primary tool, quantitative tests can provide additional confirmation.</span>
 <span id="cb11-483"><a href="#cb11-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Normality</span></span>
+<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tests for Normality</span></span>
 <span id="cb11-485"><a href="#cb11-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Shapiro-Wilk Test</span></span>
+<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a><span class="fu">### Shapiro-Wilk Test</span></span>
 <span id="cb11-487"><a href="#cb11-487" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-488"><a href="#cb11-488" aria-hidden="true" tabindex="-1"></a>**Purpose:** Formal test of whether residuals follow a normal distribution.</span>
 <span id="cb11-489"><a href="#cb11-489" aria-hidden="true" tabindex="-1"></a></span>
@@ -2109,9 +2154,9 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-505"><a href="#cb11-505" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-506"><a href="#cb11-506" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-507"><a href="#cb11-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Homoscedasticity</span></span>
+<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tests for Homoscedasticity</span></span>
 <span id="cb11-509"><a href="#cb11-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-510"><a href="#cb11-510" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Breusch-Pagan Test</span></span>
+<span id="cb11-510"><a href="#cb11-510" aria-hidden="true" tabindex="-1"></a><span class="fu">### Breusch-Pagan Test</span></span>
 <span id="cb11-511"><a href="#cb11-511" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-512"><a href="#cb11-512" aria-hidden="true" tabindex="-1"></a>**Purpose:** Formal test for heteroscedasticity (non-constant variance).</span>
 <span id="cb11-513"><a href="#cb11-513" aria-hidden="true" tabindex="-1"></a></span>
@@ -2129,9 +2174,9 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-525"><a href="#cb11-525" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-526"><a href="#cb11-526" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-527"><a href="#cb11-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-528"><a href="#cb11-528" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test for Independence</span></span>
+<span id="cb11-528"><a href="#cb11-528" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test for Independence</span></span>
 <span id="cb11-529"><a href="#cb11-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-530"><a href="#cb11-530" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Durbin-Watson Test</span></span>
+<span id="cb11-530"><a href="#cb11-530" aria-hidden="true" tabindex="-1"></a><span class="fu">### Durbin-Watson Test</span></span>
 <span id="cb11-531"><a href="#cb11-531" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-532"><a href="#cb11-532" aria-hidden="true" tabindex="-1"></a>**When to use:** Primarily for time series data or any data with a natural ordering.</span>
 <span id="cb11-533"><a href="#cb11-533" aria-hidden="true" tabindex="-1"></a></span>
@@ -2149,9 +2194,9 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-545"><a href="#cb11-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-546"><a href="#cb11-546" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-547"><a href="#cb11-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-548"><a href="#cb11-548" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test for Linearity</span></span>
+<span id="cb11-548"><a href="#cb11-548" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test for Linearity</span></span>
 <span id="cb11-549"><a href="#cb11-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-550"><a href="#cb11-550" aria-hidden="true" tabindex="-1"></a><span class="fu">#### RESET Test</span></span>
+<span id="cb11-550"><a href="#cb11-550" aria-hidden="true" tabindex="-1"></a><span class="fu">### RESET Test</span></span>
 <span id="cb11-551"><a href="#cb11-551" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-552"><a href="#cb11-552" aria-hidden="true" tabindex="-1"></a>**Purpose:** Tests for functional form misspecification.</span>
 <span id="cb11-553"><a href="#cb11-553" aria-hidden="true" tabindex="-1"></a></span>
@@ -2164,9 +2209,9 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-560"><a href="#cb11-560" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-561"><a href="#cb11-561" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-562"><a href="#cb11-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-563"><a href="#cb11-563" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for Multicollinearity</span></span>
+<span id="cb11-563"><a href="#cb11-563" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tests for Multicollinearity</span></span>
 <span id="cb11-564"><a href="#cb11-564" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-565"><a href="#cb11-565" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variance Inflation Factor (VIF)</span></span>
+<span id="cb11-565"><a href="#cb11-565" aria-hidden="true" tabindex="-1"></a><span class="fu">### Variance Inflation Factor (VIF)</span></span>
 <span id="cb11-566"><a href="#cb11-566" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-567"><a href="#cb11-567" aria-hidden="true" tabindex="-1"></a>**When to use:** Multiple regression with 2 or more predictors.</span>
 <span id="cb11-568"><a href="#cb11-568" aria-hidden="true" tabindex="-1"></a></span>
@@ -2185,11 +2230,11 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-581"><a href="#cb11-581" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-582"><a href="#cb11-582" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-583"><a href="#cb11-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-584"><a href="#cb11-584" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Workflow for Diagnostics</span></span>
+<span id="cb11-584"><a href="#cb11-584" aria-hidden="true" tabindex="-1"></a><span class="fu"># Practical Workflow for Diagnostics</span></span>
 <span id="cb11-585"><a href="#cb11-585" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-586"><a href="#cb11-586" aria-hidden="true" tabindex="-1"></a>Follow this systematic approach for every regression analysis:</span>
 <span id="cb11-587"><a href="#cb11-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-588"><a href="#cb11-588" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Always Start with Visual Diagnostics</span></span>
+<span id="cb11-588"><a href="#cb11-588" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Always Start with Visual Diagnostics</span></span>
 <span id="cb11-589"><a href="#cb11-589" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-590"><a href="#cb11-590" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
 <span id="cb11-591"><a href="#cb11-591" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate all four diagnostic plots at once</span></span>
@@ -2205,7 +2250,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-601"><a href="#cb11-601" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 3: Check for trends in spread (homoscedasticity)</span>
 <span id="cb11-602"><a href="#cb11-602" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plot 4: Check for influential points (Cook's distance)</span>
 <span id="cb11-603"><a href="#cb11-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-604"><a href="#cb11-604" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Run Key Quantitative Tests (Optional)</span></span>
+<span id="cb11-604"><a href="#cb11-604" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Run Key Quantitative Tests (Optional)</span></span>
 <span id="cb11-605"><a href="#cb11-605" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-606"><a href="#cb11-606" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
 <span id="cb11-607"><a href="#cb11-607" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality</span></span>
@@ -2220,7 +2265,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-616"><a href="#cb11-616" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model)</span>
 <span id="cb11-617"><a href="#cb11-617" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-618"><a href="#cb11-618" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-619"><a href="#cb11-619" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Investigate Issues Identified</span></span>
+<span id="cb11-619"><a href="#cb11-619" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Investigate Issues Identified</span></span>
 <span id="cb11-620"><a href="#cb11-620" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-621"><a href="#cb11-621" aria-hidden="true" tabindex="-1"></a>**If heteroscedasticity is detected:**</span>
 <span id="cb11-622"><a href="#cb11-622" aria-hidden="true" tabindex="-1"></a></span>
@@ -2246,7 +2291,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb11-642"><a href="#cb11-642" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-643"><a href="#cb11-643" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb11-644"><a href="#cb11-644" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-645"><a href="#cb11-645" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Principles to Remember</span></span>
+<span id="cb11-645"><a href="#cb11-645" aria-hidden="true" tabindex="-1"></a><span class="fu"># Key Principles to Remember</span></span>
 <span id="cb11-646"><a href="#cb11-646" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-647"><a href="#cb11-647" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Visual diagnostics come first:** Plots are more informative than p-values, especially in large samples where tests become overly sensitive.</span>
 <span id="cb11-648"><a href="#cb11-648" aria-hidden="true" tabindex="-1"></a></span>

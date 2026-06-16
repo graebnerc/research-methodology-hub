@@ -447,13 +447,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture"><span class="header-section-number">1</span> Video lecture</a></li>
-  <li><a href="#optional-background-info-attributes-and-classes" id="toc-optional-background-info-attributes-and-classes" class="nav-link" data-scroll-target="#optional-background-info-attributes-and-classes"><span class="header-section-number">2</span> Optional background info: attributes and classes</a></li>
-  <li><a href="#introfactors" id="toc-introfactors" class="nav-link" data-scroll-target="#introfactors"><span class="header-section-number">3</span> Factors</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">4</span> Data Frames</a></li>
-  <li><a href="#intro-matrix" id="toc-intro-matrix" class="nav-link" data-scroll-target="#intro-matrix"><span class="header-section-number">5</span> Digression: Matrices in R</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">6</span> Practice</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">7</span> Further reading</a></li>
+  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture">Video lecture</a></li>
+  <li><a href="#optional-background-info-attributes-and-classes" id="toc-optional-background-info-attributes-and-classes" class="nav-link" data-scroll-target="#optional-background-info-attributes-and-classes"><span class="header-section-number">1</span> Optional background info: attributes and classes</a></li>
+  <li><a href="#introfactors" id="toc-introfactors" class="nav-link" data-scroll-target="#introfactors"><span class="header-section-number">2</span> Factors</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3</span> Data Frames</a></li>
+  <li><a href="#intro-matrix" id="toc-intro-matrix" class="nav-link" data-scroll-target="#intro-matrix"><span class="header-section-number">4</span> Digression: Matrices in R</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">5</span> Practice</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">6</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -507,15 +507,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="video-lecture" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="video-lecture"><span class="header-section-number">1</span> Video lecture</h2>
+<section id="video-lecture" class="level1 unnumbered">
+<h1 class="unnumbered">Video lecture</h1>
 <p>The second part of the session 4 video covers advanced object types (factors and data frames):</p>
 <div class="embed-container">
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=2Dpn5w5dNSh4yw5y&amp;list=PLZDawQMrG1RK0Ia3Y3AFqf_FP59GJnIP7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
 </div>
 </section>
-<section id="optional-background-info-attributes-and-classes" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="optional-background-info-attributes-and-classes"><span class="header-section-number">2</span> Optional background info: attributes and classes</h2>
+<section id="optional-background-info-attributes-and-classes" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Optional background info: attributes and classes</h1>
 <p>In the previous tutorials you learned about the most important fundamental data types in <code>R</code>. The types we will learn about below are not less important, but less fundamental. This means they are built by taking one of the base types we encountered before, and ‘adding some features’. These features change the behavior of the type, e.g.&nbsp;how it is printed or how it is affected by certain function calls, but also what kind of operations it allows.</p>
 <p>This process of ‘adding features’ is usually done by adding ‘attributes’ to an object. In principle, you can add attributes to any objects without much effect by using the <code>attr()</code> function:</p>
 <div class="cell">
@@ -608,8 +608,8 @@ $class
 </div>
 <p>All this can be confusing at first, so it is important to keep it in mind. Once you wrapped your head around this, many confusing behaviors suddenly start to make sense, e.g.&nbsp;that mutating factors within a <code>data.frame</code> can result in whole numbers, a phenomenon we will discuss in the context of data wrangling later.</p>
 </section>
-<section id="introfactors" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="introfactors"><span class="header-section-number">3</span> Factors</h2>
+<section id="introfactors" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Factors</h1>
 <p>We usually use factors to represent ordinal or categorical data. At first sight a factor is an atomic vector that can only take a pre-specified number of values, so called <em>levels</em>. To create a factor we use the function - surprise - <code>factor()</code>:</p>
 <div class="cell">
 <details class="code-fold">
@@ -711,8 +711,8 @@ Levels: Low &lt; Mid &lt; High</code></pre>
 </div>
 </div>
 </section>
-<section id="data-frames" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4</span> Data Frames</h2>
+<section id="data-frames" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data Frames</h1>
 <p>The <code>data.frame</code> is a special type of list. It is among the most widespread data types used in data science. In contrast to a normal list, all elements of a <code>data.frame</code> must have the same length. This means that you can think of a <code>data.frame</code> as a list arranged as a rectangle and represented as a table. The headings of the tables then correspond to the names of the vector elements of the list.</p>
 <p>Because of the close relationship, we can create a <code>data.frame</code> directly from a list by using the function <code>as.data.frame()</code>:</p>
 <div class="cell">
@@ -903,8 +903,8 @@ $c
 <p><strong>Digression: Dialects of R</strong> As with natural languages, programming languages feature different dialects, i.e.&nbsp;different ways of doing the same actions. In <code>R</code> this becomes particularly obvious in the context of dealing with data. Here, the different dialects show themselves in different object types used for the data you are working with. To the best of our knowledge, there are three main dialects, each associated with a different focus on data representation. The <em>base</em> dialect represents data as <code>data.frame</code>s and it is the original approach envisioned by the <code>R</code> developers. The <em>tidyverse</em> dialect represents data as <code>tibble</code>s and is built around a number of different packages summarized under the name <a href="https://www.tidyverse.org/">tidyverse</a>. It is aimed to develop a set of packages that allow you to do all tasks commonly associated with data science within a consistent syntax and design philosophy. The <em>data.table</em> dialect represents data as <code>data.table</code>s, which are provided by the package <a href="https://github.com/Rdatatable/data.table">data.table</a>. It is designed to work with large data sets and is by far the fastest and computationally most efficient approach to data processing.</p>
 </blockquote>
 </section>
-<section id="intro-matrix" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="intro-matrix"><span class="header-section-number">5</span> Digression: Matrices in R</h2>
+<section id="intro-matrix" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Digression: Matrices in R</h1>
 <p>Another data type that is used frequently in many circumstances, especially statistics and engineering, are matrices. These are two-dimensional objects with rows and columns, each of which are atomic vectors. Matrices are created with the function <code>matrix()</code>. This function takes as its first argument the elements of the matrix and then the specification of the number of rows (<code>nrow</code>) and/or the number of columns (<code>ncol</code>):</p>
 <div class="cell">
 <details class="code-fold">
@@ -960,8 +960,8 @@ $c
 </div>
 </div>
 </section>
-<section id="practice" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="practice"><span class="header-section-number">6</span> Practice</h2>
+<section id="practice" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Practice</h1>
 <p>The <code>ObjectTypes2</code> exercise set in the <code>DataScienceExercises</code> package covers the main concepts from this tutorial:</p>
 <div class="cell">
 <details class="code-fold">
@@ -975,8 +975,8 @@ $c
 </div>
 <p>See the <a href="../../blog/2026-06-16-datascienceexercises/index.html">blog post on DataScienceExercises</a> for installation instructions.</p>
 </section>
-<section id="further-reading" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">7</span> Further reading</h2>
+<section id="further-reading" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Further reading</h1>
 <ul>
 <li><a href="https://r4ds.hadley.nz/factors">Chapter 16</a> in R for Data Science</li>
 <li><a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10</a> on tibbles in R for Data Science</li>
@@ -1002,6 +1002,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Object Types in R III:
 Factors and Data Frames.”</span> In <em>Methods Hub</em>, edited by
 Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-iii-factors-dataframes">https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-iii-factors-dataframes</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1486,7 +1510,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-31"><a href="#cb71-31" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://euf-methodology-hub.netlify.app/resources/r-programming/r-object-types-iii-factors-dataframes</span></span>
 <span id="cb71-32"><a href="#cb71-32" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb71-33"><a href="#cb71-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Video lecture</span></span>
+<span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Video lecture {.unnumbered}</span></span>
 <span id="cb71-35"><a href="#cb71-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a>The second part of the session 4 video covers advanced object types (factors and data frames):</span>
 <span id="cb71-37"><a href="#cb71-37" aria-hidden="true" tabindex="-1"></a></span>
@@ -1496,7 +1520,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-41"><a href="#cb71-41" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
 <span id="cb71-42"><a href="#cb71-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb71-43"><a href="#cb71-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-44"><a href="#cb71-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Optional background info: attributes and classes</span></span>
+<span id="cb71-44"><a href="#cb71-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># Optional background info: attributes and classes</span></span>
 <span id="cb71-45"><a href="#cb71-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-46"><a href="#cb71-46" aria-hidden="true" tabindex="-1"></a>In the previous tutorials you learned about the most important fundamental data</span>
 <span id="cb71-47"><a href="#cb71-47" aria-hidden="true" tabindex="-1"></a>types in <span class="in">`R`</span>.</span>
@@ -1580,7 +1604,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-141"><a href="#cb71-141" aria-hidden="true" tabindex="-1"></a>sense, e.g. that mutating factors within a <span class="in">`data.frame`</span> can result in whole</span>
 <span id="cb71-142"><a href="#cb71-142" aria-hidden="true" tabindex="-1"></a>numbers, a phenomenon we will discuss in the context of data wrangling later.</span>
 <span id="cb71-143"><a href="#cb71-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-144"><a href="#cb71-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## Factors {#introfactors}</span></span>
+<span id="cb71-144"><a href="#cb71-144" aria-hidden="true" tabindex="-1"></a><span class="fu"># Factors {#introfactors}</span></span>
 <span id="cb71-145"><a href="#cb71-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-146"><a href="#cb71-146" aria-hidden="true" tabindex="-1"></a>We usually use factors to represent ordinal or categorical data.</span>
 <span id="cb71-147"><a href="#cb71-147" aria-hidden="true" tabindex="-1"></a>At first sight a factor is an atomic vector that can only take a pre-specified</span>
@@ -1662,7 +1686,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-239"><a href="#cb71-239" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x)</span>
 <span id="cb71-240"><a href="#cb71-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb71-241"><a href="#cb71-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-242"><a href="#cb71-242" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Frames</span></span>
+<span id="cb71-242"><a href="#cb71-242" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Frames</span></span>
 <span id="cb71-243"><a href="#cb71-243" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-244"><a href="#cb71-244" aria-hidden="true" tabindex="-1"></a>The <span class="in">`data.frame`</span> is a special type of list. It is among the most widespread</span>
 <span id="cb71-245"><a href="#cb71-245" aria-hidden="true" tabindex="-1"></a>data types used in data science.</span>
@@ -1819,7 +1843,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-424"><a href="#cb71-424" aria-hidden="true" tabindex="-1"></a><span class="at">designed to work with large data sets and is by far the fastest and computationally</span></span>
 <span id="cb71-425"><a href="#cb71-425" aria-hidden="true" tabindex="-1"></a><span class="at">most efficient approach to data processing.</span></span>
 <span id="cb71-426"><a href="#cb71-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-427"><a href="#cb71-427" aria-hidden="true" tabindex="-1"></a><span class="fu">## Digression: Matrices in R {#intro-matrix}</span></span>
+<span id="cb71-427"><a href="#cb71-427" aria-hidden="true" tabindex="-1"></a><span class="fu"># Digression: Matrices in R {#intro-matrix}</span></span>
 <span id="cb71-428"><a href="#cb71-428" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-429"><a href="#cb71-429" aria-hidden="true" tabindex="-1"></a>Another data type that is used frequently in many</span>
 <span id="cb71-430"><a href="#cb71-430" aria-hidden="true" tabindex="-1"></a>circumstances, especially statistics and engineering, are</span>
@@ -1856,7 +1880,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-471"><a href="#cb71-471" aria-hidden="true" tabindex="-1"></a><span class="fu">is.matrix</span>(m_1)</span>
 <span id="cb71-472"><a href="#cb71-472" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb71-473"><a href="#cb71-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-474"><a href="#cb71-474" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practice</span></span>
+<span id="cb71-474"><a href="#cb71-474" aria-hidden="true" tabindex="-1"></a><span class="fu"># Practice</span></span>
 <span id="cb71-475"><a href="#cb71-475" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-476"><a href="#cb71-476" aria-hidden="true" tabindex="-1"></a>The <span class="in">`ObjectTypes2`</span> exercise set in the <span class="in">`DataScienceExercises`</span> package covers the</span>
 <span id="cb71-477"><a href="#cb71-477" aria-hidden="true" tabindex="-1"></a>main concepts from this tutorial:</span>
@@ -1872,7 +1896,7 @@ Claudius Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.net
 <span id="cb71-487"><a href="#cb71-487" aria-hidden="true" tabindex="-1"></a>See the <span class="co">[</span><span class="ot">blog post on DataScienceExercises</span><span class="co">](../../blog/2026-06-16-datascienceexercises/index.qmd)</span></span>
 <span id="cb71-488"><a href="#cb71-488" aria-hidden="true" tabindex="-1"></a>for installation instructions.</span>
 <span id="cb71-489"><a href="#cb71-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-490"><a href="#cb71-490" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further reading</span></span>
+<span id="cb71-490"><a href="#cb71-490" aria-hidden="true" tabindex="-1"></a><span class="fu"># Further reading</span></span>
 <span id="cb71-491"><a href="#cb71-491" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-492"><a href="#cb71-492" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Chapter 16</span><span class="co">](https://r4ds.hadley.nz/factors)</span> in R for Data Science</span>
 <span id="cb71-493"><a href="#cb71-493" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Chapter 10</span><span class="co">](https://r4ds.had.co.nz/tibbles.html)</span> on tibbles in R for Data Science</span>

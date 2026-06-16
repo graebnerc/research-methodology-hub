@@ -33,7 +33,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/r-programming/data-preparation-tidyverse
 ---
 
-## Video lecture
+# Video lecture {.unnumbered}
 
 ```{=html}
 <div class="embed-container">
@@ -41,7 +41,7 @@ citation:
 </div>
 ```
 
-## Packages and data used
+# Packages and data used
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -68,7 +68,7 @@ The data sets used in these notes are:
 
 The brackets show the names of the data sets used below.
 
-## General remarks
+# General remarks
 
 * If you imported the data from a file, make sure that the import went as expected
 * Start with a data set that is of the type `tibble` (use `tibble::as_tibble()` if necessary)
@@ -79,7 +79,7 @@ The brackets show the names of the data sets used below.
 import raw data in the beginning and save tidy data in the end; this allows you
 to keep data wrangling, visualization, and modelling in separate files
 
-## Reshaping data with the tidyr package
+# Reshaping data with the tidyr package
 
 At the end of each data wrangling activity, you should have created
 [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
@@ -89,7 +89,7 @@ While it contains functions for various purposes, the by far most common
 (and, to be honest, the most demanding) task is to reshape data from long to
 wide format and vice versa. This will be the focus of this section.
 
-### Wide and long format: definition
+## Wide and long format: definition
 
 There is no strict definition for wide and long data. Rather, the two
 should be understood as *relative* descriptions of data, meaning that it is
@@ -123,7 +123,7 @@ While the long format is often easier to read and preferable when communicating
 data to humans, making data tidy often involves the task of making data
 'longer'.
 
-### Transforming long data into wide data
+## Transforming long data into wide data
 
 To make data wider we use the function `tidyr::pivot_wider()`.
 
@@ -151,7 +151,7 @@ data_raw_wide <- tidyr::pivot_wider(
 data_raw_wide
 ```
 
-### Transforming wide data into long data
+## Transforming wide data into long data
 
 Assume we want to take the data set `data_raw_wide` and re-create the original
 long version. To achieve this we can use `tidyr::pivot_longer()`. Again, lets
@@ -183,7 +183,7 @@ data_raw_long
 ```
 
 
-## Chaining wrangling tasks using pipes
+# Chaining wrangling tasks using pipes
 
 Pipes are provided via the package `magrittr`, which is loaded automatically if
 you attach packages such as `tidyr` or `dplyr`. Pipes are short keywords that
@@ -245,7 +245,7 @@ The `%>%`-pipe allows you to write very readable code, so make sure you use it
 often. But for code development it might be nevertheless helpful to write the
 intermediate steps explicitly.
 
-## Manipulating data with the dplyr package
+# Manipulating data with the dplyr package
 
 The package `tidyr` is for turning messy data sets into tidy data sets.
 Another important part of data preparation is to manipulate an existing data
@@ -253,7 +253,7 @@ set. To do this, the package [dplyr](https://dplyr.tidyverse.org/) contains
 many useful functions. You will regularly use functions from both the `tidyr` and
 `dplyr` package within your script for data preparation.
 
-### Creating or manipulating variables
+## Creating or manipulating variables
 
 The function `dplyr::mutate()` is used both for manipulating existing
 columns as well as creating new columns. In the first case the name of the
@@ -299,7 +299,7 @@ data_unemp %>%
 The only difference here was that the left-hand-side name of the column to
 be manipulated did not exist before!
 
-### Filtering rows
+## Filtering rows
 
 The function `dplyr::filter()` can be used to filter rows according to
 certain conditions. The conditions must evaluate for each cell entry to
@@ -335,7 +335,7 @@ data_raw_long %>%
     values < 50000)
 ```
 
-### Selecting columns
+## Selecting columns
 
 When you only want to keep certain *columns* we speak of selecting (rather than
 filtering) columns. This is done - surprise - via the function `dplyr::select()`.
@@ -399,7 +399,7 @@ data_raw %>%
   dplyr::select(-unemp, -gdp)
 ```
 
-### Merging data sets
+## Merging data sets
 
 Often you need to obtain data from different sources. To merge all your data
 in one single data set, you need to use one of the `*_join()` functions of the
@@ -480,7 +480,7 @@ dplyr::left_join(
   by = c("country", "year"="year"))
 ```
 
-### Grouping and summarising data
+## Grouping and summarising data
 
 The final challenge we consider involves the application of two functions
 (at least in most cases): `dplyr::group_by()` and `dplyr::summarize()`.
@@ -530,7 +530,7 @@ data_raw_grouped %>%
 Note that `dplyr::summarise()` drops all columns that it is not asked to
 compute summary statistics for, except potential grouping variables.
 
-## A final example
+# A final example
 
 Thanks to the pipes it is easy to chain the many different wrangling steps into
 one function call. But in practice it is very important that you (1) inspect
@@ -588,7 +588,7 @@ idea to write such a long chain in one working step, but rather to make sure
 that you always understand what happens in any single step, and then expand
 the chain one by one.
 
-## Practice
+# Practice
 
 The `Wrangling1` exercise set in the `DataScienceExercises` package covers the
 main concepts from this tutorial:
@@ -614,7 +614,7 @@ learnr::run_tutorial(
 See the [blog post on DataScienceExercises](../../blog/2026-06-16-datascienceexercises/index.qmd)
 for installation instructions.
 
-## Further reading
+# Further reading
 
 - [Chapter 5](https://r4ds.hadley.nz/data-tidy.html) in R for Data Science
 - The help page for the [selection helpers](https://dplyr.tidyverse.org/reference/select.html)

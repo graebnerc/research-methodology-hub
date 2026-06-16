@@ -447,10 +447,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#video-lectures" id="toc-video-lectures" class="nav-link active" data-scroll-target="#video-lectures"><span class="header-section-number">1</span> Video lectures</a></li>
-  <li><a href="#required-reading" id="toc-required-reading" class="nav-link" data-scroll-target="#required-reading"><span class="header-section-number">2</span> Required reading</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">3</span> Exercise</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">4</span> Further reading</a></li>
+  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture">Video lecture</a></li>
+  <li><a href="#required-reading" id="toc-required-reading" class="nav-link" data-scroll-target="#required-reading"><span class="header-section-number">1</span> Required reading</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2</span> Exercise</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">3</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -508,13 +508,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Quarto is a modern, multi-language successor to <em>R Markdown</em>. The core idea is simple: write text and code in the same document, render it, and get a polished report, paper, or website. Quarto handles the conversion — you focus on the content.</p>
 <p>This website is itself written in Quarto, which gives you a sense of what is possible with the tool even for everyday writing tasks.</p>
-<section id="video-lectures" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="video-lectures"><span class="header-section-number">1</span> Video lectures</h2>
+<section id="video-lecture" class="level1 unnumbered">
+<h1 class="unnumbered">Video lecture</h1>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=Ts2M1v35TDmtfbr3&amp;list=PLZDawQMrG1RLKUDufKf8EJz4Kj4WC_Kco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 </section>
-<section id="required-reading" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="required-reading"><span class="header-section-number">2</span> Required reading</h2>
+<section id="required-reading" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Required reading</h1>
 <p>Work through these in order — they cover everything you need to get started:</p>
 <ol type="1">
 <li><a href="https://commonmark.org/help/tutorial/">The CommonMark markdown tutorial</a> — markdown is the text-formatting language inside every Quarto document; this interactive tutorial takes about 10 minutes</li>
@@ -523,8 +523,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://quarto.org/docs/get-started/authoring/rstudio.html">Quarto tutorial III: authoring</a></li>
 </ol>
 </section>
-<section id="exercise" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="exercise"><span class="header-section-number">3</span> Exercise</h2>
+<section id="exercise" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Exercise</h1>
 <p>Create a new Quarto document where you set the title, date, and author explicitly. Write a sample text that includes:</p>
 <ul>
 <li>at least one level-1 heading</li>
@@ -567,8 +567,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="further-reading" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">4</span> Further reading</h2>
+<section id="further-reading" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Further reading</h1>
 <ul>
 <li><a href="https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/">We don’t talk about Quarto</a> — a readable blog post introducing Quarto</li>
 <li><a href="https://yihui.org/en/2022/04/quarto-r-markdown/">Quarto and R Markdown</a> — context on the transition from R Markdown</li>
@@ -595,6 +595,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Getting Started with
 Quarto.”</span> In <em>Methods Hub</em>, edited by Claudius
 Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-quarto">https://euf-methodology-hub.netlify.app/resources/r-programming/getting-started-with-quarto</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1089,7 +1113,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>This website is itself written in Quarto, which gives you a sense of what is possible</span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>with the tool even for everyday writing tasks.</span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Video lectures</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># Video lecture {.unnumbered}</span></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;iframe</span></span>
@@ -1103,7 +1127,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/iframe&gt;</span></span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Required reading</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Required reading</span></span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>Work through these in order — they cover everything you need to get started:</span>
 <span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
@@ -1114,7 +1138,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">Quarto tutorial II: computations</span><span class="co">](https://quarto.org/docs/get-started/computations/rstudio.html)</span></span>
 <span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">Quarto tutorial III: authoring</span><span class="co">](https://quarto.org/docs/get-started/authoring/rstudio.html)</span></span>
 <span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercise</span></span>
 <span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>Create a new Quarto document where you set the title, date, and author explicitly.</span>
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>Write a sample text that includes:</span>
@@ -1152,7 +1176,7 @@ Gräbner-Radkowitsch. June 16. <a href="https://euf-methodology-hub.netlify.app/
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Further reading</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="fu"># Further reading</span></span>
 <span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">We don't talk about Quarto</span><span class="co">](https://www.apreshill.com/blog/2022-04-we-dont-talk-about-quarto/)</span> — a readable blog post introducing Quarto</span>
 <span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Quarto and R Markdown</span><span class="co">](https://yihui.org/en/2022/04/quarto-r-markdown/)</span> — context on the transition from R Markdown</span>

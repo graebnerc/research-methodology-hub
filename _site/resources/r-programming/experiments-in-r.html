@@ -476,7 +476,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture"><span class="header-section-number">0.1</span> Video lecture</a></li>
+  <li><a href="#video-lecture" id="toc-video-lecture" class="nav-link active" data-scroll-target="#video-lecture">Video lecture</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
   <li><a href="#the-data-used" id="toc-the-data-used" class="nav-link" data-scroll-target="#the-data-used"><span class="header-section-number">2</span> The data used</a>
   <ul class="collapse">
@@ -577,8 +577,8 @@ window.Quarto = {
 </header>
 
 
-<section id="video-lecture" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="video-lecture"><span class="header-section-number">0.1</span> Video lecture</h2>
+<section id="video-lecture" class="level1 unnumbered">
+<h1 class="unnumbered">Video lecture</h1>
 <div class="embed-container">
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=UBJo1AiCblQZFtZD&amp;list=PLZDawQMrG1RImURlbldAF773MDRqeARNu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
 </div>
@@ -2409,6 +2409,30 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Experiments in R.”</span> In
 <em>Methods Hub</em>, edited by Claudius Gräbner-Radkowitsch. June 16.
 <a href="https://euf-methodology-hub.netlify.app/resources/r-programming/experiments-in-r">https://euf-methodology-hub.netlify.app/resources/r-programming/experiments-in-r</a>.
 </div></div></section></div></main> <!-- /main -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.callout').forEach(function (callout, i) {
+    var header = callout.querySelector('.callout-header');
+    var body = callout.querySelector('.callout-body-container');
+    if (!header || !body || header.hasAttribute('data-bs-toggle')) return;
+
+    var id = 'callout-collapse-' + i;
+    body.id = id;
+    body.classList.add('collapse');
+
+    header.setAttribute('data-bs-toggle', 'collapse');
+    header.setAttribute('data-bs-target', '#' + id);
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('aria-controls', id);
+    header.style.cursor = 'pointer';
+
+    var btn = document.createElement('div');
+    btn.className = 'callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end';
+    btn.innerHTML = '<i class="callout-toggle"></i>';
+    header.appendChild(btn);
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -2895,7 +2919,7 @@ Gräbner-Radkowitsch, Claudius. 2026. <span>“Experiments in R.”</span> In
 <span id="cb71-33"><a href="#cb71-33" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://euf-methodology-hub.netlify.app/resources/r-programming/experiments-in-r</span></span>
 <span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb71-35"><a href="#cb71-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Video lecture</span></span>
+<span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Video lecture {.unnumbered}</span></span>
 <span id="cb71-37"><a href="#cb71-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-38"><a href="#cb71-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
 <span id="cb71-39"><a href="#cb71-39" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="embed-container"&gt;</span></span>
