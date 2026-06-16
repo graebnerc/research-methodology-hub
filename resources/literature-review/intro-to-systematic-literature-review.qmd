@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Systematic Literature Reviews"
+title: "PLACEHOLDER: Introduction to Systematic Literature Reviews"
 description: "An overview of what a systematic literature review is, how it differs from a narrative review, and how to plan and execute one."
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15

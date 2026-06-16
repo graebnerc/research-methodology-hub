@@ -1,5 +1,5 @@
 ---
-title: "What is Epistemology? (BA)"
+title: "PLACEHOLDER: What is Epistemology? (BA)"
 description: "A first introduction to epistemology — the branch of philosophy concerned with how we know what we know — and why it matters for social science research."
 author: "Claudius Gräbner-Radkowitsch"
 date: 2026-06-15
