@@ -140,17 +140,64 @@ code:not(.sourceCode) {
   }
 }
 
-/* MA/PhD advanced-level callout — EUF secondary green, distinct from
-   the default blue callout */
-.callout-note.level-advanced {
-  border-left-color: #5FB46E !important;
+/* ===== EUF-branded callouts ===================================
+   Quarto ships callouts in stock Bootstrap colours. The rules below
+   recolour the three types we use (note / tip / important) to the EUF
+   palette: border, header wash, body wash, and icon. !important is
+   required throughout because Quarto's defaults (e.g.
+   `.callout-note.callout` for the border,
+   `.callout-note.callout-style-default > .callout-header` for the
+   header) are more specific than a single-class selector. */
+
+// callout-note → EUF Kobaltblau. This also covers the MA/PhD
+// `.level-advanced` variant: level callouts read as blue notes, not
+// green tips.
+.callout-note {
+  border-left-color: $euf-blue !important;
 
   > .callout-header {
-    background-color: #e3f3e6;
-    color: #2f6a3a;
+    background-color: $euf-blue-wash !important;
   }
 
   > .callout-body-container {
-    background-color: #f3faf4;
+    background-color: #f4f8fb !important;
+  }
+
+  .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(0, 57, 91)" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>') !important;
+  }
+}
+
+// callout-tip → EUF green
+.callout-tip {
+  border-left-color: $euf-green !important;
+
+  > .callout-header {
+    background-color: #e3f3e6 !important;
+  }
+
+  > .callout-body-container {
+    background-color: #f3faf4 !important;
+  }
+
+  .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(95, 180, 110)" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>') !important;
+  }
+}
+
+// callout-important → EUF red
+.callout-important {
+  border-left-color: $euf-red !important;
+
+  > .callout-header {
+    background-color: #fbe8e3 !important;
+  }
+
+  > .callout-body-container {
+    background-color: #fdf3f0 !important;
+  }
+
+  .callout-icon::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(230, 80, 50)" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>') !important;
   }
 }

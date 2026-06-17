@@ -1,0 +1,107 @@
+---
+title: "Mixed Methods and Methodological Pluralism"
+description: "Learn what mixed-methods research is and its main designs (sequential, concurrent, embedded), and distinguish it from methodological pluralism as a disciplinary stance — two different ways of taking the limits of any single method seriously."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Define mixed-methods research and explain why complex phenomena can call for it"
+  - "Distinguish sequential, concurrent and embedded mixed-methods designs"
+  - "Differentiate mixed methods (one study) from methodological pluralism (a disciplinary stance)"
+  - "Explain how combining methods can reveal aspects of a phenomenon a single method would miss"
+
+categories:
+  - qualitative-methods
+  - mixed-methods
+  - research-design
+  - reproducibility
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Mixed Methods and Methodological Pluralism"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/qualitative-methods/mixed-methods-and-methodological-pluralism
+---
+
+# Introduction
+
+Once you see that qualitative and quantitative approaches each have characteristic strengths and blind spots (see [Qualitative vs Quantitative Research](qualitative-vs-quantitative-research.qmd)), an obvious move suggests itself: combine them. This page introduces **mixed-methods research** — combining approaches within a single study — and **methodological pluralism** — a broader stance about the diversity of methods a discipline should sustain. They are related but operate at different levels, and confusing them is a common mistake.
+
+# Why Combine Methods?
+
+Two motivations stand out:
+
+- **Both qualitative and quantitative approaches have pitfalls.** Each illuminates some features of a phenomenon and obscures others.
+- **Complex phenomena require multiple perspectives.** A single lens, however sharp, captures only one facet.
+
+The cartoon of blindfolded scientists around an elephant — one declaring "it's a rope!" (the tail), another "it's a wall!" (the side), another "it's a spear!" (the tusk) — captures the predicament. Each observer reports accurately and reaches a different conclusion. Combining perspectives is what reveals the elephant.
+
+# Mixed-Methods Research
+
+Mixed methods is, in one standard definition:
+
+> *"a class of research where the researcher mixes or combines quantitative and qualitative research techniques, methods, approaches, or concepts into a single study."*
+
+The key phrase is **single study**: mixed methods answers **one research question** by drawing on both kinds of evidence. Three common designs:
+
+- **Sequential designs** — one method is used first, and its findings inform the second. *(e.g. exploratory interviews surface hypotheses that a later survey tests; or a survey identifies a puzzle that follow-up interviews explain.)*
+- **Concurrent designs** — quantitative and qualitative methods are used **simultaneously**, then compared or combined.
+- **Embedded designs** — one method is **nested within** the framework of the other (e.g. a small interview component embedded inside a primarily quantitative trial).
+
+A cartoon often used to summarise the field shows three figures: one insisting *"qualitative methods are best"* (constructivism, inductive logic, exploratory research), another *"quantitative methods are best"* (post-positivism, deductive logic, confirmatory research), and a third in the middle holding that *"the research question drives everything"* (pragmatism, abductive logic, combining QUAL and QUANT). The middle position is the spirit of mixed methods.
+
+# Methodological Pluralism
+
+**Methodological pluralism** operates one level up. Where mixed methods combines approaches to answer a *single* research question, methodological pluralism is about employing a **multitude of methods at the level of a whole discipline**.
+
+Key distinctions:
+
+- **Plurality vs. pluralism.** Plurality is the mere fact that many methods exist; pluralism is the considered stance that this diversity is *valuable* and worth cultivating.
+- It plays out on the levels of **ontology, epistemology and methodology**.
+- There are **different forms of pluralism** — *consensual*, *agonistic*, and *antagonistic* — depending on how the coexisting positions relate to one another.
+- Crucially, it **plays out at the disciplinary level, not in regard to a single research question.**
+
+::: {.callout-note}
+## The key take-away
+
+Different methodological approaches can reveal different aspects of social phenomena that might be **missed by a single method**. This is true within a study (mixed methods) and across a discipline (pluralism) — but the two work at different scales and should not be conflated.
+:::
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The distinction between *consensual*, *agonistic* and *antagonistic* pluralism is worth unpacking. Consensual pluralism treats rival approaches as complementary pieces of one puzzle; agonistic pluralism keeps them in productive but unresolved tension; antagonistic pluralism holds that some positions are genuinely incompatible and competing. Which form is appropriate is itself contested, and bears on debates about **paradigm incommensurability** (can findings from incompatible paradigms even be combined?) and on the integrity of mixed-methods inference. In economics and management specifically, methodological pluralism is also an argument about the *sociology* of a discipline — about which approaches get funded, published and taught.
+:::
+
+# Summary
+
+- **Mixed methods** combines qualitative and quantitative techniques within a **single study** to answer one research question; main designs are **sequential**, **concurrent** and **embedded**.
+- **Methodological pluralism** is a **disciplinary-level** stance valuing a diversity of methods; it distinguishes plurality from pluralism and comes in consensual, agonistic and antagonistic forms.
+- Both rest on the same insight: a single method can miss aspects of a phenomenon that another reveals — but they operate at different scales.
+
+# What to Read Next
+
+- [Qualitative vs Quantitative Research](qualitative-vs-quantitative-research.qmd) — the two approaches mixed methods combines.
+- [Conducting Research Interviews](conducting-research-interviews.qmd) and [Case Study Research Design](../research-design/case-study-research-design.qmd) — methods that frequently appear in mixed designs.
+
+# Further Reading
+
+- Johnson, R. B., & Onwuegbuzie, A. J. (2004). "Mixed Methods Research: A Research Paradigm Whose Time Has Come." *Educational Researcher*, 33(7), 14–26.
+- Creswell, J. W., & Plano Clark, V. L. (2017). *Designing and Conducting Mixed Methods Research* (3rd ed.). SAGE.

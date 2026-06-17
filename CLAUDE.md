@@ -81,12 +81,16 @@ When using separate pages:
 - Add a prominent callout at the top of each page flagging the intended level and linking to sibling pages:
 
 ```markdown
-::: {.callout-tip}
+::: {.callout-note}
 ## 📖 Level: BA
 This page is written for BA students. There is also a version for
 [MA/PhD students](../epistemology-phd.qmd).
 :::
 ```
+
+Level callouts (both this Pattern 2 sibling-link callout and the Pattern 1
+`.level-advanced` MA/PhD callout) use `callout-note` so they render in EUF
+blue — never `callout-tip` (green).
 
 - File naming convention: `[topic]-ba.qmd`, `[topic]-ma.qmd`, `[topic]-phd.qmd`
 - All sibling pages share the same thematic tags so they appear together in the resource library
@@ -97,7 +101,7 @@ Default to Pattern 1. Switch to Pattern 2 only when you find yourself writing a 
 ### Tags
 Use existing tags from the taxonomy before inventing new ones. Current tags:
 
-**Thematic:** `data-cleaning`, `R`, `visualization`, `experiments`, `statistics`, `regression`, `causal-inference`, `literature-review`, `research-design`, `qualitative-methods`, `reproducibility`, `quarto`, `survey-methods`, `epistemology`, `tidyverse`, `artificial-intelligence`
+**Thematic:** `data-cleaning`, `R`, `visualization`, `experiments`, `statistics`, `regression`, `causal-inference`, `literature-review`, `research-design`, `qualitative-methods`, `reproducibility`, `quarto`, `survey-methods`, `epistemology`, `tidyverse`, `artificial-intelligence`, `philosophy`, `logic`, `argumentation`, `mixed-methods`, `interviews`, `case-study`
 
 **Content type:** `tutorial`, `video`, `slides`, `reading`, `exercise`, `concept`
 
@@ -125,6 +129,33 @@ Each track page has three parts:
 
 ### Citability
 Every resource page auto-generates a citation block via Quarto's citation feature. The `editor` field is always `Claudius Gräbner-Radkowitsch`. When future contributors add pages, they appear as `author`; the editor field stays the same.
+
+**Co-authored pages (more than one author).** A page with two or more authors must list them in **both** places, or the generated BibTeX comes out wrong:
+
+1. the top-level `author:` (drives the byline and Google Scholar metadata), as a YAML **list** — never a single `"A & B"` string;
+2. an explicit `author:` inside the `citation:` block (drives the BibTeX/CSL citation).
+
+Both are required. If you set only the top-level `author:` list, Quarto folds the project-level author from `_quarto.yml` into the citation appendix on top of your list, duplicating the lead author in the BibTeX (e.g. `Gräbner-Radkowitsch, Claudius and Gräbner-Radkowitsch, Claudius and Kothe, Anna-Katharina`). The explicit `citation.author` overrides that merge. The `editor` stays a single `- name:` entry regardless.
+
+```yaml
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+
+# …
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/[category]/[slug]
+```
+
+Single-author pages need only the single-string `author:` shown in the schema above; they are unaffected by this merge.
 
 ### Heading hierarchy
 Resource pages use a consistent three-level heading structure:

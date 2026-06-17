@@ -1,0 +1,151 @@
+---
+title: "Evaluating Arguments: Validity, Soundness and Fallacies"
+description: "Tell a valid argument from a true one, understand soundness and cogency, use the negate-the-conclusion test to check validity, and recognise the most common formal and argumentative fallacies."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Distinguish validity from truth, and soundness from both"
+  - "Explain the difference between deductive and inductive arguments and the standards used to evaluate each"
+  - "Apply the negate-the-conclusion test to decide whether an argument is valid"
+  - "Identify common argumentative fallacies such as circularity, ad hominem, ad populum, appeal to authority and appeal to ignorance"
+
+categories:
+  - philosophy
+  - logic
+  - argumentation
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Evaluating Arguments: Validity, Soundness and Fallacies"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/philosophy/evaluating-arguments-validity-soundness-fallacies
+---
+
+# Introduction
+
+Reconstructing an argument tells you *what* is being claimed and on what grounds (see [Constructing and Reconstructing Arguments](constructing-and-reconstructing-arguments.qmd)). Evaluating it tells you whether the argument actually *works*. This page introduces the vocabulary used to assess arguments — validity, truth, soundness, cogency — a practical test for validity, and the most common ways arguments go wrong.
+
+The single most important distinction is the first one: **validity is not the same as truth.**
+
+# Two Kinds of Argument
+
+Arguments come in two broad types, each judged by a different standard.
+
+**Deductive arguments** aim for certainty: if the premises are true, the conclusion follows with **absolute certainty**. They are evaluated in terms of **validity** and **soundness**.
+
+**Inductive arguments** aim for probability: true premises make the conclusion *likely* but not guaranteed. They are evaluated in terms of **cogency** (and the strength/weakness of the inference).
+
+> *Deductive:* If you touch the stove you get burned. You touch the stove. ∴ You got burned.
+>
+> *Inductive:* The sun has risen every day so far. ∴ The sun will rise tomorrow.
+
+::: {.callout-note}
+## The problem of induction
+
+No number of confirming observations can *definitively* prove a universal statement. That the sun has always risen does not strictly guarantee it will rise tomorrow. This is the classic **problem of induction** — and it is why inductive conclusions are held with degrees of confidence rather than certainty.
+:::
+
+# Validity, Truth and Soundness
+
+These three terms are constantly confused. Keep them apart:
+
+- **Truth** is a property of *statements* (premises and conclusions). A statement is true or false.
+- **Validity** is a property of the *argument's structure*. An argument is **valid** if it is impossible for all its premises to be true and its conclusion false at the same time. Validity is about the *connection* between premises and conclusion, not about whether they happen to be true.
+- **Soundness** is a property of *deductive arguments*. An argument is **sound** if it is valid **and** all its premises are actually true.
+
+Two consequences follow that students often find counter-intuitive:
+
+- **An argument can be valid even though its premises are false.** Validity only requires that *if* the premises were true, the conclusion would have to be. ("All cats are reptiles; all reptiles purr; ∴ all cats purr" is valid but unsound.)
+- **A valid argument with true premises is sound**, and its conclusion is guaranteed true. A valid argument with a false premise is *not* sound — sometimes described as a valid-but-wrong argument.
+
+For inductive arguments the parallel standard is **cogency**: an argument with "enough" supporting premises is **cogent**; one with too little support is **weak**.
+
+# A Practical Test for Validity
+
+Here is a quick procedure to test a deductive argument:
+
+> **Is it possible to keep all the premises true while negating the conclusion?**
+>
+> - **Yes** → the argument is **invalid**.
+> - **No** → the argument is **valid**.
+
+## Example 1 — an invalid argument
+
+> P1: There is no water on Venus.
+> P2: There is no oxygen on Venus.
+> C: Therefore, there is no life on Venus.
+
+Can both premises be true while the conclusion is false? Yes — one can imagine a life form needing neither water nor oxygen. So the conclusion can be negated without contradicting the premises: the argument is **invalid**.
+
+## Example 2 — a valid argument (but is it sound?)
+
+> P1: If the US manipulated its currency in the past, then the US is not justified in accusing China of manipulating its currency.
+> P2: The US manipulated its currency in the past.
+> C: The US is not justified in accusing China of manipulating its currency.
+
+Here you *cannot* hold both premises true and deny the conclusion — this is modus ponens, so it is **valid**. Whether it is **sound** is a separate question that turns on whether P1 and P2 are actually true.
+
+# Formal Fallacies
+
+A **formal fallacy** is an invalid argument structure. The two most common imitate the valid conditional syllogisms (covered in [Propositional Logic](propositional-logic-operators-truth-tables-syllogisms.qmd)):
+
+- **Fallacy of the converse:** P → Q; Q; ∴ P. *"If it rains the street is wet; the street is wet; ∴ it rains."* Invalid.
+- **Fallacy of the inverse:** P → Q; ¬P; ∴ ¬Q. *"If it rains the street is wet; it is not raining; ∴ the street is not wet."* Invalid.
+
+# Argumentative Fallacies
+
+**Argumentative (informal) fallacies** are arguments that may be formally fine but persuade illegitimately — through the *content* or rhetoric rather than genuine support. A working catalogue:
+
+- **Circularity** — repeating the premise in the conclusion. *"You should not cut class because you are obliged to attend all classes."* / *"This book is the best because it's the most recommended, and it's the most recommended because it's the best."*
+- **Appeal to ignorance** — claiming something is true (or false) merely because it has not been disproven (or proven). *"No one has proven P, so P is false."*
+- **Appeal to authority** — using an authority's say-so as the evidence itself. *"God exists because the Bible says so, and the Bible must be right because it is the word of God."*
+- **Ad hominem** — attacking a feature of the person rather than their argument. *"You're just a high-school graduate, so your opinion doesn't matter."*
+- **Ad populum** — treating a claim as true because many people believe it. *"Most people support this policy, so it must be the right thing to do."*
+
+::: {.callout-note}
+## Why this matters beyond the seminar room
+
+Fallacies are not just exam material. Recognising them is central to **evaluating evidence and arguments in practice** — in management decisions, policy debates, and the assessment of claims that present themselves as "scientific". A confident tone and a real authority's name are not substitutes for a valid, sound argument.
+:::
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The boundary between a fallacy and a legitimate inference is often context-dependent. An appeal to authority, for instance, is fallacious when the authority's say-so is offered *as the evidence*, but deferring to relevant expertise under uncertainty can be epistemically rational. **Argumentation theory** studies these moves systematically, and feminist and rhetorical perspectives have criticised the narrow "adversarial" picture of argument as a contest to be won, emphasising instead argument as cooperative inquiry. Engaging with that literature is a good way to sharpen your own evaluative practice.
+:::
+
+# Summary
+
+- **Deductive** arguments aim for certainty (judged by validity/soundness); **inductive** arguments aim for probability (judged by cogency), and face the **problem of induction**.
+- **Truth** is a property of statements; **validity** of structure; **soundness** = validity + true premises.
+- A valid argument can have false premises; only a *sound* argument guarantees a true conclusion.
+- Test validity by asking whether you can hold the premises true while negating the conclusion.
+- Watch for **formal fallacies** (converse, inverse) and **argumentative fallacies** (circularity, ad hominem, ad populum, appeals to authority and ignorance).
+
+# What to Read Next
+
+- [Constructing and Reconstructing Arguments](constructing-and-reconstructing-arguments.qmd) — getting an argument into evaluable form in the first place.
+- [What Makes an Explanation Scientific? The Deductive-Nomological Model](scientific-explanation-deductive-nomological-model.qmd) — how these logical tools underpin a model of scientific explanation.
+
+# Further Reading
+
+- Kahane, H., Hausman, A., & Boardman, F. (2021). *Logic and Philosophy: A Modern Introduction* (13th ed.). Hackett.
+- Lewiński, M., & Mohammed, D. (2016). "Argumentation Theory." In *The International Encyclopedia of Communication Theory and Philosophy*. Wiley.

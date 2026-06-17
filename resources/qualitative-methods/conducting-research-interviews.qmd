@@ -1,0 +1,154 @@
+---
+title: "Conducting Research Interviews"
+description: "Plan and run a qualitative research interview: choose between insiders and experts, sample your interviewees, pick the right degree of structure, build a theory-driven interview guide, and ask good questions."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Explain what kind of knowledge interviews generate and when to choose insider vs expert interviewees"
+  - "Apply content, methodological, practical and ethical considerations to sampling interviewees"
+  - "Place an interview on the structured–unstructured spectrum and justify the choice"
+  - "Build a theory-driven interview guide and apply good questioning techniques"
+
+categories:
+  - qualitative-methods
+  - interviews
+  - survey-methods
+  - research-design
+  - BA
+  - tutorial
+
+level:
+  - BA
+  - MA
+
+content-type: tutorial
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Conducting Research Interviews"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/qualitative-methods/conducting-research-interviews
+---
+
+# Introduction
+
+Interviews are one of the most widely used — and most underestimated — qualitative methods. Done well, they give access to knowledge and experience that no survey or dataset can reach. Done badly, they produce hours of recordings that say very little. This page walks through the practical workflow of a research interview: who to talk to, how to select them, how much structure to impose, and how to ask questions that actually elicit insight.
+
+# What Interviews Are Good For
+
+There is a tendency to "underestimate" qualitative methods, including interviews. But interviews offer **unique insights** through:
+
+- **Inductive reasoning** — building knowledge from the ground up rather than testing a fixed hypothesis;
+- **Focus on lived experience** — capturing what is otherwise not directly observable;
+- **Openness** — flexibly adapting to the diversity of differently structured social contexts.
+
+These strengths map onto the qualitative paradigm discussed in [Qualitative vs Quantitative Research](qualitative-vs-quantitative-research.qmd): depth over breadth, meaning over measurement.
+
+# Whom to Interview
+
+Two broad types of interviewee serve different purposes, and **which you choose depends on your research question**.
+
+**Insiders**
+
+- experts "in the broadest sense" — people who belong to a group with shared experiences or interests;
+- the purpose is to explore the matter **from the participants' perspective**, which is then evaluated against theoretical frameworks;
+- best when the **privileged access** to an insider's knowledge, experience and perspective is what matters;
+- *examples:* managers of SMEs, people of a certain age group, participants in a particular video game.
+
+**Experts**
+
+- specialists in their field with special access to knowledge or experience, not necessarily tied to powerful positions;
+- the purpose is to obtain **factual information and a professional evaluation** of that knowledge;
+- best when **exploring scarcely researched** objects and phenomena;
+- *examples:* specialised researchers, pioneers in a field.
+
+# Sampling Your Interviewees
+
+Unlike quantitative studies, interviewees (cases) are **not chosen randomly** but **selected carefully** given the research question. Weigh four kinds of consideration:
+
+- **Content:** who actually has the relevant knowledge and precise information?
+- **Methodological:** which sampling strategy fits (e.g. maximal variation, typical cases, theoretical sampling)?
+- **Practical:** who is willing and available? How much time and money do you have?
+- **Ethical:** does the interviewee make themselves vulnerable? Are there power dynamics in play?
+
+# Forms of Interview
+
+Interviews vary in their **degree of standardisation and structure**, along a spectrum:
+
+| Structured | → | Semi-structured | → | Unstructured |
+|---|---|---|---|---|
+| Predefined questions and answer categories; fixed order | | Problem-centred interviews | | Open conversation; flexibility in the situation |
+| Structured / standardised / survey interviews | | | | Narrative / open / biographical interviews |
+
+More structure buys comparability across interviews; more openness buys the freedom to follow the unexpected. The right point on the spectrum follows from your question and how much you already know.
+
+# The Interview Workflow
+
+A research interview runs through five stages:
+
+> **Planning → Pretest → Data collection → Transcription → Analysis**
+
+## Planning: the interview guide
+
+The **interview guide** is the core of your interview. It is a catalogue of questions that:
+
+- contains all the questions you need or want to ask (its structure depends on the chosen form of interview);
+- distinguishes **main questions** from **minor (follow-up) questions**;
+- pays attention to **order**;
+- serves as a **memory aid** — deviating from it is fine.
+
+Crucially, a good guide forms the **nexus between theory and empirics** for your research question: it is **grounded in theory**, so that the answers you collect can speak to the concepts you care about.
+
+## Pretest and data collection
+
+**Pretest** the guide before going live to catch confusing or unproductive questions, then move to **data collection**. Allow the guide to evolve slightly as you learn what works.
+
+## How to ask good questions
+
+Beyond content, there are **rhetorical** considerations:
+
+- ask **open, short questions**;
+- use **follow-up questions** ("could you explain that in more detail …?");
+- listen for **red flags** — phrases like "everyone knows …", "we've always done it like this", "it's impossible to …" — which often mark assumptions worth probing;
+- practise **listening and allowing for pauses** (silence invites elaboration);
+- use **moderate confrontation** — challenge gently where it advances understanding, without putting the interviewee on the defensive.
+
+::: {.callout-note}
+## After the interview
+
+Data collection is only the middle of the pipeline. **Transcription** turns recordings into analysable text, and **analysis** — typically some form of coding and interpretation — turns text into findings. Plan time and a documentation strategy for both *before* you start interviewing; they routinely take longer than the interviews themselves.
+:::
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+At thesis level the analysis stage deserves a method named in advance — e.g. **qualitative content analysis** (Mayring), **thematic analysis** (Braun & Clarke), or **grounded theory** coding — each with different assumptions about how codes relate to theory (deductive, inductive or iterative). Consider **reflexivity** explicitly: your positionality shapes what interviewees tell you and how you interpret it. And treat the **ethics** of consent, anonymisation, data protection and the power asymmetry between researcher and participant as part of the method, not paperwork — especially when interviewees are made vulnerable by speaking to you.
+:::
+
+# Summary
+
+- Interviews generate unique, inductive, experience-near knowledge and adapt flexibly to context.
+- Choose **insiders** to access participants' perspectives, **experts** for factual knowledge in under-researched areas — driven by the research question.
+- **Sample carefully** (not randomly), weighing content, methodological, practical and ethical considerations.
+- Pick a point on the **structured–unstructured spectrum**, and build a **theory-grounded interview guide** distinguishing main from follow-up questions.
+- Ask **open, short questions**, listen, allow pauses, watch for red flags, and plan transcription and analysis from the start.
+
+# What to Read Next
+
+- [Qualitative vs Quantitative Research](qualitative-vs-quantitative-research.qmd) — where interviews sit in the methodological landscape.
+- [Case Study Research Design](../research-design/case-study-research-design.qmd) — a design that frequently uses interviews as one source among several.
+
+# Further Reading
+
+- Kvale, S., & Brinkmann, S. (2009). *InterViews: Learning the Craft of Qualitative Research Interviewing* (2nd ed.). SAGE.
+- Mayring, P. (2014). *Qualitative Content Analysis: Theoretical Foundation, Basic Procedures and Software Solution*. [Open access](https://www.ssoar.info/ssoar/handle/document/39517).

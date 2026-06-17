@@ -1,18 +1,23 @@
 ---
-title: "PLACEHOLDER: Introduction to Systematic Literature Reviews"
-description: "An overview of what a systematic literature review is, how it differs from a narrative review, and how to plan and execute one."
-author: "Claudius Gräbner-Radkowitsch"
-date: 2026-06-15
-date-modified: 2026-06-15
+title: "Introduction to Systematic Literature Reviews"
+description: "Tell narrative reviews, systematic reviews and meta-analyses apart, then work through the systematic review process — research question (PICO), inclusion/exclusion criteria and coding, and a documented, reproducible search strategy."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
 image: ../../assets/images/literature-review.png
 
 learning-objectives:
-  - "Distinguish a systematic literature review from a narrative or scoping review"
-  - "Identify the key stages of a systematic review and their purpose"
-  - "Formulate a clear research question suitable for a systematic review"
+  - "Distinguish a narrative review, a systematic review and a meta-analysis by goal, scope and rigour"
+  - "Formulate a focused review question using the PICO framework and avoid common question pitfalls"
+  - "Define inclusion/exclusion criteria and build a coding scheme to screen studies"
+  - "Design and document a reproducible search strategy across databases and supplementary sources"
 
 categories:
   - literature-review
+  - research-design
+  - reproducibility
   - BA
   - MA
   - reading
@@ -27,33 +32,118 @@ citation:
   type: entry
   container-title: "Methods Hub"
   title: "Introduction to Systematic Literature Reviews"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
   editor:
     - name: "Claudius Gräbner-Radkowitsch"
   url: https://euf-methodology-hub.netlify.app/resources/literature-review/intro-to-systematic-literature-review
 ---
 
-# What is a Systematic Literature Review?
+# Introduction
 
-*Placeholder content — this page is a structural scaffold for the Methods Hub Phase 1 build. Full content will be written in a subsequent phase.*
+Research synthesis and literature review are a key step in almost every study. As Newton put it, *"If I have seen further it is by standing on the shoulders of Giants."* Before you can add to a field, you need a reliable picture of what is already known — and, just as importantly, where the **gaps** are.
 
-A systematic literature review follows a pre-specified, reproducible protocol for searching, selecting, and synthesizing existing research on a topic. Unlike a narrative review, the process is documented in enough detail that another researcher could replicate the search and arrive at the same pool of studies.
+**Research synthesis** is *"the practice of systematically distilling and integrating data from many studies in order to draw more reliable conclusions about a given research issue"* (Cooper et al., 2019). Literature reviews are the central tool for this: they distil key insights from academic research for practitioners and identify research gaps. This page introduces the main *kinds* of review and then walks through the core stages of the most rigorous variant — the **systematic** review.
 
-# Key Stages
+# Three Key Types of Review
 
-*Content to be added.*
+"Literature review" is an umbrella term. Three types matter most:
 
-# Formulating a Research Question
+- **Narrative review** — a non-systematic overview of a topic.
+- **Systematic review** — a systematic, transparent and replicable synthesis.
+- **Meta-analysis** — a statistical synthesis of quantitative studies.
 
-*Content to be added.*
+They differ across several dimensions:
 
-::: {.callout-note .level-advanced}
-## MA / PhD
+| | Narrative review | Systematic review | Meta-analysis |
+|---|---|---|---|
+| **Goal** | Overview/synthesis of a topic | Systematically identify, evaluate and synthesise all relevant evidence on a specific question | Statistically combine quantitative results from multiple studies |
+| **Approach** | Flexible, typically non-systematic selection | Rigorous, transparent and replicable; explicit inclusion/exclusion criteria | Statistical synthesis of studies with similar variables/outcomes |
+| **Scope** | Selective; significant works | Comprehensive; aims to include all relevant studies | Selective; only studies with compatible quantitative data |
+| **Quality assessment** | Limited/informal | Formal appraisal using explicit tools | Formal, rigorous appraisal of methodological and statistical compatibility |
+| **Transparency / replicability** | Low | High | High |
+| **Time investment** | Low–moderate | High | Very high |
+| **Typical question** | *What is known about leadership theories in organisations?* | *How effective are diversity-training programmes at reducing workplace discrimination?* | *How strong is the relationship between transformational leadership and employee performance?* |
+| **Output** | Thematic/chronological narrative | Structured findings with transparent documentation | Effect sizes and forest plots |
 
-At the MA and PhD level, a systematic review typically also requires pre-registration of the review protocol (e.g., on PROSPERO or OSF), a formal PRISMA flow diagram, and a risk-of-bias assessment for included studies. These requirements signal that the review is intended to be a primary contribution to the literature, not merely a summary for a thesis background chapter.
+The rest of this page focuses on the **systematic review**, the workhorse for evidence-based questions with enough empirical studies to synthesise. (The authoritative procedural standard is the **PRISMA** guidelines; treat what follows as an accessible on-ramp, not a replacement.)
 
-*Placeholder — MA/PhD extension content to be added.*
+# The Systematic Review Process
+
+## 1. Define the research question
+
+Having a good question is the key to any successful research endeavour. A widely used scaffold is the **PICO** framework:
+
+| Element | Question | Example |
+|---|---|---|
+| **P** (Population) | Who is being studied? | middle managers, SMEs, multinationals |
+| **I** (Intervention / Exposure) | What main variable or intervention is examined? | leadership training, flexible work arrangements |
+| **C** (Comparison) | What is it compared to? | traditional management, fixed schedules |
+| **O** (Outcome) | What consequences or results are measured? | productivity, employee satisfaction |
+
+*Example question:* "In multinational corporations **(P)**, how does transformational leadership **(I)** compared to transactional leadership **(C)** affect employee innovation behaviour **(O)**?"
+
+**Avoid** these common pitfalls: wordy expressions, ambiguous terms, merging several questions with "and", suggestive (leading) questions, and questions that cannot actually be answered.
+
+::: {.callout-note}
+PICO is strongest for clinical-style, intervention questions. Variants such as **SPIDER**, **SPICE** and **ECLIPSE** are often better suited to qualitative and mixed-methods research in the social sciences. Choose the scaffold that fits your question.
 :::
 
-# Practical Tools
+## 2. Define inclusion and exclusion criteria
 
-*Content to be added.*
+Decide which studies are of potential interest for your question by asking:
+
+- which **variables/topics** are covered?
+- which **kind of studies** (quality, method, …)?
+- which **locations** and **time periods**?
+- which **publication types** (books, journals, newspapers)?
+- which **samples** (students, seniors, gender, …)?
+
+The goal is to **develop a coding scheme** you (and others) can use to extract relevant information and decide whether a study is of interest. A simple scheme records, per study, fields like *Study ID, publication year, main method, key topic, abstract-screening decision (keep/drop), full-text-screening decision,* and *role in the main narrative*. Coding schemes can be developed **deductively, inductively or iteratively**; test the scheme regularly, write a short manual with examples, and make sure it aligns with your research interest.
+
+## 3. Delineate a search strategy
+
+**Where to search?**
+
+- **Database selection:** Web of Science, Scopus, Google Scholar, …
+- **Additional sources:** snowball sampling, citation networks, expert suggestions.
+
+**How to search?**
+
+- which **keywords** to use (refer back to your inclusion/exclusion criteria)?
+- **where** to search for those keywords (e.g. the *Topic* field, which searches title, abstract and keywords)?
+- which papers to use for **snowball / citation-based** search?
+- whom to ask for additional papers?
+
+In a database like Web of Science, keywords are combined with the Boolean operators **AND, OR, NOT**, and several sub-searches can be merged — **each sub-search requiring its own rationale**. Mind the **caveats**: every database has restrictions (Web of Science, for example, skews toward English-language articles in ranked journals, introducing publication biases), and depending on your question you may need to search in **several languages**.
+
+::: {.callout-important}
+## Reproducibility is the whole point
+
+**Always document your decisions and justifications, and make your search reproducible — for you and for others.** In practice this means recording your exact search strings, keeping a tool such as a spreadsheet plus a reference manager (e.g. Zotero) for documentation, being explicit about limitations, and reporting the number of records retrieved, de-duplicated, screened and finally included at each stage.
+:::
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+At MA/PhD level a systematic review is typically intended as a **primary contribution**, not a background chapter. That raises the bar: **pre-register** the protocol (e.g. on PROSPERO or OSF), report screening with a **PRISMA flow diagram**, and conduct a formal **risk-of-bias / quality appraisal** of included studies. AI-assisted tools (Elicit, SciNet, Perplexity, Research Rabbit, …) can support — but not replace — the search; **citation-based** tools (which traverse reference and citation networks) and **syntax/keyword-based** tools have different blind spots, so combining them, and documenting their use, is good practice. For quantitative syntheses, a systematic review is also the front end of a **meta-analysis**.
+:::
+
+# Summary
+
+- **Research synthesis** distils and integrates findings across studies; literature reviews are its central tool, surfacing key insights and **research gaps**.
+- Three key types differ in rigour and aim: **narrative** (flexible overview), **systematic** (transparent, replicable synthesis), **meta-analysis** (statistical synthesis).
+- A systematic review proceeds by **defining a focused question** (PICO and its variants), **setting inclusion/exclusion criteria** and a coding scheme, and **designing a documented, reproducible search strategy**.
+- Throughout, **document every decision** so the review can be reproduced — by you and by others.
+
+# What to Read Next
+
+- [Qualitative vs Quantitative Research](../qualitative-methods/qualitative-vs-quantitative-research.qmd) — choosing question types that suit different review scaffolds.
+- [Mixed Methods and Methodological Pluralism](../qualitative-methods/mixed-methods-and-methodological-pluralism.qmd) — synthesising across diverse study types.
+
+# Further Reading
+
+- Cooper, H., Hedges, L. V., & Valentine, J. C. (Eds.). (2019). *The Handbook of Research Synthesis and Meta-Analysis* (3rd ed.). Russell Sage Foundation.
+- Page, M. J., et al. (2021). "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews." *BMJ*, 372:n71. [prisma-statement.org](https://www.prisma-statement.org/).
+- Petticrew, M., & Roberts, H. (2006). *Systematic Reviews in the Social Sciences: A Practical Guide*. Blackwell.

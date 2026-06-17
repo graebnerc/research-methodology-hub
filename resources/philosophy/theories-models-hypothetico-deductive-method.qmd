@@ -1,0 +1,122 @@
+---
+title: "Theories, Models and the Hypothetico-Deductive Method"
+description: "Distinguish a scientific theory from a model, see how the classical positivist picture of science grows out of the deductive-nomological model, and follow the hypothetico-deductive method through the classic case of Ignaz Semmelweis."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Distinguish a scientific theory from a scientific model and say what each is for"
+  - "Explain how the classical positivist view of science follows from the deductive-nomological model"
+  - "Describe the steps of the hypothetico-deductive method and the role of falsification"
+  - "Walk through the Semmelweis case as an illustration of hypothesis testing"
+
+categories:
+  - philosophy
+  - epistemology
+  - research-design
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Theories, Models and the Hypothetico-Deductive Method"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/philosophy/theories-models-hypothetico-deductive-method
+---
+
+# Introduction
+
+The [deductive-nomological model](scientific-explanation-deductive-nomological-model.qmd) tells us what a scientific *explanation* looks like. But explanations rely on laws, and laws live inside larger structures: **theories** and **models**. And once we accept the DN picture, a particular view of *how research should proceed* follows almost automatically — the **hypothetico-deductive method**. This page connects those pieces and illustrates them with a famous case from the history of medicine.
+
+# Theories and Models
+
+These two words are often used loosely, but they pick out different things.
+
+**Scientific theories**
+
+- are *groups of statements* that relate to the same area of phenomena and complement one another, so that further statements can be **logically derived** from them;
+- thereby provide an **ordering and systematisation of laws**.
+
+A theory, in other words, is a coherent web of laws and concepts from which explanations and predictions can be deduced.
+
+**Scientific models** are not the same as theories:
+
+- the common understanding is that a model is a **simplified representation** of some target system;
+- but there is a genuine debate about their status — are models merely **subsidiary to theories** (convenient simplifications of an underlying theory), or do they constitute an **independent way of reasoning** in their own right?
+
+::: {.callout-note}
+Holding the theory/model distinction clearly in mind matters for reading research. When a paper presents "a model", ask whether it is offered as an approximation derived from an accepted theory, or as a free-standing tool for reasoning about a phenomenon for which no settled theory exists.
+:::
+
+# From the DN Model to Positivist Research
+
+The classical **positivist** approach to research can be read straight off the DN model. If explaining is deducing outcomes from laws and conditions, then:
+
+- the **task of science** becomes the **testing of previously derived hypotheses** — the exploratory side of science (where new hypotheses come from) is left outside the picture;
+- the **goal of science** becomes the identification of ever more **general and true laws**, with an ideal end state in which everything can be explained by a few universally valid laws.
+
+To pursue that goal, an idealised procedure was developed which — despite well-known problems — remains prominent: the **hypothetico-deductive (H-D) method**.
+
+# The Hypothetico-Deductive Method
+
+The H-D method runs, in essence:
+
+1. Confront a puzzling phenomenon.
+2. Formulate one or more **hypotheses** that might account for it.
+3. **Deduce testable consequences** from each hypothesis.
+4. Confront those consequences with observation or experiment.
+5. **Reject** the hypotheses whose predictions fail; retain (provisionally) those that survive.
+
+The asymmetry in step 5 is important: a hypothesis is never conclusively *proven*, only **not yet falsified**. This connects to the [problem of induction](evaluating-arguments-validity-soundness-fallacies.qmd) — confirming instances never strictly establish a universal law, but a single genuine counter-instance can refute it.
+
+## The Semmelweis case
+
+The method is beautifully illustrated by Ignaz Semmelweis, a physician in Vienna between 1844 and 1848. He faced a stark puzzle: one maternity division of his hospital had a high mortality rate from childbed (puerperal) fever, while a second division did not.
+
+He proposed several hypotheses and tested each:
+
+- **H1: an epidemic** — rejected (it would not spare the second division).
+- **H2: overcrowding in division 1** — rejected (division 2 was in fact more crowded).
+- **H3: incompetent medical staff** — rejected.
+- **H4: stress caused by priests rushing through** — rejected.
+- **H5: sepsis from a lack of hygiene** — *not falsified*.
+
+Only the hygiene hypothesis survived testing, and a lack of hygiene (doctors moving from the dissection room to deliveries without disinfecting) was identified as a causal factor in the high mortality. Hand-washing dramatically reduced deaths — decades before the germ theory of disease made *why* it worked fully intelligible.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The H-D method's "despite fundamental problems" caveat is doing real work. Beyond the problem of induction, the **Duhem–Quine thesis** notes that hypotheses are never tested in isolation but only together with a bundle of auxiliary assumptions — so a failed prediction never tells you *which* assumption to give up. Popper's **falsificationism** sharpened the method into a demarcation criterion, while Kuhn, Lakatos and Feyerabend challenged the idea that science actually proceeds by tidy conjecture-and-refutation. Note too that the positivist framing brackets the **context of discovery** (where hypotheses originate) in favour of the **context of justification** — a separation that qualitative and abductive approaches to research deliberately reject.
+:::
+
+# Summary
+
+- A **theory** is a systematised web of laws from which further statements can be derived; a **model** is a simplified representation whose status (subsidiary to theory vs. independent reasoning tool) is itself debated.
+- The **classical positivist** view of science follows from the DN model: science *tests* hypotheses in pursuit of general, true laws.
+- The **hypothetico-deductive method** formulates hypotheses, deduces testable consequences, and rejects those that fail — hypotheses are never proven, only **not yet falsified**.
+- The **Semmelweis case** shows the method at work: five hypotheses proposed, four refuted, one (lack of hygiene) retained.
+
+# What to Read Next
+
+- [What Makes an Explanation Scientific? The Deductive-Nomological Model](scientific-explanation-deductive-nomological-model.qmd) — the model this approach rests on.
+- [Qualitative vs Quantitative Research](../qualitative-methods/qualitative-vs-quantitative-research.qmd) — how the positivist picture contrasts with constructivist, inductive approaches.
+
+# Further Reading
+
+- Hempel, C. G. (1966). *Philosophy of Natural Science*. Prentice-Hall. (On Semmelweis and the H-D method.)
+- Popper, K. (1959). *The Logic of Scientific Discovery*. Hutchinson.

@@ -1,0 +1,148 @@
+---
+title: "What Makes an Explanation Scientific? The Deductive-Nomological Model"
+description: "Understand the deductive-nomological (DN) model of scientific explanation — laws plus initial conditions entailing an outcome — see why explanation, prediction and design share one structure, and learn to use it to examine arguments critically."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Describe the deductive-nomological model and label its components (law, initial condition, explanandum)"
+  - "Show how a scientific explanation can be written as a logical argument in modus ponens form"
+  - "Explain why explanation, prediction and design share the same logical structure"
+  - "Use the DN model to break a claim into separately testable parts and locate its weak points"
+
+categories:
+  - philosophy
+  - epistemology
+  - research-design
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "What Makes an Explanation Scientific? The Deductive-Nomological Model"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/philosophy/scientific-explanation-deductive-nomological-model
+---
+
+# Introduction
+
+We expect scientific knowledge to play a special role — to be more reliable than guesswork, to help us guard against pseudo-science on one side and corrosive scepticism on the other. But what exactly makes an *explanation* scientific rather than just a story we find satisfying?
+
+One influential answer is the **deductive-nomological (DN) model**. It says that to explain a phenomenon scientifically is to show that it follows logically from general laws together with the particular conditions at hand. The model is not the final word in the philosophy of science, but it is a remarkably useful tool: it turns a vague explanation into an explicit argument whose parts can be examined one by one.
+
+This page builds directly on the logic resources — especially [Propositional Logic](propositional-logic-operators-truth-tables-syllogisms.qmd) and [Evaluating Arguments](evaluating-arguments-validity-soundness-fallacies.qmd).
+
+# From Everyday Explanation to a Model
+
+Consider a simple explanation:
+
+> Water evaporates at temperatures over 100 °C.
+> This pot of water has a temperature of 120 °C.
+> Thus, the water evaporates.
+
+Written as an argument, this is just **modus ponens**:
+
+> P1: Water evaporates at temperatures over 100 °C.  *(if over 100 °C, then evaporates)*
+> P2: This pot of water has a temperature of 120 °C.  *(it is over 100 °C)*
+> C: Thus, the water evaporates.
+
+The DN model takes this structure and gives its parts names.
+
+# The Deductive-Nomological Model
+
+The DN model represents an explanation as:
+
+$$
+\frac{L,\; C}{E}
+$$
+
+- **L — the general Law** ("Water evaporates at temperatures over 100 °C").
+- **C — the initial Condition** ("This pot has a temperature of 120 °C").
+- **E — the Explanandum**, the thing to be explained, which is *deduced* from L and C ("The water evaporates").
+
+The name decodes the idea exactly:
+
+- **Deductive** — the explanandum is logically *deduced* from the premises;
+- **Nomological** — from *nomos*, "law": the explanation relies on general laws.
+
+Together **L and C are the explanans** (the explaining part) and **E is the explanandum** (the part explained).
+
+# One Structure, Three Uses
+
+A striking feature of the DN model is that **explanation, prediction and design all share the same structure** — they differ only in which element is given and which is sought.
+
+| Mode | Given | Sought | Question it answers |
+|------|-------|--------|---------------------|
+| **Explanation** | E, C | L | *How did this happen?* |
+| **Prediction** | C, L | E | *What will happen?* |
+| **Design** | E | C, L | *How do we achieve something?* |
+
+This is why the same model that *explains* why the water evaporated also lets us *predict* that a pot heated to 120 °C will evaporate, and helps us *design* a process to make water evaporate.
+
+# Why the Model is Useful
+
+The DN model's main payoff is **critical examination**. By forcing an explanation into explicit L, C and E, it lets you interrogate each part separately:
+
+- **C and E are empirical statements** — they can be checked against observation.
+- **L is the law hypothesis** — it carries the heavy theoretical load and is where important variables may have been overlooked.
+
+The model thereby:
+
+- gives a clear answer to *what an explanation is*;
+- connects directly to practical research via the hypothetico-deductive method (see [Theories, Models and the Hypothetico-Deductive Method](theories-models-hypothetico-deductive-method.qmd));
+- facilitates a **stringent, critical examination** of scientific statements;
+- and supports the **systematic comparison** of competing diagnoses or design proposals in terms of their underlying assumptions about conditions and mechanisms.
+
+## A social-science example
+
+Bob Marley sang, *"A hungry mob is an angry mob."* Read as a (probabilistic) law hypothesis — *the greater the deprivation, the higher the potential for escalation* — it slots straight into the DN model:
+
+> C: The absolute poverty rate in Jamaica has increased significantly.
+> L: Deprivation ↑ → escalation potential ↑.
+> ∴ E: The risk of a violent uprising in Jamaica is high.
+
+Now the value of the model becomes concrete. **C and E can be tested separately as empirical statements** (has poverty risen? is unrest rising?). And **L can be critically examined**: have important variables been overlooked? Perhaps deprivation also causes *exhaustion*, which *reduces* the potential for escalation — a mechanism the simple law ignores.
+
+::: {.callout-note}
+## Try it yourself
+
+Take the claim *"Our current economic system is unsustainable because it relies on the compulsion for economic growth."* Translate it into the DN model: what is the Law, the Condition, the Explanandum? Which parts are empirically observable (C, E), and which require critical examination (L)? How could the argument be sharpened once its parts are laid bare?
+:::
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The DN model (associated with Hempel and Oppenheim) is the *starting* point of the modern debate on explanation, not its conclusion. Well-known difficulties include the **asymmetry problem** (a flagpole's height explains its shadow's length, but not vice versa, though the deduction runs both ways), the **relevance problem** (irrelevant true premises can yield a valid DN "explanation"), and the difficulty of accommodating **statistical** and **mechanistic** explanations. These motivated later accounts — the inductive-statistical model, causal-mechanical and unificationist approaches, and contemporary work on causal and mechanistic explanation. Treat the DN model as a clarifying scaffold whose very failures map the questions the field still works on.
+:::
+
+# Summary
+
+- The **deductive-nomological model** explains a phenomenon by deducing it from general **laws (L)** and **initial conditions (C)**; the deduced outcome is the **explanandum (E)**.
+- A DN explanation has the logical form of **modus ponens**; L and C are the **explanans**, E the **explanandum**.
+- **Explanation, prediction and design** share one structure, differing only in what is given and what is sought.
+- The model's chief value is **critical examination**: C and E are empirically testable, while L is the law hypothesis that most needs scrutiny.
+
+# What to Read Next
+
+- [Theories, Models and the Hypothetico-Deductive Method](theories-models-hypothetico-deductive-method.qmd) — how the DN model connects to the practice of testing hypotheses.
+- [Evaluating Arguments: Validity, Soundness and Fallacies](evaluating-arguments-validity-soundness-fallacies.qmd) — the logical foundations the DN model rests on.
+
+# Further Reading
+
+- Hempel, C. G., & Oppenheim, P. (1948). "Studies in the Logic of Explanation." *Philosophy of Science*, 15(2), 135–175.
+- Woodward, J. (2003). *Making Things Happen: A Theory of Causal Explanation*. Oxford University Press.

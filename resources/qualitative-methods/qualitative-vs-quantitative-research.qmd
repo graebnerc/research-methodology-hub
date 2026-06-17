@@ -1,0 +1,119 @@
+---
+title: "Qualitative vs Quantitative Research"
+description: "Compare qualitative and quantitative research across their underlying philosophy, research design, and data — and learn to choose the approach that fits your research question rather than your habits."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Contrast the philosophical assumptions (positivist vs constructivist) behind quantitative and qualitative research"
+  - "Match a research question to a qualitative or quantitative design based on what it asks"
+  - "Describe the typical data, sample size and analysis associated with each approach"
+  - "Explain the characteristic strengths and weaknesses of each approach"
+
+categories:
+  - qualitative-methods
+  - research-design
+  - epistemology
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Qualitative vs Quantitative Research"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/qualitative-methods/qualitative-vs-quantitative-research
+---
+
+# Introduction
+
+"Should I run a survey or do interviews?" is the wrong place to start. The choice between **quantitative** and **qualitative** research is not first about tools — it is about what kind of question you are asking and what assumptions you make about the social world. This page compares the two approaches along three dimensions — underlying philosophy, research design, and data — so you can choose deliberately.
+
+# Why Methods Matter
+
+Methods are not neutral instruments bolted on at the end of a project. They **determine what you can know and how you can know it**. Three reasons to take them seriously:
+
+- different methods rest on different **ontological and epistemological assumptions** (see [What is Epistemology?](../epistemology/epistemology-ba.qmd));
+- understanding the assumptions helps you analyse the **limitations and biases** of any study;
+- and the way you **frame a problem constrains the solutions** you can even consider — a point with direct relevance to evidence-based management and decision-making.
+
+# Three Dimensions of Comparison
+
+## 1. Underlying philosophy
+
+| | Quantitative | Qualitative |
+|---|---|---|
+| Paradigm | Positivism | Constructivism |
+| View of the world | External and objective | Socially constructed and subjective |
+| Research logic | Hypothetico-deductive: **testing** theory/hypotheses | Holistic-inductive: **developing** theory/hypotheses |
+| Role of the researcher | Neutrality and value-free inquiry | Subjectivity and reflexivity |
+| Aim | Measure and investigate **causal relationships**; discover social laws | Illuminate **multiple realities** through controlled interpretation; describe and understand |
+
+The quantitative tradition descends from the positivist picture of science (see [Theories, Models and the Hypothetico-Deductive Method](../philosophy/theories-models-hypothetico-deductive-method.qmd)). The qualitative tradition starts from the premise that social reality is constructed in meaning and context, so the researcher's interpretation is part of the method rather than a contaminant to be eliminated.
+
+## 2. Research design
+
+| | Quantitative | Qualitative |
+|---|---|---|
+| Focus | Relationships between variables | Meaning, context, process |
+| Typical questions | How many? How much? What is the relationship between x and y? | How? Why? What is the nature of …? |
+| Example | *What is the relationship between leadership style and employee productivity?* | *How do employees experience organisational change?* |
+
+## 3. Data and outcome
+
+| | Quantitative | Qualitative |
+|---|---|---|
+| Data | Numerical | Narrative, textual |
+| Sample | Large N | Small N |
+| Analysis | Statistical | Interpretive |
+| Outcome | **Breadth** of understanding; easier to replicate; generalisable knowledge; testing/refining theory | **Depth** of understanding; harder to replicate; context-specific knowledge; developing new concepts and theories |
+
+::: {.callout-note}
+## The shorthand
+
+A well-worn cartoon captures the contrast: the quantitative researcher asks *"On a scale of 1 to 10, how happy are you?"*; the qualitative researcher asks *"Why are you happy?"* Neither question is better in the abstract — they are good for different purposes.
+:::
+
+# Choosing an Approach
+
+The guiding principle is that **the research question drives everything**. Reach for quantitative methods when you need to measure, compare across many cases, test a pre-specified hypothesis, or estimate a relationship. Reach for qualitative methods when you need to understand meaning, explore a poorly charted phenomenon, or generate new concepts and theory.
+
+Crucially, this is not a ranking. Each approach has characteristic blind spots — breadth bought at the cost of depth, or depth bought at the cost of generalisability. Recognising these trade-offs is the first step toward [combining the two](mixed-methods-and-methodological-pluralism.qmd) when a single approach would miss part of the picture.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The neat positivist/constructivist table is a teaching device, not a census of real positions. **Post-positivism** accepts an objective world while denying that we ever access it free of theory; **critical realism** distinguishes a stratified reality from our fallible knowledge of it and is comfortable with both qualitative and quantitative evidence; **pragmatism** sidesteps the paradigm war by letting the research problem dictate method. The deeper lesson is that ontology (what exists), epistemology (how we can know it) and methodology (how we proceed) are linked but not rigidly: a researcher's paradigm shapes, without mechanically dictating, their methods.
+:::
+
+# Summary
+
+- The choice between approaches is grounded in **philosophy** (positivist/objective vs constructivist/subjective), not just technique.
+- **Quantitative** research tests relationships between variables with numerical data, large N and statistical analysis, yielding generalisable breadth.
+- **Qualitative** research investigates meaning, context and process with textual data, small N and interpretive analysis, yielding context-specific depth.
+- Let the **research question** decide; each approach trades off against the other.
+
+# What to Read Next
+
+- [Mixed Methods and Methodological Pluralism](mixed-methods-and-methodological-pluralism.qmd) — combining approaches and the case for plurality.
+- [Conducting Research Interviews](conducting-research-interviews.qmd) — a core qualitative method in depth.
+- [Case Study Research Design](../research-design/case-study-research-design.qmd) — a design that often mixes both kinds of evidence.
+
+# Further Reading
+
+- Creswell, J. W., & Creswell, J. D. (2018). *Research Design: Qualitative, Quantitative, and Mixed Methods Approaches* (5th ed.). SAGE.
+- Bryman, A. (2016). *Social Research Methods* (5th ed.). Oxford University Press.

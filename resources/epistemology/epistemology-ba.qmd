@@ -30,7 +30,7 @@ citation:
   url: https://euf-methodology-hub.netlify.app/resources/epistemology/epistemology-ba
 ---
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Level: BA
 
 This page is written for BA students encountering epistemology for the first time. There is also a version for [MA/PhD students](epistemology-phd.qmd) that engages more directly with the philosophical literature.

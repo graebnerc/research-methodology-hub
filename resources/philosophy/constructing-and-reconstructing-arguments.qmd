@@ -1,0 +1,168 @@
+---
+title: "Constructing and Reconstructing Arguments"
+description: "Learn what an argument is in the logical sense, how to tell arguments apart from explanations and interpretations, and how to reconstruct a messy real-world argument into clear premises and a conclusion."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Identify the premises and conclusion of an argument stated in ordinary prose"
+  - "Distinguish an argument from an explanation and from an interpretation or definition"
+  - "Reconstruct a complex argument into standard form by making implicit premises explicit"
+  - "Apply the criteria for a good reconstruction to check your own work"
+
+categories:
+  - philosophy
+  - logic
+  - argumentation
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Constructing and Reconstructing Arguments"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/philosophy/constructing-and-reconstructing-arguments
+---
+
+# Introduction
+
+Whenever you defend a position in a seminar paper, evaluate a business plan, or assess a claim in the news, you are working with **arguments**. Being able to take a tangled piece of prose and lay bare its underlying structure — what is being claimed, and on what grounds — is one of the most useful and transferable skills in academic and professional life.
+
+This page introduces the logical notion of an argument, separates it from things that look similar but are not arguments, and gives you a step-by-step procedure for *reconstructing* an argument into a clear, evaluable form. Once an argument is reconstructed, you can assess whether it actually works — that is the subject of [Evaluating Arguments: Validity, Soundness and Fallacies](evaluating-arguments-validity-soundness-fallacies.qmd).
+
+# What is an Argument?
+
+In everyday language, an "argument" is a quarrel. In logic it means something more specific and more useful:
+
+> An argument is a set of statements consisting of **premises** and a **conclusion**. The premises are statements intended to give supporting evidence; the conclusion is what is allegedly supported by them.
+
+So an argument has two kinds of parts:
+
+1. **Premise(s)** — one or more declarative statements offered in support of the conclusion. A premise is the kind of sentence we can assign a **truth value** to (true or false). Importantly, a premise does *not* have to be true for the argument to do its work — we can reason from premises whose truth we are still examining.
+2. **Conclusion** — the statement the premises are meant to establish.
+
+## Statements have truth values
+
+Only **declarative statements** can serve as premises or conclusions, because only they can be true or false. Compare:
+
+- "You ordered mint-flavoured ice cream?!" — a question, no truth value.
+- "This statement is false." — a paradox, no stable truth value.
+- "The atomic number of hydrogen is 1 and the atomic number of helium is 2." — a declarative statement with a definite truth value.
+
+A simple worked example of an argument:
+
+> **Premise 1:** If it rains, the street is wet.
+> **Premise 2:** It rains.
+> **Conclusion:** The street is wet.
+
+# What an Argument is *Not*
+
+A common source of confusion is mistaking other kinds of utterance for arguments. Three contrasts are worth keeping straight.
+
+## Argument vs. explanation
+
+- An **argument** answers: *what are the reasons to believe a conclusion?*
+- An **explanation** answers: *why is something the case?* — it takes the fact as already accepted and tells you what produced it.
+
+> "The lights went out **because** there was a power outage." — explanation (we already accept the lights went out; we are told the cause).
+>
+> "The suspect must be guilty **because** their fingerprints were at the scene." — argument (we are being given a reason to *believe* a contested claim).
+
+Notice that the word "because" appears in both — so you cannot rely on signal words alone. Ask instead whether the conclusion is something in dispute that needs support (argument), or something accepted that is being accounted for (explanation).
+
+## Argument vs. interpretation and definition
+
+- An **interpretation** asks: *what could this sentence mean?*
+- A **definition** asks: *what is X?* Definitions come in two useful flavours:
+  - a **lexical definition** explains current usage of a term;
+  - a **stipulative definition** fixes a specific usage for a particular context (very common in research, where you define how *you* will use a contested term).
+
+These are not arguments — but a good argument often depends on them, because vague or shifting terms are a frequent source of bad reasoning.
+
+# Reconstructing an Argument
+
+Real arguments are rarely stated in tidy premise–conclusion form. Reconstruction is the skill of turning prose into a clear standard form so it can be evaluated. As the philosopher Chris Bobonich puts it, *"Once you learn to dissect and reconstruct an argument, evaluating and analyzing the argument will become much easier."*
+
+A reconstruction does several things at once:
+
+- makes **implicit premises explicit** (arguments almost always leave assumptions unstated);
+- states each premise **clearly** and separately;
+- sorts the premises into the **right order**;
+- and asks, beyond mere correctness, whether the argument is actually *good*.
+
+## A step-by-step procedure
+
+1. **Find the conclusion** of the overall argument. What is the author ultimately trying to get you to accept?
+2. **Find the core** — the central premise(s) that most directly support the conclusion.
+3. **Find the supporting premises** that back up the core.
+4. If needed, identify **sub-premises** that support the central and supporting premises.
+5. **Put it together** and write it down in logical form, labelling premises (P1, P2, …) and the conclusion (C).
+
+## Worked example
+
+Take the everyday claim:
+
+> "Philosophy is valueless because it cannot help us make money."
+
+A weak reconstruction piles in irrelevant material:
+
+> P1: Philosophy cannot help us make money.
+> P2: Computer science can help us make money.
+> P3: Philosophy is different from computer science.
+> P4: If X can help us make money, then X is valuable.
+> C: Therefore, philosophy is valueless. ❌
+
+A clean reconstruction keeps only what the conclusion actually needs, and makes the hidden general premise explicit:
+
+> P1: If a thing cannot help us make money, then it is valueless.
+> P2: Philosophy cannot help us make money.
+> C: (from P1 and P2) Therefore, philosophy is valueless. ✓
+
+The second version is better not because the conclusion is true — you may well reject P1 — but because the structure is now transparent and can be evaluated. (Indeed, making P1 explicit is exactly what lets us see the argument's weakest point.)
+
+## Criteria for a good reconstruction
+
+For an original argument **T** and your reconstruction **R**:
+
+1. **R respects T** — it is a faithful rendering of what was actually argued.
+2. **R is a valid argument in standard form** — the conclusion genuinely follows from the premises.
+3. **No redundant premises** — every premise in R is necessary to make R valid.
+4. **R is a charitable reading of T** — where the original is ambiguous, you reconstruct the strongest reasonable version rather than a strawman.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+Reconstructing **complex, multi-step arguments** — where intermediate conclusions become premises for later steps — is a core scholarly skill. A useful exercise is to take a paragraph of argumentative prose from a paper in your field and render it as a chain of linked arguments (C1 feeds into P-of-the-next-step, and so on). The principle of **charity** is not merely politeness: a reconstruction that defeats only a weak version of an opponent's view tells you nothing about whether the real view is defensible.
+:::
+
+# Summary
+
+- An argument is a set of statements: **premises** offered in support of a **conclusion**. Only declarative statements (which have truth values) can play these roles.
+- Arguments differ from **explanations** (why something is the case), **interpretations** (what a sentence means), and **definitions** (what a term is).
+- **Reconstruction** turns messy prose into standard form by making implicit premises explicit and ordering them clearly.
+- A good reconstruction is faithful, valid, free of redundant premises, and charitable.
+
+# What to Read Next
+
+- [Propositional Logic: Operators, Truth Tables and Syllogisms](propositional-logic-operators-truth-tables-syllogisms.qmd) — the formal tools for combining and analysing statements.
+- [Evaluating Arguments: Validity, Soundness and Fallacies](evaluating-arguments-validity-soundness-fallacies.qmd) — how to judge whether a reconstructed argument actually works.
+
+# Further Reading
+
+- Gensler, H. J. (2010). *Introduction to Logic* (2nd ed.). Routledge.
+- Kahane, H., Hausman, A., & Boardman, F. (2021). *Logic and Philosophy: A Modern Introduction* (13th ed.). Hackett.

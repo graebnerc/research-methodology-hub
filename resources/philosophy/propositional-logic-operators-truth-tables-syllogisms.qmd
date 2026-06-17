@@ -1,0 +1,207 @@
+---
+title: "Propositional Logic: Operators, Truth Tables and Syllogisms"
+description: "Formalise statements using the basic logical operators (not, and, or, if-then), build truth tables to work out when compound statements are true, and recognise the common valid syllogisms — and the fallacies that imitate them."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/placeholder.png
+
+learning-objectives:
+  - "Translate plain-language statements into symbols using the operators ¬, ∧, ∨ and →"
+  - "Construct truth tables for negation, conjunction, disjunction and the conditional"
+  - "Explain why a contradiction is always false and a tautology always true"
+  - "Recognise modus ponens, modus tollens, hypothetical and disjunctive syllogisms, and distinguish them from the fallacies of the inverse and the converse"
+
+categories:
+  - philosophy
+  - logic
+  - argumentation
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Propositional Logic: Operators, Truth Tables and Syllogisms"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/philosophy/propositional-logic-operators-truth-tables-syllogisms
+---
+
+# Introduction
+
+Once you can reconstruct an argument into premises and a conclusion (see [Constructing and Reconstructing Arguments](constructing-and-reconstructing-arguments.qmd)), the next step is to analyse its *form*. **Propositional logic** is the study of how the meaning of logical operators — words like *not*, *and*, *or*, and *if … then* — determines the truth conditions of compound statements, and which patterns of inference are reliable.
+
+The payoff is practical: a small set of symbols and tables lets you see at a glance whether a piece of reasoning is built on a valid pattern or a tempting imitation of one.
+
+# Notation: Writing Logic
+
+A few conventions make reasoning easier to handle:
+
+- Use **symbols** (letters such as p, q, s, …) to stand for whole statements ("propositions").
+- Separate the conclusion from the premises with a line, or with the symbol **∴** ("therefore").
+- Use **logical operators** to combine statements.
+- Assign **truth values** (T, F) to the component statements and work out the truth value of the whole — this is what a **truth table** does.
+
+For example, the argument
+
+> Premise 1: If it rains, the street is wet.
+> Premise 2: It rains.
+> Conclusion: The street is wet.
+
+becomes, with `r` = "it rains" and `w` = "the street is wet":
+
+> P1: r → w
+> P2: r
+> ∴ w
+
+# The Basic Logical Operators
+
+## Negation (¬)
+
+`¬p` ("not p") reverses the truth value of `p`.
+
+> p ⇒ "you shall pass"
+> ¬p ⇒ "you shall not pass"
+
+For `¬p` to be true, `p` must be false; for `¬p` to be false, `p` must be true.
+
+## Conjunction (∧)
+
+`p ∧ q` ("p and q") is true only when **both** `p` and `q` are true. Order does not matter: `p ∧ q ≡ q ∧ p`.
+
+## Disjunction (∨)
+
+`p ∨ q` ("p or q") is true when **at least one** of `p`, `q` is true. (This is the *inclusive* or — it is also true when both hold.) Order does not matter: `p ∨ q ≡ q ∨ p`.
+
+## The conditional (→)
+
+`p → q` ("if p, then q") links a condition `p` to a consequence `q`. Unlike the others, **order matters**: `p → q` is not the same as `q → p`.
+
+The conditional has one feature that surprises newcomers:
+
+- If `p` is true, then `p → q` takes the truth value of `q`.
+- If `p` is **false**, then `p → q` is **true by definition** (the promise was never triggered, so it cannot have been broken).
+
+# Truth Tables
+
+A truth table lists every combination of truth values for the components and gives the resulting value of the compound statement.
+
+**Negation**
+
+| p | ¬p |
+|---|----|
+| T | F  |
+| F | T  |
+
+**Conjunction and disjunction**
+
+| p | q | p ∧ q | p ∨ q |
+|---|---|-------|-------|
+| T | T | T | T |
+| T | F | F | T |
+| F | T | F | T |
+| F | F | F | F |
+
+**The conditional**
+
+| p | q | p → q |
+|---|---|-------|
+| T | T | T |
+| T | F | F |
+| F | T | T |
+| F | F | T |
+
+The only way to make `p → q` false is to have a true condition `p` with a false consequence `q` — the second row.
+
+# Logical Truths: Contradictions and Tautologies
+
+Two compound statements are worth memorising because their truth value never depends on the facts:
+
+- `p ∧ ¬p` is a **contradiction** — always false. (For a conjunction to be true we need both parts true, but `p` and `¬p` can never both be true.) *Example: "g is green and g is not green."*
+- `p ∨ ¬p` is a **tautology** — always true. (For a disjunction we need at least one part true, and exactly one of `p`, `¬p` always is.) *Example: "the door is open or it is not open."*
+
+# Common Syllogisms
+
+A **syllogism** is a valid deductive argument with (typically) two premises and a conclusion. If the premises are true and the syllogism is valid, the conclusion *must* be true. Four patterns recur constantly.
+
+**Modus ponens** — affirm the condition:
+
+> P → Q
+> P
+> ∴ Q
+>
+> *If it rains, the street is wet. It rains. ∴ The street is wet.*
+
+**Modus tollens** — deny the consequence:
+
+> P → Q
+> ¬Q
+> ∴ ¬P
+>
+> *If our pricing strategy is competitive, sales will increase. Sales have not increased. ∴ Our pricing strategy is not competitive.*
+
+**Hypothetical syllogism** — chain two conditionals:
+
+> P → Q
+> Q → R
+> ∴ P → R
+>
+> *If I don't wake up, I can't go to work. If I can't go to work, I won't get paid. ∴ If I don't wake up, I won't get paid.*
+
+**Disjunctive syllogism** — eliminate one option:
+
+> P ∨ Q
+> ¬P
+> ∴ Q
+>
+> *I eat soup today or I eat salad today. I do not eat soup today. ∴ I eat salad today.*
+
+# Two Tempting Fallacies
+
+Two invalid patterns *look* like modus ponens and modus tollens but are not valid. Watch for them.
+
+| Valid | | Invalid |
+|---|---|---|
+| **Modus ponens** | | **Fallacy of the converse** |
+| P → Q; P; ∴ Q | | P → Q; **Q**; ∴ **P** |
+| **Modus tollens** | | **Fallacy of the inverse** |
+| P → Q; ¬Q; ∴ ¬P | | P → Q; **¬P**; ∴ **¬Q** |
+
+Using "If it rains, the street is wet":
+
+- **Fallacy of the converse:** "The street is wet, ∴ it rains." Invalid — the street could be wet for another reason.
+- **Fallacy of the inverse:** "It is not raining, ∴ the street is not wet." Invalid for the same reason.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+Propositional logic is the floor, not the ceiling. It treats statements as indivisible atoms; **predicate (first-order) logic** adds quantifiers ("for all", "there exists") and lets you reason about relationships *within* statements, which is needed for most genuinely scientific generalisations. The valid argument forms above also reappear as *rules of inference* in formal proof systems. If you work with formal models, the connection between truth tables and **logical validity** (a conclusion is valid iff there is no row in which all premises are true and the conclusion false) is worth internalising.
+:::
+
+# Summary
+
+- The operators **¬, ∧, ∨, →** combine statements; their **truth tables** define exactly when the compound is true.
+- `p ∧ ¬p` is always false (**contradiction**); `p ∨ ¬p` is always true (**tautology**).
+- **Modus ponens, modus tollens, hypothetical** and **disjunctive** syllogisms are valid patterns.
+- The **fallacy of the converse** and the **fallacy of the inverse** imitate the valid conditional patterns but are invalid.
+
+# What to Read Next
+
+- [Evaluating Arguments: Validity, Soundness and Fallacies](evaluating-arguments-validity-soundness-fallacies.qmd) — moving from form to a full evaluation of whether an argument is *good*.
+
+# Further Reading
+
+- Gensler, H. J. (2010). *Introduction to Logic* (2nd ed.). Routledge.
+- Hurley, P. J. (2000). *A Concise Introduction to Logic* (7th ed.). Wadsworth.

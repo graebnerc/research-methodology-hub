@@ -1,0 +1,178 @@
+---
+title: "Case Study Research Design"
+description: "Understand what a case study is and when to use one, define what counts as a 'case', work through the single/multiple × holistic/embedded typology, choose a case selection strategy, and answer the common critiques of the method."
+author:
+  - "Claudius Gräbner-Radkowitsch"
+  - "Anna-Katharina Kothe"
+date: 2026-06-17
+date-modified: 2026-06-17
+image: ../../assets/images/research-design.png
+
+learning-objectives:
+  - "Explain what a case study is and when a case-oriented design is appropriate"
+  - "Define a 'case' and set clear boundaries between case and context"
+  - "Classify a design along the single/multiple and holistic/embedded dimensions"
+  - "Select a case using a justified strategy and respond to the standard critiques of case study research"
+
+categories:
+  - research-design
+  - case-study
+  - qualitative-methods
+  - causal-inference
+  - BA
+  - concept
+
+level:
+  - BA
+  - MA
+
+content-type: concept
+
+citation:
+  type: entry
+  container-title: "Methods Hub"
+  title: "Case Study Research Design"
+  author:
+    - name: "Claudius Gräbner-Radkowitsch"
+    - name: "Anna-Katharina Kothe"
+  editor:
+    - name: "Claudius Gräbner-Radkowitsch"
+  url: https://euf-methodology-hub.netlify.app/resources/research-design/case-study-research-design
+---
+
+# Introduction
+
+Some research questions cannot be answered by averaging over thousands of cases. When you want to understand *how* a complex process unfolds in its real-world setting — and where the phenomenon is hard to separate from its surroundings — the **case study** comes into its own. This page sets out what a case study is, when to choose one, how to design it, and how to defend it against its critics.
+
+# What is a Case Study?
+
+A widely used definition (Robert K. Yin) captures the essentials:
+
+> *"An empirical inquiry that investigates a contemporary phenomenon within its real-life context; when the boundaries between phenomenon and context are not clearly evident; and in which multiple sources of evidence are used."*
+
+Three features stand out:
+
+- it studies a **contemporary phenomenon**;
+- it takes **context** seriously rather than stripping it away;
+- it relies on the **triangulation** of multiple sources of evidence.
+
+## Case studies among other strategies
+
+Yin's comparison locates the case study relative to neighbouring strategies:
+
+| Strategy | Form of research question | Requires control of behavioural events? | Focuses on contemporary events? |
+|---|---|---|---|
+| Experiment | How, why? | Yes | Yes |
+| Survey | Who, what, where, how many, how much? | No | Yes |
+| Archival analysis | Who, what, where, how many, how much? | No | Yes / No |
+| History | How, why? | No | No |
+| **Case study** | **How, why?** | **No** | **Yes** |
+
+Case studies share the *how/why* focus of experiments and history, but — unlike experiments — do not require control over events, and — unlike history — concern the present.
+
+# When to Use Case Studies
+
+Choose a case-oriented approach when you need:
+
+- **depth** in:
+  - **exploratory how-questions** — understanding complex social phenomena;
+  - **why-questions** — identifying the exact causal process;
+  - **evaluative questions**;
+- to work where **pre-existing knowledge is scarce**;
+- to handle a **complex object of research** with **blurry boundaries** between the phenomenon and its context;
+- to cope with a **scarcity of empirical information and cases**.
+
+The function of a case study also shifts with the **role of theory**: it can be *exploratory* (plausibility probe, hypothesis-generating), *explanatory* (hypothesis-testing), or *descriptive* (idiographic). And how it is used **depends on the disciplinary angle** — Henry Mintzberg's close studies of what managers actually do (1970s–80s) look different from a case study in political science, even though both bear the same label.
+
+# What is a "Case"?
+
+Defining the case is half the design:
+
+> A case is a **spatially delimited phenomenon** (a unit) observed at a single point in time or over some period. It comprises the type of phenomenon that an inference attempts to explain.
+
+Practical implications:
+
+- there are **different levels of analysis** (an individual, a team, a firm, a country);
+- the **unit of analysis must align** with your research questions and theoretical interests;
+- you must establish **clear boundaries** for what is inside vs. outside the case.
+
+# Context is Central
+
+Because a case study refuses to strip away context, you must think carefully about how context operates. There are **three types of contextual effect**:
+
+- **context as cause** — the setting itself drives the outcome;
+- **context as barrier** — the setting constrains what can happen;
+- **context changes meaning** — the same act means different things in different settings.
+
+Context also operates on **multiple levels** — micro, meso and macro.
+
+# A Typology of Case Studies
+
+Two dimensions cross-classify case study designs:
+
+1. **How many cases?** — *single-case* vs. *multiple-case* designs.
+2. **How many units of analysis?** — *holistic* (a single unit) vs. *embedded* (multiple units within the case).
+
+|  | Single-case | Multiple-case |
+|---|---|---|
+| **Holistic** (one unit) | One case analysed as a whole | Several whole cases compared |
+| **Embedded** (multiple units) | One case with sub-units analysed inside it | Several cases, each with embedded sub-units |
+
+# Designing a Case Study
+
+The **fundamental elements** of a case study design form a chain:
+
+> **Research question → Propositions / hypotheses → Units of analysis → Link between data and propositions → Interpretation criteria**
+
+The middle links are what give a case study analytical force: without explicit propositions, defined units, and stated criteria for interpreting evidence, a case study risks becoming mere description.
+
+## Case selection strategies
+
+Whether single- or multiple-case, you must pick cases deliberately. Common strategies:
+
+- **typical** cases (representative of a broader class);
+- **critical** cases (where a theory should hold if it holds anywhere);
+- **extreme or unique** cases;
+- **revelatory** cases (offering access to a previously hidden phenomenon);
+- **longitudinal** cases (the same case studied over time).
+
+::: {.callout-important}
+## Justification is key
+
+There is no random sampling to fall back on. Whatever strategy you choose, the **justification of your case selection** — why *this* case, given *this* question — is what makes the design defensible.
+:::
+
+# Answering the Critics
+
+Case studies attract recurring critiques. Know them, and the standard responses:
+
+1. **Lack of scientific rigor** — addressed by an explicit design chain and documented procedures.
+2. **Limited generalizability** — case studies aim at *analytic* (theoretical) generalisation to propositions, not *statistical* generalisation to populations.
+3. **Researcher bias** — mitigated by triangulation and transparent interpretation criteria.
+4. **Fails to determine causation** — within-case process tracing can establish causal *mechanisms* that correlational designs cannot.
+5. **Difficult to replicate** — addressed by thorough documentation of the design and evidence base.
+
+::: {.callout-note .level-advanced}
+## 🎓 MA / PhD
+
+The generalisation critique repays careful thought. Case studies trade **statistical generalisation** (sample → population) for **analytic generalisation** (case → theory): the question is not "how many cases does this represent?" but "what does this case let us infer about the proposition?". This connects to **process tracing** as a within-case method for establishing causal mechanisms, and to the logic of **critical** and **deviant** case selection, where a single well-chosen case can decisively support or undermine a theoretical claim. For causal questions specifically, contrast the case study's mechanism-centred logic with the variance-centred logic of [DAG-based reasoning](../causal-inference/reasoning-with-dags.qmd).
+:::
+
+# Summary
+
+- A **case study** investigates a contemporary phenomenon in its **real-life context**, where phenomenon and context blur, using **multiple sources of evidence**.
+- Use it for **how/why** questions, scarce prior knowledge, complex boundaries, and few available cases; its function depends on the role of theory and the discipline.
+- Define the **case** as a spatially delimited unit with clear boundaries, aligned to the research question; take **context** (cause, barrier, meaning-changer) seriously.
+- Designs cross-classify as **single/multiple × holistic/embedded**; build the **RQ → propositions → units → data-link → interpretation** chain and **justify** your case selection.
+- The standard critiques (rigor, generalizability, bias, causation, replicability) have standard, design-based answers.
+
+# What to Read Next
+
+- [Conducting Research Interviews](../qualitative-methods/conducting-research-interviews.qmd) — a frequent source of evidence within case studies.
+- [Qualitative vs Quantitative Research](../qualitative-methods/qualitative-vs-quantitative-research.qmd) — the broader landscape in which case studies sit.
+
+# Further Reading
+
+- Yin, R. K. (2018). *Case Study Research and Applications: Design and Methods* (6th ed.). SAGE.
+- Gerring, J. (2017). *Case Study Research: Principles and Practices* (2nd ed.). Cambridge University Press.
+- Flyvbjerg, B. (2006). "Five Misunderstandings About Case-Study Research." *Qualitative Inquiry*, 12(2), 219–245.

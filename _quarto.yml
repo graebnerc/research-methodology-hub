@@ -53,12 +53,24 @@ website:
         - section: "R Programming"
           contents:
             - auto: resources/r-programming/
+        - section: "Philosophy"
+          contents:
+            - auto: resources/philosophy/
+        - section: "Qualitative Methods"
+          contents:
+            - auto: resources/qualitative-methods/
+        - section: "Research Design"
+          contents:
+            - auto: resources/research-design/
         - section: "Literature Review"
           contents:
             - auto: resources/literature-review/
         - section: "Epistemology"
           contents:
             - auto: resources/epistemology/
+        - section: "Causal Inference"
+          contents:
+            - auto: resources/causal-inference/
         - section: "Statistics"
           contents:
             - auto: resources/statistics/
